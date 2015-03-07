@@ -229,7 +229,12 @@ bool VSCP::isActive(void)
     
     return status;
 }
-    
+
+bool VSCP::read(vscp_RxMessage& msg)
+{
+    return vscp_portable_read(&msg);
+}
+
 /*******************************************************************************
     LOCAL FUNCTIONS
 *******************************************************************************/

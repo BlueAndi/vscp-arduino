@@ -74,6 +74,12 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 /** State of the status lamp. */
 static VSCP_LAMP_STATE  vscp_portable_statusLampState   = VSCP_LAMP_STATE_OFF;
 
+/** Receive message storage */
+static vscp_RxMessage   vscp_portable_rxMsg;
+
+/** Flag which notify about a received message */
+static BOOL             vscp_portable_isReceived        = FALSE;
+
 /*******************************************************************************
     GLOBAL VARIABLES
 *******************************************************************************/
@@ -201,9 +207,33 @@ extern void vscp_portable_bootLoaderRequest(void)
  */
 extern void vscp_portable_provideEvent(vscp_RxMessage const * const msg)
 {
-    /* Implement your code here ... */
-    
+    vscp_portable_rxMsg         = *msg;
+    vscp_portable_isReceived    = TRUE;
     return;
+}
+
+/**
+ * This function read a received VSCP message.
+ * If no message is received it returns FALSE otherwise TRUE.
+ *
+ * @param[out]  msg Message
+ * @return Message received or not
+ */
+extern BOOL vscp_portable_read(vscp_RxMessage * const msg)
+{
+    BOOL    status  = FALSE;
+
+    if (NULL != msg)
+    {
+        if (TRUE == vscp_portable_isReceived)
+        {
+            *msg                        = vscp_portable_rxMsg;
+            status                      = TRUE;
+            vscp_portable_isReceived    = FALSE;
+        }
+    }
+    
+    return status;
 }
 
 /*******************************************************************************

@@ -171,6 +171,15 @@ extern void vscp_portable_bootLoaderRequest(void);
  */
 extern void vscp_portable_provideEvent(vscp_RxMessage const * const msg);
 
+/**
+ * This function read a received VSCP message.
+ * If no message is received it returns FALSE otherwise TRUE.
+ *
+ * @param[out]  msg Message
+ * @return Message received or not
+ */
+extern BOOL vscp_portable_read(vscp_RxMessage * const msg);
+
 #ifdef __cplusplus
 }
 #endif

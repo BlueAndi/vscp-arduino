@@ -193,6 +193,15 @@ public:
      */
     bool isActive(void);
     
+    /**
+     * This method reads a VSCP message.
+     * If no message is available it returns false otherwise true.
+     *
+     * @param[out]  msg Received message
+     * @return Anything read or not
+     */
+    bool read(vscp_RxMessage& msg);
+    
 private:
 
     /* Never copy the VSCP framework */

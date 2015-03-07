@@ -1,3 +1,29 @@
+/* The MIT License (MIT)
+ * 
+ * Copyright (c) 2014 - 2015, Andreas Merkle
+ * http://www.blue-andi.de
+ * vscp@blue-andi.de
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ * 
+ */
+
 #include <VSCP.h>
 
 // Create an instance of the VSCP framework
@@ -8,6 +34,30 @@ VSCP  vscp;
 bool transportRead(vscp_RxMessage * const rxMsg) {
   
   // Implement your code here ...
+  /*
+    
+    unsigned char index = 0;
+    
+    rxMsg->priority     = ...
+    rxMsg->vscpClass    = ...
+    rxMsg->vscpType     = ...
+    rxMsg->oAddr        = ...
+    rxMsg->hardCoded    = ...
+    rxMsg->dataNum      = ...
+    
+    // Protect against data buffer out of bounce access
+    if (VSCP_L1_DATA_SIZE < rxMsg->dataNum)
+    {
+        rxMsg->dataNum = VSCP_L1_DATA_SIZE;
+    }
+    
+    // Copy the payload
+    for(index = 0; index < rxMsg->dataNum; ++index)
+    {
+        rxMsg->data[index] = ...
+    }
+    
+  */
   
   return false;
 }
@@ -17,16 +67,26 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
 bool transportWrite(vscp_TxMessage const * const txMsg) {
   
   // Implement your code here ...
+  /*
+    
+    unsigned char index = 0;
+    
+    ... = rxMsg->priority;
+    ... = rxMsg->vscpClass;
+    ... = rxMsg->vscpType;
+    ... = rxMsg->oAddr;
+    ... = rxMsg->hardCoded;
+    ... = rxMsg->dataNum;
+        
+    // Copy the payload
+    for(index = 0; index < rxMsg->dataNum; ++index)
+    {
+        ... = rxMsg->data[index];
+    }
+    
+  */
   
   return false;
-}
-
-// Is called by the VSCP framework to notify the user about a received message
-void notify(vscp_RxMessage const * const rxMsg) {
-  
-  // Implement your code here ...
-
-  return;  
 }
 
 void setup() {
@@ -51,10 +111,20 @@ void loop() {
   // Process the VSCP framework
   vscp.process();
 
-  // Send VSCP messages only in active state
+  // Send and receive VSCP messages only in active state
   if (true == vscp.isActive()) {
+  
+    vscp_RxMessage  rxMsg;  // Receive message
+    vscp_TxMessage  txMsg;  // Transmit message
     
-    /* Do something here ... */
+    // Any VSCP message received?
+    if (true == vscp.read(rxMsg)) {
+    
+        // Implement your code here ...
+        
+    }
+    
+    // Send a VSCP message here ...
     
   }
 }
