@@ -8,6 +8,8 @@
 
 VSCP	KEYWORD1
 VSCPGuid	KEYWORD1
+vscp_RxMessage	KEYWORD1
+vscp_TxMessage	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,6 +22,7 @@ readNicknameId	KEYWORD2
 startNodeSegmentInit	KEYWORD2
 setAlarm	KEYWORD2
 isActive	KEYWORD2
+read	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
