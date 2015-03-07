@@ -32,3 +32,4 @@ read	KEYWORD2
 # Constants (LITERAL1)
 #######################################
 
+VSCP_L1_DATA_SIZE	LITERAL1
