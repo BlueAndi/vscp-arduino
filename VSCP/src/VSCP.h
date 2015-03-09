@@ -181,7 +181,7 @@ public:
      *
      * @param[in]   value   New alarm status
      */
-    void setAlarm(uint8_t value);
+    void setAlarm(unsigned char value);
 
     /**
      * This method determines the state of VSCP and if it is in active state,
@@ -192,6 +192,36 @@ public:
      * @retval  true    In active state
      */
     bool isActive(void);
+    
+    /**
+     * Prepares a transmit message, before it is used.
+     *
+     * Default values:
+     * - Nodes nickname
+     * - Hard coded node flag
+     * - No data
+     *
+     * After preparation, only the data and the number of data bytes has to be
+     * modified additionally.
+     *
+     * @param[in,out]   txMessage   Transmit message which will be prepared.
+     * @param[in]       vscpClass   Transmit message VSCP class
+     * @param[in]       vscpType    Transmit message VSCP type
+     * @param[in]       priority    Transmit message priority
+     */
+    void prepareTxMessage(vscp_TxMessage * const txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority);
+
+    /**
+     * Send a event to the communication bus. Don't forget to prepare your transmit
+     * message (@see vscp_core_prepareTxMessage) first and then modify for your needs,
+     * before sending it!
+     *
+     * @param[in]   txMessage   The event which will be sent.
+     * @return Status
+     * @retval FALSE    Failed to send the event.
+     * @retval TRUE     Event successful sent.
+     */
+    bool sendEvent(vscp_TxMessage const * const txMessage);
     
     /**
      * This method reads a VSCP message.

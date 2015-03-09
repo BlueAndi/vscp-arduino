@@ -205,7 +205,7 @@ void VSCP::startNodeSegmentInit(void)
     return;
 }
 
-void VSCP::setAlarm(uint8_t value)
+void VSCP::setAlarm(unsigned char value)
 {
     if (true == mIsInitialized)
     {
@@ -228,6 +228,17 @@ bool VSCP::isActive(void)
     }
     
     return status;
+}
+
+void VSCP::prepareTxMessage(vscp_TxMessage * const txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority)
+{
+    vscp_core_prepareTxMessage(txMessage, vscpClass, vscpType, priority);
+    return;
+}
+
+bool VSCP::sendEvent(vscp_TxMessage const * const txMessage)
+{
+    return vscp_core_sendEvent(txMessage);
 }
 
 bool VSCP::read(vscp_RxMessage& msg)
