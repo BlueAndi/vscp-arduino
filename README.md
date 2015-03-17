@@ -23,19 +23,19 @@ It provides several layers according to the [VSCP specification](http://www.vscp
 
 ##How to send a VSCP event?
 
-1. Define a transmit message
+###Define a transmit message
 
 ```
 vscp_TxMessage  txMsg;
 ```
 
-2. Prepare the transmit message, which means to add the node nickname, the hardcoded flag, the class, the type and the priority.
+###Prepare the transmit message, which means to add the node nickname, the hardcoded flag, the class, the type and the priority.
 
 ```
 vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
 ```
 
-3. Add the class/type specific data.
+###Add the class/type specific data.
 
 ```
 txMsg.data[0] = 1;  // Index
@@ -44,7 +44,7 @@ txMsg.data[2] = 0;  // Sub zone
 txMsg.dataNum = 3;
 ```
 
-4. Send the event.
+###Send the event.
 
 ```
 vscp.write(txMsg);
