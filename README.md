@@ -1,13 +1,13 @@
 #VSCP arduino library
 
-1. [VSCP](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#vscp)
-2. [Library](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#library)
-3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#how-to-send-a-vscp-event)
-4. [Examples](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#examples)
-5. [FAQ](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#faq)
-6. [Mailing list](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#mailing-list)
-7. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#issues-ideas-and-bugs)
-8. [License](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#license)
+1. [VSCP](https://github.com/BlueAndi/vscp-arduino#vscp)
+2. [Library](https://github.com/BlueAndi/vscp-arduino#library)
+3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-arduino#how-to-send-a-vscp-event)
+4. [Examples](https://github.com/BlueAndi/vscp-arduino#examples)
+5. [FAQ](https://github.com/BlueAndi/vscp-arduino#faq)
+6. [Mailing list](https://github.com/BlueAndi/vscp-arduino#mailing-list)
+7. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
+8. [License](https://github.com/BlueAndi/vscp-arduino#license)
 
 ##VSCP
 
