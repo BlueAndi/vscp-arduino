@@ -2,9 +2,12 @@
 
 1. [VSCP](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#vscp)
 2. [Library](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#library)
-3. [Examples](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#examples)
-4. [Mailing list](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#mailing-list)
-5. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#issues-ideas-and-bugs)
+3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#how-to-send-a-vscp-event)
+4. [Examples](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#examples)
+5. [FAQ](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#faq)
+6. [Mailing list](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#mailing-list)
+7. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#issues-ideas-and-bugs)
+8. [License](https://github.com/BlueAndi/vscp-framework/blob/master/README.md#license)
 
 ##VSCP
 
@@ -17,6 +20,35 @@ More information can be found on the main site http://www.vscp.org
 ##Library
 This is a arduino library of the VSCP software framework for level 1 devices.
 It provides several layers according to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php).
+
+##How to send a VSCP event?
+
+1. Define a transmit message
+
+```
+vscp_TxMessage  txMsg;
+```
+
+2. Prepare the transmit message, which means to add the node nickname, the hardcoded flag, the class, the type and the priority.
+
+```
+vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
+```
+
+3. Add the class/type specific data.
+
+```
+txMsg.data[0] = 1;  // Index
+txMsg.data[1] = 0;  // Zone
+txMsg.data[2] = 0;  // Sub zone
+txMsg.dataNum = 3;
+```
+
+4. Send the event.
+
+```
+vscp.sendEvent(txMsg);
+```
 
 ##Examples
 
@@ -38,6 +70,32 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 - Shield: https://www.sparkfun.com/products/10039
 - Library: https://github.com/franksmicro/Arduino/tree/master/libraries/MCP2515
+
+##FAQ
+
+### Where to find all the VSCP class defines and their corresponding types?
+
+You will find the class defines here:
+```
+VSCP/src/framework/vscp_class_l1.h
+VSCP/src/framework/vscp_class_l1_l2.h
+```
+
+You will find the type defines here:
+```
+VSCP/src/framework/vscp_type_alarm.h
+VSCP/src/framework/vscp_type_control.h
+VSCP/src/framework/vscp_type_display.h
+VSCP/src/framework/vscp_type_information.h
+VSCP/src/framework/vscp_type_measurement.h
+VSCP/src/framework/vscp_type_measurezone.h
+VSCP/src/framework/vscp_type_phone.h
+VSCP/src/framework/vscp_type_protocol.h
+VSCP/src/framework/vscp_type_remote.h
+VSCP/src/framework/vscp_type_security.h
+VSCP/src/framework/vscp_type_weather.h
+VSCP/src/framework/vscp_type_weather_forecast.h
+```
 
 ##Mailing list
 

@@ -124,7 +124,12 @@ void loop() {
         
     }
     
-    // Send a VSCP message here ...
-    
+    // Send a VSCP message here ... e.g. a CLASS1.INFORMATION ON event
+    vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
+    txMsg.data[0] = 1;  // Index
+    txMsg.data[1] = 0;  // Zone
+    txMsg.data[2] = 0;  // Sub zone
+    txMsg.dataNum = 3;
+    vscp.sendEvent(txMsg);
   }
 }
