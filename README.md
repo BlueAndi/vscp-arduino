@@ -29,13 +29,14 @@ It provides several layers according to the [VSCP specification](http://www.vscp
 vscp_TxMessage  txMsg;
 ```
 
-###Prepare the transmit message, which means to add the node nickname, the hardcoded flag, the class, the type and the priority.
+###Prepare the transmit message
+That means to add the node nickname, the hardcoded flag, the class, the type and the priority.
 
 ```
 vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
 ```
 
-###Add the class/type specific data.
+###Add the class and type specific data.
 
 ```
 txMsg.data[0] = 1;  // Index
