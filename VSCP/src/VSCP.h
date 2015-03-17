@@ -221,7 +221,7 @@ public:
      * @retval FALSE    Failed to send the event.
      * @retval TRUE     Event successful sent.
      */
-    bool sendEvent(const vscp_TxMessage& txMessage);
+    bool write(const vscp_TxMessage& txMessage);
     
     /**
      * This method reads a VSCP message.

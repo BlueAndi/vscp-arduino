@@ -236,7 +236,7 @@ void VSCP::prepareTxMessage(vscp_TxMessage& txMessage, unsigned int vscpClass, u
     return;
 }
 
-bool VSCP::sendEvent(const vscp_TxMessage& txMessage)
+bool VSCP::write(const vscp_TxMessage& txMessage)
 {
     bool    status = false;
 

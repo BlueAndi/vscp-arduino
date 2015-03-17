@@ -23,7 +23,7 @@ startNodeSegmentInit	KEYWORD2
 setAlarm	KEYWORD2
 isActive	KEYWORD2
 prepareTxMessage	KEYWORD2
-sendEvent	KEYWORD2
+write	KEYWORD2
 read	KEYWORD2
 
 #######################################

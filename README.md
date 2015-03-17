@@ -47,7 +47,7 @@ txMsg.dataNum = 3;
 4. Send the event.
 
 ```
-vscp.sendEvent(txMsg);
+vscp.write(txMsg);
 ```
 
 ##Examples

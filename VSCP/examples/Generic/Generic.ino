@@ -130,6 +130,6 @@ void loop() {
     txMsg.data[1] = 0;  // Zone
     txMsg.data[2] = 0;  // Sub zone
     txMsg.dataNum = 3;
-    vscp.sendEvent(txMsg);
+    vscp.write(txMsg);
   }
 }
