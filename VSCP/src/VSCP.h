@@ -209,7 +209,7 @@ public:
      * @param[in]       vscpType    Transmit message VSCP type
      * @param[in]       priority    Transmit message priority
      */
-    void prepareTxMessage(vscp_TxMessage * const txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority);
+    void prepareTxMessage(vscp_TxMessage& txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority);
 
     /**
      * Send a event to the communication bus. Don't forget to prepare your transmit
@@ -221,7 +221,7 @@ public:
      * @retval FALSE    Failed to send the event.
      * @retval TRUE     Event successful sent.
      */
-    bool sendEvent(vscp_TxMessage const * const txMessage);
+    bool sendEvent(const vscp_TxMessage& txMessage);
     
     /**
      * This method reads a VSCP message.

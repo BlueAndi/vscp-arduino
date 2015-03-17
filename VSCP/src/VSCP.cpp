@@ -230,20 +230,34 @@ bool VSCP::isActive(void)
     return status;
 }
 
-void VSCP::prepareTxMessage(vscp_TxMessage * const txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority)
+void VSCP::prepareTxMessage(vscp_TxMessage& txMessage, unsigned int vscpClass, unsigned char vscpType, VSCP_PRIORITY priority)
 {
-    vscp_core_prepareTxMessage(txMessage, vscpClass, vscpType, priority);
+    vscp_core_prepareTxMessage(&txMessage, vscpClass, vscpType, priority);
     return;
 }
 
-bool VSCP::sendEvent(vscp_TxMessage const * const txMessage)
+bool VSCP::sendEvent(const vscp_TxMessage& txMessage)
 {
-    return vscp_core_sendEvent(txMessage);
+    bool    status = false;
+
+    if (TRUE == mIsInitialized)
+    {
+        status = vscp_core_sendEvent(&txMessage);
+    }
+    
+    return status;
 }
 
 bool VSCP::read(vscp_RxMessage& msg)
 {
-    return vscp_portable_read(&msg);
+    bool    status = false;
+
+    if (TRUE == mIsInitialized)
+    {
+        status = vscp_portable_read(&msg);
+    }
+    
+    return status;
 }
 
 /*******************************************************************************
