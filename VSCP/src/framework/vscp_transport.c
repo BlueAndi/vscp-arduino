@@ -48,6 +48,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 #include "vscp_tp_adapter.h"
 #include "vscp_config.h"
 #include "vscp_util.h"
+#include "vscp_class_l1.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -194,8 +195,13 @@ extern BOOL vscp_transport_writeMessage(vscp_TxMessage const * const msg)
     if ((NULL != msg) &&                        /* Message shall exists */
         (VSCP_L1_DATA_SIZE >= msg->dataNum))    /* Number of data bytes is limited */
     {
-        /* Write message to loopback */
-        (void)vscp_util_cyclicBufferWrite(&vscp_transport_loopBackCyclicBuffer, msg, 1);
+        /* Write all messages to loopback, except CLASS1.PROTOCOL. Because the core
+         * would interpret them.
+         */
+        if (VSCP_CLASS_L1_PROTOCOL != msg->vscpClass)
+        {
+            (void)vscp_util_cyclicBufferWrite(&vscp_transport_loopBackCyclicBuffer, msg, 1);
+        }
    
         status = vscp_tp_adapter_writeMessage(msg);
     }
