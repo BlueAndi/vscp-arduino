@@ -114,6 +114,9 @@ public:
     
     /** This type defines the transport transmit function. */
     typedef bool (*TpWrite)(vscp_TxMessage const * const txMsg);
+    
+    /** This type defines the action execution function. */
+    typedef void (*ExecuteAction)(unsigned char action, unsigned char par, vscp_RxMessage const * const msg);
 
     /**
      * Create a VSCP framework instance.
@@ -133,8 +136,9 @@ public:
      * @param[in]   guid            Node GUID
      * @param[in]   zone            Node zone
      * @param[in]   subZone         Node sub-zone
-     * @param[in]   tpRead          Transport layer read function
-     * @param[in]   tpWrite         Transport layer write function
+     * @param[in]   tpReadFunc      Transport layer read function
+     * @param[in]   tpWriteFunc     Transport layer write function
+     * @param[in]   actionExecFunc  Action execution function
      */
     void setup(
         int             statusLampPin,
@@ -143,7 +147,8 @@ public:
         unsigned char   zone,
         unsigned char   subZone,
         TpRead          tpReadFunc,
-        TpWrite         tpWriteFunc);
+        TpWrite         tpWriteFunc,
+        ExecuteAction   actionExecFunc);
     
     /**
      * This method restores VSCP default values for
@@ -251,10 +256,7 @@ private:
     
     const unsigned int  mVSCPTimerPeriod;   /**< VSCP timer period in ms */
     SwTimer             mVSCPTimer;         /**< VSCP timer */
-    
-    TpRead              mTpReadFunc;        /**< Transport layer receive function */
-    TpWrite             mTpWriteFunc;       /**< Transport layer transmit function */
-    
+        
     /**
      * Process the status lamp.
      */

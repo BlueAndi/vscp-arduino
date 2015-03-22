@@ -83,6 +83,24 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
   return status;
 }
 
+// Execute a action which was triggered by the decision matrix
+void actionExecute(unsigned char action, unsigned char par, vscp_RxMessage const * const msg) {
+
+    if (NULL == msg) {
+        return;
+    }
+
+    switch(action)
+    {
+    // Implement your cod here ...
+    
+    default:
+        break;
+    }
+
+    return;
+}
+
 void setup() {
 
   unsigned char retry = 3;  // Max. number of retries for CAN controller initialization
@@ -124,7 +142,8 @@ void setup() {
     255,            // Node zone (255 = all zones)
     255,            // Node sub-zone (255 = all sub-zones)
     transportRead,  // VSCP framework calls it to read a message
-    transportWrite  // VSCP framework calls it to write a message
+    transportWrite, // VSCP framework calls it to write a message
+    actionExecute   // VSCP framework calls it to execute action
   );
   
 }

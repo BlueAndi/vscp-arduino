@@ -71,6 +71,9 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
     LOCAL VARIABLES
 *******************************************************************************/
 
+/** Action execution function */
+static vscp_action_Execute  vscp_action_executeFunc = NULL;
+
 /*******************************************************************************
     GLOBAL VARIABLES
 *******************************************************************************/
@@ -98,8 +101,22 @@ extern void vscp_action_init(void)
  */
 extern void vscp_action_execute(uint8_t action, uint8_t par, vscp_RxMessage const * const msg)
 {
-    /* Implement your code here ... */
+    if (NULL != vscp_action_executeFunc)
+    {
+        vscp_action_executeFunc(action, par, msg);
+    }
 
+    return;
+}
+
+/**
+ * This function set the action execution callback.
+ *
+ * @param[in] func  Action execution function
+ */
+extern void vscp_action_set(vscp_action_Execute func)
+{
+    vscp_action_executeFunc = func;
     return;
 }
 

@@ -50,6 +50,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 #include "framework/vscp_timer.h"
 #include "framework/vscp_dev_data.h"
 #include "framework/vscp_tp_adapter.h"
+#include "framework/vscp_action.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -91,9 +92,7 @@ VSCP::VSCP() :
     mStatusLampPeriod(200),                 /* 200 ms status lamp blinking period */
     mStatusLampTimer(),                     /* Status lamp timer for blinking */
     mVSCPTimerPeriod(250),                  /* 250 ms VSCP timer period */
-    mVSCPTimer(),                           /* Timer instance used to handle the VSCP framework timers */
-    mTpReadFunc(NULL),                      /* Transport layer receive function */
-    mTpWriteFunc(NULL)                      /* Transport layer transmit function */
+    mVSCPTimer()                            /* Timer instance used to handle the VSCP framework timers */
 {
     return;
 }
@@ -110,7 +109,8 @@ void VSCP::setup(
     unsigned char   zone,
     unsigned char   subZone,
     TpRead          tpReadFunc,
-    TpWrite         tpWriteFunc)
+    TpWrite         tpWriteFunc,
+    ExecuteAction   actionExecFunc)
 {
     unsigned char           index   = 0;
     vscp_dev_data_Container devData;
@@ -133,6 +133,9 @@ void VSCP::setup(
     
     /* Setup transport layer */
     vscp_tp_adapter_set(tpReadFunc, tpWriteFunc);
+    
+    /* Setup action */
+    vscp_action_set(actionExecFunc);
     
     /* Start VSCP timer */
     mVSCPTimer.start(mVSCPTimerPeriod, false);

@@ -90,6 +90,9 @@ extern "C"
     TYPES AND STRUCTURES
 *******************************************************************************/
 
+/** This type defines the action execution function. */
+typedef void (*vscp_action_Execute)(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
+    
 /*******************************************************************************
     VARIABLES
 *******************************************************************************/
@@ -111,6 +114,13 @@ extern void vscp_action_init(void);
  * @param[in]   msg     Received VSCP message which triggered the action
  */
 extern void vscp_action_execute(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
+
+/**
+ * This function set the action execution callback.
+ *
+ * @param[in] func  Action execution function
+ */
+extern void vscp_action_set(vscp_action_Execute func);
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
 
