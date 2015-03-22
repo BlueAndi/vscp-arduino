@@ -108,6 +108,10 @@ void actionExecute(unsigned char action, unsigned char par, vscp_RxMessage const
 }
 
 void setup() {
+
+  // Set the baudrate of the serial connection to the PC
+  Serial.begin(115200);
+  Serial.println("VSCP node starts up ...");
   
   // Node GUID - Used to unique identify nodes
   VSCPGuid  nodeGuid = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
@@ -115,7 +119,7 @@ void setup() {
   // Setup VSCP framework
   vscp.setup(
     13,             // Status lamp pin
-    14,             // Init button pin
+    12,             // Init button pin
     nodeGuid,       // Node GUID,
     255,            // Node zone (255 = all zones)
     255,            // Node sub-zone (255 = all sub-zones)
@@ -127,6 +131,9 @@ void setup() {
 }
 
 void loop() {
+
+  bool isActive = false;
+
   // Process the VSCP framework
   vscp.process();
 
@@ -135,6 +142,13 @@ void loop() {
   
     vscp_RxMessage  rxMsg;  // Receive message
     vscp_TxMessage  txMsg;  // Transmit message
+    
+    // If the node enters active state, it will be shown to the user
+    if (false == isActive) {
+    
+      Serial.println("Active state entered.");
+      isActive = true;
+    }
     
     // Any VSCP message received?
     if (true == vscp.read(rxMsg)) {
@@ -150,5 +164,15 @@ void loop() {
     txMsg.data[2] = 0;  // Sub zone
     txMsg.dataNum = 3;
     vscp.write(txMsg);
+  
+  } else {
+  
+    // If the node leaves active state, it will be shown to the user
+    if (true == isActive) {
+      Serial.println("Active state left.");
+      isActive = false;
+    }
+  
   }
+  
 }

@@ -103,8 +103,13 @@ void actionExecute(unsigned char action, unsigned char par, vscp_RxMessage const
 
 void setup() {
 
-  unsigned char retry = 3;  // Max. number of retries for CAN controller initialization
+  unsigned char retry   = 3;      // Max. number of retries for CAN controller initialization
+  bool          isError = false;  // Error flag
 
+  // Set the baudrate of the serial connection to the PC
+  Serial.begin(115200);
+  Serial.println("VSCP node starts up ...");
+  
   do {
     
     // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
@@ -112,6 +117,10 @@ void setup() {
         // Try again
         delay(100);
         --retry;
+        
+        if (0 == retry) {
+          isError = true;
+        }
     }
     // Successful initialized
     else
@@ -121,34 +130,45 @@ void setup() {
     
   }while(0 < retry);
   
-  // Only CAN frames with 29-bit identifier shall be received
-  canCom.init_Mask(0, 1, 0x1fffffff);
-  canCom.init_Mask(1, 1, 0x1fffffff);
-  canCom.init_Filt(0, 0, 0x00);
-  canCom.init_Filt(1, 0, 0x00);
-  canCom.init_Filt(2, 0, 0x00);
-  canCom.init_Filt(3, 0, 0x00);
-  canCom.init_Filt(4, 0, 0x00);
-  canCom.init_Filt(5, 0, 0x00);
- 
-  // Node GUID - Used to unique identify nodes
-  VSCPGuid  nodeGuid = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
+  if (true == isError) {
   
-  // Setup VSCP framework
-  vscp.setup(
-    13,             // Status lamp pin
-    14,             // Init button pin
-    nodeGuid,       // Node GUID,
-    255,            // Node zone (255 = all zones)
-    255,            // Node sub-zone (255 = all sub-zones)
-    transportRead,  // VSCP framework calls it to read a message
-    transportWrite, // VSCP framework calls it to write a message
-    actionExecute   // VSCP framework calls it to execute action
-  );
+    Serial.println("Failed to initialize CAN controller!");
+  
+  } else {
+  
+    // Only CAN frames with 29-bit identifier shall be received
+    canCom.init_Mask(0, 1, 0x1fffffff);
+    canCom.init_Mask(1, 1, 0x1fffffff);
+    canCom.init_Filt(0, 0, 0x00);
+    canCom.init_Filt(1, 0, 0x00);
+    canCom.init_Filt(2, 0, 0x00);
+    canCom.init_Filt(3, 0, 0x00);
+    canCom.init_Filt(4, 0, 0x00);
+    canCom.init_Filt(5, 0, 0x00);
+     
+    // Node GUID - Used to unique identify nodes
+    VSCPGuid  nodeGuid = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
+      
+    // Setup VSCP framework
+    vscp.setup(
+      13,             // Status lamp pin
+      12,             // Init button pin
+      nodeGuid,       // Node GUID,
+      255,            // Node zone (255 = all zones)
+      255,            // Node sub-zone (255 = all sub-zones)
+      transportRead,  // VSCP framework calls it to read a message
+      transportWrite, // VSCP framework calls it to write a message
+      actionExecute   // VSCP framework calls it to execute action
+      );
+      
+  }
   
 }
 
 void loop() {
+
+  bool isActive = false;
+
   // Process the VSCP framework
   vscp.process();
 
@@ -157,6 +177,13 @@ void loop() {
   
     vscp_RxMessage  rxMsg;  // Receive message
     vscp_TxMessage  txMsg;  // Transmit message
+    
+    // If the node enters active state, it will be shown to the user
+    if (false == isActive) {
+    
+      Serial.println("Active state entered.");
+      isActive = true;
+    }
     
     // Any VSCP message received?
     if (true == vscp.read(rxMsg)) {
@@ -167,5 +194,14 @@ void loop() {
     
     // Send a VSCP message here ...
     
+  } else {
+  
+    // If the node leaves active state, it will be shown to the user
+    if (true == isActive) {
+      Serial.println("Active state left.");
+      isActive = false;
+    }
+  
   }
+  
 }

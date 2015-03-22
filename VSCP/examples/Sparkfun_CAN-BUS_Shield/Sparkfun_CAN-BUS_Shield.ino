@@ -122,21 +122,30 @@ void setup() {
 
   bool status = false;
 
+  // Set the baudrate of the serial connection to the PC
+  Serial.begin(115200);
+  Serial.println("VSCP node starts up ...");
+  
   // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
   if (false == MCP2515::initCAN(CAN_BAUD_125K)) {
+  
+    Serial.println("Failed to initialize CAN controller!");
+    
   }
   // Set to normal mode non single shot
   else if (false == MCP2515::setCANNormalMode(LOW)) {
-  }
-  else
-  {      
+  
+    Serial.println("Failed to set CAN controller to normal mode!");
+  
+  } else {
+  
     // Node GUID - Used to unique identify nodes
     VSCPGuid  nodeGuid = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
       
     // Setup VSCP framework
     vscp.setup(
       13,             // Status lamp pin
-      14,             // Init button pin
+      12,             // Init button pin
       nodeGuid,       // Node GUID,
       255,            // Node zone (255 = all zones)
       255,            // Node sub-zone (255 = all sub-zones)
@@ -144,11 +153,15 @@ void setup() {
       transportWrite, // VSCP framework calls it to write a message
       actionExecute   // VSCP framework calls it to execute action
     );
+    
   }
   
 }
 
 void loop() {
+
+  bool isActive = false;
+
   // Process the VSCP framework
   vscp.process();
 
@@ -157,6 +170,13 @@ void loop() {
   
     vscp_RxMessage  rxMsg;  // Receive message
     vscp_TxMessage  txMsg;  // Transmit message
+    
+    // If the node enters active state, it will be shown to the user
+    if (false == isActive) {
+    
+      Serial.println("Active state entered.");
+      isActive = true;
+    }
     
     // Any VSCP message received?
     if (true == vscp.read(rxMsg)) {
@@ -167,5 +187,14 @@ void loop() {
     
     // Send a VSCP message here ...
     
+  } else {
+  
+    // If the node leaves active state, it will be shown to the user
+    if (true == isActive) {
+      Serial.println("Active state left.");
+      isActive = false;
+    }
+  
   }
+  
 }
