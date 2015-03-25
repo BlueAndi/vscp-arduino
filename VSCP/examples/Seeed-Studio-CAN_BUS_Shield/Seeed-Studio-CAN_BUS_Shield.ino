@@ -34,7 +34,7 @@ VSCP  vscp;
 
 // Create an instance of the CAN controller driver
 MCP_CAN canCom(
-  10  // Set CS (chip select) pin
+  9 // Set CS (chip select) pin, note if you use a CAN BUS shield prior to V1.1 use pin 10!
 );
 
 // Read a message from the transport layer, e.g. the CAN bus
@@ -135,6 +135,8 @@ void setup() {
     Serial.println("Failed to initialize CAN controller!");
   
   } else {
+  
+    Serial.println("CAN controller initialized successful.");
   
     // Only CAN frames with 29-bit identifier shall be received
     canCom.init_Mask(0, 1, 0x1fffffff);
