@@ -78,7 +78,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
              (((uint32_t)txMsg->vscpType)  <<  8) |
              txMsg->oAddr;
   
-  if (CAN_OK == canCom.sendMsgBuf(canMsgId, 1, txMsg->dataNum, 0, (unsigned char*)txMsg->data)) {
+  if (CAN_OK == canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataNum, (unsigned char*)txMsg->data)) {
   
     status = true;
   }
