@@ -37,6 +37,9 @@ MCP_CAN canCom(
   9 // Set CS (chip select) pin, note if you use a CAN BUS shield prior to V1.1 use pin 10!
 );
 
+// Node is in active state or not
+static bool isActive = false;
+
 // Read a message from the transport layer, e.g. the CAN bus
 // If no message is received return false, otherwise true.
 bool transportRead(vscp_RxMessage * const rxMsg) {
@@ -168,8 +171,6 @@ void setup() {
 }
 
 void loop() {
-
-  bool isActive = false;
 
   // Process the VSCP framework
   vscp.process();
