@@ -116,8 +116,11 @@ void VSCP::setup(
     vscp_dev_data_Container devData;
 
     /* Configure the hardware */
-    pinMode(mStatusLampPin, OUTPUT);
-    pinMode(initButtonPin, INPUT);
+    pinMode(statusLampPin, OUTPUT);
+    pinMode(initButtonPin, INPUT_PULLUP);
+    
+    mStatusLampPin = statusLampPin;
+    mInitButtonPin = initButtonPin;
        
     /* Initialize the VSCP core and the user specific stuff. */
     (void)vscp_core_init();
@@ -177,7 +180,7 @@ void VSCP::process(void)
         processStatusLamp();
         
         /* Handle segment initialization button */
-        if (HIGH == digitalRead(mInitButtonPin))
+        if (LOW == digitalRead(mInitButtonPin))
         {
             vscp_core_startNodeSegmentInit();
         }
