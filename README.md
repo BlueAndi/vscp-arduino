@@ -64,6 +64,8 @@ This example assume that the CAN BUS Shield from Seeed-Studio is used, as well a
 - Shield: http://www.seeedstudio.com/wiki/CAN-BUS_Shield
 - Library: https://github.com/Seeed-Studio/CAN_BUS_Shield
 
+![Connection to Seeed-Studio CAN BUS Shield](https://github.com/BlueAndi/vscp-arduino/seeed-studio_can_bus_shield.jpg)
+
 ###Sparkfun CAN-BUS Shield
 
 This example assume that the CAN-BUS Shield from Sparkfun is used.
