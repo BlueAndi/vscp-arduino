@@ -21,6 +21,10 @@ More information can be found on the main site http://www.vscp.org
 This is a arduino library of the VSCP software framework for level 1 devices.
 It provides several layers according to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php).
 
+Recommended is to connect a LED, which shows the node state.
+
+Mandatory is to connect a push button, used to start the node nickname discovery. Similar as shown in the Seeed-Studio CAN-BUS Shield example.
+
 ##How to send a VSCP event?
 
 ###Define a transmit message
