@@ -110,11 +110,11 @@ public:
      * Starts a software timer.
      *
      * @param[in] timeout       Timeout in ms
-     * @param[in] manualReset   Reset timer manually or automatically
+     * @param[in] manualRestart Restart timer manually or automatically
      */
-    void start(unsigned int timeout, bool manualReset = false)
+    void start(unsigned int timeout, bool manualRestart = false)
     {
-        mIsManualRestart    = manualReset;
+        mIsManualRestart    = manualRestart;
         mTimeout            = timeout;
         mValue              = mTimeout;
         mTimerTicksPrev     = millis();
@@ -136,6 +136,7 @@ public:
         {
             state = true;
             
+            /* Restart timer now? */
             if (false == mIsManualRestart)
             {
                 restart();
@@ -183,6 +184,8 @@ public:
             {
                 mValue = 0;
             }
+                        
+            mTimerTicksPrev = timerTicks;
         }
     
         return;
