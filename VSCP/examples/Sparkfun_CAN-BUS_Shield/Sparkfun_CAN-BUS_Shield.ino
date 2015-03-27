@@ -123,17 +123,37 @@ void actionExecute(unsigned char action, unsigned char par, vscp_RxMessage const
 
 void setup() {
 
-  bool status = false;
+  unsigned char retry   = 3;      // Max. number of retries for CAN controller initialization
+  bool          isError = false;  // Error flag
 
   // Set the baudrate of the serial connection to the PC
   Serial.begin(115200);
   Serial.println("VSCP node starts up ...");
   
-  // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
-  if (false == MCP2515::initCAN(CAN_BAUD_125K)) {
+  do {
+    // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
+    if (false == MCP2515::initCAN(CAN_BAUD_125K)) {
+
+        // Try again
+        delay(100);
+        --retry;
+        
+        if (0 == retry) {
+          isError = true;
+        }
+
+    } else {
+    
+        // Successful initialized
+        retry = 0;
+    }
+    
+  } while(0 < retry);
+  
+  if (true == isError) {
   
     Serial.println("Failed to initialize CAN controller!");
-    
+  
   }
   // Set to normal mode non single shot
   else if (false == MCP2515::setCANNormalMode(LOW)) {

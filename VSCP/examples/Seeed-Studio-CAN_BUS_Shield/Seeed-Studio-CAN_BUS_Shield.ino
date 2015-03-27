@@ -117,6 +117,7 @@ void setup() {
     
     // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
     if (CAN_OK != canCom.begin(CAN_125KBPS)) {
+    
         // Try again
         delay(100);
         --retry;
@@ -124,14 +125,14 @@ void setup() {
         if (0 == retry) {
           isError = true;
         }
-    }
-    // Successful initialized
-    else
-    {
+        
+    } else {
+    
+        // Successful initialized
         retry = 0;
     }
     
-  }while(0 < retry);
+  } while(0 < retry);
   
   if (true == isError) {
   
