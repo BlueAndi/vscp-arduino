@@ -71,7 +71,7 @@ This example assume that the CAN BUS Shield from Seeed-Studio is used, as well a
 ![Connection to Seeed-Studio CAN BUS Shield](seeed-studio_can_bus_shield.jpg)
 
 Notes:
-- If you use the CAN terminal instead of the sub-d, don't forget to wire GND too! It may work over a short distance without, but no guarantee.
+- If you use the CAN terminal instead of the sub-d, don't forget to wire GND too! It may work over a short distance, but no guarantee.
 
 ###Sparkfun CAN-BUS Shield
 
@@ -80,6 +80,8 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 - Shield: https://www.sparkfun.com/products/10039
 - Library: https://github.com/franksmicro/Arduino/tree/master/libraries/MCP2515
+
+![Connection to Sparkfun CAN BUS Shield](sparkfun_can_bus_shield.jpg)
 
 ##FAQ
 
