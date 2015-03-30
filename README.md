@@ -70,6 +70,9 @@ This example assume that the CAN BUS Shield from Seeed-Studio is used, as well a
 
 ![Connection to Seeed-Studio CAN BUS Shield](seeed-studio_can_bus_shield.jpg)
 
+Notes:
+- If you use the CAN terminal instead of the sub-d, don't forget to wire GND too! It may work over a short distance without, but no guarantee.
+
 ###Sparkfun CAN-BUS Shield
 
 This example assume that the CAN-BUS Shield from Sparkfun is used.
