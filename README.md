@@ -1,5 +1,8 @@
 #VSCP arduino library
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Release](https://img.shields.io/github/release/BlueAndi/vscp-arduino.svg)
+
 1. [VSCP](https://github.com/BlueAndi/vscp-arduino#vscp)
 2. [Library](https://github.com/BlueAndi/vscp-arduino#library)
 3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-arduino#how-to-send-a-vscp-event)
