@@ -1,7 +1,7 @@
 #VSCP arduino library
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Release](https://img.shields.io/github/release/BlueAndi/vscp-arduino.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
+[![Release](https://img.shields.io/github/release/BlueAndi/vscp-arduino.svg)](https://github.com/BlueAndi/vscp-arduino/releases)
 
 1. [VSCP](https://github.com/BlueAndi/vscp-arduino#vscp)
 2. [Library](https://github.com/BlueAndi/vscp-arduino#library)
