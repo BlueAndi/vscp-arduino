@@ -74,6 +74,21 @@ extern "C"
     COMPILER SWITCHES
 *******************************************************************************/
 
+#ifndef VSCP_CONFIG_SILENT_NODE
+
+/** Silent node configuration, which is used for e. g. RS-485 connections.
+ * This type of nodes only listen to traffic before they get initialized
+ * by a host. In this case the nickname discovery process is not started
+ * for a node when it is powered up for the first time.
+ * This type on node instead starts to listen for the
+ * CLASS1.PROTOCOL, Type=23 (GUID drop nickname-ID / reset device.) event.
+ * When this series of events is received and the GUID is the same as for
+ * the module the module starts the nickname discovery procedure as of above.
+ */
+#define VSCP_CONFIG_SILENT_NODE                 VSCP_CONFIG_BASE_DISABLED
+
+#endif  /* VSCP_CONFIG_SILENT_NODE */
+
 #ifndef VSCP_CONFIG_HARD_CODED_NODE
 
 /** Hard-coded node (fixed nickname id)
@@ -182,7 +197,7 @@ extern "C"
 #ifndef VSCP_CONFIG_NODE_SEGMENT_INIT_TIMEOUT
 
 /** Timeout in ms for the node segment initialization.
- * See VSCP v1.10.12, chapter 3.2.1, step 2
+ * See VSCP v1.10.15, chapter VSCP Level I Specifics, Node segment initialization. Dynamic nodes, Step 2
  */
 #define VSCP_CONFIG_NODE_SEGMENT_INIT_TIMEOUT   ((uint16_t)5000)
 

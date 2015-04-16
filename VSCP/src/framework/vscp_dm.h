@@ -61,7 +61,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
  * Note that if the number rows in the decision matrix is requested with
  * ::vscp_dm_getMatrixRows, always the number of rows of the standard
  * decision matrix is returned. In case of the extension is enabled, too.
- * This is, because VSCP specification v1.10.12 doesn't know anything about
+ * This is, because VSCP specification v1.10.15 doesn't know anything about
  * the decision matrix extension.
  *
  * @{

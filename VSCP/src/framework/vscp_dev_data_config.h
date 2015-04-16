@@ -75,7 +75,7 @@ extern "C"
 
 #ifndef VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE
 
-/** Enable the support of the family code, VSCP specificiation v1.10.12, chapter 6.1.4 */
+/** Enable the support of the family code */
 #define VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE                             VSCP_CONFIG_BASE_ENABLED
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE */
@@ -154,7 +154,7 @@ extern "C"
 
 /** Node GUID as hex string.
  * If you need your own GUID and its used only for in-house local use, see
- * VSCP v1.10.12, chapter 5.1, for pre-defined GUIDs.
+ * VSCP v1.10.15, chapter Globally Unique Identifiers for pre-defined GUIDs.
  *
  * For development purposes you can use:
  * 00 00 00 00 00 00 00 00 00 00 00 00 xx xx xx xx
@@ -188,25 +188,21 @@ extern "C"
 
 #ifndef VSCP_DEV_DATA_CONFIG_MANUFACTURER_DEVICE_ID
 
-/** Manufacturer device id
- * See VSCP v1.10.12, chapter 6.1.2
- */
+/** Manufacturer device id */
 #define VSCP_DEV_DATA_CONFIG_MANUFACTURER_DEVICE_ID         ((uint32_t)0x00000000)
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_MANUFACTURER_DEVICE_ID */
 
 #ifndef VSCP_DEV_DATA_CONFIG_MANUFACTURER_SUB_DEVICE_ID
 
-/** Manufacturer sub device id
- * See VSCP v1.10.12, chapter 6.1.2
- */
+/** Manufacturer sub device id */
 #define VSCP_DEV_DATA_CONFIG_MANUFACTURER_SUB_DEVICE_ID     ((uint32_t)0x00000000)
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_MANUFACTURER_SUB_DEVICE_ID */
 
 #ifndef VSCP_DEV_DATA_CONFIG_MDF_URL
 
-/** MDF URL (only 32 characters are allowed!), without "http://" which is implied, see VSCP spec. 1.10.12, chapter 9.
+/** MDF URL (only 32 characters are allowed!), without "http://" which is implied
  * Note, the encoding is UTF-8!
  */
 #define VSCP_DEV_DATA_CONFIG_MDF_URL                        ""

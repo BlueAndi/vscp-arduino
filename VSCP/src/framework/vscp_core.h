@@ -52,6 +52,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
  * - Silent nodes are not supported.
  *
  * Supported compile switches:
+ * - VSCP_CONFIG_SILENT_NODE
  * - VSCP_CONFIG_HARD_CODED_NODE
  * - VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT
  * - VSCP_CONFIG_HEARTBEAT_NODE
@@ -99,13 +100,13 @@ extern "C"
 #define VSCP_CORE_VERSION_MINOR     (10)
 
 /** VSCP sub minor version number */
-#define VSCP_CORE_VERSION_SUB_MINOR (12)
+#define VSCP_CORE_VERSION_SUB_MINOR (15)
 
 /** Version string */
-#define VSCP_CORE_VERSION_STR       "v1.10.12"
+#define VSCP_CORE_VERSION_STR       "v1.10.15"
 
 /** VSCP framework version string */
-#define VSCP_CORE_FRAMEWORK_VERSION "v0.2.2"
+#define VSCP_CORE_FRAMEWORK_VERSION "v0.3.0"
 
 /*******************************************************************************
     MACROS

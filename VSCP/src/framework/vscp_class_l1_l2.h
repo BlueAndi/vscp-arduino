@@ -80,73 +80,73 @@ extern "C"
 #define VSCP_CLASS_L1_L2_BASE               512
 
 /** VSCP level 1 class over level 2: VSCP protocol functionality */
-#define VSCP_CLASS_L1_PROTOCOL              (VSCP_CLASS_L1_L2_BASE + 0)
+#define VSCP_CLASS_L1_L2_PROTOCOL           (VSCP_CLASS_L1_L2_BASE + 0)
 
 /** VSCP level 1 class over level 2: Alarm */
-#define VSCP_CLASS_L1_ALARM                 (VSCP_CLASS_L1_L2_BASE + 1)
+#define VSCP_CLASS_L1_L2_ALARM              (VSCP_CLASS_L1_L2_BASE + 1)
 
 /** VSCP level 1 class over level 2: Security */
-#define VSCP_CLASS_L1_SECURITY              (VSCP_CLASS_L1_L2_BASE + 2)
+#define VSCP_CLASS_L1_L2_SECURITY           (VSCP_CLASS_L1_L2_BASE + 2)
 
 /** VSCP level 1 class over level 2: Measurement */
-#define VSCP_CLASS_L1_MEASUREMENT           (VSCP_CLASS_L1_L2_BASE + 10)
+#define VSCP_CLASS_L1_L2_MEASUREMENT        (VSCP_CLASS_L1_L2_BASE + 10)
 
 /** VSCP level 1 class over level 2: Data */
-#define VSCP_CLASS_L1_DATA                  (VSCP_CLASS_L1_L2_BASE + 15)
+#define VSCP_CLASS_L1_L2_DATA               (VSCP_CLASS_L1_L2_BASE + 15)
 
 /** VSCP level 1 class over level 2: Information */
-#define VSCP_CLASS_L1_INFORMATION           (VSCP_CLASS_L1_L2_BASE + 20)
+#define VSCP_CLASS_L1_L2_INFORMATION        (VSCP_CLASS_L1_L2_BASE + 20)
 
 /** VSCP level 1 class over level 2: Control */
-#define VSCP_CLASS_L1_CONTROL               (VSCP_CLASS_L1_L2_BASE + 30)
+#define VSCP_CLASS_L1_L2_CONTROL            (VSCP_CLASS_L1_L2_BASE + 30)
 
 /** VSCP level 1 class over level 2: Multimedia */
-#define VSCP_CLASS_L1_MULTIMEDIA            (VSCP_CLASS_L1_L2_BASE + 40)
+#define VSCP_CLASS_L1_L2_MULTIMEDIA         (VSCP_CLASS_L1_L2_BASE + 40)
 
 /** VSCP level 1 class over level 2: Alert on LAN */
-#define VSCP_CLASS_L1_ALERT_ON_LAN          (VSCP_CLASS_L1_L2_BASE + 50)
+#define VSCP_CLASS_L1_L2_ALERT_ON_LAN       (VSCP_CLASS_L1_L2_BASE + 50)
 
 /** VSCP level 1 class over level 2: Double precision floating point measurement */
-#define VSCP_CLASS_L1_MEASUREMENT_DOUBLE    (VSCP_CLASS_L1_L2_BASE + 60)
+#define VSCP_CLASS_L1_L2_MEASUREMENT_DOUBLE (VSCP_CLASS_L1_L2_BASE + 60)
 
 /** VSCP level 1 class over level 2: Measurement with zone */
-#define VSCP_CLASS_L1_MEASUREZONE           (VSCP_CLASS_L1_L2_BASE + 65)
+#define VSCP_CLASS_L1_L2_MEASUREZONE        (VSCP_CLASS_L1_L2_BASE + 65)
 
 /** VSCP level 1 class over level 2: Single precision floating piont measurement */
-#define VSCP_CLASS_L1_MEASUREMENT_SINGLE    (VSCP_CLASS_L1_L2_BASE + 70)
+#define VSCP_CLASS_L1_L2_MEASUREMENT_SINGLE (VSCP_CLASS_L1_L2_BASE + 70)
 
 /** VSCP level 1 class over level 2: Set value with zone */
-#define VSCP_CLASS_L1_SET_VALUE_WITH_ZONE   (VSCP_CLASS_L1_L2_BASE + 85)
+#define VSCP_CLASS_L1_L2_SET_VALUE_WITH_ZONE (VSCP_CLASS_L1_L2_BASE + 85)
 
 /** VSCP level 1 class over level 2: Weather */
-#define VSCP_CLASS_L1_WEATHER               (VSCP_CLASS_L1_L2_BASE + 90)
+#define VSCP_CLASS_L1_L2_WEATHER             (VSCP_CLASS_L1_L2_BASE + 90)
 
 /** VSCP level 1 class over level 2: Weather forecast */
-#define VSCP_CLASS_L1_WEATHER_FORECAST      (VSCP_CLASS_L1_L2_BASE + 95)
+#define VSCP_CLASS_L1_L2_WEATHER_FORECAST    (VSCP_CLASS_L1_L2_BASE + 95)
 
 /** VSCP level 1 class over level 2: Phone */
-#define VSCP_CLASS_L1_PHONE                 (VSCP_CLASS_L1_L2_BASE + 100)
+#define VSCP_CLASS_L1_L2_PHONE               (VSCP_CLASS_L1_L2_BASE + 100)
 
 /** VSCP level 1 class over level 2: Display */
-#define VSCP_CLASS_L1_DISPLAY               (VSCP_CLASS_L1_L2_BASE + 102)
+#define VSCP_CLASS_L1_L2_DISPLAY             (VSCP_CLASS_L1_L2_BASE + 102)
 
 /** VSCP level 1 class over level 2: IR Remote i/f */
-#define VSCP_CLASS_L1_REMOTE                (VSCP_CLASS_L1_L2_BASE + 110)
+#define VSCP_CLASS_L1_L2_REMOTE              (VSCP_CLASS_L1_L2_BASE + 110)
 
 /** VSCP level 1 class over level 2: Positon (GPS) */
-#define VSCP_CLASS_L1_GPS                   (VSCP_CLASS_L1_L2_BASE + 206)
+#define VSCP_CLASS_L1_L2_GPS                 (VSCP_CLASS_L1_L2_BASE + 206)
 
 /** VSCP level 1 class over level 2: Wireless */
-#define VSCP_CLASS_L1_WIRELESS              (VSCP_CLASS_L1_L2_BASE + 212)
+#define VSCP_CLASS_L1_L2_WIRELESS            (VSCP_CLASS_L1_L2_BASE + 212)
 
 /** VSCP level 1 class over level 2: Logging i/f */
-#define VSCP_CLASS_L1_LOG                   (VSCP_CLASS_L1_L2_BASE + 509)
+#define VSCP_CLASS_L1_L2_LOG                 (VSCP_CLASS_L1_L2_BASE + 509)
 
 /** VSCP level 1 class over level 2: Laboratory use */
-#define VSCP_CLASS_L1_LABORATORY            (VSCP_CLASS_L1_L2_BASE + 510)
+#define VSCP_CLASS_L1_L2_LABORATORY          (VSCP_CLASS_L1_L2_BASE + 510)
 
 /** VSCP level 1 class over level 2: Local use */
-#define VSCP_CLASS_L1_LOCAL                 (VSCP_CLASS_L1_L2_BASE + 511)
+#define VSCP_CLASS_L1_L2_LOCAL               (VSCP_CLASS_L1_L2_BASE + 511)
 
 /*******************************************************************************
     MACROS

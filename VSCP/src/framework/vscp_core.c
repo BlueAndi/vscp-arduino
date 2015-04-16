@@ -512,7 +512,8 @@ extern void vscp_core_startNodeSegmentInit(void)
 {
     /* If the node is already in init state, nothing to do.
      * Otherwise prepare for nickname discovery,
-     * see VSCP specification v1.10.12, chapter 3.2.1, step 1.
+     * see VSCP v1.10.15, chapter VSCP Level I Specifics,
+     * Node segment initialization. Dynamic nodes, Step 1
      */
     if (STATE_INIT != vscp_core_state)
     {
@@ -694,6 +695,23 @@ static inline void  vscp_core_stateStartup(void)
      */
     if (VSCP_NICKNAME_NOT_INIT == vscp_core_nickname)
     {
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_SILENT_NODE )
+
+        /* Valid message? */
+        if (TRUE == vscp_core_rxMessageValid)
+        {
+            /* Be silent as long as someone request the initilization with a
+               CLASS1.PROTOCOL GUID drop nickname-ID / reset event.
+             */
+            if ((VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass) &&
+                (VSCP_TYPE_PROTOCOL_GUID_DROP_NICKNAME_ID == vscp_core_rxMessage.vscpType))
+            {
+                vscp_core_handleProtocolGuidDropNickname();
+            }
+        }
+        
+#else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
+
         /* Check the start-up control.
          * 01b   : Start initialization immediately
          * others: Wait for initialization, until it is explicit triggered.
@@ -702,6 +720,13 @@ static inline void  vscp_core_stateStartup(void)
         {
             vscp_core_changeToStateInit();
         }
+        else
+        {
+            /* Wait until the user press the segment initialization button */
+            ;
+        }
+        
+#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
     }
     else
     {
@@ -734,7 +759,8 @@ static inline void  vscp_core_changeToStateInit(void)
 
 /**
  * Handles the init state:
- * - Node segment initialization of dynamic nodes, see VSCP specification v1.10.12, chapter 3.2.1
+ * - Node segment initialization of dynamic nodes, see VSCP specification v1.10.15,
+ *   chapter VSCP Level I Specifics, Node segment initialization. Dynamic nodes
  * - Nickname id discovery process
  */
 static inline void  vscp_core_stateInit(void)
@@ -858,7 +884,8 @@ static inline void  vscp_core_stateInit(void)
                         /* Try next nickname id.
                             * Note that sending a nickname of VSCP_NICKNAME_NOT_INIT,
                             * notifies the segment nodes that this node gave up.
-                            * See VSCP specification v1.10.12, chapter 12.1.3
+                         * See VSCP specification v1.10.15, chapter Level I Events,
+                         * CLASS1.PROTOCOL, Type=2 (0x02) New node on line / Probe
                             */
                         ++vscp_core_nickname_probe;
 
@@ -997,9 +1024,7 @@ static inline void  vscp_core_stateActive(void)
     /* Valid message? */
     if (TRUE == vscp_core_rxMessageValid)
     {
-        /* Handle all protocol class specific events. This is mandatory for L1 and L2 nodes.
-         * See VSCP specification v1.10.12, chapter 12.1
-         */
+        /* Handle all protocol class specific events. This is mandatory for L1 and L2 nodes. */
         if (VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass)
         {
             vscp_core_handleProtocolClassType();
@@ -1204,219 +1229,219 @@ static inline void  vscp_core_handleProtocolClassType(void)
 {
     switch(vscp_core_rxMessage.vscpType)
     {
-    /* VSCP specification v1.10.12, chapter 12.1.2 Segment Controller Heartbeat. */
+    /* VSCP specification v1.10.15, chapter Segment Controller Heartbeat. */
     case VSCP_TYPE_PROTOCOL_SEGMENT_CONTROLLER_HEARTBEAT:
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
         vscp_core_handleProtocolHeartbeat();
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.3 New node on line / Probe. */
+    /* VSCP specification v1.10.15, chapter New node on line / Probe. */
     case VSCP_TYPE_PROTOCOL_NEW_NODE_ONLINE:
         vscp_core_handleProtocolNewNodeOnline();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.4 Probe ACK. */
+    /* VSCP specification v1.10.15, chapter Probe ACK. */
     case VSCP_TYPE_PROTOCOL_PROBE_ACK:
         vscp_core_handleProtocolProbeAck();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.7 Set nickname-ID for node. */
+    /* VSCP specification v1.10.15, chapter Set nickname-ID for node. */
     case VSCP_TYPE_PROTOCOL_SET_NICKNAME_ID:
         vscp_core_handleProtocolSetNicknameId();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.8 nickname-ID accepted. */
+    /* VSCP specification v1.10.15, chapter nickname-ID accepted. */
     case VSCP_TYPE_PROTOCOL_NICKNAME_ID_ACCEPTED:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.9 Drop nickname-ID / Reset Device. */
+    /* VSCP specification v1.10.15, chapter Drop nickname-ID / Reset Device. */
     case VSCP_TYPE_PROTOCOL_DROP_NICKNAME_ID:
         vscp_core_handleProtocolDropNicknameId();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.10 Read register. */
+    /* VSCP specification v1.10.15, chapter Read register. */
     case VSCP_TYPE_PROTOCOL_READ_REGISTER:
         vscp_core_handleProtocolReadRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.11 Read/Write response. */
+    /* VSCP specification v1.10.15, chapter Read/Write response. */
     case VSCP_TYPE_PROTOCOL_READ_WRITE_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.12 Write register. */
+    /* VSCP specification v1.10.15, chapter Write register. */
     case VSCP_TYPE_PROTOCOL_WRITE_REGISTER:
         vscp_core_handleProtocolWriteRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.13 Enter boot loader mode. */
+    /* VSCP specification v1.10.15, chapter Enter boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE:
         vscp_core_handleProtocolEnterBootLoaderMode();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.14 ACK boot loader mode. */
+    /* VSCP specification v1.10.15, chapter ACK boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.15 NACK boot loader mode. */
+    /* VSCP specification v1.10.15, chapter NACK boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.16 Start block data transfer. */
+    /* VSCP specification v1.10.15, chapter Start block data transfer. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.17 Block data. */
+    /* VSCP specification v1.10.15, chapter Block data. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.18 ACK data block. */
+    /* VSCP specification v1.10.15, chapter ACK data block. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.19 NACK data block. */
+    /* VSCP specification v1.10.15, chapter NACK data block. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.20 Program data block */
+    /* VSCP specification v1.10.15, chapter Program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.21 ACK program data block */
+    /* VSCP specification v1.10.15, chapter ACK program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.22 NACK program data block */
+    /* VSCP specification v1.10.15, chapter NACK program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.23 Activate new image */
+    /* VSCP specification v1.10.15, chapter Activate new image */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.24 GUID drop nickname-ID / reset device. */
+    /* VSCP specification v1.10.15, chapter GUID drop nickname-ID / reset device. */
     case VSCP_TYPE_PROTOCOL_GUID_DROP_NICKNAME_ID:
         vscp_core_handleProtocolGuidDropNickname();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.25 Page read. */
+    /* VSCP specification v1.10.15, chapter Page read. */
     case VSCP_TYPE_PROTOCOL_PAGE_READ:
         vscp_core_handleProtocolPageRead();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.26 Page write. */
+    /* VSCP specification v1.10.15, chapter Page write. */
     case VSCP_TYPE_PROTOCOL_PAGE_WRITE:
         vscp_core_handleProtocolPageWrite();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.27 Read/Write page response. */
+    /* VSCP specification v1.10.15, chapter Read/Write page response. */
     case VSCP_TYPE_PROTOCOL_PAGE_READ_WRITE_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.28 High end server probe. */
+    /* VSCP specification v1.10.15, chapter High end server probe. */
     case VSCP_TYPE_PROTOCOL_HIGH_END_SERVER_PROBE:
         /* Not mandatory, not supported */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.29 High end server response. */
+    /* VSCP specification v1.10.15, chapter High end server response. */
     case VSCP_TYPE_PROTOCOL_HIGH_END_SERVER_RESPONSE:
         /* Not mandatory, not supported */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.30 Increment register. */
+    /* VSCP specification v1.10.15, chapter Increment register. */
     case VSCP_TYPE_PROTOCOL_INCREMENT_REGISTER:
         vscp_core_handleProtocolIncrementRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.31 Decrement register. */
+    /* VSCP specification v1.10.15, chapter Decrement register. */
     case VSCP_TYPE_PROTOCOL_DECREMENT_REGISTER:
         vscp_core_handleProtocolDecrementRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.32 Who is there? */
+    /* VSCP specification v1.10.15, chapter Who is there? */
     case VSCP_TYPE_PROTOCOL_WHO_IS_THERE:
         vscp_core_handleProtocolWhoIsThere();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.33 Who is there response. */
+    /* VSCP specification v1.10.15, chapter Who is there response. */
     case VSCP_TYPE_PROTOCOL_WHO_IS_THERE_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.34 Get decision matrix info. */
+    /* VSCP specification v1.10.15, chapter Get decision matrix info. */
     case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO:
         vscp_core_handleProtocolGetDecisionMatrixInfo();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.35 Get decision matrix info. */
+    /* VSCP specification v1.10.15, chapter Get decision matrix info. */
     case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.36 Get embedded MDF. */
+    /* VSCP specification v1.10.15, chapter Get embedded MDF. */
     case VSCP_TYPE_PROTOCOL_GET_EMBEDDED_MDF:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.37 Get embedded MDF response. */
+    /* VSCP specification v1.10.15, chapter Get embedded MDF response. */
     case VSCP_TYPE_PROTOCOL_GET_EMBEDDED_MDF_RESPONSE:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.38 Extended page read register. */
+    /* VSCP specification v1.10.15, chapter Extended page read register. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_REGISTER:
         vscp_core_handleProtocolExtendedPageReadRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.39 Extended page write register. */
+    /* VSCP specification v1.10.15, chapter Extended page write register. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_WRITE_REGISTER:
         vscp_core_handleProtocolExtendedPageWriteRegister();
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.40 Extended page read write response. */
+    /* VSCP specification v1.10.15, chapter Extended page read write response. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.41 Get event interest. */
+    /* VSCP specification v1.10.15, chapter Get event interest. */
     case VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.42 Get event interest response. */
+    /* VSCP specification v1.10.15, chapter Get event interest response. */
     case VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST_RESPONSE:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.43 Activate new image ACK. */
+    /* VSCP specification v1.10.15, chapter Activate new image ACK. */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.44 Activate new image NACK. */
+    /* VSCP specification v1.10.15, chapter Activate new image NACK. */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.45 Start block data transfer ACK. */
+    /* VSCP specification v1.10.15, chapter Start block data transfer ACK. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.12, chapter 12.1.46 Start block data transfer NACK. */
+    /* VSCP specification v1.10.15, chapter Start block data transfer NACK. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_NACK:
         /* Boot loader specific event. Not supported. */
         break;
@@ -1433,7 +1458,6 @@ static inline void  vscp_core_handleProtocolClassType(void)
 
 /**
  * Handle segment controller heartbeat.
- * See VSCP specification v1.10.12, chapter 12.1.2
  */
 static inline void  vscp_core_handleProtocolHeartbeat(void)
 {
@@ -1474,7 +1498,6 @@ static inline void  vscp_core_handleProtocolHeartbeat(void)
 
 /**
  * Handles a protocol class new node online / probe event.
- * See VSCP specification v1.10.12, chapter 12.1.3
  */
 static inline void  vscp_core_handleProtocolNewNodeOnline(void)
 {
@@ -1503,7 +1526,6 @@ static inline void  vscp_core_handleProtocolNewNodeOnline(void)
 
 /**
  * Handles a protocol class probe acknowledge.
- * See VSCP specification v1.10.12, chapter 12.1.4
  */
 static inline void  vscp_core_handleProtocolProbeAck(void)
 {
@@ -1523,7 +1545,6 @@ static inline void  vscp_core_handleProtocolProbeAck(void)
 
 /**
  * Handles a protocol class set nickname id event.
- * See VSCP specification v1.10.12, chapter 12.1.7 Set nickname-ID for node.
  */
 static inline void  vscp_core_handleProtocolSetNicknameId(void)
 {
@@ -1558,7 +1579,6 @@ static inline void  vscp_core_handleProtocolSetNicknameId(void)
 
 /**
  * Handles a protocol class drop nickname id event.
- * See VSCP specification v1.10.12, chapter 12.1.8 Drop nickname-ID / Reset Device.
  */
 static inline void  vscp_core_handleProtocolDropNicknameId(void)
 {
@@ -1631,7 +1651,6 @@ static inline void  vscp_core_handleProtocolDropNicknameId(void)
 
 /**
  * Handles a protocol class read register event.
- * See VSCP specification v1.10.12, chapter 12.1.10 Read register.
  */
 static inline void  vscp_core_handleProtocolReadRegister(void)
 {
@@ -1956,7 +1975,7 @@ static uint8_t  vscp_core_writeRegister(uint16_t page, uint8_t addr, uint8_t val
 
         case VSCP_REG_PAGE_SELECT_LSB:
             vscp_core_regPageSelect &= 0xFF00;
-            vscp_core_regPageSelect = ((uint16_t)value) << 0;
+            vscp_core_regPageSelect |= ((uint16_t)value) << 0;
             ret = VSCP_UTIL_WORD_LSB(vscp_core_regPageSelect);
             error = FALSE;
             break;
@@ -2101,7 +2120,6 @@ static uint8_t  vscp_core_writeRegister(uint16_t page, uint8_t addr, uint8_t val
 
 /**
  * Handles a protocol class write register event.
- * See VSCP specification v1.10.12, chapter 12.1.12 Write register.
  */
 static inline void  vscp_core_handleProtocolWriteRegister(void)
 {
@@ -2132,7 +2150,6 @@ static inline void  vscp_core_handleProtocolWriteRegister(void)
 
 /**
  * Handles a protocol class enter boot loader event.
- * See VSCP specification v1.10.12, chapter 12.1.13 Enter boot loader mode.
  */
 static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
 {
@@ -2155,10 +2172,10 @@ static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
              */
             if ((0xFF == vscp_portable_getBootLoaderAlgorithm()) ||
                 (vscp_portable_getBootLoaderAlgorithm() != vscp_core_rxMessage.data[1]) ||
-                (vscp_dev_data_getGUID(0) != vscp_core_rxMessage.data[2]) ||
-                (vscp_dev_data_getGUID(3) != vscp_core_rxMessage.data[3]) ||
-                (vscp_dev_data_getGUID(5) != vscp_core_rxMessage.data[4]) ||
-                (vscp_dev_data_getGUID(7) != vscp_core_rxMessage.data[5]) ||
+                (vscp_dev_data_getGUID(15 - 0) != vscp_core_rxMessage.data[2]) ||
+                (vscp_dev_data_getGUID(15 - 3) != vscp_core_rxMessage.data[3]) ||
+                (vscp_dev_data_getGUID(15 - 5) != vscp_core_rxMessage.data[4]) ||
+                (vscp_dev_data_getGUID(15 - 7) != vscp_core_rxMessage.data[5]) ||
                 (vscp_core_regPageSelect != pageSelect))
             {
                 txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
@@ -2206,7 +2223,6 @@ static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
 
 /**
  * Handles a protocol class GUID drop nickname id event.
- * See VSCP specification v1.10.12, chapter 12.1.24 GUID drop nickname-ID / reset device.
  */
 static inline void  vscp_core_handleProtocolGuidDropNickname(void)
 {
@@ -2262,9 +2278,28 @@ static inline void  vscp_core_handleProtocolGuidDropNickname(void)
                 /* Reset status */
                 status = 0;
 
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_SILENT_NODE )
+
+                /* Start nickname discovery? */
+                if (STATE_STARTUP == vscp_core_state)
+                {
+                    vscp_core_startNodeSegmentInit();
+                }
+                else
+                /* Nickname already assigned */
+                {
+                    /* Drop nickname and reset */
+                    vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
+                    vscp_core_changeToStateReset(0);
+                }
+
+#else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
+                
                 /* Drop nickname and reset */
                 vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
                 vscp_core_changeToStateReset(0);
+                
+#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
             }
         }
     }
@@ -2274,7 +2309,6 @@ static inline void  vscp_core_handleProtocolGuidDropNickname(void)
 
 /**
  * Handles a protocol class read page event.
- * See VSCP specification v1.10.12, chapter 12.1.25 Page read.
  */
 static inline void  vscp_core_handleProtocolPageRead(void)
 {
@@ -2340,7 +2374,6 @@ static inline void  vscp_core_handleProtocolPageRead(void)
 
 /**
  * Handles a protocol class write page event.
- * See VSCP specification v1.10.12, chapter 12.1.26 Page write.
  */
 static inline void  vscp_core_handleProtocolPageWrite(void)
 {
@@ -2395,7 +2428,6 @@ static inline void  vscp_core_handleProtocolPageWrite(void)
 
 /**
  * Handles a protocol class increment register event.
- * See VSCP specification v1.10.12, chapter 12.1.30 Increment register.
  */
 static inline void  vscp_core_handleProtocolIncrementRegister(void)
 {
@@ -2428,7 +2460,6 @@ static inline void  vscp_core_handleProtocolIncrementRegister(void)
 
 /**
  * Handles a protocol class decrement register event.
- * See VSCP specification v1.10.12, chapter 12.1.31 Decrement register.
  */
 static inline void  vscp_core_handleProtocolDecrementRegister(void)
 {
@@ -2461,7 +2492,6 @@ static inline void  vscp_core_handleProtocolDecrementRegister(void)
 
 /**
  * Handles a protocol class who is there event.
- * See VSCP specification v1.10.12, chapter 12.1.32 Who is there?
  */
 static inline void  vscp_core_handleProtocolWhoIsThere(void)
 {
@@ -2544,7 +2574,6 @@ static inline void  vscp_core_handleProtocolWhoIsThere(void)
 
 /**
  * Handles a protocol class get decision matrix info event.
- * See VSCP specification v1.10.12, chapter 12.1.34 Get decision matrix info.
  */
 static inline void  vscp_core_handleProtocolGetDecisionMatrixInfo(void)
 {
@@ -2588,7 +2617,6 @@ static inline void  vscp_core_handleProtocolGetDecisionMatrixInfo(void)
 
 /**
  * Handles a protocol class extended page read register event.
- * See VSCP specification v1.10.12, chapter 12.1.38 Extended page read register.
  */
 static inline void  vscp_core_handleProtocolExtendedPageReadRegister(void)
 {
@@ -2711,7 +2739,6 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
 
 /**
  * Handles a protocol class extended page write register event.
- * See VSCP specification v1.10.12, chapter 12.1.39 Extended page write register.
  */
 static inline void  vscp_core_handleProtocolExtendedPageWriteRegister(void)
 {

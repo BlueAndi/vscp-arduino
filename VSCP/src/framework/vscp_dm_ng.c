@@ -594,7 +594,10 @@ static uint8_t  vscp_dm_ng_getZone(vscp_RxMessage const * const rxMsg)
     {
         uint8_t index   = vscp_util_getZoneIndex(rxMsg->vscpClass, rxMsg->vscpType);
         
-        zone = rxMsg->data[index];
+        if (VSCP_L1_DATA_SIZE > index)
+        {
+            zone = rxMsg->data[index];
+        }
     }
 
     return zone;
@@ -614,7 +617,10 @@ static uint8_t  vscp_dm_ng_getSubZone(vscp_RxMessage const * const rxMsg)
     {
         uint8_t index   = vscp_util_getZoneIndex(rxMsg->vscpClass, rxMsg->vscpType);
         
-        subZone = rxMsg->data[index + 1];
+        if (VSCP_L1_DATA_SIZE > index)
+        {
+            subZone = rxMsg->data[index + 1];
+        }
     }
 
     return subZone;

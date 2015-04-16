@@ -72,6 +72,8 @@ extern "C"
 /* ---------- Define here your preferred configuration setup. ---------- */
 
 /*
+#define VSCP_CONFIG_SILENT_NODE                 VSCP_CONFIG_BASE_DISABLED
+
 #define VSCP_CONFIG_HARD_CODED_NODE             VSCP_CONFIG_BASE_DISABLED
 
 #define VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT   VSCP_CONFIG_BASE_DISABLED
