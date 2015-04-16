@@ -112,6 +112,17 @@ VSCP/src/framework/vscp_type_weather.h
 VSCP/src/framework/vscp_type_weather_forecast.h
 ```
 
+### Does the library only support the CAN-bus as transport protocotol?
+
+No, the library is not limited to the CAN-bus protocol. It might look like, because of the examples above.
+But thats because I only use the CAN-bus as transport protocol at home and I don't have e. g. a RS-485 shield.
+
+Therefore the library supports the silent node behaviour too, which is used for non-multimaster protocols.
+Enable it in the configuration VSCP/src/framework/vscp_config_overwrite.h via
+```
+#define VSCP_CONFIG_SILENT_NODE VSCP_CONFIG_BASE_ENABLED
+```
+
 ##Mailing list
 
 Are you interesting? Join us on the mailing list: https://groups.google.com/forum/#!forum/vscp
