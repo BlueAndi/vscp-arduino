@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,17 +35,13 @@
 @section desc Description
 This header contains all level 1 information class defined types.
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 /** @defgroup vscp_type_information Information class types
  * Level 1 information class types
  * @{
  * @ingroup vscp_l1
  */
- 
+
 /*
  * Don't forget to set JAVADOC_AUTOBRIEF to YES in the doxygen file to generate
  * a correct module description.
@@ -247,6 +243,18 @@ extern "C"
 
 /** VSCP class 1 information type: Calculated noon */
 #define VSCP_TYPE_INFORMATION_CALCULATED_NOON                       58
+
+/** VSCP class 1 information type: Up */
+#define VSCP_TYPE_INFORMATION_UP                                    59
+
+/** VSCP class 1 information type: Down */
+#define VSCP_TYPE_INFORMATION_DOWN                                  60
+
+/** VSCP class 1 information type: Top */
+#define VSCP_TYPE_INFORMATION_TOP                                   61
+
+/** VSCP class 1 information type: Bottom */
+#define VSCP_TYPE_INFORMATION_BOTTOM                                62
 
 /*******************************************************************************
     MACROS

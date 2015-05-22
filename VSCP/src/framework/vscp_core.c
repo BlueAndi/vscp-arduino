@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 @see vscp_core.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -58,6 +54,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 #include "vscp_dm_ng.h"
 #include "vscp_util.h"
 #include "vscp_action.h"
+#include "vscp_logger.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -119,7 +116,7 @@ typedef struct
     uint8_t     addr;   /**< Address (offset in page) */
     uint8_t     count;  /**< Number of registers to read */
     uint8_t     seq;    /**< Sequence id */
-    
+
 } ExtPageRead;
 
 /*******************************************************************************
@@ -253,7 +250,7 @@ static ExtPageRead      vscp_core_extPageReadData   = { 0, 0, 0, 0 };
 extern VSCP_CORE_RET vscp_core_init(void)
 {
     VSCP_CORE_RET   ret = VSCP_CORE_RET_OK;
-    
+
     /* Initialize persistent memory access */
     vscp_ps_init();
 
@@ -278,12 +275,12 @@ extern VSCP_CORE_RET vscp_core_init(void)
     vscp_dm_init();
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
-    
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
-    
+
     /* Initialize decision matrix next generation functions */
     vscp_dm_ng_init();
-    
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
@@ -292,6 +289,13 @@ extern VSCP_CORE_RET vscp_core_init(void)
     vscp_action_init();
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER )
+
+    /* Initialize logger module */
+    vscp_logger_init();
+
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER ) */
 
     /* Initialize utilities module */
     vscp_util_init();
@@ -309,7 +313,7 @@ extern VSCP_CORE_RET vscp_core_init(void)
     vscp_core_rxMessageValid        = FALSE;
 
     /* Show the user that the node starts up. */
-    vscp_portable_setLampState(VSCP_LAMP_STATE_BLINK);
+    vscp_portable_setLampState(VSCP_LAMP_STATE_BLINK_SLOW);
 
     /* Create a timer for common timing issues */
     vscp_core_timerId = vscp_timer_create();
@@ -356,7 +360,7 @@ extern VSCP_CORE_RET vscp_core_init(void)
         /* Reset to default values. */
         vscp_core_restoreFactoryDefaultSettings();
     }
-    
+
     /* Any error happened? */
     if (VSCP_CORE_RET_OK != ret)
     {
@@ -377,15 +381,15 @@ extern VSCP_CORE_RET vscp_core_init(void)
 extern void vscp_core_restoreFactoryDefaultSettings(void)
 {
     uint8_t index   = 0;
-    
+
     vscp_core_regAlarmStatus    = 0;
     vscp_core_regPageSelect     = 0;
-    
+
     vscp_core_extPageReadData.page  = 0;
     vscp_core_extPageReadData.addr  = 0;
     vscp_core_extPageReadData.count = 0;
     vscp_core_extPageReadData.seq   = 0;
-    
+
     /* Clear nickname id */
     vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
 
@@ -393,7 +397,7 @@ extern void vscp_core_restoreFactoryDefaultSettings(void)
 
     /* Clear segment controller CRC */
     vscp_ps_writeSegmentControllerCRC(VSCP_SEGMENT_CRC_NOT_INIT);
-    
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
 
     /* Wait for explicit initialization and remove application registers
@@ -406,29 +410,29 @@ extern void vscp_core_restoreFactoryDefaultSettings(void)
     {
         vscp_ps_writeUserId(index, 0);
     }
-    
+
     /* Restore VSCP device data factory default settings */
     vscp_dev_data_restoreFactoryDefaultSettings();
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
-    
+
     /* Restore VSCP decision matrix factory default settings */
     vscp_dm_restoreFactoryDefaultSettings();
-    
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
-    
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
 
     vscp_dm_ng_restoreFactoryDefaultSettings();
-    
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
-    
+
     /* Restore application register factory default settings */
     vscp_app_reg_restoreFactoryDefaultSettings();
 
     /* Restore application factory default settings */
     vscp_portable_restoreFactoryDefaultSettings();
-    
+
     return;
 }
 
@@ -443,6 +447,13 @@ extern void vscp_core_process(void)
      * In the other ones it depends on their sub state.
      */
     vscp_core_rxMessageValid = vscp_transport_readMessage(&vscp_core_rxMessage);
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER )
+
+    /* Handle early as possible any kind of log control messages. */
+    vscp_logger_handleEvent(&vscp_core_rxMessage);
+
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER ) */
 
     /* State machine */
     switch(vscp_core_state)
@@ -709,7 +720,7 @@ static inline void  vscp_core_stateStartup(void)
                 vscp_core_handleProtocolGuidDropNickname();
             }
         }
-        
+
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
 
         /* Check the start-up control.
@@ -725,7 +736,7 @@ static inline void  vscp_core_stateStartup(void)
             /* Wait until the user press the segment initialization button */
             ;
         }
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
     }
     else
@@ -745,7 +756,7 @@ static inline void  vscp_core_changeToStateInit(void)
     if (STATE_INIT != vscp_core_state)
     {
         /* Show the user that the node enters initialization state by blinking lamp. */
-        vscp_portable_setLampState(VSCP_LAMP_STATE_BLINK);
+        vscp_portable_setLampState(VSCP_LAMP_STATE_BLINK_FAST);
 
         vscp_core_state     = STATE_INIT;
         vscp_core_initState = INIT_STATE_PROBE_MASTER;
@@ -882,11 +893,11 @@ static inline void  vscp_core_stateInit(void)
                         vscp_timer_stop(vscp_core_timerId);
 
                         /* Try next nickname id.
-                            * Note that sending a nickname of VSCP_NICKNAME_NOT_INIT,
-                            * notifies the segment nodes that this node gave up.
+                         * Note that sending a nickname of VSCP_NICKNAME_NOT_INIT,
+                         * notifies the segment nodes that this node gave up.
                          * See VSCP specification v1.10.15, chapter Level I Events,
                          * CLASS1.PROTOCOL, Type=2 (0x02) New node on line / Probe
-                            */
+                         */
                         ++vscp_core_nickname_probe;
 
                         vscp_core_initState = INIT_STATE_PROBE;
@@ -1036,17 +1047,17 @@ static inline void  vscp_core_stateActive(void)
         }
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
-        
+
         /* Execute actions of the decision matrix (standard + extension) */
         vscp_dm_executeActions(&vscp_core_rxMessage);
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
-        
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
 
         /* Execute actions of the decision matrix next generation */
         vscp_dm_ng_executeActions(&vscp_core_rxMessage);
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
     }
 
@@ -2192,7 +2203,7 @@ static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
             {
                 /* Go idle and wait */
                 vscp_core_changeToStateIdle();
-                
+
                 /* Set boot flag to bootloader */
                 vscp_ps_writeBootFlag(VSCP_BOOT_FLAG_BOOTLOADER);
 
@@ -2294,11 +2305,11 @@ static inline void  vscp_core_handleProtocolGuidDropNickname(void)
                 }
 
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
-                
+
                 /* Drop nickname and reset */
                 vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
                 vscp_core_changeToStateReset(0);
-                
+
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_SILENT_NODE ) */
             }
         }
@@ -2595,7 +2606,7 @@ static inline void  vscp_core_handleProtocolGetDecisionMatrixInfo(void)
             pageStart       = vscp_dm_getPage();
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
-            
+
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
             txMessage.vscpType  = VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO_RESPONSE;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
@@ -2629,12 +2640,12 @@ static inline void  vscp_core_handleProtocolExtendedPageReadRegister(void)
             vscp_core_extPageReadData.page  = (((uint16_t)vscp_core_rxMessage.data[1]) << 8) | (vscp_core_rxMessage.data[2]);
             vscp_core_extPageReadData.addr  = vscp_core_rxMessage.data[3];
             vscp_core_extPageReadData.seq   = 0;
-            
+
             /* Read more than one register? */
             if (5 == vscp_core_rxMessage.dataNum)
             {
                 vscp_core_extPageReadData.count = vscp_core_rxMessage.data[4];
-                
+
                 /* Read at least one register */
                 if (0 == vscp_core_extPageReadData.count)
                 {
@@ -2645,7 +2656,7 @@ static inline void  vscp_core_handleProtocolExtendedPageReadRegister(void)
             {
                 vscp_core_extPageReadData.count = 1;
             }
-            
+
             /* Only one response will be sent now.
              * If more responses are necessary, they will be sent in the following
              * process cycles. This avoids that the framework blocks the application
@@ -2673,7 +2684,7 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
         uint8_t         addr        = data->addr;
         uint8_t         count       = data->count;
         BOOL            nextPage    = FALSE;
-        
+
         /* Prepare tx message */
         txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
         txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE;
@@ -2711,7 +2722,7 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
             }
         }
         while((VSCP_L1_DATA_SIZE > index) && (0 < count) && (FALSE == nextPage));
-        
+
         /* Set event data size */
         txMessage.dataNum = index;
 
@@ -2728,7 +2739,7 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
             {
                 data->addr = addr;
             }
-            
+
             data->count = count;
             ++data->seq;
         }

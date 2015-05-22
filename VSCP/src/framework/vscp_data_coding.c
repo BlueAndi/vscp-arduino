@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 @see vscp_data_coding.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -101,11 +97,11 @@ extern void vscp_data_coding_init(void)
 extern uint8_t vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION representation, uint8_t unit, uint8_t index)
 {
     uint8_t formatByte  = 0;
-    
+
     formatByte  = (representation & 0x07) << 5; /* Numerical representation */
     formatByte |= (unit           & 0x03) << 3; /* Unit */
     formatByte |= (index          & 0x07) << 0; /* Zero based sensor index */
-    
+
     return formatByte;
 }
 
@@ -135,7 +131,7 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
     uint8_t     expMagnitude    = (0 > exp) ? (-1 * exp) : exp;
     uint32_t    dataMagnitude   = (0 > data) ? (-1 * data) : data;
     uint8_t     neededSize      = 1;
-    
+
     /* Calculate needed coded data size */
     if (0x80 > dataMagnitude)
     {
@@ -157,18 +153,18 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
         /* 32 bit value */
         neededSize += 4;
     }
-    
+
     /* Check given coded data size */
     if (codedDataSize < neededSize)
     {
         /* Abort */
         return 0;
     }
-    
+
     /* Build normalizer byte */
     codedData[codedDataIndex] = vscp_data_coding_getNormalizerByte(expSign, expMagnitude);
     ++codedDataIndex;
-    
+
     /* 8 bit signed integer? */
     if (0x80 > dataMagnitude)
     {
@@ -177,10 +173,10 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
     }
     /* 16 bit signed integer? */
     else if (0x8000 > dataMagnitude)
-    {   
+    {
         codedData[codedDataIndex] = (uint8_t)((data >> 8) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >> 0) & 0xff);
         ++codedDataIndex;
     }
@@ -189,10 +185,10 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
     {
         codedData[codedDataIndex] = (uint8_t)((data >> 16) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >>  8) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >>  0) & 0xff);
         ++codedDataIndex;
     }
@@ -201,17 +197,17 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
     {
         codedData[codedDataIndex] = (uint8_t)((data >> 24) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >> 16) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >> 8) & 0xff);
         ++codedDataIndex;
-        
+
         codedData[codedDataIndex] = (uint8_t)((data >> 0) & 0xff);
         ++codedDataIndex;
     }
-    
+
     return codedDataIndex;
 }
 
@@ -227,22 +223,22 @@ extern uint8_t vscp_data_coding_int32ToNormalizedInteger(int32_t data, int8_t ex
 extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const codedData, uint8_t codedDataSize, int32_t* const data, int8_t* const exp)
 {
     uint8_t codedDataIndex  = 0;
-    
+
     if ((NULL == data) ||
         (NULL == exp))
     {
         return;
     }
-    
+
     *data = 0;
     *exp  = 0;
-    
+
     if ((1 > codedDataSize) ||  /* Invalid */
         (5 < codedDataSize))    /* More than 32 bit values are not supported */
     {
         return;
     }
-    
+
     /* Build exponent */
     *exp = (int8_t)(codedData[codedDataIndex] & 0x7f);
     if (0 != (codedData[codedDataIndex] & 0x80))
@@ -262,13 +258,13 @@ extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const code
     {
         *data = ((int32_t)codedData[codedDataIndex]) << 8;
         ++codedDataIndex;
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) << 0;
         ++codedDataIndex;
     }
     /* 24 bit signed value? */
     else if (4 == codedDataSize)
-    {        
+    {
         /* Handle sign bit */
         if (0 != (codedData[codedDataIndex] & 0x80))
         {
@@ -278,10 +274,10 @@ extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const code
         {
             *data = 0;
         }
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) << 16;
         ++codedDataIndex;
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) <<  8;
         ++codedDataIndex;
 
@@ -293,13 +289,13 @@ extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const code
     {
         *data  = ((int32_t)codedData[codedDataIndex]) << 24;
         ++codedDataIndex;
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) << 16;
         ++codedDataIndex;
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) <<  8;
         ++codedDataIndex;
-        
+
         *data |= ((int32_t)codedData[codedDataIndex]) <<  0;
         ++codedDataIndex;
     }
@@ -308,7 +304,7 @@ extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const code
     {
         ;
     }
-    
+
     return;
 }
 
@@ -326,9 +322,9 @@ extern void vscp_data_coding_normalizedIntegerToInt32(uint8_t const * const code
 static inline uint8_t vscp_data_coding_getNormalizerByte(uint8_t sign, uint8_t magnitude)
 {
     uint8_t normalizerByte  = 0;
-    
+
     normalizerByte  = (sign      & 0x01) << 7;  /* Sign */
     normalizerByte |= (magnitude & 0x7f) << 0;  /* Magnitude */
-    
+
     return normalizerByte;
 }

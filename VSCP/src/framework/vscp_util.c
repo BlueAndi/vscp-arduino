@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 @see vscp_util.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -177,7 +173,7 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
                 zoneIndex = 1;
             }
             break;
-            
+
         /* The following ones doesn't have any type with zone/sub-zone. */
         case VSCP_CLASS_L1_MEASUREMENT:
             /*@fallthrough@*/
@@ -221,9 +217,9 @@ extern void vscp_util_cyclicBufferInit(vscp_util_CyclicBuffer * const cbuffer, v
         cbuffer->elemSize   = elemSize;
         cbuffer->num        = size / elemSize;
         cbuffer->readIndex  = 0;
-        cbuffer->writeIndex = 0;        
+        cbuffer->writeIndex = 0;
     }
-    
+
     return;
 }
 
@@ -253,20 +249,20 @@ extern uint8_t vscp_util_cyclicBufferRead(vscp_util_CyclicBuffer * const cbuffer
         {
             uint8_t index           = 0;
             uint8_t nextReadIndex   = (cbuffer->readIndex + 1) % cbuffer->num;
-            
+
             /* Copy a single element */
             for(index = 0; index < cbuffer->elemSize; ++index)
             {
                 dst[index] = src[index];
             }
-            
+
             cbuffer->readIndex  = nextReadIndex;
             src                 = &src[cbuffer->elemSize];
             dst                 = &dst[cbuffer->elemSize];
             ++read;
         }
     }
-    
+
     return read;
 }
 
@@ -281,7 +277,7 @@ extern uint8_t vscp_util_cyclicBufferRead(vscp_util_CyclicBuffer * const cbuffer
 extern uint8_t vscp_util_cyclicBufferWrite(vscp_util_CyclicBuffer * const cbuffer, void const * const elem, uint8_t maxNum)
 {
     uint8_t written         = 0;
-    
+
     if ((NULL != cbuffer) &&
         (NULL != elem) &&
         (0 < maxNum))
@@ -289,20 +285,20 @@ extern uint8_t vscp_util_cyclicBufferWrite(vscp_util_CyclicBuffer * const cbuffe
         uint8_t nextWriteIndex   = (cbuffer->writeIndex + 1) % cbuffer->num;
         uint8_t *src            = &((uint8_t*)elem)[0];
         uint8_t *dst            = &((uint8_t*)cbuffer->storage)[cbuffer->writeIndex * cbuffer->elemSize];
-        
+
         /* Cyclic buffer not full?
          * Any element in the given buffer?
          */
         while((cbuffer->readIndex != nextWriteIndex) && (maxNum > written))
         {
             uint8_t index   = 0;
-                    
+
             /* Copy a single element */
             for(index = 0; index < cbuffer->elemSize; ++index)
             {
                 dst[index] = src[index];
             }
-            
+
             cbuffer->writeIndex = nextWriteIndex;
             nextWriteIndex      = (nextWriteIndex + 1) % cbuffer->num;
             src                 = &src[cbuffer->elemSize];
@@ -310,7 +306,7 @@ extern uint8_t vscp_util_cyclicBufferWrite(vscp_util_CyclicBuffer * const cbuffe
             ++written;
         }
     }
-    
+
     return written;
 }
 

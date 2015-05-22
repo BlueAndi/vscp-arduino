@@ -89,7 +89,8 @@ VSCP::VSCP() :
     mStatusLampPin(0),                      /* Status Lamp pin */
     mInitButtonPin(0),                      /* Segment initialization button pin */
     mStatusLampState(VSCP_LAMP_STATE_OFF),  /* Status lamp startup state is off */
-    mStatusLampPeriod(200),                 /* 200 ms status lamp blinking period */
+    mStatusLampFastPeriod(250),             /* 250 ms fast status lamp blinking period */
+    mStatusLampSlowPeriod(1000),            /* 1 s slow status lamp blinking period */
     mStatusLampTimer(),                     /* Status lamp timer for blinking */
     mVSCPTimerPeriod(250),                  /* 250 ms VSCP timer period */
     mVSCPTimer()                            /* Timer instance used to handle the VSCP framework timers */
@@ -289,8 +290,12 @@ void VSCP::processStatusLamp(void)
             digitalWrite(mStatusLampPin, HIGH);
             break;
 
-        case VSCP_LAMP_STATE_BLINK:
-            mStatusLampTimer.start(mStatusLampPeriod, false);
+        case VSCP_LAMP_STATE_BLINK_SLOW:
+            mStatusLampTimer.start(mStatusLampSlowPeriod, false);
+            break;
+
+        case VSCP_LAMP_STATE_BLINK_FAST:
+            mStatusLampTimer.start(mStatusLampFastPeriod, false);
             break;
 
         default:
@@ -298,7 +303,8 @@ void VSCP::processStatusLamp(void)
         }
     }
     /* Shall the lamp blink? */
-    else if (VSCP_LAMP_STATE_BLINK == mStatusLampState)
+    else if ((VSCP_LAMP_STATE_BLINK_SLOW == mStatusLampState) ||
+             (VSCP_LAMP_STATE_BLINK_FAST == mStatusLampState))
     {
         /* Toggle status lamp? */
         if (true == mStatusLampTimer.isTimeout())

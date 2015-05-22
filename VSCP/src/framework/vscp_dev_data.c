@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,9 +35,6 @@
 @section desc Description
 @see vscp_dev_data.h
 
-@section svn Subversion
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -128,7 +125,7 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
     {
         uint8_t         index   = 0;
         const uint8_t   guid[]  = VSCP_DEV_DATA_CONFIG_NODE_GUID;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_GUID; ++index)
         {
             /* GUID is given in MSB first, but the persistency stores it LSB first. */
@@ -158,7 +155,7 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
     {
         uint8_t         index               = 0;
         const uint32_t  manufacturerDevId   = VSCP_DEV_DATA_CONFIG_MANUFACTURER_DEVICE_ID;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_MANUFACTURER_DEV_ID; ++index)
         {
             vscp_ps_writeManufacturerDevId(index, ((const uint8_t*)&manufacturerDevId)[index]);
@@ -173,7 +170,7 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
     {
         uint8_t         index               = 0;
         const uint32_t  manufacturerSubDevId   = VSCP_DEV_DATA_CONFIG_MANUFACTURER_SUB_DEVICE_ID;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_MANUFACTURER_SUB_DEV_ID; ++index)
         {
             vscp_ps_writeManufacturerSubDevId(index, ((const uint8_t*)&manufacturerSubDevId)[index]);
@@ -189,11 +186,11 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
         uint8_t     index       = 0;
         uint8_t     mdfIndex    = 0;
         const char  mdfUrl[]    = VSCP_DEV_DATA_CONFIG_MDF_URL;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_MDF_URL; ++index)
         {
             uint8_t value   = 0;
-            
+
             if ('\0' != mdfUrl[mdfIndex])
             {
                 value = (uint8_t)mdfUrl[mdfIndex];
@@ -204,7 +201,7 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
             {
                 value = 0;
             }
-            
+
             vscp_ps_writeMdfUrl(index, value);
         }
     }
@@ -220,11 +217,11 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
         uint8_t     index               = 0;
         uint32_t    stdDevFamilyCode    = VSCP_DEV_DATA_CONFIG_STANDARD_DEVICE_FAMILY_CODE;
         uint8_t     value               = 0;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_STD_DEV_FAMILY_CODE; ++index)
         {
             value   = (uint8_t)((stdDevFamilyCode >> index) & 0xff);
-            
+
             vscp_ps_writeStdDevFamilyCode(index, value);
         }
     }
@@ -238,11 +235,11 @@ extern void vscp_dev_data_restoreFactoryDefaultSettings(void)
         uint8_t     index       = 0;
         uint32_t    stdDevType  = VSCP_DEV_DATA_CONFIG_STANDARD_DEVICE_TYPE;
         uint8_t     value       = 0;
-        
+
         for(index = 0; index < VSCP_PS_SIZE_STD_DEV_TYPE; ++index)
         {
             value   = (uint8_t)((stdDevType >> index) & 0xff);
-            
+
             vscp_ps_writeStdDevType(index, value);
         }
     }

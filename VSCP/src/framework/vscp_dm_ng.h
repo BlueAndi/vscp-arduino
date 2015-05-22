@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 This module contains the VSCP decision matrix next generation.
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 /** @defgroup vscp_dm_ng VSCP decision matrix next generation
  * The decision matrix next generation (DM-NG) is from the idea similar to the
@@ -92,7 +88,7 @@ extern "C"
 *******************************************************************************/
 
 /** Enable the debug mode for easier rule debugging. */
-#define VSCP_DM_NG_DEBUG	VSCP_CONFIG_BASE_ENABLED
+#define VSCP_DM_NG_DEBUG    VSCP_CONFIG_BASE_ENABLED
 
 /*******************************************************************************
     CONSTANTS
@@ -129,7 +125,7 @@ typedef enum
     VSCP_DM_NG_BASIC_OP_LOWER_EQUAL,    /**< Event parameter value is lower or equal than defined value */
     VSCP_DM_NG_BASIC_OP_GREATER_EQUAL,  /**< Event parameter value is greater or equal than defined value */
     VSCP_DM_NG_BASIC_OP_MASK,           /**< Event parameter value is masked with defined value */
-    
+
     VSCP_DM_NG_BASIC_OP_MAX_NUM         /**< Only used to get the number of basic operators. */
 
 } VSCP_DM_NG_BASIC_OP;
@@ -151,7 +147,7 @@ typedef enum
     VSCP_DM_NG_EVENT_PAR_ID_TYPE,           /**< Type */
     VSCP_DM_NG_EVENT_PAR_ID_OADDR,          /**< Nickname id */
     VSCP_DM_NG_EVENT_PAR_ID_HARD_CODED,     /**< Hard coded flag */
-    VSCP_DM_NG_EVENT_PAR_ID_PRIORITY,		/**< Priority */
+    VSCP_DM_NG_EVENT_PAR_ID_PRIORITY,       /**< Priority */
     VSCP_DM_NG_EVENT_PAR_ID_ZONE,           /**< Zone */
     VSCP_DM_NG_EVENT_PAR_ID_SUB_ZONE,       /**< Sub-zone */
     VSCP_DM_NG_EVENT_PAR_ID_DATA_NUM,       /**< Number of data in the payload */
@@ -163,7 +159,7 @@ typedef enum
     VSCP_DM_NG_EVENT_PAR_ID_DATA5,          /**< Payload data byte 5 */
     VSCP_DM_NG_EVENT_PAR_ID_DATA6,          /**< Payload data byte 6 */
     VSCP_DM_NG_EVENT_PAR_ID_DATA,           /**< Payload data byte x (x is additional index value) */
-    
+
     VSCP_DM_NG_EVENT_PAR_ID_MAX_NUM         /**< Only used to get the number of event parameter ids. */
 
 } VSCP_DM_NG_EVENT_PAR_ID;
@@ -191,7 +187,7 @@ extern void vscp_dm_ng_restoreFactoryDefaultSettings(void);
  * received message takes place, it will call the corresponding action.
  *
  * @param[in]   rxMsg   Received message
- */ 
+ */
 extern void vscp_dm_ng_executeActions(vscp_RxMessage const * const rxMsg);
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DM_NG_DEBUG )
@@ -199,15 +195,15 @@ extern void vscp_dm_ng_executeActions(vscp_RxMessage const * const rxMsg);
 /**
  * Get error information, if available.
  *
- * @param[out]	rule	Rule number [1; x]
- * @param[out]	pos		Position index in the rule (not rule set)
+ * @param[out]  rule    Rule number [1; x]
+ * @param[out]  pos     Position index in the rule (not rule set)
  * @return Error available
- * @retval FALSE	No error
- * @retval TRUE		Error happened
+ * @retval FALSE    No error
+ * @retval TRUE     Error happened
  */
-extern BOOL	vscp_dm_ng_getError(uint8_t * const rule, uint8_t * const pos);
+extern BOOL vscp_dm_ng_getError(uint8_t * const rule, uint8_t * const pos);
 
-#endif	/* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DM_NG_DEBUG ) */
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DM_NG_DEBUG ) */
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
 

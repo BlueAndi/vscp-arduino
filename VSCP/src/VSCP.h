@@ -245,17 +245,18 @@ private:
     /* Never copy the VSCP framework */
     VSCP& operator=(const VSCP& vscp);
     
-    bool                mIsInitialized;     /**< Is framework initialized or not */
+    bool                mIsInitialized;         /**< Is framework initialized or not */
     
-    int                 mStatusLampPin;     /**< Status lamp pin */
-    int                 mInitButtonPin;     /**< Segment initialization button pin */
+    int                 mStatusLampPin;         /**< Status lamp pin */
+    int                 mInitButtonPin;         /**< Segment initialization button pin */
         
-    VSCP_LAMP_STATE     mStatusLampState;   /**< Current state of the status lamp */
-    const unsigned int  mStatusLampPeriod;  /**< Status lamp blinking periode in ms */
-    SwTimer             mStatusLampTimer;   /**< Status lamp timer used for blinking */
+    VSCP_LAMP_STATE     mStatusLampState;       /**< Current state of the status lamp */
+    const unsigned int  mStatusLampFastPeriod;  /**< Fast status lamp blinking periode in ms */
+    const unsigned int  mStatusLampSlowPeriod;  /**< Slow status lamp blinking periode in ms */
+    SwTimer             mStatusLampTimer;       /**< Status lamp timer used for blinking */
     
-    const unsigned int  mVSCPTimerPeriod;   /**< VSCP timer period in ms */
-    SwTimer             mVSCPTimer;         /**< VSCP timer */
+    const unsigned int  mVSCPTimerPeriod;       /**< VSCP timer period in ms */
+    SwTimer             mVSCPTimer;             /**< VSCP timer */
         
     /**
      * Process the status lamp.

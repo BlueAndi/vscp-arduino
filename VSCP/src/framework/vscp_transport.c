@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 @see vscp_transport.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -103,16 +99,16 @@ extern void vscp_transport_init(void)
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK )
 
     /* Initialize the cyclic buffer for the VSCP event loopback */
-    vscp_util_cyclicBufferInit( &vscp_transport_loopBackCyclicBuffer, 
-                                &vscp_transport_loopBackStorage, 
-                                sizeof(vscp_transport_loopBackStorage), 
+    vscp_util_cyclicBufferInit( &vscp_transport_loopBackCyclicBuffer,
+                                &vscp_transport_loopBackStorage,
+                                sizeof(vscp_transport_loopBackStorage),
                                 sizeof(vscp_transport_loopBackStorage[0]));
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
 
     /* Initialize transport layer adapter */
     vscp_tp_adapter_init();
-    
+
     return;
 }
 
@@ -127,7 +123,7 @@ extern void vscp_transport_init(void)
 extern BOOL vscp_transport_readMessage(vscp_RxMessage * const msg)
 {
     BOOL    status  = FALSE;
-    
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK )
 
     if (NULL != msg)
@@ -146,19 +142,19 @@ extern BOOL vscp_transport_readMessage(vscp_RxMessage * const msg)
 
         /* Read message from loopback */
         uint8_t read = vscp_util_cyclicBufferRead(&vscp_transport_loopBackCyclicBuffer, msg, 1);
-        
+
         /* Read a message? */
         if (0 < read)
         {
             /* Write any received message from the lower layer to the loopback. */
             vscp_RxMessage  rxMsg;
             BOOL            received = vscp_tp_adapter_readMessage(&rxMsg);
-            
+
             if (TRUE == received)
             {
                 (void)vscp_util_cyclicBufferWrite(&vscp_transport_loopBackCyclicBuffer, &rxMsg, 1);
             }
-            
+
             status = TRUE;
         }
         else
@@ -168,13 +164,13 @@ extern BOOL vscp_transport_readMessage(vscp_RxMessage * const msg)
         }
 
     }
-    
+
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
-    
+
     status = vscp_tp_adapter_readMessage(msg);
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
-    
+
     return status;
 }
 
@@ -191,27 +187,29 @@ extern BOOL vscp_transport_writeMessage(vscp_TxMessage const * const msg)
     BOOL    status  = FALSE;
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK )
-    
+
     if ((NULL != msg) &&                        /* Message shall exists */
         (VSCP_L1_DATA_SIZE >= msg->dataNum))    /* Number of data bytes is limited */
     {
-        /* Write all messages to loopback, except CLASS1.PROTOCOL. Because the core
-         * would interpret them.
+        /* Write all messages to loopback, except:
+         * - CLASS1.PROTOCOL: The core would interpret them.
+         * - CLASS1.LOG     : Make no sense.
          */
-        if (VSCP_CLASS_L1_PROTOCOL != msg->vscpClass)
+        if ((VSCP_CLASS_L1_PROTOCOL != msg->vscpClass) &&
+            (VSCP_CLASS_L1_LOG != msg->vscpClass))
         {
             (void)vscp_util_cyclicBufferWrite(&vscp_transport_loopBackCyclicBuffer, msg, 1);
         }
-   
+
         status = vscp_tp_adapter_writeMessage(msg);
     }
 
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
-    
+
     status = vscp_tp_adapter_writeMessage(msg);
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
-    
+
     /* Count every transmit error */
     if (FALSE == status)
     {

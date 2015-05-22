@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,10 +35,6 @@
 @section desc Description
 @see vscp_dm.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -206,7 +202,7 @@ extern void vscp_dm_init(void)
 extern void vscp_dm_restoreFactoryDefaultSettings(void)
 {
     uint16_t    index   = 0;
-    
+
     /* Clear decision matrix */
     for(index = 0; index < VSCP_PS_SIZE_DM; ++index)
     {
@@ -329,7 +325,7 @@ extern uint8_t  vscp_dm_writeRegister(uint16_t page, uint8_t addr, uint8_t value
 extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
 {
     uint8_t index   = 0;
-    
+
     if (NULL == msg)
     {
         return;
@@ -343,26 +339,26 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
         vscp_dm_MatrixRow   row         = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
-        
+
         vscp_dm_ExtRow      extRow      = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-        
+
         vscp_dm_readDecisionMatrix(&row, index);
-        
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
-    
+
         vscp_dm_readDecisionMatrixExt(&extRow, index);
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-        
+
         /* Decision matrix row disabled? */
         if (0 == (row.flags & VSCP_DM_FLAG_ENABLE))
         {
             /* Next row */
             continue;
         }
-        
+
         /* No action? */
         if (VSCP_DM_ACTION_NO_OPERATION == row.action)
         {
@@ -419,7 +415,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     }
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-                    
+
                     /* Zone's doesn't match? */
                     if (zone != dmZone)
                     {
@@ -444,7 +440,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     }
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-                    
+
                     /* Sub-zone's doesn't match? */
                     if (subZone != dmSubZone)
                     {
@@ -455,8 +451,8 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             }
             else
             {
-            	/* Next row */
-            	continue;
+                /* Next row */
+                continue;
             }
         }
 
@@ -490,7 +486,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             /* Next row */
             continue;
         }
-        
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
 
         /* Is the extension enabled for this row? */
@@ -498,7 +494,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
         {
             /* The action parameters transform to the extension flags. */
             uint8_t extFlags    = row.actionPar;
-            
+
             /* Compare to event parameter byte 0? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_0))
             {
@@ -513,7 +509,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     continue;
                 }
             }
-            
+
             /* Compare to event parameter byte 3? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_3))
             {
@@ -528,7 +524,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     continue;
                 }
             }
-            
+
             /* Compare to event parameter byte 4? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_4))
             {
@@ -543,7 +539,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     continue;
                 }
             }
-            
+
             /* Compare to event parameter byte 5? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_5))
             {
@@ -558,7 +554,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     continue;
                 }
             }
-            
+
             /* Execute action */
             vscp_action_execute(extRow.action, extRow.actionPar, msg);
         }
@@ -569,10 +565,10 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
         }
 
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-        
+
         /* Execute action */
         vscp_action_execute(row.action, row.actionPar, msg);
-        
+
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
     }
 
@@ -593,8 +589,8 @@ static void vscp_dm_readDecisionMatrix(vscp_dm_MatrixRow * const row, uint8_t ro
 {
     if (NULL != row)
     {
-    	uint16_t	start		= ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow);
-        uint8_t		index       = 0;
+        uint16_t    start       = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow);
+        uint8_t     index       = 0;
         uint8_t*    rowBytePtr  = (uint8_t*)row;
 
         for(index = 0; index < sizeof(vscp_dm_MatrixRow); ++index)
@@ -603,7 +599,7 @@ static void vscp_dm_readDecisionMatrix(vscp_dm_MatrixRow * const row, uint8_t ro
             ++rowBytePtr;
         }
     }
-    
+
     return;
 }
 
@@ -619,7 +615,7 @@ static void vscp_dm_readDecisionMatrixExt(vscp_dm_ExtRow * const row, uint8_t ro
 {
     if (NULL != row)
     {
-    	uint16_t	start		= ((uint16_t)rowIndex) * sizeof(vscp_dm_ExtRow);
+        uint16_t    start       = ((uint16_t)rowIndex) * sizeof(vscp_dm_ExtRow);
         uint16_t    index       = 0;
         uint8_t*    rowBytePtr  = (uint8_t*)row;
 
@@ -629,7 +625,7 @@ static void vscp_dm_readDecisionMatrixExt(vscp_dm_ExtRow * const row, uint8_t ro
             ++rowBytePtr;
         }
     }
-    
+
     return;
 }
 
@@ -650,7 +646,7 @@ static void vscp_dm_readDecisionMatrixExt(vscp_dm_ExtRow * const row, uint8_t ro
 static inline BOOL vscp_dm_isDecisionMatrixPagedFeature(uint16_t page, uint8_t addr)
 {
     BOOL    status  = FALSE;
-    
+
     if (0 == page)
     {
         if ((VSCP_DM_PAGED_INDEX == addr) ||
@@ -659,7 +655,7 @@ static inline BOOL vscp_dm_isDecisionMatrixPagedFeature(uint16_t page, uint8_t a
             status = TRUE;
         }
     }
-    
+
     return status;
 }
 
@@ -673,7 +669,7 @@ static inline BOOL vscp_dm_isDecisionMatrixPagedFeature(uint16_t page, uint8_t a
 static inline uint8_t  vscp_dm_readRegisterPagedFeature(uint16_t page, uint8_t addr)
 {
     uint8_t value   = 0;
-    
+
     if (0 == page)
     {
         if (VSCP_DM_PAGED_INDEX == addr)
@@ -693,12 +689,12 @@ static inline uint8_t  vscp_dm_readRegisterPagedFeature(uint16_t page, uint8_t a
             else
             {
                 uint16_t    index   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow) + (uint16_t)rowOffset;
-                
+
                 value = vscp_ps_readDM(index);
             }
         }
     }
-    
+
     return value;
 }
 
@@ -737,12 +733,12 @@ static inline uint8_t   vscp_dm_writeRegisterPagedFeature(uint16_t page, uint8_t
             else
             {
                 uint16_t    index   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow) + (uint16_t)rowOffset;
-                
-                vscp_ps_writeDM(index, value);            
+
+                vscp_ps_writeDM(index, value);
             }
         }
     }
-    
+
     return value;
 }
 
@@ -761,7 +757,7 @@ static inline uint8_t   vscp_dm_writeRegisterPagedFeature(uint16_t page, uint8_t
 static inline BOOL vscp_dm_isDecisionMatrixStd(uint16_t page, uint8_t addr)
 {
     BOOL    status  = FALSE;
-    
+
     /* Decision matrix is not empty? */
     if (0 < VSCP_DM_ROWS)
     {
@@ -801,7 +797,7 @@ static inline BOOL vscp_dm_isDecisionMatrixStd(uint16_t page, uint8_t addr)
             status = TRUE;
         }
     }
-    
+
     return status;
 }
 
@@ -822,10 +818,10 @@ static inline uint8_t  vscp_dm_readRegisterStd(uint16_t page, uint8_t addr)
     if (TRUE == vscp_dm_calculateMatrixIndex(&rowIndex, &rowOffset, page, addr))
     {
         uint16_t    index   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow) + (uint16_t)rowOffset;
-        
-        value = vscp_ps_readDM(index);    
+
+        value = vscp_ps_readDM(index);
     }
-    
+
     return value;
 }
 
@@ -846,10 +842,10 @@ static inline uint8_t   vscp_dm_writeRegisterStd(uint16_t page, uint8_t addr, ui
     if (TRUE == vscp_dm_calculateMatrixIndex(&rowIndex, &rowOffset, page, addr))
     {
         uint16_t    index   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow) + (uint16_t)rowOffset;
-        
-        vscp_ps_writeDM(index, value);                
+
+        vscp_ps_writeDM(index, value);
     }
-    
+
     return value;
 }
 

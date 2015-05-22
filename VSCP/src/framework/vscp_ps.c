@@ -1,19 +1,19 @@
 /* The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 - 2015, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 /*******************************************************************************
@@ -35,9 +35,6 @@
 @section desc Description
 @see vscp_ps.h
 
-@section svn Subversion
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -321,12 +318,12 @@ extern void vscp_ps_writeNodeSubZone(uint8_t value)
 extern uint8_t  vscp_ps_readManufacturerDevId(uint8_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_MANUFACTURER_DEV_ID > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_MANUFACTURER_DEV_ID + index);
     }
-    
+
     return value;
 }
 
@@ -343,7 +340,7 @@ extern void vscp_ps_writeManufacturerDevId(uint8_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_MANUFACTURER_DEV_ID + index, value);
     }
-    
+
     return;
 }
 
@@ -361,12 +358,12 @@ extern void vscp_ps_writeManufacturerDevId(uint8_t index, uint8_t value)
 extern uint8_t  vscp_ps_readManufacturerSubDevId(uint8_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_MANUFACTURER_SUB_DEV_ID > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_MANUFACTURER_SUB_DEV_ID + index);
     }
-    
+
     return value;
 }
 
@@ -383,7 +380,7 @@ extern void vscp_ps_writeManufacturerSubDevId(uint8_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_MANUFACTURER_SUB_DEV_ID + index, value);
     }
-    
+
     return;
 }
 
@@ -400,12 +397,12 @@ extern void vscp_ps_writeManufacturerSubDevId(uint8_t index, uint8_t value)
 extern uint8_t  vscp_ps_readMdfUrl(uint8_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_MDF_URL > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_MDF_URL + index);
     }
-    
+
     return value;
 }
 
@@ -422,7 +419,7 @@ extern void vscp_ps_writeMdfUrl(uint8_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_MDF_URL + index, value);
     }
-    
+
     return;
 }
 
@@ -440,12 +437,12 @@ extern void vscp_ps_writeMdfUrl(uint8_t index, uint8_t value)
 extern uint8_t  vscp_ps_readStdDevFamilyCode(uint8_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_STD_DEV_FAMILY_CODE > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_STD_DEV_FAMILY_CODE + index);
     }
-    
+
     return value;
 }
 
@@ -462,7 +459,7 @@ extern void vscp_ps_writeStdDevFamilyCode(uint8_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_STD_DEV_FAMILY_CODE + index, value);
     }
-    
+
     return;
 }
 
@@ -480,12 +477,12 @@ extern void vscp_ps_writeStdDevFamilyCode(uint8_t index, uint8_t value)
 extern uint8_t  vscp_ps_readStdDevType(uint8_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_STD_DEV_TYPE > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_STD_DEV_TYPE + index);
     }
-    
+
     return value;
 }
 
@@ -502,11 +499,36 @@ extern void vscp_ps_writeStdDevType(uint8_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_STD_DEV_TYPE + index, value);
     }
-    
+
     return;
 }
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_STD_DEV_TYPE_STORAGE_PS ) */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER )
+
+/**
+ * Read the log id (stream id) from persistent memory.
+ *
+ * @return  Log id
+ */
+extern uint8_t  vscp_ps_readLogId(void)
+{
+    return vscp_ps_access_read8(VSCP_PS_ADDR_LOG_ID);
+}
+
+/**
+ * Write the log id (stream id) to persistent memory.
+ *
+ * @param[in]   value   Log id
+ */
+extern void vscp_ps_writeLogId(uint8_t value)
+{
+    vscp_ps_access_write8(VSCP_PS_ADDR_LOG_ID, value);
+    return;
+}
+
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER ) */
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
 
@@ -519,7 +541,7 @@ extern void vscp_ps_writeStdDevType(uint8_t index, uint8_t value)
 extern uint8_t  vscp_ps_readDM(uint16_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_DM > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_DM + index);
@@ -540,7 +562,7 @@ extern void vscp_ps_writeDM(uint16_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_DM + index, value);
     }
-    
+
     return;
 }
 
@@ -555,7 +577,7 @@ extern void vscp_ps_writeDM(uint16_t index, uint8_t value)
 extern uint8_t  vscp_ps_readDMExtension(uint16_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_DM_EXTENSION > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_DM_EXTENSION + index);
@@ -576,7 +598,7 @@ extern void vscp_ps_writeDMExtension(uint16_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_DM_EXTENSION + index, value);
     }
-    
+
     return;
 }
 
@@ -595,7 +617,7 @@ extern void vscp_ps_writeDMExtension(uint16_t index, uint8_t value)
 extern uint8_t  vscp_ps_readDMNextGeneration(uint16_t index)
 {
     uint8_t value   = 0;
-    
+
     if (VSCP_PS_SIZE_DM_NEXT_GENERATION > index)
     {
         value = vscp_ps_access_read8(VSCP_PS_ADDR_DM_NEXT_GENERATION + index);
@@ -616,7 +638,7 @@ extern void vscp_ps_writeDMNextGeneration(uint16_t index, uint8_t value)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_DM_NEXT_GENERATION + index, value);
     }
-    
+
     return;
 }
 

@@ -28,16 +28,16 @@
     DESCRIPTION
 *******************************************************************************/
 /**
-@brief  VSCP class 1 display types
-@file   vscp_type_display.h
+@brief  VSCP class 1 log types
+@file   vscp_type_log.h
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This header contains all level 1 display class defined types.
+This header contains all level 1 log class defined types.
 
 *******************************************************************************/
-/** @defgroup vscp_type_display Display class types
- * Level 1 display class types
+/** @defgroup vscp_type_log Log class types
+ * Level 1 log class types
  * @{
  * @ingroup vscp_l1
  */
@@ -47,8 +47,8 @@ This header contains all level 1 display class defined types.
  * a correct module description.
  */
 
-#ifndef __VSCP_TYPE_DISPLAY_H__
-#define __VSCP_TYPE_DISPLAY_H__
+#ifndef __VSCP_TYPE_LOG_H__
+#define __VSCP_TYPE_LOG_H__
 
 /*******************************************************************************
     INCLUDES
@@ -67,35 +67,20 @@ extern "C"
     CONSTANTS
 *******************************************************************************/
 
-/** VSCP class 1 display type: Undefined */
-#define VSCP_TYPE_DISPLAY_UNDEFINED                     0
+/** VSCP class 1 log type: Undefined */
+#define VSCP_TYPE_LOG_UNDEFINED 0
 
-/** VSCP class 1 display type: Clear display */
-#define VSCP_TYPE_DISPLAY_CLEAR_DISPLAY                 1
+/** VSCP class 1 log type: Log event */
+#define VSCP_TYPE_LOG_LOG_EVENT 1
 
-/** VSCP class 1 display type: Position cursor */
-#define VSCP_TYPE_DISPLAY_POSITION_CURSOR               2
+/** VSCP class 1 log type: Log start */
+#define VSCP_TYPE_LOG_LOG_START 2
 
-/** VSCP class 1 display type: Write display */
-#define VSCP_TYPE_DISPLAY_WRITE_DISPLAY                 3
+/** VSCP class 1 log type: Log stop */
+#define VSCP_TYPE_LOG_LOG_STOP  3
 
-/** VSCP class 1 display type: Undefined */
-#define VSCP_TYPE_DISPLAY_WRITE_DISPLAY_BUFFER          4
-
-/** VSCP class 1 display type: Show display buffer */
-#define VSCP_TYPE_DISPLAY_SHOW_DISPLAY_BUFFER           5
-
-/** VSCP class 1 display type: Set display buffer parameter */
-#define VSCP_TYPE_DISPLAY_SET_DISPLAY_BUFFER_PARAMETER  6
-
-/** VSCP class 1 display type: Show text */
-#define VSCP_TYPE_DISPLAY_SHOW_TEXT                     32
-
-/** VSCP class 1 display type: Set LED */
-#define VSCP_TYPE_DISPLAY_SET_LED                       48
-
-/** VSCP class 1 display type: Set RGB color */
-#define VSCP_TYPE_DISPLAY_SET_RGB_COLOR                 49
+/** VSCP class 1 log type: Log level */
+#define VSCP_TYPE_LOG_LOG_LEVEL 4
 
 /*******************************************************************************
     MACROS
@@ -117,6 +102,6 @@ extern "C"
 }
 #endif
 
-#endif  /* __VSCP_TYPE_DISPLAY_H__ */
+#endif  /* __VSCP_TYPE_LOG_H__ */
 
 /** @} */
