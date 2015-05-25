@@ -523,7 +523,7 @@ extern void vscp_core_startNodeSegmentInit(void)
 {
     /* If the node is already in init state, nothing to do.
      * Otherwise prepare for nickname discovery,
-     * see VSCP v1.10.15, chapter VSCP Level I Specifics,
+     * see VSCP specification, chapter VSCP Level I Specifics,
      * Node segment initialization. Dynamic nodes, Step 1
      */
     if (STATE_INIT != vscp_core_state)
@@ -770,7 +770,7 @@ static inline void  vscp_core_changeToStateInit(void)
 
 /**
  * Handles the init state:
- * - Node segment initialization of dynamic nodes, see VSCP specification v1.10.15,
+ * - Node segment initialization of dynamic nodes, see VSCP specification,
  *   chapter VSCP Level I Specifics, Node segment initialization. Dynamic nodes
  * - Nickname id discovery process
  */
@@ -895,7 +895,7 @@ static inline void  vscp_core_stateInit(void)
                         /* Try next nickname id.
                          * Note that sending a nickname of VSCP_NICKNAME_NOT_INIT,
                          * notifies the segment nodes that this node gave up.
-                         * See VSCP specification v1.10.15, chapter Level I Events,
+                         * See VSCP specification, chapter Level I Events,
                          * CLASS1.PROTOCOL, Type=2 (0x02) New node on line / Probe
                          */
                         ++vscp_core_nickname_probe;
@@ -1240,219 +1240,219 @@ static inline void  vscp_core_handleProtocolClassType(void)
 {
     switch(vscp_core_rxMessage.vscpType)
     {
-    /* VSCP specification v1.10.15, chapter Segment Controller Heartbeat. */
+    /* VSCP specification, chapter Segment Controller Heartbeat. */
     case VSCP_TYPE_PROTOCOL_SEGMENT_CONTROLLER_HEARTBEAT:
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
         vscp_core_handleProtocolHeartbeat();
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
         break;
 
-    /* VSCP specification v1.10.15, chapter New node on line / Probe. */
+    /* VSCP specification, chapter New node on line / Probe. */
     case VSCP_TYPE_PROTOCOL_NEW_NODE_ONLINE:
         vscp_core_handleProtocolNewNodeOnline();
         break;
 
-    /* VSCP specification v1.10.15, chapter Probe ACK. */
+    /* VSCP specification, chapter Probe ACK. */
     case VSCP_TYPE_PROTOCOL_PROBE_ACK:
         vscp_core_handleProtocolProbeAck();
         break;
 
-    /* VSCP specification v1.10.15, chapter Set nickname-ID for node. */
+    /* VSCP specification, chapter Set nickname-ID for node. */
     case VSCP_TYPE_PROTOCOL_SET_NICKNAME_ID:
         vscp_core_handleProtocolSetNicknameId();
         break;
 
-    /* VSCP specification v1.10.15, chapter nickname-ID accepted. */
+    /* VSCP specification, chapter nickname-ID accepted. */
     case VSCP_TYPE_PROTOCOL_NICKNAME_ID_ACCEPTED:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Drop nickname-ID / Reset Device. */
+    /* VSCP specification, chapter Drop nickname-ID / Reset Device. */
     case VSCP_TYPE_PROTOCOL_DROP_NICKNAME_ID:
         vscp_core_handleProtocolDropNicknameId();
         break;
 
-    /* VSCP specification v1.10.15, chapter Read register. */
+    /* VSCP specification, chapter Read register. */
     case VSCP_TYPE_PROTOCOL_READ_REGISTER:
         vscp_core_handleProtocolReadRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Read/Write response. */
+    /* VSCP specification, chapter Read/Write response. */
     case VSCP_TYPE_PROTOCOL_READ_WRITE_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Write register. */
+    /* VSCP specification, chapter Write register. */
     case VSCP_TYPE_PROTOCOL_WRITE_REGISTER:
         vscp_core_handleProtocolWriteRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Enter boot loader mode. */
+    /* VSCP specification, chapter Enter boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE:
         vscp_core_handleProtocolEnterBootLoaderMode();
         break;
 
-    /* VSCP specification v1.10.15, chapter ACK boot loader mode. */
+    /* VSCP specification, chapter ACK boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter NACK boot loader mode. */
+    /* VSCP specification, chapter NACK boot loader mode. */
     case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Start block data transfer. */
+    /* VSCP specification, chapter Start block data transfer. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Block data. */
+    /* VSCP specification, chapter Block data. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter ACK data block. */
+    /* VSCP specification, chapter ACK data block. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter NACK data block. */
+    /* VSCP specification, chapter NACK data block. */
     case VSCP_TYPE_PROTOCOL_BLOCK_DATA_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Program data block */
+    /* VSCP specification, chapter Program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter ACK program data block */
+    /* VSCP specification, chapter ACK program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter NACK program data block */
+    /* VSCP specification, chapter NACK program data block */
     case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Activate new image */
+    /* VSCP specification, chapter Activate new image */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter GUID drop nickname-ID / reset device. */
+    /* VSCP specification, chapter GUID drop nickname-ID / reset device. */
     case VSCP_TYPE_PROTOCOL_GUID_DROP_NICKNAME_ID:
         vscp_core_handleProtocolGuidDropNickname();
         break;
 
-    /* VSCP specification v1.10.15, chapter Page read. */
+    /* VSCP specification, chapter Page read. */
     case VSCP_TYPE_PROTOCOL_PAGE_READ:
         vscp_core_handleProtocolPageRead();
         break;
 
-    /* VSCP specification v1.10.15, chapter Page write. */
+    /* VSCP specification, chapter Page write. */
     case VSCP_TYPE_PROTOCOL_PAGE_WRITE:
         vscp_core_handleProtocolPageWrite();
         break;
 
-    /* VSCP specification v1.10.15, chapter Read/Write page response. */
+    /* VSCP specification, chapter Read/Write page response. */
     case VSCP_TYPE_PROTOCOL_PAGE_READ_WRITE_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter High end server probe. */
+    /* VSCP specification, chapter High end server probe. */
     case VSCP_TYPE_PROTOCOL_HIGH_END_SERVER_PROBE:
         /* Not mandatory, not supported */
         break;
 
-    /* VSCP specification v1.10.15, chapter High end server response. */
+    /* VSCP specification, chapter High end server response. */
     case VSCP_TYPE_PROTOCOL_HIGH_END_SERVER_RESPONSE:
         /* Not mandatory, not supported */
         break;
 
-    /* VSCP specification v1.10.15, chapter Increment register. */
+    /* VSCP specification, chapter Increment register. */
     case VSCP_TYPE_PROTOCOL_INCREMENT_REGISTER:
         vscp_core_handleProtocolIncrementRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Decrement register. */
+    /* VSCP specification, chapter Decrement register. */
     case VSCP_TYPE_PROTOCOL_DECREMENT_REGISTER:
         vscp_core_handleProtocolDecrementRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Who is there? */
+    /* VSCP specification, chapter Who is there? */
     case VSCP_TYPE_PROTOCOL_WHO_IS_THERE:
         vscp_core_handleProtocolWhoIsThere();
         break;
 
-    /* VSCP specification v1.10.15, chapter Who is there response. */
+    /* VSCP specification, chapter Who is there response. */
     case VSCP_TYPE_PROTOCOL_WHO_IS_THERE_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Get decision matrix info. */
+    /* VSCP specification, chapter Get decision matrix info. */
     case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO:
         vscp_core_handleProtocolGetDecisionMatrixInfo();
         break;
 
-    /* VSCP specification v1.10.15, chapter Get decision matrix info. */
+    /* VSCP specification, chapter Get decision matrix info. */
     case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Get embedded MDF. */
+    /* VSCP specification, chapter Get embedded MDF. */
     case VSCP_TYPE_PROTOCOL_GET_EMBEDDED_MDF:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Get embedded MDF response. */
+    /* VSCP specification, chapter Get embedded MDF response. */
     case VSCP_TYPE_PROTOCOL_GET_EMBEDDED_MDF_RESPONSE:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Extended page read register. */
+    /* VSCP specification, chapter Extended page read register. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_REGISTER:
         vscp_core_handleProtocolExtendedPageReadRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Extended page write register. */
+    /* VSCP specification, chapter Extended page write register. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_WRITE_REGISTER:
         vscp_core_handleProtocolExtendedPageWriteRegister();
         break;
 
-    /* VSCP specification v1.10.15, chapter Extended page read write response. */
+    /* VSCP specification, chapter Extended page read write response. */
     case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Get event interest. */
+    /* VSCP specification, chapter Get event interest. */
     case VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Get event interest response. */
+    /* VSCP specification, chapter Get event interest response. */
     case VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST_RESPONSE:
         /* Optional and not supported yet. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Activate new image ACK. */
+    /* VSCP specification, chapter Activate new image ACK. */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Activate new image NACK. */
+    /* VSCP specification, chapter Activate new image NACK. */
     case VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Start block data transfer ACK. */
+    /* VSCP specification, chapter Start block data transfer ACK. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
-    /* VSCP specification v1.10.15, chapter Start block data transfer NACK. */
+    /* VSCP specification, chapter Start block data transfer NACK. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_NACK:
         /* Boot loader specific event. Not supported. */
         break;

@@ -35,10 +35,6 @@
 @section desc Description
 @see VSCP.h
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 
 /*******************************************************************************
@@ -88,6 +84,8 @@ VSCP::VSCP() :
     mIsInitialized(false),                  /* Call setup() later */
     mStatusLampPin(0),                      /* Status Lamp pin */
     mInitButtonPin(0),                      /* Segment initialization button pin */
+    mInitButton(),                          /* Default constructor init button debouncer */
+    mLastInitButtonState(HIGH),             /* Last init button state */
     mStatusLampState(VSCP_LAMP_STATE_OFF),  /* Status lamp startup state is off */
     mStatusLampFastPeriod(250),             /* 250 ms fast status lamp blinking period */
     mStatusLampSlowPeriod(1000),            /* 1 s slow status lamp blinking period */
@@ -122,6 +120,7 @@ void VSCP::setup(
     
     mStatusLampPin = statusLampPin;
     mInitButtonPin = initButtonPin;
+    mInitButton.setup(mInitButtonPin);
        
     /* Initialize the VSCP core and the user specific stuff. */
     (void)vscp_core_init();
@@ -181,9 +180,18 @@ void VSCP::process(void)
         processStatusLamp();
         
         /* Handle segment initialization button */
-        if (LOW == digitalRead(mInitButtonPin))
+        if (LOW == mInitButton.read())
         {
-            vscp_core_startNodeSegmentInit();
+            if (HIGH == mLastInitButtonState)
+            {
+                vscp_core_startNodeSegmentInit();
+            }
+            
+            mLastInitButtonState = LOW;
+        }
+        else
+        {
+            mLastInitButtonState = HIGH;
         }
     }
     
@@ -280,22 +288,28 @@ void VSCP::processStatusLamp(void)
     {
         mStatusLampState = statusLampState;
         
+        
+        
         switch(mStatusLampState)
         {
         case VSCP_LAMP_STATE_OFF:
             digitalWrite(mStatusLampPin, LOW);
+            Serial.println("Off");
             break;
 
         case VSCP_LAMP_STATE_ON:
             digitalWrite(mStatusLampPin, HIGH);
+            Serial.println("On");
             break;
 
         case VSCP_LAMP_STATE_BLINK_SLOW:
             mStatusLampTimer.start(mStatusLampSlowPeriod, false);
+            Serial.println("Slow");
             break;
 
         case VSCP_LAMP_STATE_BLINK_FAST:
             mStatusLampTimer.start(mStatusLampFastPeriod, false);
+            Serial.println("Fast");
             break;
 
         default:

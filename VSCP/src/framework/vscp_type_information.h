@@ -244,17 +244,35 @@ extern "C"
 /** VSCP class 1 information type: Calculated noon */
 #define VSCP_TYPE_INFORMATION_CALCULATED_NOON                       58
 
-/** VSCP class 1 information type: Up */
-#define VSCP_TYPE_INFORMATION_UP                                    59
+/** VSCP class 1 information type: Shutter up */
+#define VSCP_TYPE_INFORMATION_SHUTTER_UP                            59
 
-/** VSCP class 1 information type: Down */
-#define VSCP_TYPE_INFORMATION_DOWN                                  60
+/** VSCP class 1 information type: Shutter down */
+#define VSCP_TYPE_INFORMATION_SHUTTER_DOWN                          60
 
-/** VSCP class 1 information type: Top */
-#define VSCP_TYPE_INFORMATION_TOP                                   61
+/** VSCP class 1 information type: Shutter left */
+#define VSCP_TYPE_INFORMATION_SHUTTER_LEFT                          61
 
-/** VSCP class 1 information type: Bottom */
-#define VSCP_TYPE_INFORMATION_BOTTOM                                62
+/** VSCP class 1 information type: Shutter right */
+#define VSCP_TYPE_INFORMATION_SHUTTER_RIGHT                         62
+
+/** VSCP class 1 information type: Shutter reached top end */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_TOP_END               63
+
+/** VSCP class 1 information type: Shutter reached bottom end */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_BOTTOM_END            64
+
+/** VSCP class 1 information type: Shutter reached middle end */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_MIDDLE_END            65
+
+/** VSCP class 1 information type: Shutter reached preset end */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_PRESET_END            66
+
+/** VSCP class 1 information type: Shutter reached preset left */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_PRESET_LEFT           67
+
+/** VSCP class 1 information type: Shutter reached preset right */
+#define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_PRESET_RIGHT          68
 
 /*******************************************************************************
     MACROS

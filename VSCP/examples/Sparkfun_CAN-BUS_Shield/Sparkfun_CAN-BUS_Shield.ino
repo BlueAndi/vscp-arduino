@@ -169,8 +169,8 @@ void setup() {
       
     // Setup VSCP framework
     vscp.setup(
-      13,             // Status lamp pin
-      12,             // Init button pin
+      8,              // Status lamp pin
+      7,              // Init button pin
       nodeGuid,       // Node GUID,
       255,            // Node zone (255 = all zones)
       255,            // Node sub-zone (255 = all sub-zones)

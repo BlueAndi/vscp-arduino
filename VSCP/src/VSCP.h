@@ -35,10 +35,6 @@
 @section desc Description
 This module provides a C++ wrapper for the VSCP framework.
 
-@section svn Subversion
-$Author: amerkle $
-$Rev: 449 $
-$Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 *******************************************************************************/
 /** @defgroup vscpFramework VSCP framework class
  * C++ wrapper for the VSCP framework.
@@ -62,6 +58,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 #include "WProgram.h"
 #endif  /* (100 > ARDUINO) */
 
+#include "DigInDebounce.h"
 #include "SwTimer.h"
 #include "framework/vscp_platform.h"
 #include "framework/vscp_types.h"
@@ -72,6 +69,7 @@ $Date: 2015-01-05 20:23:52 +0100 (Mo, 05 Jan 2015) $
 #include "framework/vscp_type_control.h"
 #include "framework/vscp_type_display.h"
 #include "framework/vscp_type_information.h"
+#include "framework/vscp_type_log.h"
 #include "framework/vscp_type_measurement.h"
 #include "framework/vscp_type_measurezone.h"
 #include "framework/vscp_type_phone.h"
@@ -249,6 +247,8 @@ private:
     
     int                 mStatusLampPin;         /**< Status lamp pin */
     int                 mInitButtonPin;         /**< Segment initialization button pin */
+    DigInDebounce       mInitButton;            /**< Debounced init button state */
+    int                 mLastInitButtonState;   /**< Last init button state */
         
     VSCP_LAMP_STATE     mStatusLampState;       /**< Current state of the status lamp */
     const unsigned int  mStatusLampFastPeriod;  /**< Fast status lamp blinking periode in ms */
