@@ -10,6 +10,8 @@ VSCP	KEYWORD1
 VSCPGuid	KEYWORD1
 vscp_RxMessage	KEYWORD1
 vscp_TxMessage	KEYWORD1
+SwTimer	KEYWORD1
+DigInDebounce	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
