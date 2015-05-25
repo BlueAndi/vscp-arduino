@@ -94,6 +94,7 @@ public:
         mPin(pin),
         mState(HIGH),
         mLastReadState(HIGH),
+        mLastDebounceTime(0),
         mcDebounceDelay(50)
     {
     }
