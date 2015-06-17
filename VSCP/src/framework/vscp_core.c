@@ -114,7 +114,7 @@ typedef struct
 {
     uint16_t    page;   /**< Page */
     uint8_t     addr;   /**< Address (offset in page) */
-    uint8_t     count;  /**< Number of registers to read */
+    uint16_t    count;  /**< Number of registers to read */
     uint8_t     seq;    /**< Sequence id */
 
 } ExtPageRead;
@@ -2646,10 +2646,10 @@ static inline void  vscp_core_handleProtocolExtendedPageReadRegister(void)
             {
                 vscp_core_extPageReadData.count = vscp_core_rxMessage.data[4];
 
-                /* Read at least one register */
+                /* Shall 256 registers be read? */
                 if (0 == vscp_core_extPageReadData.count)
                 {
-                    vscp_core_extPageReadData.count = 1;
+                    vscp_core_extPageReadData.count = 256;
                 }
             }
             else
@@ -2682,13 +2682,13 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
         vscp_TxMessage  txMessage;
         uint8_t         index       = 0;
         uint8_t         addr        = data->addr;
-        uint8_t         count       = data->count;
+        uint16_t        count       = data->count;
         BOOL            nextPage    = FALSE;
 
         /* Prepare tx message */
         txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
         txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE;
-        txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
+        txMessage.priority  = VSCP_PRIORITY_7_LOW;
         txMessage.oAddr     = vscp_core_nickname;
         txMessage.hardCoded = VSCP_CORE_HARD_CODED;
 
