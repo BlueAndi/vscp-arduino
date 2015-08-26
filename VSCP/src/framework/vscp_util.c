@@ -126,6 +126,10 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
         case VSCP_CLASS_L1_WEATHER:
             /*@fallthrough@*/
         case VSCP_CLASS_L1_WEATHER_FORECAST:
+            /*@fallthrough@*/
+        case VSCP_CLASS_L1_DIAGNOSTIC:
+            /*@fallthrough@*/
+        case VSCP_CLASS_L1_ERROR:
             zoneIndex = 1;
             break;
 

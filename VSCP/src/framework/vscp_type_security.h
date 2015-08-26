@@ -127,6 +127,9 @@ extern "C"
 /** VSCP class 1 security type: Harmful sound levels detected */
 #define VSCP_TYPE_SECURITY_HARMFUL_SOUND_LEVELS_DETECTED    19
 
+/** VSCP class 1 security type: Tamper detected */
+#define VSCP_TYPE_SECURITY_TAMPER_DETECTED                  20
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

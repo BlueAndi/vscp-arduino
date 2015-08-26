@@ -135,6 +135,12 @@ extern "C"
 /** VSCP level 1 class over level 2: Wireless */
 #define VSCP_CLASS_L1_L2_WIRELESS            (VSCP_CLASS_L1_L2_BASE + 212)
 
+/** VSCP level 1 class over level 2: Diagnostic */
+#define VSCP_CLASS_L1_L2_DIAGNOSTIC          (VSCP_CLASS_L1_L2_BASE + 506)
+
+/** VSCP level 1 class over level 2: Error */
+#define VSCP_CLASS_L1_L2_ERROR               (VSCP_CLASS_L1_L2_BASE + 508)
+
 /** VSCP level 1 class over level 2: Logging i/f */
 #define VSCP_CLASS_L1_L2_LOG                 (VSCP_CLASS_L1_L2_BASE + 509)
 

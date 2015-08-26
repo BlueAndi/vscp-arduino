@@ -128,6 +128,12 @@ extern "C"
 /** VSCP level 1 class: Wireless */
 #define VSCP_CLASS_L1_WIRELESS              212
 
+/** VSCP level 1 class: Diagnostic */
+#define VSCP_CLASS_L1_DIAGNOSTIC            506
+
+/** VSCP level 1 class: Error */
+#define VSCP_CLASS_L1_ERROR                 508
+
 /** VSCP level 1 class: Logging i/f */
 #define VSCP_CLASS_L1_LOG                   509
 
