@@ -1,4 +1,4 @@
-## 0.3.0 (unreleased)
+## 0.3.0
 
 - DigInDebounce class for digital input debouncing implemented.
 - Update to VSCP framework v0.4.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/blob/v0.4.0/CHANGELOG.md) there.
