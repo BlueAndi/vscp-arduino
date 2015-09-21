@@ -8,9 +8,8 @@
 3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-arduino#how-to-send-a-vscp-event)
 4. [Examples](https://github.com/BlueAndi/vscp-arduino#examples)
 5. [FAQ](https://github.com/BlueAndi/vscp-arduino#faq)
-6. [Mailing list](https://github.com/BlueAndi/vscp-arduino#mailing-list)
-7. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
-8. [License](https://github.com/BlueAndi/vscp-arduino#license)
+6. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
+7. [License](https://github.com/BlueAndi/vscp-arduino#license)
 
 ##VSCP
 
@@ -122,10 +121,6 @@ Enable it in the configuration VSCP/src/framework/vscp_config_overwrite.h via
 ```
 #define VSCP_CONFIG_SILENT_NODE VSCP_CONFIG_BASE_ENABLED
 ```
-
-##Mailing list
-
-Are you interesting? Join us on the mailing list: https://groups.google.com/forum/#!forum/vscp
 
 ##Issues, Ideas and bugs
 
