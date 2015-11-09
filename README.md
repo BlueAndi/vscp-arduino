@@ -91,6 +91,13 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 Follow the following installation instruction for libraries here: https://www.arduino.cc/en/Guide/Libraries#toc5
 
+### How to use the VSCP-framework in the code?
+
+Please take a look to the provided examples because they guide you through all necessary things like
+- Create a VSCP instance ```VSCP vscp;```.
+- Calling the setup() method with some important parameters.
+- And etc.
+
 ### Where to find all the VSCP class defines and their corresponding types?
 
 You will find the class defines here:
