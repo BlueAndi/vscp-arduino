@@ -87,6 +87,9 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
         ... = rxMsg->data[index];
     }
     
+    // Implement a retry mechanism here as well
+    ...
+    
   */
   
   return false;

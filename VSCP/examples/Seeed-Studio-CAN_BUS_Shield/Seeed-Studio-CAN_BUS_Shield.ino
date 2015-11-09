@@ -71,6 +71,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
   
   bool          status    = false;
   unsigned long canMsgId  = 0;
+  unsigned char retryCnt  = 0;
   
   canMsgId = (((uint32_t)txMsg->priority)  << 26) |
              (((uint32_t)txMsg->hardCoded) << 25) |
@@ -78,10 +79,26 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
              (((uint32_t)txMsg->vscpType)  <<  8) |
              txMsg->oAddr;
   
-  if (CAN_OK == canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataNum, (unsigned char*)txMsg->data)) {
+  do {
+    
+    // Before any retry, wait some time
+    if (0 < retryCnt)
+    {
+      delay(100);
+    }
+    
+    // Send CAN message
+    if (CAN_OK != canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataNum, (unsigned char*)txMsg->data)) {
+      
+      // CAN message couldn't be sent, try again.
+      ++retryCnt;
+    }
+    // Successl sent
+    else {
+      status = true;
+    }
   
-    status = true;
-  }
+  } while((false == status) && (0 < retryCnt));
   
   return status;
 }

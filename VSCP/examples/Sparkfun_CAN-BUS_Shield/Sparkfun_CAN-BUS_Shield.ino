@@ -79,9 +79,10 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
 // If it fails to send the message return false, otherwise true.
 bool transportWrite(vscp_TxMessage const * const txMsg) {
   
-  bool          status  = false;
+  bool          status    = false;
   CANMSG        canMsg;
-  unsigned char index   = 0;
+  unsigned char index     = 0;
+  unsigned char retryCnt  = 0;
   
   canMsg.isExtendedAdrs = true;
   
@@ -99,8 +100,29 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
   
     canMsg.data[index] = txMsg->data[index];
   }
+  
+  do {
     
-  return MCP2515::transmitCANMessage(canMsg, 10);
+    // Before any retry, wait some time
+    if (0 < retryCnt)
+    {
+      delay(100);
+    }
+    
+    // Send CAN message
+    if (false == MCP2515::transmitCANMessage(canMsg, 10)) {
+      
+      // CAN message couldn't be sent, try again.
+      ++retryCnt;
+    }
+    // Successl sent
+    else {
+      status = true;
+    }
+  
+  } while((false == status) && (0 < retryCnt));
+    
+  return status;
 }
 
 // Execute a action which was triggered by the decision matrix
