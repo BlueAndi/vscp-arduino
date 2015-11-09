@@ -1,3 +1,9 @@
+## 0.4.0 (unreleased)
+
+- Update to VSCP framework v0.5.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/blob/v0.5.0/CHANGELOG.md) there.
+- Seeed-Studio-CAN_BUS_Shield example got a retry mechanism in the send routine.
+- Sparkfun_CAN-BUS_Shield example got a retry mechanism in the send routine.
+
 ## 0.3.0
 
 - DigInDebounce class for digital input debouncing implemented.

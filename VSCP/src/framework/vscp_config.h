@@ -112,8 +112,8 @@ extern "C"
 
 #ifndef VSCP_CONFIG_HEARTBEAT_NODE
 
-/** Enable sending node heartbeat. */
-#define VSCP_CONFIG_HEARTBEAT_NODE              VSCP_CONFIG_BASE_DISABLED
+/** Enable sending node heartbeat (mandatory since 2015-09-10). */
+#define VSCP_CONFIG_HEARTBEAT_NODE              VSCP_CONFIG_BASE_ENABLED
 
 #endif  /* Undefined VSCP_CONFIG_HEARTBEAT_NODE */
 
@@ -224,8 +224,8 @@ extern "C"
 
 #ifndef VSCP_CONFIG_HEARTBEAT_NODE_PERIOD
 
-/** Node heartbeat period in ms. */
-#define VSCP_CONFIG_HEARTBEAT_NODE_PERIOD       ((uint16_t)1000)
+/** Node heartbeat period in ms (recommended 30s - 60s). */
+#define VSCP_CONFIG_HEARTBEAT_NODE_PERIOD       ((uint16_t)30000)
 
 #endif  /* Undefined VSCP_CONFIG_HEARTBEAT_NODE_PERIOD */
 

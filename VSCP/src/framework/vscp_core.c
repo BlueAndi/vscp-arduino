@@ -1606,52 +1606,58 @@ static inline void  vscp_core_handleProtocolDropNicknameId(void)
                 vscp_core_changeToStateReset(0);
             }
             /* Additional flags received? */
-            else if (2 <= vscp_core_rxMessage.dataNum)
+            else if ((2 == vscp_core_rxMessage.dataNum) ||
+                     (3 == vscp_core_rxMessage.dataNum))
             {
-                /* Clear the nickname? */
-                if (0 == (vscp_core_rxMessage.data[1] & 0x20))
+                uint8_t waitTime    = 0;
+            
+                /* Wait time received? */
+                if (3 == vscp_core_rxMessage.dataNum)
                 {
-                    vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
+                    waitTime = vscp_core_rxMessage.data[2];
                 }
-
-                /* Set persistent memory to default? */
-                if (0 != (vscp_core_rxMessage.data[1] & 0x40))
+                    
+                /* Byte 1:
+                 * Bit 5 - Reset device. Keep nickname.
+                 * Bit 6 - Set persistent storage to default.
+                 * Bit 7 - Go idle. Do not start up again.
+                 */
+            
+                /* Set persistent memory to default (bit 6)? */
+                if (0 != (vscp_core_rxMessage.data[1] & (1 << 6)))
                 {
-                    /* Backup nickname */
+                    /* Backup nickname, because restore factory settings will clear it. */
                     uint8_t nicknameBackup  = vscp_core_nickname;
 
                     /* Set defaults to persistent memory. */
                     vscp_core_restoreFactoryDefaultSettings();
 
-                    /* Keep nickname? */
-                    if (0 != (vscp_core_rxMessage.data[1] & 0x20))
+                    /* Restore nickname? */
+                    if (0 != (vscp_core_rxMessage.data[1] & (1 << 5)))
                     {
                         /* Restore nickname */
                         vscp_core_writeNicknameId(nicknameBackup);
                     }
                 }
 
-                /* Reset device?
+                /* Reset device (bit 5)?
                  * Note that "reset device" has a higher priority than "go idle".
                  * There is no exact description in the specification yet.
                  */
-                if ((0 != (vscp_core_rxMessage.data[1] & 0x20)) ||
-                    (0 == (vscp_core_rxMessage.data[1] & 0x80)))
+                if (0 != (vscp_core_rxMessage.data[1] & (1 << 5)))
                 {
-                    /* Wait time received? */
-                    if (3 == vscp_core_rxMessage.dataNum)
-                    {
-                        vscp_core_changeToStateReset(vscp_core_rxMessage.data[2]);
-                    }
-                    else
-                    {
-                        vscp_core_changeToStateReset(0);
-                    }
+                    vscp_core_changeToStateReset(waitTime);
                 }
-                /* Change to idle state? */
-                else if (0 != (vscp_core_rxMessage.data[1] & 0x80))
+                /* Change to idle state (bit 7)? */
+                else if (0 != (vscp_core_rxMessage.data[1] & (1 << 7)))
                 {
+                    vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
                     vscp_core_changeToStateIdle();
+                }
+                else
+                {
+                    vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
+                    vscp_core_changeToStateReset(waitTime);
                 }
             }
         }
