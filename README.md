@@ -124,7 +124,7 @@ Enable it in the configuration VSCP/src/framework/vscp_config_overwrite.h via
 
 ##Issues, Ideas and bugs
 
-If you have further ideas or you found some bugs, great! Create a [issue](https://github.com/BlueAndi/vscp-framework/issues) or if
+If you have further ideas or you found some bugs, great! Create a [issue](https://github.com/BlueAndi/vscp-arduino/issues) or if
 you are able and willing to fix it by yourself, clone the repository and create a pull request.
 
 ##License
