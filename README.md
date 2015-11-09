@@ -87,6 +87,10 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 ##FAQ
 
+### How to install it?
+
+Follow the following installation instruction for libraries here: https://www.arduino.cc/en/Guide/Libraries#toc5
+
 ### Where to find all the VSCP class defines and their corresponding types?
 
 You will find the class defines here:
