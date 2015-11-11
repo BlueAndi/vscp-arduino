@@ -1,4 +1,4 @@
-## 0.4.0 (unreleased)
+## 0.4.0
 
 - Update to VSCP framework v0.5.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.5.0) there.
 - Seeed-Studio-CAN_BUS_Shield example got a retry mechanism in the send routine.
