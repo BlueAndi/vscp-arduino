@@ -6,10 +6,12 @@
 1. [VSCP](https://github.com/BlueAndi/vscp-arduino#vscp)
 2. [Library](https://github.com/BlueAndi/vscp-arduino#library)
 3. [How to send a VSCP event?](https://github.com/BlueAndi/vscp-arduino#how-to-send-a-vscp-event)
-4. [Examples](https://github.com/BlueAndi/vscp-arduino#examples)
-5. [FAQ](https://github.com/BlueAndi/vscp-arduino#faq)
-6. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
-7. [License](https://github.com/BlueAndi/vscp-arduino#license)
+4. [MDF](https://github.com/BlueAndi/vscp-arduino#mdf)
+5. [Decision Matrix](https://github.com/BlueAndi/vscp-arduino#decision-matrix)
+6. [Examples](https://github.com/BlueAndi/vscp-arduino#examples)
+7. [FAQ](https://github.com/BlueAndi/vscp-arduino#faq)
+8. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
+9. [License](https://github.com/BlueAndi/vscp-arduino#license)
 
 ##VSCP
 
@@ -56,6 +58,24 @@ txMsg.dataNum = 3;
 ```
 vscp.write(txMsg);
 ```
+
+##MDF
+
+You will find a template for the module description file here: https://github.com/BlueAndi/vscp-arduino/mdf_template.xml
+How to use it, please take a look to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php?id=module_description_file).
+
+##Decision Matrix
+
+By default the decision matrix is enabled at page 1, offset 0 and provides about 10 rows.
+If you need more rows, please change them in the
+```
+vscp_config_overwrite.h
+```
+by defining
+```
+#define VSCP_CONFIG_DM_ROWS 20
+```
+with the number of rows at the end.
 
 ##Examples
 

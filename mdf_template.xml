@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+
+The MIT License (MIT)
+
+Copyright (c) 2014 - 2015, Andreas Merkle
+http://www.blue-andi.de
+vscp@blue-andi.de
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+********************************************************************************
+Module description file (MDF) template
+
+********************************************************************************
+-->
+
+<vscp xmlns="http://www.blue-andi.de/vscp/mdf/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blue-andi.de/vscp/mdf/1.0 mdf.xsd ">
+
+    <module>
+
+        <name>Arduino board</name>
+        <model>A</model>
+        <version>0.1.0</version>
+        <changed>2015-11-16</changed>
+        <description lang="en">The arduino board ...</description>
+        <infourl></infourl>
+
+        <!-- Max package size a node can receive -->
+        <buffersize>8</buffersize>
+
+        <!-- Manufacturer -->
+        <manufacturer>
+            <name>Peter Parker</name>
+            <address>
+                <street>Chrystie Street 187</street>
+                <city>Manhattan</city>
+                <postcode></postcode>
+                <country>USA</country>
+            </address>
+            <telephone>
+                <number>...</number>
+                <description lang="en" >...</description>
+            </telephone>
+            <email>
+                <address>.../address>
+                <description lang="en">Support email</description>
+            </email>
+            <web>
+                <address>http://</address>
+                <description lang="en">Main web address</description>
+            </web>
+        </manufacturer>
+
+        <!-- Boot loader information -->
+        <boot>
+            <algorithm>255</algorithm>
+            <blocksize>0</blocksize>
+            <blockcount>0</blockcount>
+        </boot>
+
+        <!-- Register space -->
+        <registers>
+
+            <!-- ********** Page 0 ********** -->
+            
+            <!-- ********** Page 1 ********** -->
+            
+            <!-- Used by decision matrix (standard) -->
+            
+            <!-- ********** Page 2 ********** -->
+            
+            <!-- If enabled, used by decision matrix NG -->
+            
+        </registers>
+
+        <abstractions>
+
+        <!-- ********** Page 0 ********** -->
+
+            <abstraction id="0" type="uint8_t" default="0" page="0" offset="0">
+
+            <!-- ********** Page 1 ********** -->
+            
+            <!-- Used by decision matrix (standard) -->
+            
+            <!-- ********** Page 2 ********** -->
+            
+            <!-- If enabled, used by decision matrix NG -->
+            
+        </abstractions>
+
+        <alarm>
+
+            <bit pos="7">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="6">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="5">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="4">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="3">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="2">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="1">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+            <bit pos="0">
+                <name lang="en">Not used</name>
+                <description lang="en">Not used.</description>
+            </bit>
+
+        </alarm>
+
+        <!-- Decison matrix -->
+        <dmatrix>
+
+            <level>1</level>
+            <start page="1" offset="0" indexed="false" />
+            <rowcnt>10</rowcnt>
+
+            <action code="0x00">
+                <name lang="en">No operation</name>
+                <description lang="en">This action does nothing.</description>
+                <param>
+                    <name></name>
+                    <description lang="en"></description>
+                    <data offset="1">
+                        <name></name>
+                        <description lang="en"></description>
+                    </data>
+                </param>
+            </action>
+
+        </dmatrix>
+
+        <events>
+
+            <event class="20" type="9">
+                <name lang="en">Node heartbeat</name>
+                <description lang="en">The node sends every second a heartbeat.</description>
+                <priority>7</priority>
+                <data offset="0">
+                    <name lang="en">Not used</name>
+                    <description lang="en">Not used</description>
+                </data>
+                <data offset="1" >
+                    <name lang="en">Zone</name>
+                    <description lang="en">Zone of the node.</description>
+                </data>
+                <data offset="2" >
+                    <name lang="en">Sub-zone</name>
+                    <description lang="en">Sub-zone of the node.</description>
+                </data>
+            </event>
+
+        </events>
+
+        <setup>
+        </setup>
+        
+    </module>
+
+</vscp>
