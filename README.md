@@ -61,7 +61,9 @@ vscp.write(txMsg);
 
 ##MDF
 
-You will find a template for the module description file here: https://github.com/BlueAndi/vscp-arduino/mdf_template.xml
+You will find a template for the module description file here: https://github.com/BlueAndi/vscp-arduino/blob/master/mdf_template.xml
+
+
 How to use it, please take a look to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php?id=module_description_file).
 
 ##Decision Matrix
