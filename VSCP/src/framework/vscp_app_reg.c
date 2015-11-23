@@ -107,7 +107,8 @@ extern uint8_t  vscp_app_reg_getPagesUsed(void)
 {
     uint8_t pagesUsed   = 1;    /* At least one page, which is mandatory. */
 
-    /* Implement your code here ... */
+    // Decision matrix at page 1
+    ++pagesUsed;
 
     return pagesUsed;
 }
