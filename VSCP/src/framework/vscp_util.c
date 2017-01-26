@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2016, Andreas Merkle
+ * Copyright (c) 2014 - 2017, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
