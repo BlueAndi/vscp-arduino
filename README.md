@@ -1,4 +1,4 @@
-#VSCP L1 arduino library
+# VSCP L1 arduino library
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
 [![Release](https://img.shields.io/github/release/BlueAndi/vscp-arduino.svg)](https://github.com/BlueAndi/vscp-arduino/releases)
@@ -13,7 +13,7 @@
 8. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
 9. [License](https://github.com/BlueAndi/vscp-arduino#license)
 
-##VSCP
+## VSCP
 
 ![VSCP logo](http://vscp.org/images/vscp_logo.jpg)
 
@@ -21,7 +21,7 @@ The Very Simple Control Protocol (VSCP), an open and free protocol for IoT/m2m a
 
 More information can be found on the main site http://www.vscp.org
 
-##Library
+## Library
 This is a arduino library of the VSCP software framework for level 1 devices.
 It provides several layers according to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php).
 
@@ -29,22 +29,22 @@ Recommended is to connect a LED, which shows the node state.
 
 Mandatory is to connect a push button, used to start the node nickname discovery. Similar as shown in the Seeed-Studio CAN-BUS Shield example.
 
-##How to send a VSCP event?
+## How to send a VSCP event?
 
-###Define a transmit message
+### Define a transmit message
 
 ```
 vscp_TxMessage  txMsg;
 ```
 
-###Prepare the transmit message
+### Prepare the transmit message
 That means to add the node nickname, the hardcoded flag, the class, the type and the priority.
 
 ```
 vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
 ```
 
-###Add the class and type specific data.
+### Add the class and type specific data.
 
 ```
 txMsg.data[0] = 1;  // Index
@@ -53,20 +53,20 @@ txMsg.data[2] = 0;  // Sub zone
 txMsg.dataNum = 3;
 ```
 
-###Send the event.
+### Send the event.
 
 ```
 vscp.write(txMsg);
 ```
 
-##MDF
+## MDF
 
 You will find a template for the module description file here: https://github.com/BlueAndi/vscp-arduino/blob/master/mdf_template.xml
 
 
 How to use it, please take a look to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php?id=module_description_file).
 
-##Decision Matrix
+## Decision Matrix
 
 By default the decision matrix is enabled at page 1, offset 0 and provides about 10 rows.
 If you need more rows, please change them in the
@@ -79,13 +79,13 @@ by defining
 ```
 with the number of rows at the end.
 
-##Examples
+## Examples
 
-###Generic
+### Generic
 
 The generic example shows the basic integration of the VSCP arduino library.
 
-###Seeed-Studio CAN BUS Shield
+### Seeed-Studio CAN BUS Shield
 
 This example assume that the CAN BUS Shield from Seeed-Studio is used, as well as the corresponding CAN controller library.
 
@@ -97,7 +97,7 @@ This example assume that the CAN BUS Shield from Seeed-Studio is used, as well a
 Notes:
 - If you use the CAN terminal instead of the sub-d, don't forget to wire GND too! It may work over a short distance, but no guarantee.
 
-###Sparkfun CAN-BUS Shield
+### Sparkfun CAN-BUS Shield
 
 This example assume that the CAN-BUS Shield from Sparkfun is used.
 Because they provide no arduino library, the MCP2515 library from Frank Kienast is used.
@@ -107,7 +107,7 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 ![Connection to Sparkfun CAN BUS Shield](sparkfun_can_bus_shield.jpg)
 
-##FAQ
+## FAQ
 
 ### How to install it?
 
@@ -155,10 +155,10 @@ Enable it in the configuration VSCP/src/framework/vscp_config_overwrite.h via
 #define VSCP_CONFIG_SILENT_NODE VSCP_CONFIG_BASE_ENABLED
 ```
 
-##Issues, Ideas and bugs
+## Issues, Ideas and bugs
 
 If you have further ideas or you found some bugs, great! Create a [issue](https://github.com/BlueAndi/vscp-arduino/issues) or if
 you are able and willing to fix it by yourself, clone the repository and create a pull request.
 
-##License
+## License
 The whole source code is published under the [MIT license](http://choosealicense.com/licenses/mit/).
