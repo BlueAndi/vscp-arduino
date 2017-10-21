@@ -187,6 +187,12 @@ extern "C"
 /** VSCP class 1 control type: Move shutter to preset position */
 #define VSCP_TYPE_CONTROL_MOVE_SHUTTER_PRESET_POS   39
 
+/** VSCP class 1 control type: (All) Lamp(s) on */
+#define VSCP_TYPE_CONTROL_LAMP_ON                   40
+
+/** VSCP class 1 control type: (All) Lamp(s) off */
+#define VSCP_TYPE_CONTROL_LAMP_OFF                  41
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

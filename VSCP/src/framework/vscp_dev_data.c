@@ -266,7 +266,7 @@ extern uint8_t  vscp_dev_data_getGUID(uint8_t index)
 
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS ) */
 
-    uint8_t value   = 0;
+    uint8_t         value   = 0;
 
     if (VSCP_UTIL_ARRAY_NUM(vscp_dev_data_container.guid) > index)
     {

@@ -761,7 +761,7 @@ static inline BOOL vscp_dm_isDecisionMatrixStd(uint16_t page, uint8_t addr)
     /* Decision matrix is not empty? */
     if (0 < VSCP_DM_ROWS)
     {
-        /* Page is equal to the first VSCP decision matrix page? */
+        /* Page is equal to the first decision matrix page? */
         if (VSCP_DM_START_PAGE == page)
         {
             /* Address is greater or equal than the decision matrix offset? */
@@ -781,7 +781,7 @@ static inline BOOL vscp_dm_isDecisionMatrixStd(uint16_t page, uint8_t addr)
                 }
             }
         }
-        /* Page is equal to the last VSCP decision matrix page? */
+        /* Page is equal to the last decision matrix page? */
         else if (VSCP_DM_LAST_PAGE == page)
         {
             /* Address is lower or equal than the last decision matrix offset? */
@@ -844,6 +844,9 @@ static inline uint8_t   vscp_dm_writeRegisterStd(uint16_t page, uint8_t addr, ui
         uint16_t    index   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow) + (uint16_t)rowOffset;
 
         vscp_ps_writeDM(index, value);
+        
+        /* Read value back */
+        value = vscp_ps_readDM(index);
     }
 
     return value;

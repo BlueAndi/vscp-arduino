@@ -671,7 +671,7 @@ static void vscp_core_writeNicknameId(uint8_t nickname)
 
 /**
  * This function checks the persistent memory.
- * If the persistent memory is not initialized, it will return @FALSE.
+ * If the persistent memory is not initialized, it will return FALSE.
  * The check is done by checking the node control flags,
  * especially the start up control. Because the start up control bits can
  * be only 01b or 10b.
@@ -1890,13 +1890,23 @@ static uint8_t  vscp_core_readRegister(uint16_t page, uint8_t addr)
                 break;
         }
     }
+    
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
-    /* Is register part of the decision matrix? */
+    /* Is the addressed register part of the decision matrix? */
     else if (FALSE != vscp_dm_isDecisionMatrix(page, addr))
     {
         ret = vscp_dm_readRegister(page, addr);
     }
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
+    /* Is the addressed register part of the decision matrix NG? */
+    else if (FALSE != vscp_dm_ng_isDecisionMatrix(page, addr))
+    {
+        ret = vscp_dm_ng_readRegister(page, addr);
+    }
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
+
     else
     /* Application specific register */
     {
@@ -2111,14 +2121,25 @@ static uint8_t  vscp_core_writeRegister(uint16_t page, uint8_t addr, uint8_t val
     /* Write protection disabled? */
     else if (0 != vscp_core_getRegAppWriteProtect())
     {
+    
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
-        /* Is register part of the decision matrix? */
+        /* Is the addressed register part of the decision matrix? */
         if (FALSE != vscp_dm_isDecisionMatrix(page, addr))
         {
             ret = vscp_dm_writeRegister(page, addr, value);
         }
         else
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
+        /* Is the addressed register part of the decision matrix NG? */
+        if (FALSE != vscp_dm_ng_isDecisionMatrix(page, addr))
+        {
+            ret = vscp_dm_ng_writeRegister(page, addr, value);
+        }
+        else
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
+
         /* Application specific registers */
         {
             ret = vscp_app_reg_writeRegister(page, addr, value);

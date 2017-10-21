@@ -70,6 +70,18 @@
 /** Maximum size of a single rule in bytes */
 #define VSCP_DM_NG_RULE_MAX_SIZE    40
 
+/** Decision matrix NG location: Page */
+#define VSCP_DM_NG_START_PAGE       VSCP_CONFIG_DM_NG_PAGE
+
+/** Number of pages which are overspaned by the decision matrix NG, without considering the offset. */
+#define VSCP_DM_NG_PAGES            (VSCP_CONFIG_DM_NG_RULE_SET_SIZE / 256)
+
+/** Last page of the decision matrix NG */
+#define VSCP_DM_NG_LAST_PAGE        (VSCP_DM_NG_START_PAGE + VSCP_DM_NG_PAGES)
+
+/** Last offset in the last page of the decision matrix NG. */
+#define VSCP_DM_NG_LAST_PAGE_OFFSET ((0 < (VSCP_CONFIG_DM_NG_RULE_SET_SIZE % 256)) ? (VSCP_CONFIG_DM_NG_RULE_SET_SIZE % 256 - 1) : 255)
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
@@ -188,7 +200,7 @@ extern void vscp_dm_ng_init(void)
  */
 extern void vscp_dm_ng_restoreFactoryDefaultSettings(void)
 {
-    uint8_t index   = 0;
+    uint16_t    index   = 0;
 
     /* Clear decision matrix next generation */
     for(index = 0; index < VSCP_CONFIG_DM_NG_RULE_SET_SIZE; ++index)
@@ -197,6 +209,94 @@ extern void vscp_dm_ng_restoreFactoryDefaultSettings(void)
     }
 
     return;
+}
+
+/**
+ * This function check if the given page and address are part of the
+ * decision matrix.
+ *
+ * @param[in]   page    Page
+ * @param[in]   addr    Register address
+ * @return  Is part of the decision matrix or not.
+ * @retval  FALSE   Is not part of the decision matrix.
+ * @retval  TRUE    Is part of the decision matrix.
+ */
+extern BOOL vscp_dm_ng_isDecisionMatrix(uint16_t page, uint8_t addr)
+{
+    BOOL        status      = FALSE;
+
+    /* Decision matrix NG is not empty? */
+    if (0 < VSCP_CONFIG_DM_NG_RULE_SET_SIZE)
+    {
+        /* Page is inside? */
+        if ((VSCP_DM_NG_START_PAGE <= page) &&
+            (VSCP_DM_NG_LAST_PAGE >= page))
+        {
+            /* Page is equal to the last decision matrix NG page? */
+            if (VSCP_DM_NG_LAST_PAGE == page)
+            {
+                /* Address is lower or equal than the last decision matrix NG offset? */
+                if (VSCP_DM_NG_LAST_PAGE_OFFSET >= addr)
+                {
+                    status = TRUE;
+                }
+            }
+            /* Address is inside */
+            else
+            {
+                status = TRUE;
+            }
+        }
+    }
+    
+    return status;
+}
+
+/**
+ * Read register and return its value.
+ *
+ * @param[in]   page    Page
+ * @param[in]   addr    Register address
+ * @return  Register value
+ */
+extern uint8_t  vscp_dm_ng_readRegister(uint16_t page, uint8_t addr)
+{
+    uint8_t value   = 0;
+    uint8_t index   = 0;
+    
+    if (VSCP_DM_NG_START_PAGE <= page)
+    {
+        index = (page - VSCP_DM_NG_START_PAGE) * 256 + addr;
+        
+        value = vscp_ps_readDMNextGeneration(index);
+    }
+    
+    return value;
+}
+
+/**
+ * Write to register.
+ *
+ * @param[in]   page    Page
+ * @param[in]   addr    Register address
+ * @param[in]   value   Value to write
+ * @return  Register value
+ */
+extern uint8_t  vscp_dm_ng_writeRegister(uint16_t page, uint8_t addr, uint8_t value)
+{
+    uint8_t index   = 0;
+    
+    if (VSCP_DM_NG_START_PAGE <= page)
+    {
+        index = (page - VSCP_DM_NG_START_PAGE) * 256 + addr;
+        
+        vscp_ps_writeDMNextGeneration(index, value);
+        
+        /* Read value back */
+        value = vscp_ps_readDMNextGeneration(index);
+    }
+    
+    return value;
 }
 
 /**

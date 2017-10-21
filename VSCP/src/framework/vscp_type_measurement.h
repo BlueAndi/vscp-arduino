@@ -241,6 +241,15 @@ extern "C"
 /** VSCP class 1 measurement type: Spectral irradiance */
 #define VSCP_TYPE_MEASUREMENT_SPECTRAL_IRRADIANCE                   57
 
+/** VSCP class 1 measurement type: Sound pressure */
+#define VSCP_TYPE_MEASUREMENT_SOUND_PRESSURE                        58
+
+/** VSCP class 1 measurement type: Sound density */
+#define VSCP_TYPE_MEASUREMENT_SOUND_DENSITY                         59
+
+/** VSCP class 1 measurement type: Sound level */
+#define VSCP_TYPE_MEASUREMENT_SOUND_LEVEL                           60
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

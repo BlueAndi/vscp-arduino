@@ -97,6 +97,12 @@ extern "C"
 /** VSCP class 1 alarm type: Emergency Resume */
 #define VSCP_TYPE_ALARM_EMERGENCY_RESUME    9
 
+/** VSCP class 1 alarm type: Issued after an alarm system has been armed.  */
+#define VSCP_TYPE_ALARM_EMERGENCY_ARM       10
+
+/** VSCP class 1 alarm type: Issued after an alarm system has been disarmed. */
+#define VSCP_TYPE_ALARM_EMERGENCY_DISARM    11
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
