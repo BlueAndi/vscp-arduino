@@ -15,7 +15,7 @@
 
 ## VSCP
 
-![VSCP logo](http://vscp.org/images/vscp_logo.jpg)
+<img src="https://github.com/grodansparadis/vscp_logo/raw/master/vscp_logo.jpg" width="200px" alt="Logo" />
 
 The Very Simple Control Protocol (VSCP), an open and free protocol for IoT/m2m automation tasks.
 
