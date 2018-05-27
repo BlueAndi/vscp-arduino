@@ -59,7 +59,7 @@ and next generation) actions.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_config.h"
 #include "vscp_types.h"
 

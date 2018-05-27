@@ -66,7 +66,7 @@ This module provides device (node) specific data.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 
 #ifdef __cplusplus

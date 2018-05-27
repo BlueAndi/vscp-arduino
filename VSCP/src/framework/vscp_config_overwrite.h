@@ -94,6 +94,10 @@ extern "C"
 
 #define VSCP_CONFIG_ENABLE_LOOPBACK             VSCP_CONFIG_BASE_DISABLED
 
+#define VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT VSCP_CONFIG_BASE_DISABLED
+
+#define VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION VSCP_CONFIG_BASE_DISABLED
+
 */
 
 /*******************************************************************************
@@ -117,6 +121,8 @@ extern "C"
 #define VSCP_CONFIG_DM_OFFSET                   0
 
 #define VSCP_CONFIG_DM_ROWS                     10
+
+#define VSCP_CONFIG_DM_NG_PAGE                  2
 
 #define VSCP_CONFIG_DM_NG_RULE_SET_SIZE         80
 

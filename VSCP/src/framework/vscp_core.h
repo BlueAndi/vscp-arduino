@@ -44,9 +44,6 @@ This module contains the core functionality of VSCP.
  * the message will be lost.
  * - If a transmit message is lost, the core won't change to error state.
  *
- * Limitations:
- * - Silent nodes are not supported.
- *
  * Supported compile switches:
  * - VSCP_CONFIG_ENABLE_LOGGER
  * - VSCP_CONFIG_SILENT_NODE
@@ -58,6 +55,8 @@ This module contains the core functionality of VSCP.
  * - VSCP_CONFIG_BOOT_LOADER_SUPPORTED
  * - VSCP_CONFIG_ENABLE_DM
  * - VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION
+ * - VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT
+ * - VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION
  *
  * @{
  */
@@ -73,7 +72,7 @@ This module contains the core functionality of VSCP.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_config.h"
 #include "vscp_types.h"
 
@@ -90,20 +89,20 @@ extern "C"
     CONSTANTS
 *******************************************************************************/
 
-/** VSCP major version number */
+/** VSCP specification major version number, the framework is compliant to. */
 #define VSCP_CORE_VERSION_MAJOR     (1)
 
-/** VSCP minor version number */
+/** VSCP specification minor version number, the framework is compliant to. */
 #define VSCP_CORE_VERSION_MINOR     (10)
 
-/** VSCP sub minor version number */
-#define VSCP_CORE_VERSION_SUB_MINOR (6)
+/** VSCP specification sub-minor version number, the framework is compliant to. */
+#define VSCP_CORE_VERSION_SUB_MINOR (8)
 
-/** Version string */
-#define VSCP_CORE_VERSION_STR       "v1.10.16"
+/** VSCP specification version string, the framework is compliant to. */
+#define VSCP_CORE_VERSION_STR       "v1.10.8"
 
 /** VSCP framework version string */
-#define VSCP_CORE_FRAMEWORK_VERSION "v0.6.0"
+#define VSCP_CORE_FRAMEWORK_VERSION "v0.7.0"
 
 /*******************************************************************************
     MACROS
@@ -167,7 +166,7 @@ extern void vscp_core_startNodeSegmentInit(void);
  * This function set one or more alarm status.
  * How the bits are read, is application specific.
  * Note that a active alarm (bit is set) can only be cleared by reading the
- * alarm register. Calling this function with 0, do nothing.
+ * alarm register. Calling this function with 0, does nothing.
  *
  * @param[in]   value   New alarm status
  */
@@ -183,17 +182,22 @@ extern void vscp_core_setAlarm(uint8_t value);
  */
 extern BOOL vscp_core_isActive(void);
 
-#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
-
 /**
  * Get the time since epoch 00:00:00 UTC, January 1, 1970.
  * The time itself is received by the segment master.
  *
- * @return Time
+ * @return Unix timestamp
  */
 extern uint32_t vscp_core_getTimeSinceEpoch(void);
 
-#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
+/**
+ * Set the time since epoch 00:00:00 UTC, January 1, 1970.
+ * Note, if a segment master is present, it will overwrite the time with its
+ * heartbeat message.
+ * 
+ * @param[in] timestamp Unix timestamp
+ */
+extern void vscp_core_setTimeSinceEpoch(uint32_t timestamp);
 
 /**
  * Prepares a transmit message, before it is used.

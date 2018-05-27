@@ -76,6 +76,9 @@
 
 #endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_HARD_CODED_NODE ) */
 
+/** Timer threshold of 1s in ms */
+#define VSCP_CORE_TIMER_THRESHOLD_1S    ((uint16_t)1000)
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
@@ -101,6 +104,7 @@ typedef enum
 typedef enum
 {
     INIT_STATE_PROBE_MASTER = 0,    /**< Notify segment master via probe event */
+    INIT_STATE_PROBE_MASTER_WAIT,   /**< Wait for segment master acknowledge */
     INIT_STATE_PROBE,               /**< Probe nickname */
     INIT_STATE_PROBE_WAIT           /**< Wait for probe acknowledge */
 
@@ -126,7 +130,7 @@ typedef struct
 static void vscp_core_writeNicknameId(uint8_t nickname);
 static BOOL vscp_core_checkPersistentMemory(void);
 static void vscp_core_stateStartup(void);
-static void vscp_core_changeToStateInit(void);
+static void vscp_core_changeToStateInit(BOOL probeSegmentMaster);
 static void vscp_core_stateInit(void);
 static void vscp_core_changeToStatePreActive(void);
 static void vscp_core_statePreActive(void);
@@ -187,13 +191,16 @@ static vscp_RxMessage   vscp_core_rxMessage;
 static BOOL             vscp_core_rxMessageValid    = FALSE;
 
 /** Timer id, which is used for timeout handling, regarding state transitions. */
-static uint8_t          vscp_core_timerId                   = 0xFF;
+static uint8_t          vscp_core_timerId                   = VSCP_TIMER_ID_INVALID;
 
 /** Timer id, which is used for GUID drop nickname multi-frame timeout. */
-static uint8_t          vscp_core_timerIdGuidDropNickname   = 0xFF;
+static uint8_t          vscp_core_timerIdGuidDropNickname   = VSCP_TIMER_ID_INVALID;
 
 /** Timer id, which is used for vscp register 162 multi-frame timeout. */
-static uint8_t          vscp_core_timerIdReg162             = 0xFF;
+static uint8_t          vscp_core_timerIdReg162             = VSCP_TIMER_ID_INVALID;
+
+/** Timer id, which is used to drive the time since epoch (unix timestamp). */
+static uint8_t          vscp_core_timerIdTimeSinceEpoch     = VSCP_TIMER_ID_INVALID;
 
 /** Seconds counter, used to wait for reset request. */
 static uint8_t          vscp_core_secCnt            = 0;
@@ -201,17 +208,13 @@ static uint8_t          vscp_core_secCnt            = 0;
 /** Nickname id used during nickname discovery process */
 static uint8_t          vscp_core_nickname_probe    = VSCP_NICKNAME_NOT_INIT;
 
-#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
-
-/** Time since epoch 00:00:00 UTC, January 1, 1970 */
+/** Time since epoch 00:00:00 UTC, January 1, 1970 (unix timestamp) in s */
 static uint32_t         vscp_core_timeSinceEpoch    = 0;
-
-#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_NODE )
 
 /** Timer id, which is used for node heartbeat handling. */
-static uint8_t          vscp_core_heartbeatTimerId      = 0xFF;
+static uint8_t          vscp_core_heartbeatTimerId      = VSCP_TIMER_ID_INVALID;
 
 /** Enable/Disable node heartbeat */
 static BOOL             vscp_core_isHeartbeatEnabled    = TRUE;
@@ -317,7 +320,7 @@ extern VSCP_CORE_RET vscp_core_init(void)
 
     /* Create a timer for common timing issues */
     vscp_core_timerId = vscp_timer_create();
-    if (0xFF == vscp_core_timerId)
+    if (VSCP_TIMER_ID_INVALID == vscp_core_timerId)
     {
         /* No timer available. */
         ret = VSCP_CORE_RET_ERROR;
@@ -325,7 +328,7 @@ extern VSCP_CORE_RET vscp_core_init(void)
 
     /* Create a timer for GUID drop nickname multi-frame timeout. */
     vscp_core_timerIdGuidDropNickname = vscp_timer_create();
-    if (0xFF == vscp_core_timerIdGuidDropNickname)
+    if (VSCP_TIMER_ID_INVALID == vscp_core_timerIdGuidDropNickname)
     {
         /* No timer available. */
         ret = VSCP_CORE_RET_ERROR;
@@ -333,17 +336,30 @@ extern VSCP_CORE_RET vscp_core_init(void)
 
     /* Create a timer for vscp register 162 multi-frame timeout. */
     vscp_core_timerIdReg162 = vscp_timer_create();
-    if (0xFF == vscp_core_timerIdReg162)
+    if (VSCP_TIMER_ID_INVALID == vscp_core_timerIdReg162)
     {
         /* No timer available. */
         ret = VSCP_CORE_RET_ERROR;
+    }
+
+    /* Create a timer used to drive the internal time since epoch (unix timestamp). */
+    vscp_core_timerIdTimeSinceEpoch = vscp_timer_create();
+    if (VSCP_TIMER_ID_INVALID == vscp_core_timerIdTimeSinceEpoch)
+    {
+        /* No timer available. */
+        ret = VSCP_CORE_RET_ERROR;
+    }
+    else
+    {
+        /* Start timer immediately. */
+        vscp_timer_start(vscp_core_timerIdTimeSinceEpoch, VSCP_CORE_TIMER_THRESHOLD_1S);
     }
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_NODE )
 
     /* Create a timer for own heartbeat */
     vscp_core_heartbeatTimerId = vscp_timer_create();
-    if (0xFF == vscp_core_heartbeatTimerId)
+    if (VSCP_TIMER_ID_INVALID == vscp_core_heartbeatTimerId)
     {
         /* No timer available. */
         ret = VSCP_CORE_RET_ERROR;
@@ -455,6 +471,17 @@ extern void vscp_core_process(void)
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER ) */
 
+    /* Handle internal time since epoch (unix timestamp), which increase per second. */
+    if ((VSCP_TIMER_ID_INVALID != vscp_core_timerIdTimeSinceEpoch) &&
+        (FALSE == vscp_timer_getStatus(vscp_core_timerIdTimeSinceEpoch)))
+    {
+        /* Increase unix timestamp */
+        ++vscp_core_timeSinceEpoch;
+
+        /* Restart timer */
+        vscp_timer_start(vscp_core_timerIdTimeSinceEpoch, VSCP_CORE_TIMER_THRESHOLD_1S);
+    }
+
     /* State machine */
     switch(vscp_core_state)
     {
@@ -496,7 +523,7 @@ extern void vscp_core_process(void)
     /* Unknown state */
     default:
         /* This should never happen. */
-        vscp_core_state = STATE_ERROR;
+        vscp_core_changeToStateError();
         break;
     }
 
@@ -529,7 +556,7 @@ extern void vscp_core_startNodeSegmentInit(void)
     if (STATE_INIT != vscp_core_state)
     {
         /* Change to init state */
-        vscp_core_changeToStateInit();
+        vscp_core_changeToStateInit(TRUE);
     }
 
     return;
@@ -539,7 +566,7 @@ extern void vscp_core_startNodeSegmentInit(void)
  * This function set one or more alarm status.
  * How the bits are read, is application specific.
  * Note that a active alarm (bit is set) can only be cleared by reading the
- * alarm register. Calling this function with 0, do nothing.
+ * alarm register. Calling this function with 0, does nothing.
  *
  * @param[in]   value   New alarm status
  */
@@ -563,20 +590,29 @@ extern BOOL vscp_core_isActive(void)
     return (STATE_ACTIVE == vscp_core_state) ? TRUE : FALSE;
 }
 
-#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
-
 /**
  * Get the time since epoch 00:00:00 UTC, January 1, 1970.
  * The time itself is received by the segment master.
  *
- * @return Time
+ * @return Unix timestamp
  */
 extern uint32_t vscp_core_getTimeSinceEpoch(void)
 {
     return vscp_core_timeSinceEpoch;
 }
 
-#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
+/**
+ * Set the time since epoch 00:00:00 UTC, January 1, 1970.
+ * Note, if a segment master is present, it will overwrite the time with its
+ * heartbeat message.
+ * 
+ * @param[in] timestamp Unix timestamp
+ */
+extern void vscp_core_setTimeSinceEpoch(uint32_t timestamp)
+{
+    vscp_core_timeSinceEpoch = timestamp;
+    return;
+}
 
 /**
  * Prepares a transmit message, before it is used.
@@ -729,7 +765,7 @@ static inline void  vscp_core_stateStartup(void)
          */
         if (0x01 == vscp_core_getStartUpControl())
         {
-            vscp_core_changeToStateInit();
+            vscp_core_changeToStateInit(TRUE);
         }
         else
         {
@@ -750,16 +786,28 @@ static inline void  vscp_core_stateStartup(void)
 /**
  * Change to init state.
  * - Drop nickname id.
+ * 
+ * @param[in] probeSegmentMaster    Probe for segment master (true) or start own nickname discovery (false).
  */
-static inline void  vscp_core_changeToStateInit(void)
+static inline void  vscp_core_changeToStateInit(BOOL probeSegmentMaster)
 {
     if (STATE_INIT != vscp_core_state)
     {
         /* Show the user that the node enters initialization state by blinking lamp. */
         vscp_portable_setLampState(VSCP_LAMP_STATE_BLINK_FAST);
 
-        vscp_core_state     = STATE_INIT;
-        vscp_core_initState = INIT_STATE_PROBE_MASTER;
+        vscp_core_state = STATE_INIT;
+
+        if (FALSE == probeSegmentMaster)
+        {
+            vscp_core_initState = INIT_STATE_PROBE;
+            vscp_core_nickname_probe = 1;
+        }
+        else
+        {
+            vscp_core_initState = INIT_STATE_PROBE_MASTER;
+            vscp_core_nickname_probe = VSCP_NICKNAME_SEGMENT_MASTER;
+        }
 
         /* Clear nickname id */
         vscp_core_writeNicknameId(VSCP_NICKNAME_NOT_INIT);
@@ -802,11 +850,48 @@ static inline void  vscp_core_stateInit(void)
         }
         else
         {
-            vscp_core_initState         = INIT_STATE_PROBE_WAIT;
-            vscp_core_nickname_probe    = VSCP_NICKNAME_SEGMENT_MASTER;
+            vscp_core_initState = INIT_STATE_PROBE_MASTER_WAIT;
 
             /* Start timer to observe the node segment initialization */
             vscp_timer_start(vscp_core_timerId, VSCP_CONFIG_NODE_SEGMENT_INIT_TIMEOUT);
+        }
+
+        break;
+
+    case INIT_STATE_PROBE_MASTER_WAIT:
+
+        /* Timeout, because no segment master available? */
+        if (FALSE == vscp_timer_getStatus(vscp_core_timerId))
+        {
+            /* Start nickname id discovery process */
+            vscp_core_initState = INIT_STATE_PROBE;
+
+            /* Probe shall start with nickname id 1. */
+            vscp_core_nickname_probe = 1;
+        }
+        /* Valid message received */
+        else if (TRUE == vscp_core_rxMessageValid)
+        {
+            if (VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass)
+            {
+                /* Probe event acknowledge? */
+                if (VSCP_TYPE_PROTOCOL_PROBE_ACK == vscp_core_rxMessage.vscpType)
+                {
+                    /* Acknowledge from the segment master? */
+                    if (VSCP_NICKNAME_SEGMENT_MASTER == vscp_core_rxMessage.oAddr)
+                    {
+                        /* Wait for nickname id assignment and don't stop the timer,
+                         * because the next state is still part of it.
+                         */
+                        vscp_core_changeToStatePreActive();
+                    }
+                    else
+                    {
+                        /* Don't care about. */
+                        ;
+                    }
+                }
+            }
         }
 
         break;
@@ -850,25 +935,13 @@ static inline void  vscp_core_stateInit(void)
 
     case INIT_STATE_PROBE_WAIT:
 
-        /* Timeout and nickname id found? */
+        /* Timeout, because no other node uses the nickname id? */
         if (FALSE == vscp_timer_getStatus(vscp_core_timerId))
         {
-            /* No segment master available? */
-            if (VSCP_NICKNAME_SEGMENT_MASTER == vscp_core_nickname_probe)
-            {
-                /* Start nickname id discovery process */
-                vscp_core_initState = INIT_STATE_PROBE;
+            /* Available nickname id found. */
+            vscp_core_writeNicknameId(vscp_core_nickname_probe);
 
-                /* Probe shall start with nickname id 1. */
-                vscp_core_nickname_probe = 1;
-            }
-            else
-            /* No node answered, probed nickname id can be used. */
-            {
-                vscp_core_writeNicknameId(vscp_core_nickname_probe);
-
-                vscp_core_changeToStateActive();
-            }
+            vscp_core_changeToStateActive();
         }
         /* Valid message received */
         else if (TRUE == vscp_core_rxMessageValid)
@@ -878,16 +951,8 @@ static inline void  vscp_core_stateInit(void)
                 /* Probe event acknowledge? */
                 if (VSCP_TYPE_PROTOCOL_PROBE_ACK == vscp_core_rxMessage.vscpType)
                 {
-                    /* Acknowledge from the segment master? */
-                    if (VSCP_NICKNAME_SEGMENT_MASTER == vscp_core_rxMessage.oAddr)
-                    {
-                        /* Wait for nickname id assignment and don't stop the timer,
-                         * because the next state is still part of it.
-                         */
-                        vscp_core_changeToStatePreActive();
-                    }
-                    /* Acknowledge from a node, which has the probed nickname id */
-                    else if (vscp_core_nickname_probe == vscp_core_rxMessage.oAddr)
+                    /* Acknowledge from a node, which has the probed nickname id? */
+                    if (vscp_core_nickname_probe == vscp_core_rxMessage.oAddr)
                     {
                         /* Stop timer */
                         vscp_timer_stop(vscp_core_timerId);
@@ -935,14 +1000,15 @@ static inline void  vscp_core_changeToStatePreActive(void)
 
 /**
  * Handles the pre-active state.
+ * Waiting for the nickname assignment by the segment master.
  */
 static inline void  vscp_core_statePreActive(void)
 {
     /* Timeout? Note, the timer was started in init state. */
     if (FALSE == vscp_timer_getStatus(vscp_core_timerId))
     {
-        /* Go back to init state and try again. */
-        vscp_core_changeToStateInit();
+        /* No nickname id received, start own nickname discovery. */
+        vscp_core_changeToStateInit(FALSE);
     }
     /* Valid message received */
     else if (TRUE == vscp_core_rxMessageValid)
@@ -1038,7 +1104,21 @@ static inline void  vscp_core_stateActive(void)
         /* Handle all protocol class specific events. This is mandatory for L1 and L2 nodes. */
         if (VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass)
         {
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION )
+
+            /* Notify application about event.
+             * If application handles event, the core will not handle it.
+             */
+            if (FALSE == vscp_portable_provideProtocolEvent(&vscp_core_rxMessage))
+            {
+                vscp_core_handleProtocolClassType();
+            }
+
+#else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION ) */
+
             vscp_core_handleProtocolClassType();
+
+#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION ) */
         }
         else
         /* Notify application */
@@ -1483,22 +1563,29 @@ static inline void  vscp_core_handleProtocolHeartbeat(void)
             /* Store CRC of the this segment */
             vscp_ps_writeSegmentControllerCRC(vscp_core_rxMessage.data[0]);
 
-            /* If available, store time since epoch 00:00:00 UTC, January 1, 1970 */
-            if (5 <= vscp_core_rxMessage.dataNum)
-            {
-                vscp_core_timeSinceEpoch  = ((uint32_t)vscp_core_rxMessage.data[1]) << 24;
-                vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[2]) << 16;
-                vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[3]) <<  8;
-                vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[4]) <<  0;
-            }
-
             /* If a nickname discovery was processed just before, there is no
              * need to do it again.
              */
             if (VSCP_NICKNAME_SEGMENT_MASTER != vscp_core_nickname_probe)
             {
-                vscp_core_changeToStateInit();
+                vscp_core_changeToStateInit(TRUE);
             }
+        }
+        
+        /* If available, store time since epoch 00:00:00 UTC, January 1, 1970 */
+        if (5 <= vscp_core_rxMessage.dataNum)
+        {
+            vscp_core_timeSinceEpoch  = ((uint32_t)vscp_core_rxMessage.data[1]) << 24;
+            vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[2]) << 16;
+            vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[3]) <<  8;
+            vscp_core_timeSinceEpoch |= ((uint32_t)vscp_core_rxMessage.data[4]) <<  0;
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT )
+
+            /* Notify application about a new received timestamp. */
+            vscp_portable_updateTimeSinceEpoch(vscp_core_timeSinceEpoch);
+
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT ) */
         }
     }
 
@@ -1547,7 +1634,7 @@ static inline void  vscp_core_handleProtocolProbeAck(void)
         if (vscp_core_nickname == vscp_core_rxMessage.oAddr)
         {
             /* Oups ... */
-            vscp_core_changeToStateInit();
+            vscp_core_changeToStateInit(TRUE);
         }
     }
 

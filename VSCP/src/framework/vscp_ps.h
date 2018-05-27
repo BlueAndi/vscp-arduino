@@ -100,7 +100,7 @@ This module handles VSCP related information in persistent memory.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 #include "vscp_config.h"
 #include "vscp_dev_data_config.h"

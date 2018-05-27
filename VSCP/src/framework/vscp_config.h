@@ -195,6 +195,35 @@ extern "C"
 
 #endif  /* Undefined VSCP_CONFIG_ENABLE_LOOPBACK */
 
+#ifndef VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT
+
+/** Enable a time update callout for every received segment master heartbeat,
+ * in case the event contains a new time since epoch.
+ */
+#define VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT VSCP_CONFIG_BASE_DISABLED
+
+#endif  /* Undefined VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT )
+#if VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
+#error If the segment time callout is enabled, the segment heartbeat must be enabled too.
+#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT ) */
+
+#ifndef VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION
+
+/**
+ * Usually the core handles all protocol class events and they are not
+ * forwarded to the application. Enable this to forward the events as well.
+ * If application handles the event, the core won't handle it.
+ * 
+ * Attention: Handling events which the core is waiting for can cause bad
+ * behaviour.
+ */
+#define VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION VSCP_CONFIG_BASE_DISABLED
+
+#endif  /* Undefined VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION */
+
 /*******************************************************************************
     CONSTANTS
 *******************************************************************************/

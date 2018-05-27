@@ -274,6 +274,33 @@ extern "C"
 /** VSCP class 1 information type: Shutter reached preset right */
 #define VSCP_TYPE_INFORMATION_SHUTTER_REACHED_PRESET_RIGHT          68
 
+/** VSCP class 1 information type: Long click detected */
+#define VSCP_TYPE_INFORMATION_LONG_CLICK                            69
+
+/** VSCP class 1 information type: Single click detected */
+#define VSCP_TYPE_INFORMATION_SINGLE_CLICK                          70
+
+/** VSCP class 1 information type: Double click detected */
+#define VSCP_TYPE_INFORMATION_DOUBLE_CLICK                          71
+
+/** VSCP class 1 information type: Date event */
+#define VSCP_TYPE_INFORMATION_DATE                                  72
+
+/** VSCP class 1 information type: Time event */
+#define VSCP_TYPE_INFORMATION_TIME                                  73
+
+/** VSCP class 1 information type: Day of the week event */
+#define VSCP_TYPE_INFORMATION_WEEKDAY                               74
+
+/** VSCP class 1 information type: A device got locked */
+#define VSCP_TYPE_INFORMATION_LOCK                                  75
+
+/** VSCP class 1 information type: A device got unlocked */
+#define VSCP_TYPE_INFORMATION_UNLOCK                                76
+
+/** VSCP class 1 information type: A device generated a date/time event. Time is UTC. */
+#define VSCP_TYPE_INFORMATION_DATETIME                              77
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

@@ -56,7 +56,7 @@ This module contains the persistent memory access driver.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C"

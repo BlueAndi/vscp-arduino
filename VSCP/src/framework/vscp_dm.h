@@ -74,7 +74,7 @@ This module handles the decision matrix of the node.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_config.h"
 #include "vscp_types.h"
 #include "vscp_util.h"

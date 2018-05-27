@@ -67,7 +67,7 @@ This module handles the transport of the VSCP.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 
 #ifdef __cplusplus

@@ -1,3 +1,7 @@
+## 0.6.0
+
+- Update to VSCP framework v0.7.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.7.0) there.
+
 ## 0.5.0
 
 - The VSCP framework returned the wrong number of used pages.

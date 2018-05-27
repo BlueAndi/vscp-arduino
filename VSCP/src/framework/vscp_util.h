@@ -54,7 +54,7 @@ framework modules.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 
 #ifdef __cplusplus

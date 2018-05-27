@@ -64,7 +64,7 @@ the transport layer of VSCP.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 
 #ifdef __cplusplus

@@ -52,7 +52,7 @@ This module contains the access to the application specific registers.
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C"

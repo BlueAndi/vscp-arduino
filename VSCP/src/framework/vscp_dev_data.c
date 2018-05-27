@@ -44,6 +44,7 @@
 #include "vscp_dev_data_config.h"
 #include "vscp_ps.h"
 #include "vscp_util.h"
+#include "vscp_portable.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -264,7 +265,12 @@ extern uint8_t  vscp_dev_data_getGUID(uint8_t index)
 
     return vscp_ps_readGUID(index);
 
-#else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS ) */
+#elif VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT )
+
+    return vscp_portable_readGUID(index);
+
+#else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS )
+           VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT ) */
 
     uint8_t         value   = 0;
 
@@ -275,7 +281,8 @@ extern uint8_t  vscp_dev_data_getGUID(uint8_t index)
 
     return value;
 
-#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS ) */
+#endif  /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS )
+           VSCP_CONFIG_BASE_IS_DISABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT ) */
 }
 
 /**

@@ -71,7 +71,7 @@ extern "C"
 
 #ifndef VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE
 
-/** Enable the support of the family code */
+/** Enable the support of the family code. */
 #define VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE                             VSCP_CONFIG_BASE_ENABLED
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE */
@@ -83,16 +83,29 @@ extern "C"
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS */
 
+#ifndef VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT
+
+/** Enable this define to load the GUID from external storage, e.g. from MCU GUID. */
+#define VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT                        VSCP_CONFIG_BASE_DISABLED
+
+#endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT */
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS )
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT )
+#error Only one storage place for GUID is possible!
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT ) */
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_PS ) */
+
 #ifndef VSCP_DEV_DATA_CONFIG_ENABLE_NODE_ZONE_STORAGE_PS
 
-/** Enable this define to load the GUID from persistent storage. */
+/** Enable this define to load the node zone from persistent storage. */
 #define VSCP_DEV_DATA_CONFIG_ENABLE_NODE_ZONE_STORAGE_PS                    VSCP_CONFIG_BASE_DISABLED
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_NODE_ZONE_STORAGE_PS */
 
 #ifndef VSCP_DEV_DATA_CONFIG_ENABLE_NODE_SUB_ZONE_STORAGE_PS
 
-/** Enable this define to load the GUID from persistent storage. */
+/** Enable this define to load the node sub-zone from persistent storage. */
 #define VSCP_DEV_DATA_CONFIG_ENABLE_NODE_SUB_ZONE_STORAGE_PS                VSCP_CONFIG_BASE_DISABLED
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_ENABLE_NODE_SUB_ZONE_STORAGE_PS */
@@ -168,7 +181,7 @@ extern "C"
 
 #ifndef VSCP_DEV_DATA_CONFIG_NODE_SUB_ZONE
 
-/** Node zone. Note, 0xff means all sub zones. */
+/** Node sub-zone. Note, 0xff means all sub zones. */
 #define VSCP_DEV_DATA_CONFIG_NODE_SUB_ZONE                  (0xff)
 
 #endif  /* Undefined VSCP_DEV_DATA_CONFIG_NODE_SUB_ZONE */

@@ -52,7 +52,7 @@ This module provides data coding functionality as specified by VSCP specificatio
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <inttypes.h>
+#include <stdint.h>
 #include "vscp_types.h"
 
 #ifdef __cplusplus
