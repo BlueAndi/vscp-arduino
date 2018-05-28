@@ -111,7 +111,7 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 ### How to install it?
 
-Follow the following installation instruction for libraries here: https://www.arduino.cc/en/Guide/Libraries#toc5
+Follow the following installation instruction for libraries here: https://www.arduino.cc/en/Guide/Libraries#toc4
 
 ### How to use the VSCP-framework in the code?
 
