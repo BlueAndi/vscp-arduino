@@ -124,24 +124,24 @@ Please take a look to the provided examples because they guide you through all n
 
 You will find the class defines here:
 ```
-VSCP/src/framework/vscp_class_l1.h
-VSCP/src/framework/vscp_class_l1_l2.h
+src/framework/vscp_class_l1.h
+src/framework/vscp_class_l1_l2.h
 ```
 
 You will find the type defines here:
 ```
-VSCP/src/framework/vscp_type_alarm.h
-VSCP/src/framework/vscp_type_control.h
-VSCP/src/framework/vscp_type_display.h
-VSCP/src/framework/vscp_type_information.h
-VSCP/src/framework/vscp_type_measurement.h
-VSCP/src/framework/vscp_type_measurezone.h
-VSCP/src/framework/vscp_type_phone.h
-VSCP/src/framework/vscp_type_protocol.h
-VSCP/src/framework/vscp_type_remote.h
-VSCP/src/framework/vscp_type_security.h
-VSCP/src/framework/vscp_type_weather.h
-VSCP/src/framework/vscp_type_weather_forecast.h
+src/framework/vscp_type_alarm.h
+src/framework/vscp_type_control.h
+src/framework/vscp_type_display.h
+src/framework/vscp_type_information.h
+src/framework/vscp_type_measurement.h
+src/framework/vscp_type_measurezone.h
+src/framework/vscp_type_phone.h
+src/framework/vscp_type_protocol.h
+src/framework/vscp_type_remote.h
+src/framework/vscp_type_security.h
+src/framework/vscp_type_weather.h
+src/framework/vscp_type_weather_forecast.h
 ```
 
 ### Does the library only support the CAN-bus as transport protocotol?
@@ -150,7 +150,7 @@ No, the library is not limited to the CAN-bus protocol. It might look like, beca
 But thats because I only use the CAN-bus as transport protocol at home and I don't have e. g. a RS-485 shield.
 
 Therefore the library supports the silent node behaviour too, which is used for non-multimaster protocols.
-Enable it in the configuration VSCP/src/framework/vscp_config_overwrite.h via
+Enable it in the configuration src/framework/vscp_config_overwrite.h via
 ```
 #define VSCP_CONFIG_SILENT_NODE VSCP_CONFIG_BASE_ENABLED
 ```
