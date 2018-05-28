@@ -1,3 +1,7 @@
+## 0.6.1
+
+- Folder structure changed, please see https://www.arduino.cc/en/Guide/Libraries#toc4 for easier installation.
+
 ## 0.6.0
 
 - Update to VSCP framework v0.7.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.7.0) there.
