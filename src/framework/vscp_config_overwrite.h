@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2018, Andreas Merkle
+ * Copyright (c) 2014 - 2019, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -97,6 +97,8 @@ extern "C"
 #define VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT VSCP_CONFIG_BASE_DISABLED
 
 #define VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION VSCP_CONFIG_BASE_DISABLED
+
+#define VSCP_CONFIG_ENABLE_CUSTOM_HEARTBEAT     VSCP_CONFIG_BASE_DISABLED
 
 */
 

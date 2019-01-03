@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2018, Andreas Merkle
+ * Copyright (c) 2014 - 2019, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -47,6 +47,7 @@
 #include "vscp_class_l1.h"
 #include "vscp_type_protocol.h"
 #include "vscp_type_information.h"
+#include "vscp_information.h"
 #include "vscp_ps.h"
 #include "vscp_timer.h"
 #include "vscp_app_reg.h"
@@ -1149,19 +1150,11 @@ static inline void  vscp_core_stateActive(void)
     if ((FALSE != vscp_core_isHeartbeatEnabled) &&
         (FALSE == vscp_timer_getStatus(vscp_core_heartbeatTimerId)))
     {
-        vscp_TxMessage  txMessage;
-
-        txMessage.vscpClass = VSCP_CLASS_L1_INFORMATION;
-        txMessage.vscpType  = VSCP_TYPE_INFORMATION_NODE_HEARTBEAT;
-        txMessage.priority  = VSCP_PRIORITY_7_LOW;
-        txMessage.oAddr     = vscp_core_nickname;
-        txMessage.hardCoded = VSCP_CORE_HARD_CODED;
-        txMessage.dataNum   = 3;
-        txMessage.data[0]   = 0;    /* User specific - not used */
-        txMessage.data[1]   = vscp_dev_data_getNodeZone();
-        txMessage.data[2]   = vscp_dev_data_getNodeSubZone();
-
-        (void)vscp_transport_writeMessage(&txMessage);
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_CUSTOM_HEARTBEAT )
+        (void)vscp_portable_sendNodeHeartbeatEvent();
+#else
+        (void)vscp_information_sendNodeHeartbeatEvent(0, vscp_dev_data_getNodeZone(), vscp_dev_data_getNodeSubZone());
+#endif
 
         /* Restart timer */
         vscp_timer_start(vscp_core_heartbeatTimerId, VSCP_CONFIG_HEARTBEAT_NODE_PERIOD);
