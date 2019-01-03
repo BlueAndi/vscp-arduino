@@ -41,8 +41,8 @@
     INCLUDES
 *******************************************************************************/
 #include "vscp_timer.h"
-#include "vscp_util.h"
-#include "vscp_config.h"
+#include "../core/vscp_util.h"
+#include "../core/vscp_config.h"
 #include <string.h>
 
 /*******************************************************************************

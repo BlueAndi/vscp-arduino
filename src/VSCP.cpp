@@ -41,12 +41,12 @@
     INCLUDES
 *******************************************************************************/
 #include "VSCP.h"
-#include "framework/vscp_core.h"
-#include "framework/vscp_portable.h"
-#include "framework/vscp_timer.h"
-#include "framework/vscp_dev_data.h"
-#include "framework/vscp_tp_adapter.h"
-#include "framework/vscp_action.h"
+#include "framework/core/vscp_core.h"
+#include "framework/user/vscp_portable.h"
+#include "framework/user/vscp_timer.h"
+#include "framework/core/vscp_dev_data.h"
+#include "framework/user/vscp_tp_adapter.h"
+#include "framework/user/vscp_action.h"
 
 /*******************************************************************************
     COMPILER SWITCHES

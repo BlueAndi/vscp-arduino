@@ -1,3 +1,9 @@
+## 0.7.0
+
+- Update to VSCP framework v0.8.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.8.0) there.
+- Folder structure changed inside framework folder, in preparation for the abstract event modules.
+- Abstract event modules introduced, see framework/events.
+
 ## 0.6.1
 
 - Folder structure changed, please see https://www.arduino.cc/en/Guide/Libraries#toc4 for easier installation.

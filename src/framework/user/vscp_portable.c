@@ -29,48 +29,19 @@
 *******************************************************************************/
 /**
 @brief  VSCP portable support package
-@file   vscp_portable.h
+@file   vscp_portable.c
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This module contains VSCP support functionality, which is used by the core.
+@see vscp_portable.h
 
 *******************************************************************************/
-/** @defgroup vscp_portable Portable stuff
- * Here is all application depended stuff, which can be handled different in
- * any system.
- *
- * Supported compile switches:
- * - VSCP_CONFIG_BOOT_LOADER_SUPPORTED
- * - VSCP_CONFIG_IDLE_CALLOUT
- * - VSCP_CONFIG_ERROR_CALLOUT
- * - VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT
- * - VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT
- * - VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION
- *
- * @{
- */
-
-/*
- * Don't forget to set JAVADOC_AUTOBRIEF to YES in the doxygen file to generate
- * a correct module description.
- */
-
-#ifndef __VSCP_PORTABLE_H__
-#define __VSCP_PORTABLE_H__
 
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <stdint.h>
-#include "vscp_types.h"
-#include "vscp_config.h"
-#include "vscp_dev_data_config.h"
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#include "vscp_portable.h"
+#include "../core/vscp_core.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -89,43 +60,82 @@ extern "C"
 *******************************************************************************/
 
 /*******************************************************************************
-    VARIABLES
+    PROTOTYPES
 *******************************************************************************/
 
 /*******************************************************************************
-    FUNCTIONS
+    LOCAL VARIABLES
+*******************************************************************************/
+
+/** State of the status lamp. */
+static VSCP_LAMP_STATE  vscp_portable_statusLampState   = VSCP_LAMP_STATE_OFF;
+
+/** Receive message storage */
+static vscp_RxMessage   vscp_portable_rxMsg;
+
+/** Flag which notify about a received message */
+static BOOL             vscp_portable_isReceived        = FALSE;
+
+/*******************************************************************************
+    GLOBAL VARIABLES
+*******************************************************************************/
+
+/*******************************************************************************
+    GLOBAL FUNCTIONS
 *******************************************************************************/
 
 /**
  * This function initializes this module.
  */
-extern void vscp_portable_init(void);
+extern void vscp_portable_init(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 /**
  * Restore the application specific factory default settings.
  */
-extern void vscp_portable_restoreFactoryDefaultSettings(void);
+extern void vscp_portable_restoreFactoryDefaultSettings(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 /**
  * This function set the current lamp state.
  *
  * @param[in]   state   Lamp state to set
  */
-extern void vscp_portable_setLampState(VSCP_LAMP_STATE state);
+extern void vscp_portable_setLampState(VSCP_LAMP_STATE state)
+{
+    vscp_portable_statusLampState = state;
+    return;
+}
 
 /**
  * This function return the current lamp state.
  *
  * @return Lamp state
  */
-extern VSCP_LAMP_STATE vscp_portable_getLampState(void);
+extern VSCP_LAMP_STATE vscp_portable_getLampState(void)
+{
+    return vscp_portable_statusLampState;
+}
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_IDLE_CALLOUT )
 
 /**
  * If VSCP stops its work and enters idle state, this function will be called.
  */
-extern void vscp_portable_idleStateEntered(void);
+extern void vscp_portable_idleStateEntered(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_IDLE_CALLOUT ) */
 
@@ -134,7 +144,12 @@ extern void vscp_portable_idleStateEntered(void);
 /**
  * If VSCP stops its work and enters error state, this function will be called.
  */
-extern void vscp_portable_errorStateEntered(void);
+extern void vscp_portable_errorStateEntered(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ERROR_CALLOUT ) */
 
@@ -143,7 +158,12 @@ extern void vscp_portable_errorStateEntered(void);
  * It requests it and doesn't expect that it will be immediately.
  * Because the application needs time to change to a safe state before.
  */
-extern void vscp_portable_resetRequest(void);
+extern void vscp_portable_resetRequest(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_BOOT_LOADER_SUPPORTED )
 
@@ -153,14 +173,26 @@ extern void vscp_portable_resetRequest(void);
  * @return  Boot loader algorithm
  * @retval  0xFF    No boot loader supported
  */
-extern uint8_t  vscp_portable_getBootLoaderAlgorithm(void);
+extern uint8_t  vscp_portable_getBootLoaderAlgorithm(void)
+{
+    uint8_t algorithm   = 0xFF;
+
+    /* Implement your code here ... */
+
+    return algorithm;
+}
 
 /**
  * This function requests a jump to the bootloader.
  * It requests it and doesn't expect that it will be immediately.
  * Because the application needs time to change to a safe state before.
  */
-extern void vscp_portable_bootLoaderRequest(void);
+extern void vscp_portable_bootLoaderRequest(void)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_BOOT_LOADER_SUPPORTED ) */
 
@@ -169,7 +201,12 @@ extern void vscp_portable_bootLoaderRequest(void);
  *
  * @param[in]   msg Message
  */
-extern void vscp_portable_provideEvent(vscp_RxMessage const * const msg);
+extern void vscp_portable_provideEvent(vscp_RxMessage const * const msg)
+{
+    vscp_portable_rxMsg         = *msg;
+    vscp_portable_isReceived    = TRUE;
+    return;
+}
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION )
 
@@ -185,7 +222,14 @@ extern void vscp_portable_provideEvent(vscp_RxMessage const * const msg);
  * @retval FALSE    Event not handled
  * @retval TRUE     Event handled
  */
-extern BOOL vscp_portable_provideProtocolEvent(vscp_RxMessage const * const msg);
+extern BOOL vscp_portable_provideProtocolEvent(vscp_RxMessage const * const msg)
+{
+    BOOL isEventHandled = FALSE;
+
+    /* Implement your code here ... */
+
+    return isEventHandled;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_PROTOCOL_EVENT_NOTIFICATION ) */
 
@@ -197,7 +241,12 @@ extern BOOL vscp_portable_provideProtocolEvent(vscp_RxMessage const * const msg)
  * 
  * @param timestamp Unix timestamp
  */
-extern void vscp_portable_updateTimeSinceEpoch(uint32_t timestamp);
+extern void vscp_portable_updateTimeSinceEpoch(uint32_t timestamp)
+{
+    /* Implement your code here ... */
+
+    return;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_SEGMENT_TIME_CALLOUT ) */
 
@@ -212,7 +261,14 @@ extern void vscp_portable_updateTimeSinceEpoch(uint32_t timestamp);
  * @param[in]   index   Index in the GUID [0-15]
  * @return  GUID byte
  */
-extern uint8_t  vscp_portable_readGUID(uint8_t index);
+extern uint8_t  vscp_portable_readGUID(uint8_t index)
+{
+    uint8_t value = 0;
+
+    /* Implement your code here ... */
+
+    return value;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_GUID_STORAGE_EXT ) */
 
@@ -225,7 +281,12 @@ extern uint8_t  vscp_portable_readGUID(uint8_t index);
  * @retval FALSE Failed to send the event
  * @retval TRUE  Event successul sent
  */
-extern BOOL vscp_portable_sendNodeHeartbeatEvent();
+extern BOOL vscp_portable_sendNodeHeartbeatEvent() {
+   
+    /* Implement your version of vscp_information_sendNodeHeartbeatEvent() */
+
+    return TRUE;
+}
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_CUSTOM_HEARTBEAT ) */
 
@@ -236,12 +297,24 @@ extern BOOL vscp_portable_sendNodeHeartbeatEvent();
  * @param[out]  msg Message
  * @return Message received or not
  */
-extern BOOL vscp_portable_read(vscp_RxMessage * const msg);
+extern BOOL vscp_portable_read(vscp_RxMessage * const msg)
+{
+    BOOL    status  = FALSE;
 
-#ifdef __cplusplus
+    if (NULL != msg)
+    {
+        if (TRUE == vscp_portable_isReceived)
+        {
+            *msg                        = vscp_portable_rxMsg;
+            status                      = TRUE;
+            vscp_portable_isReceived    = FALSE;
+        }
+    }
+    
+    return status;
 }
-#endif
 
-#endif  /* __VSCP_PORTABLE_H__ */
+/*******************************************************************************
+    LOCAL FUNCTIONS
+*******************************************************************************/
 
-/** @} */

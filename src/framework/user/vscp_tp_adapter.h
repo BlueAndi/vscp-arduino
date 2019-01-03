@@ -28,23 +28,28 @@
     DESCRIPTION
 *******************************************************************************/
 /**
-@brief  VSCP actions
-@file   vscp_action.h
+@brief  VSCP transport layer adapter
+@file   vscp_tp_adapter.h
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This module contains the user specific decision matrix (standard, extension
-and next generation) actions.
+This module adapts the project specific underlying physical transport medium to
+the transport layer of VSCP.
 
 *******************************************************************************/
-/** @defgroup vscp_action VSCP actions
- * This module contains the user specific decision matrix (standard, extension
- * and next generation) actions.
+/** @defgroup vscp_tp_adapter Transport driver adapter
+ * The transport layer adapter adapts the transport layer of VSCP to the
+ * underlying physical transport medium, e.g. CAN.
  *
- * Supported compile switches:
- * - VSCP_CONFIG_ENABLE_DM
- * - VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION
+ * In case of receiving a message, the core reads only one message from the
+ * transport layer per process call and handle it complete. If more than one
+ * message are received, the transport layer has to implement some kind of
+ * buffer mechanism.
  *
+ * In case of transmitting a message, the core can write several messages to
+ * the transport layer, in one processing cycle. If the transport layer can't
+ * send a message, in some cases the core will get into trouble, because right
+ * now now fall-back mechanism exists.
  * @{
  */
 
@@ -53,22 +58,19 @@ and next generation) actions.
  * a correct module description.
  */
 
-#ifndef __VSCP_ACTION_H__
-#define __VSCP_ACTION_H__
+#ifndef __VSCP_TP_ADAPTER_H__
+#define __VSCP_TP_ADAPTER_H__
 
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
 #include <stdint.h>
-#include "vscp_config.h"
-#include "vscp_types.h"
+#include "../core/vscp_types.h"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -86,9 +88,12 @@ extern "C"
     TYPES AND STRUCTURES
 *******************************************************************************/
 
-/** This type defines the action execution function. */
-typedef void (*vscp_action_Execute)(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
-    
+/** Receive callback */
+typedef BOOL (*vscp_tp_adapter_Read)(vscp_RxMessage * const msg);
+
+/** Transmit callback */
+typedef BOOL (*vscp_tp_adapter_Write)(vscp_TxMessage const * const msg);
+
 /*******************************************************************************
     VARIABLES
 *******************************************************************************/
@@ -98,32 +103,42 @@ typedef void (*vscp_action_Execute)(uint8_t action, uint8_t par, vscp_RxMessage 
 *******************************************************************************/
 
 /**
- * This function initializes the module.
+ * This function initializes the transport layer.
  */
-extern void vscp_action_init(void);
+extern void vscp_tp_adapter_init(void);
 
 /**
- * This function executes a action with the given parameter.
+ * This function set the transport layer callbacks.
  *
- * @param[in]   action  Action id
- * @param[in]   par     Action parameter
- * @param[in]   msg     Received VSCP message which triggered the action
+ * @param[in]   read    Receive callback
+ * @param[in]   write   Transmit callback
  */
-extern void vscp_action_execute(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
+extern void vscp_tp_adapter_set(vscp_tp_adapter_Read read, vscp_tp_adapter_Write write);
 
 /**
- * This function set the action execution callback.
+ * This function reads a message from the transport layer.
  *
- * @param[in] func  Action execution function
+ * @param[out]  msg Message storage
+ * @return  Message received or not
+ * @retval  FALSE   No message received
+ * @retval  TRUE    Message received
  */
-extern void vscp_action_set(vscp_action_Execute func);
+extern BOOL vscp_tp_adapter_readMessage(vscp_RxMessage * const msg);
 
-#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
+/**
+ * This function writes a message to the transport layer.
+ *
+ * @param[in]   msg Message storage
+ * @return  Message sent or not
+ * @retval  FALSE   Couldn't send message
+ * @retval  TRUE    Message successful sent
+ */
+extern BOOL vscp_tp_adapter_writeMessage(vscp_TxMessage const * const msg);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* __VSCP_ACTION_H__ */
+#endif  /* __VSCP_TP_ADAPTER_H__ */
 
 /** @} */

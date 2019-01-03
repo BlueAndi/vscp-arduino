@@ -41,7 +41,7 @@
     INCLUDES
 *******************************************************************************/
 #include "vscp_transport.h"
-#include "vscp_tp_adapter.h"
+#include "../user/vscp_tp_adapter.h"
 #include "vscp_config.h"
 #include "vscp_util.h"
 #include "vscp_class_l1.h"

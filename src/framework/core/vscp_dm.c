@@ -41,7 +41,7 @@
     INCLUDES
 *******************************************************************************/
 #include "vscp_dm.h"
-#include "vscp_action.h"
+#include "../user/vscp_action.h"
 #include "vscp_util.h"
 #include "vscp_dev_data.h"
 #include "vscp_ps.h"

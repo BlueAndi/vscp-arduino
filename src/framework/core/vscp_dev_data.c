@@ -44,7 +44,7 @@
 #include "vscp_dev_data_config.h"
 #include "vscp_ps.h"
 #include "vscp_util.h"
-#include "vscp_portable.h"
+#include "../user/vscp_portable.h"
 
 /*******************************************************************************
     COMPILER SWITCHES

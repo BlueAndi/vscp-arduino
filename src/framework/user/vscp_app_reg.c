@@ -28,41 +28,20 @@
     DESCRIPTION
 *******************************************************************************/
 /**
-@brief  VSCP timer driver
-@file   vscp_timer.h
+@brief  VSCP application registers
+@file   vscp_app_reg.c
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This module implements the VSCP timers.
+@see vscp_app_reg.h
 
 *******************************************************************************/
-/** @defgroup vscp_timer Timer
- * The timer interface is used only by the core, except the processing function
- * vscp_timer_process(). Call the processing function to handle all created
- * timers. If the timers are handled in an interrupt service routine or a
- * different task, than the one which calls vscp_core_process(), don't forget
- * to make the timer functions reentrant.
- * @{
- */
-
-/*
- * Don't forget to set JAVADOC_AUTOBRIEF to YES in the doxygen file to generate
- * a correct module description.
- */
-
-#ifndef __VSCP_TIMER_H__
-#define __VSCP_TIMER_H__
 
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include <stdint.h>
-#include "vscp_types.h"
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#include "vscp_app_reg.h"
+#include "../core/vscp_types.h"
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -71,9 +50,6 @@ extern "C"
 /*******************************************************************************
     CONSTANTS
 *******************************************************************************/
-
-/** Invalid timer id */
-#define VSCP_TIMER_ID_INVALID   (0xFF)
 
 /*******************************************************************************
     MACROS
@@ -84,64 +60,119 @@ extern "C"
 *******************************************************************************/
 
 /*******************************************************************************
-    VARIABLES
+    PROTOTYPES
 *******************************************************************************/
 
 /*******************************************************************************
-    FUNCTIONS
+    LOCAL VARIABLES
+*******************************************************************************/
+
+/*******************************************************************************
+    GLOBAL VARIABLES
+*******************************************************************************/
+
+/*******************************************************************************
+    GLOBAL FUNCTIONS
 *******************************************************************************/
 
 /**
- * This function initializes the timer driver.
+ * This function initializes this module.
  */
-extern void vscp_timer_init(void);
+extern void vscp_app_reg_init(void)
+{
+    /* Implement your code here ... */
 
-/**
- * This function creates a timer and returns its id.
- *
- * @return  Timer id
- * @retval  255     No timer resource available
- * @retval  0-254   Valid timer id
- */
-extern uint8_t  vscp_timer_create(void);
-
-/**
- * This function starts the timer of the given id.
- * If the timer is already running, it will be restart with the new value.
- *
- * @param[in]   id      Timer id
- * @param[in]   value   Time in ms
- */
-extern void vscp_timer_start(uint8_t id, uint16_t value);
-
-/**
- * This function stops a timer with the given id.
- *
- * @param[in]   id  Timer id
- */
-extern void vscp_timer_stop(uint8_t id);
-
-/**
- * This function get the status of a timer.
- *
- * @param[in]   id  Timer id
- * @return  Timer status
- * @retval  FALSE   Timer is stopped or timeout
- * @retval  TRUE    Timer is running
- */
-extern BOOL vscp_timer_getStatus(uint8_t id);
-
-/**
- * This function process all timers and has to be called cyclic.
- *
- * @param[in]   period  Period in ticks of calling this function.
- */
-extern void vscp_timer_process(uint16_t period);
-
-#ifdef __cplusplus
+    return;
 }
-#endif
 
-#endif  /* __VSCP_TIMER_H__ */
+/**
+ * Restore the application specific factory default settings.
+ */
+extern void vscp_app_reg_restoreFactoryDefaultSettings(void)
+{
+    /* Implement your code here ... */
 
-/** @} */
+    return;
+}
+
+/**
+ * This function returns the number of used pages.
+ * Its used in the register abstraction model.
+ * Deprecated since VSCP spec. v1.10.2
+ *
+ * @return  Pages used
+ * @retval  0   More than 255 pages are used.
+ */
+extern uint8_t  vscp_app_reg_getPagesUsed(void)
+{
+    uint8_t pagesUsed   = 1;    /* At least one page, which is mandatory. */
+
+    // Decision matrix at page 1
+    ++pagesUsed;
+
+    return pagesUsed;
+}
+
+/**
+ * This function reads a application specific register and returns the value.
+ *
+ * @param[in]   page    Page
+ * @param[in]   addr    Register address
+ * @return  Register value
+ */
+extern uint8_t  vscp_app_reg_readRegister(uint16_t page, uint8_t addr)
+{
+    uint8_t value   = 0;
+
+    if (0 == page)
+    {
+        if ((VSCP_REGISTER_APP_START_ADDR <= addr) &&
+            (VSCP_REGISTER_APP_END_ADDR >= addr))
+        {
+            /* Implement your code here ... */
+
+        }
+    }
+    else
+    {
+        /* Implement your code here ... */
+
+    }
+
+    return value;
+}
+
+/**
+ * This function writes a value to an application specific register.
+ *
+ * @param[in]   page    Page
+ * @param[in]   addr    Register address
+ * @param[in]   value   Value to write
+ * @return  Register value
+ */
+extern uint8_t  vscp_app_reg_writeRegister(uint16_t page, uint8_t addr, uint8_t value)
+{
+    uint8_t readBackValue   = 0;
+
+    if (0 == page)
+    {
+        if ((VSCP_REGISTER_APP_START_ADDR <= addr) &&
+            (VSCP_REGISTER_APP_END_ADDR >= addr))
+        {
+            /* Implement your code here ... */
+
+        }
+    }
+    else
+    {
+        /* Implement your code here ... */
+
+    }
+
+    return readBackValue;
+}
+
+/*******************************************************************************
+    LOCAL FUNCTIONS
+*******************************************************************************/
+

@@ -58,7 +58,7 @@ for VSCP core and decision matrix.
     INCLUDES
 *******************************************************************************/
 #include "vscp_config_base.h"
-#include "vscp_config_overwrite.h"
+#include "../user/vscp_config_overwrite.h"
 #include <stdint.h>
 
 #ifdef __cplusplus

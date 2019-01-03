@@ -42,7 +42,7 @@
 *******************************************************************************/
 #include "vscp_dm_ng.h"
 #include "vscp_util.h"
-#include "vscp_action.h"
+#include "../user/vscp_action.h"
 #include "vscp_ps.h"
 #include <stdint.h>
 

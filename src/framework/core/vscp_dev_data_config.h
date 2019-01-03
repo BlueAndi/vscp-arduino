@@ -57,7 +57,7 @@ This module contains the device specific default data configuration.
     INCLUDES
 *******************************************************************************/
 #include "vscp_config_base.h"
-#include "vscp_dev_data_config_overwrite.h"
+#include "../user/vscp_dev_data_config_overwrite.h"
 #include <stdint.h>
 
 #ifdef __cplusplus

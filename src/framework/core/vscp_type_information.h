@@ -301,6 +301,12 @@ extern "C"
 /** VSCP class 1 information type: A device generated a date/time event. Time is UTC. */
 #define VSCP_TYPE_INFORMATION_DATETIME                              77
 
+/** VSCP class 1 information type: A rising (edge) is detected. */
+#define VSCP_TYPE_INFORMATION_RISING                                78
+
+/** VSCP class 1 information type: A falling (edge) is detected. */
+#define VSCP_TYPE_INFORMATION_FALLING                               79
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

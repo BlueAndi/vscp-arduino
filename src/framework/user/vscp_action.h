@@ -28,20 +28,47 @@
     DESCRIPTION
 *******************************************************************************/
 /**
-@brief  VSCP application registers
-@file   vscp_app_reg.c
+@brief  VSCP actions
+@file   vscp_action.h
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-@see vscp_app_reg.h
+This module contains the user specific decision matrix (standard, extension
+and next generation) actions.
 
 *******************************************************************************/
+/** @defgroup vscp_action VSCP actions
+ * This module contains the user specific decision matrix (standard, extension
+ * and next generation) actions.
+ *
+ * Supported compile switches:
+ * - VSCP_CONFIG_ENABLE_DM
+ * - VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION
+ *
+ * @{
+ */
+
+/*
+ * Don't forget to set JAVADOC_AUTOBRIEF to YES in the doxygen file to generate
+ * a correct module description.
+ */
+
+#ifndef __VSCP_ACTION_H__
+#define __VSCP_ACTION_H__
 
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
-#include "vscp_app_reg.h"
-#include "vscp_types.h"
+#include <stdint.h>
+#include "../core/vscp_config.h"
+#include "../core/vscp_types.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION )
 
 /*******************************************************************************
     COMPILER SWITCHES
@@ -59,120 +86,44 @@
     TYPES AND STRUCTURES
 *******************************************************************************/
 
+/** This type defines the action execution function. */
+typedef void (*vscp_action_Execute)(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
+    
 /*******************************************************************************
-    PROTOTYPES
+    VARIABLES
 *******************************************************************************/
 
 /*******************************************************************************
-    LOCAL VARIABLES
-*******************************************************************************/
-
-/*******************************************************************************
-    GLOBAL VARIABLES
-*******************************************************************************/
-
-/*******************************************************************************
-    GLOBAL FUNCTIONS
+    FUNCTIONS
 *******************************************************************************/
 
 /**
- * This function initializes this module.
+ * This function initializes the module.
  */
-extern void vscp_app_reg_init(void)
-{
-    /* Implement your code here ... */
-
-    return;
-}
+extern void vscp_action_init(void);
 
 /**
- * Restore the application specific factory default settings.
- */
-extern void vscp_app_reg_restoreFactoryDefaultSettings(void)
-{
-    /* Implement your code here ... */
-
-    return;
-}
-
-/**
- * This function returns the number of used pages.
- * Its used in the register abstraction model.
- * Deprecated since VSCP spec. v1.10.2
+ * This function executes a action with the given parameter.
  *
- * @return  Pages used
- * @retval  0   More than 255 pages are used.
+ * @param[in]   action  Action id
+ * @param[in]   par     Action parameter
+ * @param[in]   msg     Received VSCP message which triggered the action
  */
-extern uint8_t  vscp_app_reg_getPagesUsed(void)
-{
-    uint8_t pagesUsed   = 1;    /* At least one page, which is mandatory. */
-
-    // Decision matrix at page 1
-    ++pagesUsed;
-
-    return pagesUsed;
-}
+extern void vscp_action_execute(uint8_t action, uint8_t par, vscp_RxMessage const * const msg);
 
 /**
- * This function reads a application specific register and returns the value.
+ * This function set the action execution callback.
  *
- * @param[in]   page    Page
- * @param[in]   addr    Register address
- * @return  Register value
+ * @param[in] func  Action execution function
  */
-extern uint8_t  vscp_app_reg_readRegister(uint16_t page, uint8_t addr)
-{
-    uint8_t value   = 0;
+extern void vscp_action_set(vscp_action_Execute func);
 
-    if (0 == page)
-    {
-        if ((VSCP_REGISTER_APP_START_ADDR <= addr) &&
-            (VSCP_REGISTER_APP_END_ADDR >= addr))
-        {
-            /* Implement your code here ... */
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) || VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_NEXT_GENERATION ) */
 
-        }
-    }
-    else
-    {
-        /* Implement your code here ... */
-
-    }
-
-    return value;
+#ifdef __cplusplus
 }
+#endif
 
-/**
- * This function writes a value to an application specific register.
- *
- * @param[in]   page    Page
- * @param[in]   addr    Register address
- * @param[in]   value   Value to write
- * @return  Register value
- */
-extern uint8_t  vscp_app_reg_writeRegister(uint16_t page, uint8_t addr, uint8_t value)
-{
-    uint8_t readBackValue   = 0;
+#endif  /* __VSCP_ACTION_H__ */
 
-    if (0 == page)
-    {
-        if ((VSCP_REGISTER_APP_START_ADDR <= addr) &&
-            (VSCP_REGISTER_APP_END_ADDR >= addr))
-        {
-            /* Implement your code here ... */
-
-        }
-    }
-    else
-    {
-        /* Implement your code here ... */
-
-    }
-
-    return readBackValue;
-}
-
-/*******************************************************************************
-    LOCAL FUNCTIONS
-*******************************************************************************/
-
+/** @} */

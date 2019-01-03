@@ -53,7 +53,7 @@ This module contains VSCP specific type, structure and constant definitions.
 *******************************************************************************/
 #include <stdint.h>
 #include <stdlib.h>
-#include "vscp_platform.h"
+#include "../user/vscp_platform.h"
 
 #ifdef __cplusplus
 extern "C"

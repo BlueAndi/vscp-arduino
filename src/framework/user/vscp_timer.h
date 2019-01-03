@@ -28,28 +28,20 @@
     DESCRIPTION
 *******************************************************************************/
 /**
-@brief  VSCP transport layer adapter
-@file   vscp_tp_adapter.h
+@brief  VSCP timer driver
+@file   vscp_timer.h
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This module adapts the project specific underlying physical transport medium to
-the transport layer of VSCP.
+This module implements the VSCP timers.
 
 *******************************************************************************/
-/** @defgroup vscp_tp_adapter Transport driver adapter
- * The transport layer adapter adapts the transport layer of VSCP to the
- * underlying physical transport medium, e.g. CAN.
- *
- * In case of receiving a message, the core reads only one message from the
- * transport layer per process call and handle it complete. If more than one
- * message are received, the transport layer has to implement some kind of
- * buffer mechanism.
- *
- * In case of transmitting a message, the core can write several messages to
- * the transport layer, in one processing cycle. If the transport layer can't
- * send a message, in some cases the core will get into trouble, because right
- * now now fall-back mechanism exists.
+/** @defgroup vscp_timer Timer
+ * The timer interface is used only by the core, except the processing function
+ * vscp_timer_process(). Call the processing function to handle all created
+ * timers. If the timers are handled in an interrupt service routine or a
+ * different task, than the one which calls vscp_core_process(), don't forget
+ * to make the timer functions reentrant.
  * @{
  */
 
@@ -58,14 +50,14 @@ the transport layer of VSCP.
  * a correct module description.
  */
 
-#ifndef __VSCP_TP_ADAPTER_H__
-#define __VSCP_TP_ADAPTER_H__
+#ifndef __VSCP_TIMER_H__
+#define __VSCP_TIMER_H__
 
 /*******************************************************************************
     INCLUDES
 *******************************************************************************/
 #include <stdint.h>
-#include "vscp_types.h"
+#include "../core/vscp_types.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -80,6 +72,9 @@ extern "C"
     CONSTANTS
 *******************************************************************************/
 
+/** Invalid timer id */
+#define VSCP_TIMER_ID_INVALID   (0xFF)
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
@@ -87,12 +82,6 @@ extern "C"
 /*******************************************************************************
     TYPES AND STRUCTURES
 *******************************************************************************/
-
-/** Receive callback */
-typedef BOOL (*vscp_tp_adapter_Read)(vscp_RxMessage * const msg);
-
-/** Transmit callback */
-typedef BOOL (*vscp_tp_adapter_Write)(vscp_TxMessage const * const msg);
 
 /*******************************************************************************
     VARIABLES
@@ -103,42 +92,56 @@ typedef BOOL (*vscp_tp_adapter_Write)(vscp_TxMessage const * const msg);
 *******************************************************************************/
 
 /**
- * This function initializes the transport layer.
+ * This function initializes the timer driver.
  */
-extern void vscp_tp_adapter_init(void);
+extern void vscp_timer_init(void);
 
 /**
- * This function set the transport layer callbacks.
+ * This function creates a timer and returns its id.
  *
- * @param[in]   read    Receive callback
- * @param[in]   write   Transmit callback
+ * @return  Timer id
+ * @retval  255     No timer resource available
+ * @retval  0-254   Valid timer id
  */
-extern void vscp_tp_adapter_set(vscp_tp_adapter_Read read, vscp_tp_adapter_Write write);
+extern uint8_t  vscp_timer_create(void);
 
 /**
- * This function reads a message from the transport layer.
+ * This function starts the timer of the given id.
+ * If the timer is already running, it will be restart with the new value.
  *
- * @param[out]  msg Message storage
- * @return  Message received or not
- * @retval  FALSE   No message received
- * @retval  TRUE    Message received
+ * @param[in]   id      Timer id
+ * @param[in]   value   Time in ms
  */
-extern BOOL vscp_tp_adapter_readMessage(vscp_RxMessage * const msg);
+extern void vscp_timer_start(uint8_t id, uint16_t value);
 
 /**
- * This function writes a message to the transport layer.
+ * This function stops a timer with the given id.
  *
- * @param[in]   msg Message storage
- * @return  Message sent or not
- * @retval  FALSE   Couldn't send message
- * @retval  TRUE    Message successful sent
+ * @param[in]   id  Timer id
  */
-extern BOOL vscp_tp_adapter_writeMessage(vscp_TxMessage const * const msg);
+extern void vscp_timer_stop(uint8_t id);
+
+/**
+ * This function get the status of a timer.
+ *
+ * @param[in]   id  Timer id
+ * @return  Timer status
+ * @retval  FALSE   Timer is stopped or timeout
+ * @retval  TRUE    Timer is running
+ */
+extern BOOL vscp_timer_getStatus(uint8_t id);
+
+/**
+ * This function process all timers and has to be called cyclic.
+ *
+ * @param[in]   period  Period in ticks of calling this function.
+ */
+extern void vscp_timer_process(uint16_t period);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* __VSCP_TP_ADAPTER_H__ */
+#endif  /* __VSCP_TIMER_H__ */
 
 /** @} */
