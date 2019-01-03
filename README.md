@@ -29,7 +29,7 @@ Recommended is to connect a LED, which shows the node state.
 
 Mandatory is to connect a push button, used to start the node nickname discovery. Similar as shown in the Seeed-Studio CAN-BUS Shield example.
 
-## How to send a VSCP event?
+## How to send a VSCP event (raw)?
 
 ### Define a transmit message
 
@@ -58,6 +58,27 @@ txMsg.dataNum = 3;
 ```
 vscp.write(txMsg);
 ```
+
+## How to send a VSCP event (abstract)?
+
+### Include the abstract event module
+
+```
+#include "framework/events/vscp_information.h"
+```
+
+Take a look to the folder "framework/events/" to see all supported vscp event types.
+
+### Call the event function
+
+```
+// Index   : 1
+// Zone    : 0
+// Sub zone: 0
+vscp_information_sendOnEvent(1, 0, 0);
+```
+
+No bytewise data assignment is necessary and complete done in the corresponding abstract event function. This way its more failure safe and reliable.
 
 ## MDF
 
