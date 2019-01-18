@@ -32,7 +32,7 @@ Module description file (MDF) template
 ********************************************************************************
 -->
 
-<vscp xmlns="http://www.blue-andi.de/vscp/mdf/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blue-andi.de/vscp/mdf/1.0 mdf.xsd ">
+<vscp xmlns="http://www.blue-andi.de/vscp/xml-schema/mdf/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blue-andi.de/vscp/xml-schema/mdf/1.0 http://www.blue-andi.de/vscp/xml-schema/mdf/1.0/mdf.xsd">
 
     <module>
 
@@ -60,7 +60,7 @@ Module description file (MDF) template
                 <description lang="en" >...</description>
             </telephone>
             <email>
-                <address>.../address>
+                <address>...</address>
                 <description lang="en">Support email</description>
             </email>
             <web>
@@ -93,9 +93,7 @@ Module description file (MDF) template
 
         <abstractions>
 
-        <!-- ********** Page 0 ********** -->
-
-            <abstraction id="0" type="uint8_t" default="0" page="0" offset="0">
+            <!-- ********** Page 0 ********** -->
 
             <!-- ********** Page 1 ********** -->
             

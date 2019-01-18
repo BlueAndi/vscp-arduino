@@ -1,6 +1,7 @@
 ## 0.7.1
 
 - Bugfix: Abstract event modules added.
+- Bugfix: MDF template syntax errors fixed, as well as the namespace and schema location.
 
 ## 0.7.0
 
