@@ -1,3 +1,7 @@
+## 0.7.1
+
+- Bugfix: Abstract event modules added.
+
 ## 0.7.0
 
 - Update to VSCP framework v0.8.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.8.0) there.
