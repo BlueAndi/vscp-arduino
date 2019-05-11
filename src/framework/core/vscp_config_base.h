@@ -33,12 +33,12 @@
 @author Andreas Merkle, http://www.blue-andi.de
 
 @section desc Description
-This module contains the base configuation switches, which are used in
+This module contains the base configuration switches, which are used in
 configuration files to enable/disable features.
 
 *******************************************************************************/
 /** @defgroup vscp_config_base VSCP configuration base
- * This module contains the base configuation switches, which are used in
+ * This module contains the base configuration switches, which are used in
  * configuration files to enable/disable features.
  * @{
  */

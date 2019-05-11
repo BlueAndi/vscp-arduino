@@ -41,7 +41,7 @@ This module contains the device specific default data configuration.
  * the persistent memory and set some default values.
  *
  * Please don't change anything in this file and use the overwrite mechanism
- * by setting your prefered configuration in vscp_dev_data_config_overwrite.h
+ * by setting your preferred configuration in vscp_dev_data_config_overwrite.h
  * @{
  */
 

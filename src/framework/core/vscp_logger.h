@@ -40,7 +40,7 @@ level.
 /** @defgroup vscp_logger VSCP logger
  * The logger handles all kind of log messages, which are sent directly to the
  * VSCP transport layer. There is no buffering of log messages, so it can
- * happend that a complete message or parts of a message will be lost.
+ * happened that a complete message or parts of a message will be lost.
  *
  * Parts of a message means, if the message is defragmented in several VSCP
  * events, it can happen that a event will be lost.
