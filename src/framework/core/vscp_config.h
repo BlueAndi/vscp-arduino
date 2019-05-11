@@ -42,7 +42,7 @@ for VSCP core and decision matrix.
  * framework and its default constant parameters.
  *
  * Please don't change anything in this file and use the overwrite mechanism
- * by setting your prefered configuration in vscp_config_overwrite.h
+ * by setting your preferred configuration in vscp_config_overwrite.h
  * @{
  */
 
@@ -161,7 +161,7 @@ extern "C"
 #ifndef VSCP_CONFIG_ENABLE_DM_EXTENSION
 
 /** Enable the decision matrix extension to be able to compare to
- * a configureable zone/sub-zone and event parameters.
+ * a configurable zone/sub-zone and event parameters.
  */
 #define VSCP_CONFIG_ENABLE_DM_EXTENSION         VSCP_CONFIG_BASE_DISABLED
 

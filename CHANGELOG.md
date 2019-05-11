@@ -1,3 +1,7 @@
+## 0.7.2 (not released yet)
+
+- Bugfix: Fix of misspellings/typos, thanks to TomasRoj.
+
 ## 0.7.1
 
 - Bugfix: Abstract event modules added.
