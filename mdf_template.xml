@@ -149,7 +149,7 @@ Module description file (MDF) template
 
         </alarm>
 
-        <!-- Decison matrix -->
+        <!-- Decision matrix -->
         <dmatrix>
 
             <level>1</level>

@@ -748,7 +748,7 @@ static inline void  vscp_core_stateStartup(void)
         /* Valid message? */
         if (TRUE == vscp_core_rxMessageValid)
         {
-            /* Be silent as long as someone request the initilization with a
+            /* Be silent as long as someone request the initialization with a
                CLASS1.PROTOCOL GUID drop nickname-ID / reset event.
              */
             if ((VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass) &&

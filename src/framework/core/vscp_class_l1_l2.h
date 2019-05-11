@@ -108,7 +108,7 @@ extern "C"
 /** VSCP level 1 class over level 2: Measurement with zone */
 #define VSCP_CLASS_L1_L2_MEASUREZONE        (VSCP_CLASS_L1_L2_BASE + 65)
 
-/** VSCP level 1 class over level 2: Single precision floating piont measurement */
+/** VSCP level 1 class over level 2: Single precision floating point measurement */
 #define VSCP_CLASS_L1_L2_MEASUREMENT_SINGLE (VSCP_CLASS_L1_L2_BASE + 70)
 
 /** VSCP level 1 class over level 2: Set value with zone */
@@ -129,7 +129,7 @@ extern "C"
 /** VSCP level 1 class over level 2: IR Remote i/f */
 #define VSCP_CLASS_L1_L2_REMOTE              (VSCP_CLASS_L1_L2_BASE + 110)
 
-/** VSCP level 1 class over level 2: Positon (GPS) */
+/** VSCP level 1 class over level 2: Position (GPS) */
 #define VSCP_CLASS_L1_L2_GPS                 (VSCP_CLASS_L1_L2_BASE + 206)
 
 /** VSCP level 1 class over level 2: Wireless */
