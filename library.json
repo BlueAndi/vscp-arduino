@@ -1,0 +1,21 @@
+{
+    "name": "vscp-arduino",
+    "version": "0.8.0",
+    "keywords": "vscp, arduino-library, vscp-arduino, automation, home automation",
+    "description": "Very Simple Control Procotol (VSCP) Level 1 Library for the arduino IDE.",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/BlueAndi/vscp-arduino"
+    },
+    "authors":
+    [
+      {
+          "name": "Andreas Merkle",
+          "email": "vscp@blue-andi.de",
+          "maintainer": true
+      }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+  }
