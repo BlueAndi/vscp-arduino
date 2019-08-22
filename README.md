@@ -24,7 +24,7 @@ More information can be found on the main site http://www.vscp.org
 
 ## Library
 This is a arduino library of the VSCP software framework for level 1 devices.
-It provides several layers according to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php).
+It provides several layers according to the [VSCP specification](https://grodansparadis.gitbooks.io/the-vscp-specification/).
 
 Recommended is to connect a LED, which shows the node state.
 
@@ -86,7 +86,7 @@ No bytewise data assignment is necessary and complete done in the corresponding 
 You will find a template for the module description file here: https://github.com/BlueAndi/vscp-arduino/blob/master/mdf_template.xml
 
 
-How to use it, please take a look to the [VSCP specification](http://www.vscp.org/docs/vscpspec/doku.php?id=module_description_file).
+How to use it, please take a look to the [VSCP specification](https://grodansparadis.gitbooks.io/the-vscp-specification/vscp_module_description_file.html).
 
 ## Decision Matrix
 
@@ -111,7 +111,7 @@ The generic example shows the basic integration of the VSCP arduino library.
 
 This example assume that the CAN BUS Shield from Seeed-Studio is used, as well as the corresponding CAN controller library.
 
-- Shield: http://www.seeedstudio.com/wiki/CAN-BUS_Shield
+- Shield: http://wiki.seeedstudio.com/CAN-BUS_Shield_V1.2/
 - Library: https://github.com/Seeed-Studio/CAN_BUS_Shield
 
 ![Connection to Seeed-Studio CAN BUS Shield](seeed-studio_can_bus_shield.jpg)
@@ -133,7 +133,7 @@ Because they provide no arduino library, the MCP2515 library from Frank Kienast 
 
 ### How to install it?
 
-Follow the following installation instruction for libraries here: https://www.arduino.cc/en/Guide/Libraries#toc4
+Use the Arduino library manager for instalation. Instruction can be found here: https://www.arduino.cc/en/Guide/Libraries#toc3
 
 ### How to use the VSCP-framework in the code?
 
