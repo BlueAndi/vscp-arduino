@@ -1373,6 +1373,41 @@ extern BOOL vscp_weather_sendArmageddonEvent(uint8_t index, uint8_t zone, uint8_
     return vscp_core_sendEvent(&txMsg);
 }
 
+/**
+ * UV Index is an international scale for UV intensity which can have the range of 1-15 where 1 is
+ * very low radiation and a value over 10 is extremely high radiation.
+ *
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] uvIndex UV index (1-15)
+ * @return Status
+ * @retval FALSE Failed to send the event
+ * @retval TRUE  Event successul sent
+ *
+ */
+extern BOOL vscp_weather_sendUvIndexEvent(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t uvIndex)
+{
+    vscp_TxMessage txMsg;
+
+    /* Invalid UV index? */
+    if ((1 > uvIndex) ||
+        (15 < uvIndex))
+    {
+        return FALSE;
+    }
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_WEATHER, VSCP_TYPE_WEATHER_UV_INDEX, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataNum = 4;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+    txMsg.data[3] = uvIndex;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
 /*******************************************************************************
     LOCAL FUNCTIONS
 *******************************************************************************/

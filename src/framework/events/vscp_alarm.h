@@ -234,6 +234,19 @@ extern BOOL vscp_alarm_sendArm(uint8_t state, uint8_t zone, uint8_t subZone);
  */
 extern BOOL vscp_alarm_sendDisarm(uint8_t state, uint8_t zone, uint8_t subZone);
 
+/**
+ * Issued when a watchdog has been triggered.
+ *
+ * @param[in] state State (0=off, 1=on)
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @return Status
+ * @retval FALSE Failed to send the event
+ * @retval TRUE  Event successul sent
+ *
+ */
+extern BOOL vscp_alarm_sendWatchdogEvent(uint8_t state, uint8_t zone, uint8_t subZone);
+
 #endif /* __VSCP_ALARM_H__ */
 
 /** @} */

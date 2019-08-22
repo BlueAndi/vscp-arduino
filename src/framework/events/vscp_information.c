@@ -2373,6 +2373,31 @@ extern BOOL vscp_information_sendFallingEvent(uint8_t index, uint8_t zone, uint8
     return vscp_core_sendEvent(&txMsg);
 }
 
+/**
+ * Something has been updated.
+ *
+ * @param[in] index Index for device. Set to zero if not used.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @return Status
+ * @retval FALSE Failed to send the event
+ * @retval TRUE  Event successul sent
+ *
+ */
+extern BOOL vscp_information_sendUpdatedEvent(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_UPDATED, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataNum = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
 /*******************************************************************************
     LOCAL FUNCTIONS
 *******************************************************************************/

@@ -223,6 +223,9 @@ extern "C"
 /** VSCP class 1 weather forecast type: Armageddon */
 #define VSCP_TYPE_WEATHER_FORECAST_ARMAGEDDON               51
 
+/** VSCP class 1 weather type: UV index */
+#define VSCP_TYPE_WEATHER_FORECAST_UV_INDEX                 52
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

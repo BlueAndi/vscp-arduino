@@ -750,6 +750,21 @@ extern BOOL vscp_weather_forecast_sendWarningLevel5Event(uint8_t index, uint8_t 
  */
 extern BOOL vscp_weather_forecast_sendArmageddonEvent(uint8_t index, uint8_t zone, uint8_t subZone);
 
+/**
+ * UV Index is an international scale for UV intensity which can have the range of 1-15 where 1 is
+ * very low radiation and a value over 10 is extremely high radiation.
+ *
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] uvIndex UV index (1-15)
+ * @return Status
+ * @retval FALSE Failed to send the event
+ * @retval TRUE  Event successul sent
+ *
+ */
+extern BOOL vscp_weather_forecast_sendUvIndexEvent(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t uvIndex);
+
 #endif /* __VSCP_WEATHER_FORECAST_H__ */
 
 /** @} */

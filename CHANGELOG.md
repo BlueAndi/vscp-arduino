@@ -1,7 +1,9 @@
-## 0.7.2
+## 0.8.0
 
-- Bugfix: Fix of misspellings/typos, thanks to TomasRoj.
-- Bugfix: VSCP measurement events fixed, because internal the parameters unit and index in the vscp_data_coding_getFormatByte() call were reversed. Thanks to troky!
+- Update to VSCP framework v0.9.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.9.0) there.
+- The update includes the following bugfixes:
+  - Bugfix: Fix of misspellings/typos, thanks to TomasRoj.
+  - Bugfix: VSCP measurement events fixed, because internal the parameters unit and index in the vscp_data_coding_getFormatByte() call were reversed. Thanks to troky!
 
 ## 0.7.1
 

@@ -103,6 +103,9 @@ extern "C"
 /** VSCP class 1 alarm type: Issued after an alarm system has been disarmed. */
 #define VSCP_TYPE_ALARM_EMERGENCY_DISARM    11
 
+/** VSCP class 1 alarm type: Issued when a watchdog has been triggered. */
+#define VSCP_TYPE_ALARM_WATCHDOG            12
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

@@ -307,6 +307,9 @@ extern "C"
 /** VSCP class 1 information type: A falling (edge) is detected. */
 #define VSCP_TYPE_INFORMATION_FALLING                               79
 
+/** VSCP class 1 information type: Something has been updated. */
+#define VSCP_TYPE_INFORMATION_UPDATED                               80
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
