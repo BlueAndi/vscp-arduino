@@ -1,6 +1,7 @@
 # VSCP L1 arduino library
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
+[![Repo Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Release](https://img.shields.io/github/release/BlueAndi/vscp-arduino.svg)](https://github.com/BlueAndi/vscp-arduino/releases)
 
 1. [VSCP](https://github.com/BlueAndi/vscp-arduino#vscp)
