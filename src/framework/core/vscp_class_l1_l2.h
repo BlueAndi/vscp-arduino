@@ -100,19 +100,19 @@ extern "C"
 #define VSCP_CLASS_L1_L2_MULTIMEDIA         (VSCP_CLASS_L1_L2_BASE + 40)
 
 /** VSCP level 1 class over level 2: Alert on LAN */
-#define VSCP_CLASS_L1_L2_ALERT_ON_LAN       (VSCP_CLASS_L1_L2_BASE + 50)
+#define VSCP_CLASS_L1_L2_AOL                (VSCP_CLASS_L1_L2_BASE + 50)
 
 /** VSCP level 1 class over level 2: Double precision floating point measurement */
-#define VSCP_CLASS_L1_L2_MEASUREMENT_DOUBLE (VSCP_CLASS_L1_L2_BASE + 60)
+#define VSCP_CLASS_L1_L2_MEASUREMENT64      (VSCP_CLASS_L1_L2_BASE + 60)
 
 /** VSCP level 1 class over level 2: Measurement with zone */
 #define VSCP_CLASS_L1_L2_MEASUREZONE        (VSCP_CLASS_L1_L2_BASE + 65)
 
 /** VSCP level 1 class over level 2: Single precision floating point measurement */
-#define VSCP_CLASS_L1_L2_MEASUREMENT_SINGLE (VSCP_CLASS_L1_L2_BASE + 70)
+#define VSCP_CLASS_L1_L2_MEASUREMENT32      (VSCP_CLASS_L1_L2_BASE + 70)
 
 /** VSCP level 1 class over level 2: Set value with zone */
-#define VSCP_CLASS_L1_L2_SET_VALUE_WITH_ZONE (VSCP_CLASS_L1_L2_BASE + 85)
+#define VSCP_CLASS_L1_L2_SETVALUEZONE       (VSCP_CLASS_L1_L2_BASE + 85)
 
 /** VSCP level 1 class over level 2: Weather */
 #define VSCP_CLASS_L1_L2_WEATHER             (VSCP_CLASS_L1_L2_BASE + 90)
@@ -127,10 +127,10 @@ extern "C"
 #define VSCP_CLASS_L1_L2_DISPLAY             (VSCP_CLASS_L1_L2_BASE + 102)
 
 /** VSCP level 1 class over level 2: IR Remote i/f */
-#define VSCP_CLASS_L1_L2_REMOTE              (VSCP_CLASS_L1_L2_BASE + 110)
+#define VSCP_CLASS_L1_L2_IR                  (VSCP_CLASS_L1_L2_BASE + 110)
 
 /** VSCP level 1 class over level 2: Position (GPS) */
-#define VSCP_CLASS_L1_L2_GPS                 (VSCP_CLASS_L1_L2_BASE + 206)
+#define VSCP_CLASS_L1_L2_GNSS                (VSCP_CLASS_L1_L2_BASE + 206)
 
 /** VSCP level 1 class over level 2: Wireless */
 #define VSCP_CLASS_L1_L2_WIRELESS            (VSCP_CLASS_L1_L2_BASE + 212)

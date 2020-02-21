@@ -110,6 +110,24 @@ extern uint8_t  vscp_ps_access_read8(uint16_t addr);
  */
 extern void vscp_ps_access_write8(uint16_t addr, uint8_t value);
 
+/**
+ * Read several bytes from the persistent memory.
+ *
+ * @param[in]   addr    Address in persistent memory
+ * @param[in]   buffer  Buffer which to read in
+ * @param[in]   size    Buffer size in byte (Number of data to read)
+ */
+extern void vscp_ps_access_readMultiple(uint16_t addr, uint8_t* const buffer, uint8_t size);
+
+/**
+ * Write several bytes to the persistent memory.
+ *
+ * @param[in]   addr    Address in persistent memory
+ * @param[in]   buffer  Buffer which to write
+ * @param[in]   size    Bufer size in byte (Number of data to write)
+ */
+extern void vscp_ps_access_writeMultiple(uint16_t addr, const uint8_t* const buffer, uint8_t size);
+
 #ifdef __cplusplus
 }
 #endif

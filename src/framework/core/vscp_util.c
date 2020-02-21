@@ -117,11 +117,11 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
             /*@fallthrough@*/
         case VSCP_CLASS_L1_SECURITY:
             /*@fallthrough@*/
-        case VSCP_CLASS_L1_ALERT_ON_LAN:
+        case VSCP_CLASS_L1_AOL:
             /*@fallthrough@*/
         case VSCP_CLASS_L1_MEASUREZONE:
             /*@fallthrough@*/
-        case VSCP_CLASS_L1_SET_VALUE_WITH_ZONE:
+        case VSCP_CLASS_L1_SETVALUEZONE:
             /*@fallthrough@*/
         case VSCP_CLASS_L1_WEATHER:
             /*@fallthrough@*/
@@ -148,7 +148,7 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
         case VSCP_CLASS_L1_CONTROL:
             if ((VSCP_TYPE_CONTROL_DEACTIVATE >= vscpType) ||
                 (
-                    (VSCP_TYPE_CONTROL_DIM_LAMP <= vscpType) &&
+                    (VSCP_TYPE_CONTROL_DIM_LAMPS <= vscpType) &&
                     (VSCP_TYPE_CONTROL_STREAM_DATA != vscpType)
                 ))
             {
@@ -164,13 +164,13 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
             break;
 
         case VSCP_CLASS_L1_DISPLAY:
-            if (VSCP_TYPE_DISPLAY_SET_DISPLAY_BUFFER_PARAMETER != vscpType)
+            if (VSCP_TYPE_DISPLAY_SET_DISPLAY_BUFFER_PARAM != vscpType)
             {
                 zoneIndex = 1;
             }
             break;
 
-        case VSCP_CLASS_L1_REMOTE:
+        case VSCP_CLASS_L1_IR:
             if ((VSCP_TYPE_REMOTE_VSCP_ABSTRACT == vscpType) ||
                 (VSCP_TYPE_REMOTE_MAPITO == vscpType))
             {
@@ -183,11 +183,11 @@ extern uint8_t  vscp_util_getZoneIndex(uint16_t vscpClass, uint8_t vscpType)
             /*@fallthrough@*/
         case VSCP_CLASS_L1_DATA:
             /*@fallthrough@*/
-        case VSCP_CLASS_L1_MEASUREMENT_DOUBLE:
+        case VSCP_CLASS_L1_MEASUREMENT64:
             /*@fallthrough@*/
-        case VSCP_CLASS_L1_MEASUREMENT_SINGLE:
+        case VSCP_CLASS_L1_MEASUREMENT32:
             /*@fallthrough@*/
-        case VSCP_CLASS_L1_GPS:
+        case VSCP_CLASS_L1_GNSS:
             /*@fallthrough@*/
         case VSCP_CLASS_L1_WIRELESS:
             /*@fallthrough@*/

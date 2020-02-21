@@ -47,7 +47,7 @@
 #include "vscp_class_l1.h"
 #include "vscp_type_protocol.h"
 #include "vscp_type_information.h"
-#include "../events/vscp_information.h"
+#include "../events/vscp_evt_information.h"
 #include "vscp_ps.h"
 #include "../user/vscp_timer.h"
 #include "../user/vscp_app_reg.h"
@@ -310,7 +310,7 @@ extern VSCP_CORE_RET vscp_core_init(void)
     vscp_core_resetRequested    = FALSE;
 
     vscp_core_rxMessage.vscpClass   = VSCP_CLASS_L1_PROTOCOL;
-    vscp_core_rxMessage.vscpType    = VSCP_TYPE_PROTOCOL_UNDEFINED;
+    vscp_core_rxMessage.vscpType    = VSCP_TYPE_PROTOCOL_GENERAL;
     vscp_core_rxMessage.priority    = VSCP_PRIORITY_7_LOW;
     vscp_core_rxMessage.oAddr       = VSCP_NICKNAME_NOT_INIT;
     vscp_core_rxMessage.hardCoded   = FALSE;
@@ -752,7 +752,7 @@ static inline void  vscp_core_stateStartup(void)
                CLASS1.PROTOCOL GUID drop nickname-ID / reset event.
              */
             if ((VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass) &&
-                (VSCP_TYPE_PROTOCOL_GUID_DROP_NICKNAME_ID == vscp_core_rxMessage.vscpType))
+                (VSCP_TYPE_PROTOCOL_RESET_DEVICE == vscp_core_rxMessage.vscpType))
             {
                 vscp_core_handleProtocolGuidDropNickname();
             }
@@ -802,7 +802,7 @@ static inline void  vscp_core_changeToStateInit(BOOL probeSegmentMaster)
         if (FALSE == probeSegmentMaster)
         {
             vscp_core_initState = INIT_STATE_PROBE;
-            vscp_core_nickname_probe = 1;
+            vscp_core_nickname_probe = VSCP_CONFIG_START_NODE_PROBE_NICKNAME;
         }
         else
         {
@@ -868,7 +868,7 @@ static inline void  vscp_core_stateInit(void)
             vscp_core_initState = INIT_STATE_PROBE;
 
             /* Probe shall start with nickname id 1. */
-            vscp_core_nickname_probe = 1;
+            vscp_core_nickname_probe = VSCP_CONFIG_START_NODE_PROBE_NICKNAME;
         }
         /* Valid message received */
         else if (TRUE == vscp_core_rxMessageValid)
@@ -1017,7 +1017,7 @@ static inline void  vscp_core_statePreActive(void)
         if (VSCP_CLASS_L1_PROTOCOL == vscp_core_rxMessage.vscpClass)
         {
             /* Nickname id from the segment master? */
-            if ((VSCP_TYPE_PROTOCOL_SET_NICKNAME_ID == vscp_core_rxMessage.vscpType) &&
+            if ((VSCP_TYPE_PROTOCOL_SET_NICKNAME == vscp_core_rxMessage.vscpType) &&
                 (VSCP_NICKNAME_SEGMENT_MASTER == vscp_core_rxMessage.oAddr) &&
                 (VSCP_NICKNAME_NOT_INIT == vscp_core_rxMessage.data[0]))
             {
@@ -1030,7 +1030,7 @@ static inline void  vscp_core_statePreActive(void)
                 vscp_core_writeNicknameId(vscp_core_rxMessage.data[1]);
 
                 txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NICKNAME_ID_ACCEPTED;
+                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NICKNAME_ACCEPTED;
                 txMessage.priority  = VSCP_PRIORITY_7_LOW;
                 txMessage.oAddr     = vscp_core_nickname;
                 txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -1153,7 +1153,7 @@ static inline void  vscp_core_stateActive(void)
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_CUSTOM_HEARTBEAT )
         (void)vscp_portable_sendNodeHeartbeatEvent();
 #else
-        (void)vscp_information_sendNodeHeartbeatEvent(0, vscp_dev_data_getNodeZone(), vscp_dev_data_getNodeSubZone());
+        (void)vscp_evt_information_sendNodeHeartbeat(0, vscp_dev_data_getNodeZone(), vscp_dev_data_getNodeSubZone());
 #endif
 
         /* Restart timer */
@@ -1314,7 +1314,7 @@ static inline void  vscp_core_handleProtocolClassType(void)
     switch(vscp_core_rxMessage.vscpType)
     {
     /* VSCP specification, chapter Segment Controller Heartbeat. */
-    case VSCP_TYPE_PROTOCOL_SEGMENT_CONTROLLER_HEARTBEAT:
+    case VSCP_TYPE_PROTOCOL_SEGCTRL_HEARTBEAT:
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT )
         vscp_core_handleProtocolHeartbeat();
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_HEARTBEAT_SUPPORT_SEGMENT ) */
@@ -1331,17 +1331,17 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Set nickname-ID for node. */
-    case VSCP_TYPE_PROTOCOL_SET_NICKNAME_ID:
+    case VSCP_TYPE_PROTOCOL_SET_NICKNAME:
         vscp_core_handleProtocolSetNicknameId();
         break;
 
     /* VSCP specification, chapter nickname-ID accepted. */
-    case VSCP_TYPE_PROTOCOL_NICKNAME_ID_ACCEPTED:
+    case VSCP_TYPE_PROTOCOL_NICKNAME_ACCEPTED:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
     /* VSCP specification, chapter Drop nickname-ID / Reset Device. */
-    case VSCP_TYPE_PROTOCOL_DROP_NICKNAME_ID:
+    case VSCP_TYPE_PROTOCOL_DROP_NICKNAME:
         vscp_core_handleProtocolDropNicknameId();
         break;
 
@@ -1351,7 +1351,7 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Read/Write response. */
-    case VSCP_TYPE_PROTOCOL_READ_WRITE_RESPONSE:
+    case VSCP_TYPE_PROTOCOL_RW_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
@@ -1361,22 +1361,22 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Enter boot loader mode. */
-    case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE:
+    case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER:
         vscp_core_handleProtocolEnterBootLoaderMode();
         break;
 
     /* VSCP specification, chapter ACK boot loader mode. */
-    case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_ACK:
+    case VSCP_TYPE_PROTOCOL_ACK_BOOT_LOADER:
         /* Boot loader specific event. Not supported. */
         break;
 
     /* VSCP specification, chapter NACK boot loader mode. */
-    case VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_NACK:
+    case VSCP_TYPE_PROTOCOL_NACK_BOOT_LOADER:
         /* Boot loader specific event. Not supported. */
         break;
 
     /* VSCP specification, chapter Start block data transfer. */
-    case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER:
+    case VSCP_TYPE_PROTOCOL_START_BLOCK:
         /* Boot loader specific event. Not supported. */
         break;
 
@@ -1396,17 +1396,17 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Program data block */
-    case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK:
+    case VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA:
         /* Boot loader specific event. Not supported. */
         break;
 
     /* VSCP specification, chapter ACK program data block */
-    case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_ACK:
+    case VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
     /* VSCP specification, chapter NACK program data block */
-    case VSCP_TYPE_PROTOCOL_PROGRAM_DATA_BLOCK_NACK:
+    case VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
@@ -1416,7 +1416,7 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter GUID drop nickname-ID / reset device. */
-    case VSCP_TYPE_PROTOCOL_GUID_DROP_NICKNAME_ID:
+    case VSCP_TYPE_PROTOCOL_RESET_DEVICE:
         vscp_core_handleProtocolGuidDropNickname();
         break;
 
@@ -1431,7 +1431,7 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Read/Write page response. */
-    case VSCP_TYPE_PROTOCOL_PAGE_READ_WRITE_RESPONSE:
+    case VSCP_TYPE_PROTOCOL_RW_PAGE_RESPONSE:
         /* This event is interesting for node configuration, but not for a node itself. */
         break;
 
@@ -1466,12 +1466,12 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Get decision matrix info. */
-    case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO:
+    case VSCP_TYPE_PROTOCOL_GET_MATRIX_INFO:
         vscp_core_handleProtocolGetDecisionMatrixInfo();
         break;
 
     /* VSCP specification, chapter Get decision matrix info. */
-    case VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO_RESPONSE:
+    case VSCP_TYPE_PROTOCOL_GET_MATRIX_INFO_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
@@ -1486,17 +1486,17 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Extended page read register. */
-    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_REGISTER:
+    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ:
         vscp_core_handleProtocolExtendedPageReadRegister();
         break;
 
     /* VSCP specification, chapter Extended page write register. */
-    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_WRITE_REGISTER:
+    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_WRITE:
         vscp_core_handleProtocolExtendedPageWriteRegister();
         break;
 
     /* VSCP specification, chapter Extended page read write response. */
-    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE:
+    case VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_RESPONSE:
         /* This event is interesting for node management, but not for a node itself. */
         break;
 
@@ -1521,12 +1521,12 @@ static inline void  vscp_core_handleProtocolClassType(void)
         break;
 
     /* VSCP specification, chapter Start block data transfer ACK. */
-    case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_ACK:
+    case VSCP_TYPE_PROTOCOL_START_BLOCK_ACK:
         /* Boot loader specific event. Not supported. */
         break;
 
     /* VSCP specification, chapter Start block data transfer NACK. */
-    case VSCP_TYPE_PROTOCOL_START_BLOCK_DATA_TRANSFER_NACK:
+    case VSCP_TYPE_PROTOCOL_START_BLOCK_NACK:
         /* Boot loader specific event. Not supported. */
         break;
 
@@ -1654,7 +1654,7 @@ static inline void  vscp_core_handleProtocolSetNicknameId(void)
 
                 /* Answer that the nickname id is already in use. */
                 txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NICKNAME_ID_ACCEPTED;
+                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NICKNAME_ACCEPTED;
                 txMessage.priority  = VSCP_PRIORITY_7_LOW;
                 txMessage.oAddr     = vscp_core_nickname;
                 txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -1779,7 +1779,7 @@ static void vscp_core_sendRegisterReadWriteRsp(uint8_t addr, uint8_t value)
     vscp_TxMessage  txMessage;
 
     txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-    txMessage.vscpType  = VSCP_TYPE_PROTOCOL_READ_WRITE_RESPONSE;
+    txMessage.vscpType  = VSCP_TYPE_PROTOCOL_RW_RESPONSE;
     txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
     txMessage.oAddr     = vscp_core_nickname;
     txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2297,7 +2297,7 @@ static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
                 (vscp_core_regPageSelect != pageSelect))
             {
                 txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_NACK;
+                txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NACK_BOOT_LOADER;
                 txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
                 txMessage.oAddr     = vscp_core_nickname;
                 txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2323,7 +2323,7 @@ static inline void  vscp_core_handleProtocolEnterBootLoaderMode(void)
 #else   /* VSCP_CONFIG_BASE_IS_DISABLED( VSCP_CONFIG_BOOT_LOADER_SUPPORTED ) */
 
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_ENTER_BOOT_LOADER_MODE_NACK;
+            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_NACK_BOOT_LOADER;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
             txMessage.oAddr     = vscp_core_nickname;
             txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2452,7 +2452,7 @@ static inline void  vscp_core_handleProtocolPageRead(void)
 
             /* Prepare tx message */
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_PAGE_READ_WRITE_RESPONSE;
+            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_RW_PAGE_RESPONSE;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
             txMessage.oAddr     = vscp_core_nickname;
             txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2517,7 +2517,7 @@ static inline void  vscp_core_handleProtocolPageWrite(void)
 
             /* Prepare tx message */
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_PAGE_READ_WRITE_RESPONSE;
+            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_RW_PAGE_RESPONSE;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
             txMessage.oAddr     = vscp_core_nickname;
             txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2715,7 +2715,7 @@ static inline void  vscp_core_handleProtocolGetDecisionMatrixInfo(void)
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM ) */
 
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_GET_DECISION_MATRIX_INFO_RESPONSE;
+            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_GET_MATRIX_INFO_RESPONSE;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
             txMessage.oAddr     = vscp_core_nickname;
             txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2794,7 +2794,7 @@ static void vscp_core_extendedPageReadRegister(ExtPageRead * const data)
 
         /* Prepare tx message */
         txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-        txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE;
+        txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_RESPONSE;
         txMessage.priority  = VSCP_PRIORITY_7_LOW;
         txMessage.oAddr     = vscp_core_nickname;
         txMessage.hardCoded = VSCP_CORE_HARD_CODED;
@@ -2883,7 +2883,7 @@ static inline void  vscp_core_handleProtocolExtendedPageWriteRegister(void)
 
             /* Prepare tx message */
             txMessage.vscpClass = VSCP_CLASS_L1_PROTOCOL;
-            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_READ_WRITE_RESPONSE;
+            txMessage.vscpType  = VSCP_TYPE_PROTOCOL_EXTENDED_PAGE_RESPONSE;
             txMessage.priority  = VSCP_PRIORITY_3_NORMAL;
             txMessage.oAddr     = vscp_core_nickname;
             txMessage.hardCoded = VSCP_CORE_HARD_CODED;

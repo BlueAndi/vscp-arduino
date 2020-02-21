@@ -25,7 +25,7 @@ More information can be found on the main site http://www.vscp.org
 
 ## Library
 This is a arduino library of the VSCP software framework for level 1 devices.
-It provides several layers according to the [VSCP specification](https://grodansparadis.gitbooks.io/the-vscp-specification/).
+It provides several layers according to the [VSCP specification](https://docs.vscp.org/spec/latest).
 
 Recommended is to connect a LED, which shows the node state.
 

@@ -43,6 +43,8 @@
 #include "vscp_ps_access.h"
 #include "avr/eeprom.h"
 
+#include <stdlib.h>
+
 /*******************************************************************************
     COMPILER SWITCHES
 *******************************************************************************/
@@ -107,6 +109,58 @@ extern uint8_t  vscp_ps_access_read8(uint16_t addr)
 extern void vscp_ps_access_write8(uint16_t addr, uint8_t value)
 {
     eeprom_write_byte((uint8_t*)addr, value);
+
+    return;
+}
+
+/**
+ * Read several bytes from the persistent memory.
+ *
+ * @param[in]   addr    Address in persistent memory
+ * @param[in]   buffer  Buffer which to read in
+ * @param[in]   size    Buffer size in byte (Number of data to read)
+ */
+extern void vscp_ps_access_readMultiple(uint16_t addr, uint8_t* const buffer, uint8_t size)
+{
+    /* Note, this function uses single byte access by default.
+     * If necessary, adapt this for optimized access according to your needs.
+     */
+    if ((NULL != buffer) &&
+        (0 < size))
+    {
+        uint8_t index   = 0;
+
+        for(index = 0; index < size; ++index)
+        {
+            buffer[index] = vscp_ps_access_read8(addr + index);
+        }
+    }
+
+    return;
+}
+
+/**
+ * Write several bytes to the persistent memory.
+ *
+ * @param[in]   addr    Address in persistent memory
+ * @param[in]   buffer  Buffer which to write
+ * @param[in]   size    Bufer size in byte (Number of data to write)
+ */
+extern void vscp_ps_access_writeMultiple(uint16_t addr, const uint8_t* const buffer, uint8_t size)
+{
+    /* Note, this function uses single byte access by default.
+     * If necessary, adapt this for optimized access according to your needs.
+     */
+    if ((NULL != buffer) &&
+        (0 < size))
+    {
+        uint8_t index   = 0;
+
+        for(index = 0; index < size; ++index)
+        {
+            vscp_ps_access_write8(addr + index, buffer[index]);
+        }
+    }
 
     return;
 }

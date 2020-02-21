@@ -93,19 +93,19 @@ extern "C"
 #define VSCP_CLASS_L1_MULTIMEDIA            40
 
 /** VSCP level 1 class: Alert on LAN */
-#define VSCP_CLASS_L1_ALERT_ON_LAN          50
+#define VSCP_CLASS_L1_AOL                   50
 
 /** VSCP level 1 class: Double precision floating point measurement */
-#define VSCP_CLASS_L1_MEASUREMENT_DOUBLE    60
+#define VSCP_CLASS_L1_MEASUREMENT64         60
 
 /** VSCP level 1 class: Measurement with zone */
 #define VSCP_CLASS_L1_MEASUREZONE           65
 
 /** VSCP level 1 class: Single precision floating point measurement */
-#define VSCP_CLASS_L1_MEASUREMENT_SINGLE    70
+#define VSCP_CLASS_L1_MEASUREMENT32         70
 
 /** VSCP level 1 class: Set value with zone */
-#define VSCP_CLASS_L1_SET_VALUE_WITH_ZONE   85
+#define VSCP_CLASS_L1_SETVALUEZONE          85
 
 /** VSCP level 1 class: Weather */
 #define VSCP_CLASS_L1_WEATHER               90
@@ -120,10 +120,10 @@ extern "C"
 #define VSCP_CLASS_L1_DISPLAY               102
 
 /** VSCP level 1 class: IR Remote i/f */
-#define VSCP_CLASS_L1_REMOTE                110
+#define VSCP_CLASS_L1_IR                    110
 
 /** VSCP level 1 class: Position (GPS) */
-#define VSCP_CLASS_L1_GPS                   206
+#define VSCP_CLASS_L1_GNSS                  206
 
 /** VSCP level 1 class: Wireless */
 #define VSCP_CLASS_L1_WIRELESS              212

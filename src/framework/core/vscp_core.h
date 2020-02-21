@@ -93,16 +93,16 @@ extern "C"
 #define VSCP_CORE_VERSION_MAJOR     (1)
 
 /** VSCP specification minor version number, the framework is compliant to. */
-#define VSCP_CORE_VERSION_MINOR     (10)
+#define VSCP_CORE_VERSION_MINOR     (11)
 
 /** VSCP specification sub-minor version number, the framework is compliant to. */
-#define VSCP_CORE_VERSION_SUB_MINOR (18)
+#define VSCP_CORE_VERSION_SUB_MINOR (0)
 
 /** VSCP specification version string, the framework is compliant to. */
-#define VSCP_CORE_VERSION_STR       "v1.10.18"
+#define VSCP_CORE_VERSION_STR       "v1.11.00"
 
 /** VSCP framework version string */
-#define VSCP_CORE_FRAMEWORK_VERSION "v0.9.0"
+#define VSCP_CORE_FRAMEWORK_VERSION "v1.0.0"
 
 /*******************************************************************************
     MACROS

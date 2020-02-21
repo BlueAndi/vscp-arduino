@@ -46,6 +46,8 @@
 #include "vscp_dev_data.h"
 #include "vscp_ps.h"
 
+#include <stddef.h>
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
 
 /*******************************************************************************
@@ -139,6 +141,7 @@ VSCP_UTIL_COMPILE_TIME_ASSERT(sizeof(vscp_dm_MatrixRow) == sizeof(vscp_dm_ExtRow
     PROTOTYPES
 *******************************************************************************/
 
+static BOOL vscp_dm_isDecisionMatrixRowEnabled(uint8_t rowIndex);
 static void vscp_dm_readDecisionMatrix(vscp_dm_MatrixRow * const row, uint8_t rowIndex);
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
@@ -202,22 +205,26 @@ extern void vscp_dm_init(void)
 extern void vscp_dm_restoreFactoryDefaultSettings(void)
 {
     uint16_t    index   = 0;
-
-    /* Clear decision matrix */
-    for(index = 0; index < VSCP_PS_SIZE_DM; ++index)
-    {
-        vscp_ps_writeDM(index, 0);
-    }
+    vscp_dm_MatrixRow   row     = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
 
-    /* Clear decision matrix extension */
-    for(index = 0; index < VSCP_PS_SIZE_DM_EXTENSION; ++index)
-    {
-        vscp_ps_writeDMExtension(index, 0);
-    }
+    vscp_dm_ExtRow      extRow  = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
+
+    /* Clear decision matrix and decision matrix extension */
+    for(index = 0; index < VSCP_CONFIG_DM_ROWS; ++index)
+    {
+        vscp_ps_writeDMMultiple(index, (uint8_t*)&row, sizeof(row));
+
+#if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
+
+        vscp_ps_writeDMExtensionMultiple(index, (uint8_t*)&extRow, sizeof(extRow));
+
+#endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
+
+    }
 
     return;
 }
@@ -344,6 +351,13 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
 
+        /* Decision matrix row disabled? */
+        if (FALSE == vscp_dm_isDecisionMatrixRowEnabled(index))
+        {
+            /* Next row */
+            continue;
+        }
+
         vscp_dm_readDecisionMatrix(&row, index);
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
@@ -351,13 +365,6 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
         vscp_dm_readDecisionMatrixExt(&extRow, index);
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION ) */
-
-        /* Decision matrix row disabled? */
-        if (0 == (row.flags & VSCP_DM_FLAG_ENABLE))
-        {
-            /* Next row */
-            continue;
-        }
 
         /* No action? */
         if (VSCP_DM_ACTION_NO_OPERATION == row.action)
@@ -580,6 +587,21 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
 *******************************************************************************/
 
 /**
+ * Is the decision matrix row enabled or disabled?
+ * 
+ * @param[in]   rowIndex    Row index
+ * @return DM row is enabled (TRUE) or disabled (FALSE).
+ */
+static BOOL vscp_dm_isDecisionMatrixRowEnabled(uint8_t rowIndex)
+{
+    uint16_t    start   = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow);
+    uint16_t    offset  = offsetof(vscp_dm_MatrixRow, flags);
+    uint8_t     flags   = vscp_ps_readDM(start + offset);
+
+    return (0 == (flags & VSCP_DM_FLAG_ENABLE)) ? FALSE : TRUE;
+}
+
+/**
  * This function reads a single line from the decision matrix.
  *
  * @param[out]  row         Pointer to the row storage
@@ -590,14 +612,9 @@ static void vscp_dm_readDecisionMatrix(vscp_dm_MatrixRow * const row, uint8_t ro
     if (NULL != row)
     {
         uint16_t    start       = ((uint16_t)rowIndex) * sizeof(vscp_dm_MatrixRow);
-        uint8_t     index       = 0;
-        uint8_t*    rowBytePtr  = (uint8_t*)row;
+        uint8_t*    rowBuffer   = (uint8_t*)row;
 
-        for(index = 0; index < sizeof(vscp_dm_MatrixRow); ++index)
-        {
-            *rowBytePtr = vscp_ps_readDM(start + index);
-            ++rowBytePtr;
-        }
+        vscp_ps_readDMMultiple(start, rowBuffer, sizeof(vscp_dm_MatrixRow));
     }
 
     return;
@@ -616,14 +633,9 @@ static void vscp_dm_readDecisionMatrixExt(vscp_dm_ExtRow * const row, uint8_t ro
     if (NULL != row)
     {
         uint16_t    start       = ((uint16_t)rowIndex) * sizeof(vscp_dm_ExtRow);
-        uint16_t    index       = 0;
-        uint8_t*    rowBytePtr  = (uint8_t*)row;
+        uint8_t*    rowBuffer   = (uint8_t*)row;
 
-        for(index = 0; index < sizeof(vscp_dm_ExtRow); ++index)
-        {
-            *rowBytePtr = vscp_ps_readDMExtension(start + index);
-            ++rowBytePtr;
-        }
+        vscp_ps_readDMExtensionMultiple(start, rowBuffer, sizeof(vscp_dm_ExtRow));
     }
 
     return;

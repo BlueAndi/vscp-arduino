@@ -130,6 +130,8 @@ extern "C"
 
 #define VSCP_CONFIG_LOOPBACK_STORAGE_NUM        4
 
+#define VSCP_CONFIG_START_NODE_PROBE_NICKNAME   1
+
 */
 
 /*******************************************************************************

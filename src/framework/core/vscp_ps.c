@@ -566,6 +566,48 @@ extern void vscp_ps_writeDM(uint16_t index, uint8_t value)
     return;
 }
 
+/**
+ * Read the decision matrix from persistent memory.
+ *
+ * @param[in]   index   Decision matrix index
+ * @param[in]   buffer  Buffer which to read in
+ * @param[in]   size    Buffer size in byte (Number of data to read)
+ */
+extern void vscp_ps_readDMMultiple(uint16_t index, uint8_t* const buffer, uint8_t size)
+{
+    if ((NULL != buffer) &&
+        (0 < size))
+    {
+        if (VSCP_PS_SIZE_DM >= (index + size))
+        {
+            vscp_ps_access_readMultiple(VSCP_PS_ADDR_DM + index, buffer, size);
+        }
+    }
+
+    return;
+}
+
+/**
+ * Write the decision matrix to persistent memory.
+ *
+ * @param[in]   index   Decision matrix index
+ * @param[in]   buffer  Buffer which to write
+ * @param[in]   size    Bufer size in byte (Number of data to write)
+ */
+extern void vscp_ps_writeDMMultiple(uint16_t index, const uint8_t* const buffer, uint8_t size)
+{
+    if ((NULL != buffer) &&
+        (0 < size))
+    {
+        if (VSCP_PS_SIZE_DM >= (index + size))
+        {
+            vscp_ps_access_writeMultiple(VSCP_PS_ADDR_DM + index, buffer, size);
+        }
+    }
+
+    return;
+}
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
 
 /**
@@ -597,6 +639,40 @@ extern void vscp_ps_writeDMExtension(uint16_t index, uint8_t value)
     if (VSCP_PS_SIZE_DM_EXTENSION > index)
     {
         vscp_ps_access_write8(VSCP_PS_ADDR_DM_EXTENSION + index, value);
+    }
+
+    return;
+}
+
+/**
+ * Read the decision matrix extension from persistent memory.
+ *
+ * @param[in]   index   Decision matrix extension index
+ * @param[in]   buffer  Buffer which to read in
+ * @param[in]   size    Buffer size in byte (Number of data to read)
+ */
+extern void vscp_ps_readDMExtensionMultiple(uint16_t index, uint8_t* const buffer, uint8_t size)
+{
+    if (VSCP_PS_SIZE_DM_EXTENSION >= (index + size))
+    {
+        vscp_ps_access_readMultiple(VSCP_PS_ADDR_DM_EXTENSION + index, buffer, size);
+    }
+
+    return;
+}
+
+/**
+ * Write the decision matrix extension to persistent memory.
+ *
+ * @param[in]   index   Decision matrix extension index
+ * @param[in]   buffer  Buffer which to write
+ * @param[in]   size    Bufer size in byte (Number of data to write)
+ */
+extern void vscp_ps_writeDMExtensionMultiple(uint16_t index, const uint8_t* const buffer, uint8_t size)
+{
+    if (VSCP_PS_SIZE_DM_EXTENSION >= (index + size))
+    {
+        vscp_ps_access_writeMultiple(VSCP_PS_ADDR_DM_EXTENSION + index, buffer, size);
     }
 
     return;

@@ -182,7 +182,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
     if (VSCP_CLASS_L1_LOG == msg->vscpClass)
     {
         /* Start logging? */
-        if (VSCP_TYPE_LOG_LOG_START == msg->vscpType)
+        if (VSCP_TYPE_LOG_START == msg->vscpType)
         {
             if (1 == msg->dataNum)
             {
@@ -193,7 +193,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
             }
         }
         /* Stop logging? */
-        else if (VSCP_TYPE_LOG_LOG_STOP == msg->vscpType)
+        else if (VSCP_TYPE_LOG_STOP == msg->vscpType)
         {
             if (1 == msg->dataNum)
             {
@@ -204,7 +204,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
             }
         }
         /* Set log level? */
-        else if (VSCP_TYPE_LOG_LOG_LEVEL == msg->vscpType)
+        else if (VSCP_TYPE_LOG_LEVEL == msg->vscpType)
         {
             if (1 == msg->dataNum)
             {
@@ -244,7 +244,7 @@ extern BOOL vscp_logger_sendLogEvent(uint8_t id, uint8_t level, uint8_t const * 
     uint8_t         msgIndex    = 0;
     BOOL            status      = FALSE;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_LOG, VSCP_TYPE_LOG_LOG_EVENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_LOG, VSCP_TYPE_LOG_MESSAGE, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataNum = 8;
     txMsg.data[0] = id;

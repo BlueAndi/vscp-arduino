@@ -337,6 +337,13 @@ extern "C"
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK ) */
 
+#ifndef VSCP_CONFIG_START_NODE_PROBE_NICKNAME
+
+/** Number to start probing nickname from. */
+#define VSCP_CONFIG_START_NODE_PROBE_NICKNAME   1
+
+#endif  /* Undefined VSCP_CONFIG_START_NODE_PROBE_NICKNAME */
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/
