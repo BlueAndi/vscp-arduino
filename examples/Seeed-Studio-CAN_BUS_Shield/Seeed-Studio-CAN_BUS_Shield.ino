@@ -112,7 +112,7 @@ void actionExecute(unsigned char action, unsigned char par, vscp_RxMessage const
 
     switch(action)
     {
-    // Implement your cod here ...
+    // Implement your code here ...
     
     default:
         break;
