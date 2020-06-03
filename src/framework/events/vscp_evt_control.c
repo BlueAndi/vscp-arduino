@@ -87,37 +87,485 @@ extern BOOL vscp_evt_control_sendGeneralEvent(void)
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Mute on/off" not supported. No frame defined. */
+/**
+ * Mute on/off
+ * 
+ * @param[in] command If equal to zero no mute else mute.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMuteOnOff(uint8_t command, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "(All) Lamp(s) on/off" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_MUTE, VSCP_PRIORITY_3_NORMAL);
 
-/* "Open" not supported. No frame defined. */
+    txMsg.data[0] = command;
+    size += 1;
 
-/* "Close" not supported. No frame defined. */
+    txMsg.data[1] = zone;
+    size += 1;
 
-/* "TurnOn" not supported. No frame defined. */
+    txMsg.data[2] = subZone;
+    size += 1;
 
-/* "TurnOff" not supported. No frame defined. */
+    txMsg.dataNum = size;
 
-/* "Start" not supported. No frame defined. */
+    return vscp_core_sendEvent(&txMsg);
+}
 
-/* "Stop" not supported. No frame defined. */
+/**
+ * (All) Lamp(s) on/off
+ * 
+ * @param[in] state If equal to zero off else on.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendAllLampSOnOff(uint8_t state, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Reset" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_ALL_LAMPS, VSCP_PRIORITY_3_NORMAL);
 
-/* "Interrupt" not supported. No frame defined. */
+    txMsg.data[0] = state;
+    size += 1;
 
-/* "Sleep" not supported. No frame defined. */
+    txMsg.data[1] = zone;
+    size += 1;
 
-/* "Wakeup" not supported. No frame defined. */
+    txMsg.data[2] = subZone;
+    size += 1;
 
-/* "Resume" not supported. No frame defined. */
+    txMsg.dataNum = size;
 
-/* "Pause" not supported. No frame defined. */
+    return vscp_core_sendEvent(&txMsg);
+}
 
-/* "Activate" not supported. No frame defined. */
+/**
+ * Open
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendOpen(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Deactivate" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_OPEN, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Close
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendClose(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_CLOSE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * TurnOn
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendTurnon(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TURNON, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * TurnOff
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendTurnoff(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TURNOFF, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Start
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendStart(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_START, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Stop
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendStop(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_STOP, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Reset
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendReset(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_RESET, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Interrupt
+ * 
+ * @param[in] interruptLevel Interrupt level. (0 – 255 , zero is lowest interrupt level. ).
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendInterrupt(uint8_t interruptLevel, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_INTERRUPT, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = interruptLevel;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Sleep
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSleep(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SLEEP, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Wakeup
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendWakeup(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_WAKEUP, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Resume
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendResume(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_RESUME, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Pause
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendPause(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_PAUSE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Activate
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendActivate(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_ACTIVATE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Deactivate
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendDeactivate(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_DEACTIVATE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
 
 /* "Reserved for future use" not supported. No frame defined. */
 
@@ -125,53 +573,801 @@ extern BOOL vscp_evt_control_sendGeneralEvent(void)
 
 /* "Reserved for future use" not supported. No frame defined. */
 
-/* "Dim lamp(s)" not supported. No frame defined. */
+/**
+ * Dim lamp(s)
+ * 
+ * @param[in] value Value (0 – 100) . 0 = off, 100 = full on. 254 dim down one step. 255 dim up one
+ * step.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendDimLampS(uint8_t value, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Change Channel" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_DIM_LAMPS, VSCP_PRIORITY_3_NORMAL);
 
-/* "Change Level" not supported. No frame defined. */
+    txMsg.data[0] = value;
+    size += 1;
 
-/* "Relative Change Level" not supported. No frame defined. */
+    txMsg.data[1] = zone;
+    size += 1;
 
-/* "Measurement Request" not supported. No frame defined. */
+    txMsg.data[2] = subZone;
+    size += 1;
 
-/* "Stream Data" not supported. No frame defined. */
+    txMsg.dataNum = size;
 
-/* "Sync" not supported. No frame defined. */
+    return vscp_core_sendEvent(&txMsg);
+}
 
-/* "Zoned Stream Data" not supported. No frame defined. */
+/**
+ * Change Channel
+ * 
+ * @param[in] channel A value between 0 and 127 indicates the channel number. A value between 128 to
+ * 157 is change down by the specified number of channels. A value between 160 to 191 is change up by
+ * the specified number of channels. A value of 255 means that this is an extended change channel
+ * event and that the channel number is sent in byte 3 and after if needed.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendChangeChannel(uint8_t channel, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Set Pre-set" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_CHANGE_CHANNEL, VSCP_PRIORITY_3_NORMAL);
 
-/* "Toggle state" not supported. No frame defined. */
+    txMsg.data[0] = channel;
+    size += 1;
 
-/* "Timed pulse on" not supported. No frame defined. */
+    txMsg.data[1] = zone;
+    size += 1;
 
-/* "Timed pulse off" not supported. No frame defined. */
+    txMsg.data[2] = subZone;
+    size += 1;
 
-/* "Set country/language" not supported. No frame defined. */
+    txMsg.dataNum = size;
 
-/* "Big Change level" not supported. No frame defined. */
+    return vscp_core_sendEvent(&txMsg);
+}
 
-/* "Move shutter up" not supported. No frame defined. */
+/**
+ * Change Level
+ * 
+ * @param[in] level Absolute level.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendChangeLevel(uint8_t level, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Move shutter down" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_CHANGE_LEVEL, VSCP_PRIORITY_3_NORMAL);
 
-/* "Move shutter left" not supported. No frame defined. */
+    txMsg.data[0] = level;
+    size += 1;
 
-/* "Move shutter right" not supported. No frame defined. */
+    txMsg.data[1] = zone;
+    size += 1;
 
-/* "Move shutter to middle position" not supported. No frame defined. */
+    txMsg.data[2] = subZone;
+    size += 1;
 
-/* "Move shutter to preset position" not supported. No frame defined. */
+    txMsg.dataNum = size;
 
-/* "(All) Lamp(s) on" not supported. No frame defined. */
+    return vscp_core_sendEvent(&txMsg);
+}
 
-/* "(All) Lamp(s) off" not supported. No frame defined. */
+/**
+ * Relative Change Level
+ * 
+ * @param[in] level Relative level.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendRelativeChangeLevel(uint8_t level, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Lock" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_RELATIVE_CHANGE_LEVEL, VSCP_PRIORITY_3_NORMAL);
 
-/* "Unlock" not supported. No frame defined. */
+    txMsg.data[0] = level;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Measurement Request
+ * 
+ * @param[in] index Zero indicates all measurements supported by node should be sent (as separate
+ * events). Non-zero indicates a node specific index specifying which measurement to send.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMeasurementRequest(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_MEASUREMENT_REQUEST, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Stream Data
+ * 
+ * @param[in] index Sequence number which is increase by one for each stream data event sent.
+ * @param[in] data  Stream data. (optional) (array[7])
+ * @param[in] datasize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendStreamData(uint8_t index, uint8_t const * const data, uint8_t dataSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_STREAM_DATA, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    if (NULL != data)
+    {
+        for(byteIndex = 0; byteIndex < dataSize; ++byteIndex)
+        {
+            txMsg.data[1 + byteIndex] = data[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Sync
+ * 
+ * @param[in] index Sensor index for a sensor within a module (see data coding). 255 is all sensors.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSync(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SYNC, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Zoned Stream Data
+ * 
+ * @param[in] index Sequence number which is increase by one for each stream data event sent.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data  Stream data. (optional) (array[5])
+ * @param[in] datasize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendZonedStreamData(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const data, uint8_t dataSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_ZONED_STREAM_DATA, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    if (NULL != data)
+    {
+        for(byteIndex = 0; byteIndex < dataSize; ++byteIndex)
+        {
+            txMsg.data[3 + byteIndex] = data[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Set Pre-set
+ * 
+ * @param[in] presetCode Code for pre-set to set.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSetPreSet(uint8_t presetCode, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SET_PRESET, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = presetCode;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Toggle state
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendToggleState(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TOGGLE_STATE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Timed pulse on
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] control Control byte.
+ * @param[in] time Set time as a long with MSB in the first byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendTimedPulseOn(uint8_t userSpecific, uint8_t zone, uint8_t subZone, uint8_t control, uint32_t time)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TIMED_PULSE_ON, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.data[3] = control;
+    size += 1;
+
+    txMsg.data[4] = (uint8_t)((time >> 24) & 0xff);
+    txMsg.data[5] = (uint8_t)((time >> 16) & 0xff);
+    txMsg.data[6] = (uint8_t)((time >> 8) & 0xff);
+    txMsg.data[7] = (uint8_t)((time >> 0) & 0xff);
+    size += 4;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Timed pulse off
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] control Control byte.
+ * @param[in] time Set time as a long with MSB in the first byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendTimedPulseOff(uint8_t userSpecific, uint8_t zone, uint8_t subZone, uint8_t control, uint32_t time)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TIMED_PULSE_OFF, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.data[3] = control;
+    size += 1;
+
+    txMsg.data[4] = (uint8_t)((time >> 24) & 0xff);
+    txMsg.data[5] = (uint8_t)((time >> 16) & 0xff);
+    txMsg.data[6] = (uint8_t)((time >> 8) & 0xff);
+    txMsg.data[7] = (uint8_t)((time >> 0) & 0xff);
+    size += 4;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Set country/language
+ * 
+ * @param[in] code Country/Language code.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] codeSpecific Country/Language code specific (array[4])
+ * @param[in] codeSpecificsize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSetCountryLanguage(uint8_t code, uint8_t zone, uint8_t subZone, uint8_t const * const codeSpecific, uint8_t codeSpecificSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    if ((NULL == codeSpecific) || (0 == codeSpecificSize))
+    {
+        return FALSE;
+    }
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SET_COUNTRY_LANGUAGE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = code;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    for(byteIndex = 0; byteIndex < codeSpecificSize; ++byteIndex)
+    {
+        txMsg.data[3 + byteIndex] = codeSpecific[byteIndex];
+        size += 1;
+
+        if (VSCP_L1_DATA_SIZE <= size)
+        {
+            break;
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Big Change level
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] level Level as signed Integer. The range can be adjusted by the user by sending the
+ * needed number of bytes 1-5.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendBigChangeLevel(uint8_t index, uint8_t zone, uint8_t subZone, int32_t level)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    /* level not supported! */
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter up
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterUp(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_UP, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter down
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterDown(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_DOWN, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter left
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterLeft(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_LEFT, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter right
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterRight(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_RIGHT, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter to middle position
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterToMiddlePosition(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_MIDDLE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Move shutter to preset position
+ * 
+ * @param[in] index Index.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendMoveShutterToPresetPosition(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_SHUTTER_PRESET, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * (All) Lamp(s) on
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendAllLampSOn(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_ALL_LAMPS_ON, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * (All) Lamp(s) off
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendAllLampSOff(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_ALL_LAMPS_OFF, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Lock
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendLock(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_LOCK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Unlock
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendUnlock(uint8_t userSpecific, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_UNLOCK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
 
 /**
  * PWM set

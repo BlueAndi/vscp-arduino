@@ -147,36 +147,35 @@ Please take a look to the provided examples because they guide you through all n
 
 You will find the class defines here:
 ```
-src/framework/vscp_class_l1.h
-src/framework/vscp_class_l1_l2.h
+src/framework/core/vscp_class_l1.h
+src/framework/core/vscp_class_l1_l2.h
 ```
 
 You will find the type defines here:
 ```
-src/framework/vscp_type_alarm.h
-src/framework/vscp_type_aol.h
-src/framework/vscp_type_control.h
-src/framework/vscp_type_data.h
-src/framework/vscp_type_diagnostic.h
-src/framework/vscp_type_display.h
-src/framework/vscp_type_error.h
-src/framework/vscp_type_gnss.h
-src/framework/vscp_type_information.h
-src/framework/vscp_type_ir.h
-src/framework/vscp_type_log.h
-src/framework/vscp_type_measurement.h
-src/framework/vscp_type_measurement32.h
-src/framework/vscp_type_measurement64.h
-src/framework/vscp_type_measurezone.h
-src/framework/vscp_type_multimedia.h
-src/framework/vscp_type_phone.h
-src/framework/vscp_type_protocol.h
-src/framework/vscp_type_remote.h
-src/framework/vscp_type_security.h
-src/framework/vscp_type_setvaluezone.h
-src/framework/vscp_type_weather.h
-src/framework/vscp_type_weather_forecast.h
-src/framework/vscp_type_wireless.h
+src/framework/events/vscp_evt_alarm.h
+src/framework/events/vscp_evt_aol.h
+src/framework/events/vscp_evt_control.h
+src/framework/events/vscp_evt_data.h
+src/framework/events/vscp_evt_diagnostic.h
+src/framework/events/vscp_evt_display.h
+src/framework/events/vscp_evt_error.h
+src/framework/events/vscp_evt_gnss.h
+src/framework/events/vscp_evt_information.h
+src/framework/events/vscp_evt_ir.h
+src/framework/events/vscp_evt_log.h
+src/framework/events/vscp_evt_measurement.h
+src/framework/events/vscp_evt_measurement32.h
+src/framework/events/vscp_evt_measurement64.h
+src/framework/events/vscp_evt_measurezone.h
+src/framework/events/vscp_evt_multimedia.h
+src/framework/events/vscp_evt_phone.h
+src/framework/events/vscp_evt_protocol.h
+src/framework/events/vscp_evt_security.h
+src/framework/events/vscp_evt_setvaluezone.h
+src/framework/events/vscp_evt_weather.h
+src/framework/events/vscp_evt_weather_forecast.h
+src/framework/events/vscp_evt_wireless.h
 ```
 
 ### Does the library only support the CAN-bus as transport protocotol?

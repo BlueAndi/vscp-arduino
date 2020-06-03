@@ -405,11 +405,12 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                 (VSCP_L1_DATA_SIZE > zoneIndex))
             {
                 uint8_t subZoneIndex    = zoneIndex + 1;
+                uint8_t zone            = msg->data[zoneIndex];
+                uint8_t subZone         = msg->data[subZoneIndex];
 
-                /* Zone match? */
-                if (0 != (row.flags & VSCP_DM_FLAG_MATCH_ZONE))
+                /* Zone match and event shall not apply to all zones? */
+                if ((0 != (row.flags & VSCP_DM_FLAG_MATCH_ZONE)) && (VSCP_ZONE_BROADCAST != zone))
                 {
-                    uint8_t zone    = msg->data[zoneIndex];
                     uint8_t dmZone  = vscp_dev_data_getNodeZone();
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )
@@ -431,10 +432,9 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
                     }
                 }
 
-                /* Sub zone match? */
-                if (0 != (row.flags & VSCP_DM_FLAG_MATCH_SUB_ZONE))
+                /* Sub zone match and event shall not apply to all sub-zones? */
+                if ((0 != (row.flags & VSCP_DM_FLAG_MATCH_SUB_ZONE)) && (VSCP_SUBZONE_BROADCAST != subZone))
                 {
-                    uint8_t subZone     = msg->data[subZoneIndex];
                     uint8_t dmSubZone   = vscp_dev_data_getNodeSubZone();
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )

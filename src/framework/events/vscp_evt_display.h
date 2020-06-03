@@ -172,11 +172,12 @@ extern BOOL vscp_evt_display_sendShowText(uint8_t index, uint8_t zone, uint8_t s
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * @param[in] state 0 =off, 1=on, 2=blink
- * @param[in] blinkPeriod Blink period in milliseconds.
+ * @param[in] blinkOnPeriod Blink On period in milliseconds.
+ * @param[in] blinkOffPeriod Blink Off period in milliseconds.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_display_sendSetLed(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t state, uint32_t blinkPeriod);
+extern BOOL vscp_evt_display_sendSetLed(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t state, uint16_t blinkOnPeriod, uint16_t blinkOffPeriod);
 
 /**
  * Set RGB Color

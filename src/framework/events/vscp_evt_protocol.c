@@ -108,7 +108,7 @@ extern BOOL vscp_evt_protocol_sendSegmentControllerHeartbeat(uint8_t crc, uint32
     if (NULL != time)
     {
         txMsg.data[1] = (uint8_t)((*time >> 24) & 0xff);
-        txMsg.data[2] = (uint8_t)((*time >> 18) & 0xff);
+        txMsg.data[2] = (uint8_t)((*time >> 16) & 0xff);
         txMsg.data[3] = (uint8_t)((*time >> 8) & 0xff);
         txMsg.data[4] = (uint8_t)((*time >> 0) & 0xff);
         size += 4;
@@ -388,13 +388,13 @@ extern BOOL vscp_evt_protocol_sendAckBootLoaderMode(uint32_t flashBlockSize, uin
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_ACK_BOOT_LOADER, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = (uint8_t)((flashBlockSize >> 24) & 0xff);
-    txMsg.data[1] = (uint8_t)((flashBlockSize >> 18) & 0xff);
+    txMsg.data[1] = (uint8_t)((flashBlockSize >> 16) & 0xff);
     txMsg.data[2] = (uint8_t)((flashBlockSize >> 8) & 0xff);
     txMsg.data[3] = (uint8_t)((flashBlockSize >> 0) & 0xff);
     size += 4;
 
     txMsg.data[4] = (uint8_t)((numberOfBlocks >> 24) & 0xff);
-    txMsg.data[5] = (uint8_t)((numberOfBlocks >> 18) & 0xff);
+    txMsg.data[5] = (uint8_t)((numberOfBlocks >> 16) & 0xff);
     txMsg.data[6] = (uint8_t)((numberOfBlocks >> 8) & 0xff);
     txMsg.data[7] = (uint8_t)((numberOfBlocks >> 0) & 0xff);
     size += 4;
@@ -421,7 +421,7 @@ extern BOOL vscp_evt_protocol_sendNackBootLoaderMode(uint32_t const * const erro
     if (NULL != errorCode)
     {
         txMsg.data[0] = (uint8_t)((*errorCode >> 24) & 0xff);
-        txMsg.data[1] = (uint8_t)((*errorCode >> 18) & 0xff);
+        txMsg.data[1] = (uint8_t)((*errorCode >> 16) & 0xff);
         txMsg.data[2] = (uint8_t)((*errorCode >> 8) & 0xff);
         txMsg.data[3] = (uint8_t)((*errorCode >> 0) & 0xff);
         size += 4;
@@ -448,7 +448,7 @@ extern BOOL vscp_evt_protocol_sendStartBlockDataTransfer(uint32_t blockNumber, u
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_START_BLOCK, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = (uint8_t)((blockNumber >> 24) & 0xff);
-    txMsg.data[1] = (uint8_t)((blockNumber >> 18) & 0xff);
+    txMsg.data[1] = (uint8_t)((blockNumber >> 16) & 0xff);
     txMsg.data[2] = (uint8_t)((blockNumber >> 8) & 0xff);
     txMsg.data[3] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
@@ -521,7 +521,7 @@ extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t write
     size += 2;
 
     txMsg.data[2] = (uint8_t)((writePointer >> 24) & 0xff);
-    txMsg.data[3] = (uint8_t)((writePointer >> 18) & 0xff);
+    txMsg.data[3] = (uint8_t)((writePointer >> 16) & 0xff);
     txMsg.data[4] = (uint8_t)((writePointer >> 8) & 0xff);
     txMsg.data[5] = (uint8_t)((writePointer >> 0) & 0xff);
     size += 4;
@@ -550,7 +550,7 @@ extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t writ
     size += 1;
 
     txMsg.data[1] = (uint8_t)((writePointer >> 24) & 0xff);
-    txMsg.data[2] = (uint8_t)((writePointer >> 18) & 0xff);
+    txMsg.data[2] = (uint8_t)((writePointer >> 16) & 0xff);
     txMsg.data[3] = (uint8_t)((writePointer >> 8) & 0xff);
     txMsg.data[4] = (uint8_t)((writePointer >> 0) & 0xff);
     size += 4;
@@ -575,7 +575,7 @@ extern BOOL vscp_evt_protocol_sendProgramDataBlock(uint32_t blockNumber)
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = (uint8_t)((blockNumber >> 24) & 0xff);
-    txMsg.data[1] = (uint8_t)((blockNumber >> 18) & 0xff);
+    txMsg.data[1] = (uint8_t)((blockNumber >> 16) & 0xff);
     txMsg.data[2] = (uint8_t)((blockNumber >> 8) & 0xff);
     txMsg.data[3] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
@@ -600,7 +600,7 @@ extern BOOL vscp_evt_protocol_sendAckProgramDataBlock(uint32_t blockNumber)
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA_ACK, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = (uint8_t)((blockNumber >> 24) & 0xff);
-    txMsg.data[1] = (uint8_t)((blockNumber >> 18) & 0xff);
+    txMsg.data[1] = (uint8_t)((blockNumber >> 16) & 0xff);
     txMsg.data[2] = (uint8_t)((blockNumber >> 8) & 0xff);
     txMsg.data[3] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
@@ -629,7 +629,7 @@ extern BOOL vscp_evt_protocol_sendNackProgramDataBlock(uint8_t errorCode, uint32
     size += 1;
 
     txMsg.data[1] = (uint8_t)((blockNumber >> 24) & 0xff);
-    txMsg.data[2] = (uint8_t)((blockNumber >> 18) & 0xff);
+    txMsg.data[2] = (uint8_t)((blockNumber >> 16) & 0xff);
     txMsg.data[3] = (uint8_t)((blockNumber >> 8) & 0xff);
     txMsg.data[4] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;

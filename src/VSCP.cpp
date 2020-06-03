@@ -164,7 +164,7 @@ void VSCP::process(void)
     if (true == mIsInitialized)
     {
         /* Process the whole framework */
-        vscp_core_process();
+        (void)vscp_core_process();
         
         /* Process all member timers */
         mStatusLampTimer.process();

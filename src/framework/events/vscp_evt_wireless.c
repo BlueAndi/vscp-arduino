@@ -102,7 +102,7 @@ extern BOOL vscp_evt_wireless_sendGsmCell(uint32_t count)
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_WIRELESS, VSCP_TYPE_WIRELESS_GSM_CELL, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = (uint8_t)((count >> 24) & 0xff);
-    txMsg.data[1] = (uint8_t)((count >> 18) & 0xff);
+    txMsg.data[1] = (uint8_t)((count >> 16) & 0xff);
     txMsg.data[2] = (uint8_t)((count >> 8) & 0xff);
     txMsg.data[3] = (uint8_t)((count >> 0) & 0xff);
     size += 4;

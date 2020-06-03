@@ -590,6 +590,16 @@ extern "C"
  */
 #define VSCP_TYPE_INFORMATION_RECONNECT                           83
 
+/**
+ * Enter, something has been entered.
+ */
+#define VSCP_TYPE_INFORMATION_ENTER                               84
+
+/**
+ * Exit, something has been exited.
+ */
+#define VSCP_TYPE_INFORMATION_EXIT                                85
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

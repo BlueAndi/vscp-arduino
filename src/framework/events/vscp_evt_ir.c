@@ -260,7 +260,7 @@ extern BOOL vscp_evt_ir_sendMapitoRemoteFormat(uint8_t repeat, uint8_t zone, uin
     size += 1;
 
     txMsg.data[3] = (uint8_t)((address >> 24) & 0xff);
-    txMsg.data[4] = (uint8_t)((address >> 18) & 0xff);
+    txMsg.data[4] = (uint8_t)((address >> 16) & 0xff);
     txMsg.data[5] = (uint8_t)((address >> 8) & 0xff);
     txMsg.data[6] = (uint8_t)((address >> 0) & 0xff);
     size += 4;

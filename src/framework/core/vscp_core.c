@@ -456,14 +456,24 @@ extern void vscp_core_restoreFactoryDefaultSettings(void)
 /**
  * This function process the whole VSCP core stack. Call it in a user defined
  * cyclic period.
+ *
+ * Note, for a fast handling of received events, this function returns TRUE in
+ * case a event was handled, otherwise FALSE. Call it e.g. in a loop until no
+ * event is handled anymore. If its not necessary in your application, just
+ * skip the return value.
+ *
+ * @return If a received event was handled, it will return TRUE otherwise FALSE.
  */
-extern void vscp_core_process(void)
+extern BOOL vscp_core_process(void)
 {
+    BOOL isEventHandled = FALSE;
+
     /* Get any received message.
      * Note, only in the active state all received messages are processed.
      * In the other ones it depends on their sub state.
      */
     vscp_core_rxMessageValid = vscp_transport_readMessage(&vscp_core_rxMessage);
+    isEventHandled = vscp_core_rxMessageValid;
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOGGER )
 
@@ -531,7 +541,7 @@ extern void vscp_core_process(void)
     /* Invalidate received message */
     vscp_core_rxMessageValid = FALSE;
 
-    return;
+    return isEventHandled;
 }
 
 /**
@@ -1153,7 +1163,7 @@ static inline void  vscp_core_stateActive(void)
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_CUSTOM_HEARTBEAT )
         (void)vscp_portable_sendNodeHeartbeatEvent();
 #else
-        (void)vscp_evt_information_sendNodeHeartbeat(0, vscp_dev_data_getNodeZone(), vscp_dev_data_getNodeSubZone());
+        (void)vscp_evt_information_sendNodeHeartbeat(0, vscp_dev_data_getNodeZone(), vscp_dev_data_getNodeSubZone(), NULL, 0);
 #endif
 
         /* Restart timer */

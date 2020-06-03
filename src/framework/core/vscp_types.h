@@ -95,6 +95,12 @@ extern "C"
 /** GUID size */
 #define VSCP_GUID_SIZE                      (16)
 
+/** Zone value which means that this event shall apply for all zones. */
+#define VSCP_ZONE_BROADCAST                 (0xFF)
+
+/** Sub-zone value which means that this event shall apply for all sub-zones. */
+#define VSCP_SUBZONE_BROADCAST              (0xFF)
+
 /** Application register start address (page 0) */
 #define VSCP_REGISTER_APP_START_ADDR        (0x00)
 
