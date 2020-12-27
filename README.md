@@ -14,6 +14,7 @@
 8. [FAQ](https://github.com/BlueAndi/vscp-arduino#faq)
 9. [Issues, Ideas and bugs](https://github.com/BlueAndi/vscp-arduino#issues-ideas-and-bugs)
 10. [License](https://github.com/BlueAndi/vscp-arduino#license)
+11. [Contribution](https://github.com/BlueAndi/vscp-arduino#contribution)
 
 ## VSCP
 
@@ -196,3 +197,7 @@ you are able and willing to fix it by yourself, clone the repository and create 
 
 ## License
 The whole source code is published under the [MIT license](http://choosealicense.com/licenses/mit/).
+
+## Contribution
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, shall be licensed as above, without any
+additional terms or conditions.
