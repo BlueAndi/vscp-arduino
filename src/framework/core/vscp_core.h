@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -102,7 +102,7 @@ extern "C"
 #define VSCP_CORE_VERSION_STR       "v1.11.00"
 
 /** VSCP framework version string */
-#define VSCP_CORE_FRAMEWORK_VERSION "v1.1.0"
+#define VSCP_CORE_FRAMEWORK_VERSION "v1.2.0"
 
 /*******************************************************************************
     MACROS

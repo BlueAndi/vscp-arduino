@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -150,7 +150,7 @@ extern "C"
 
 /**
  * Default unit: Joule.
- * Optional unit: KWh (1)
+ * Optional unit: KWh (1), Wh(2)
  * This is a measurement of energy.
  */
 #define VSCP_TYPE_MEASUREMENT_ENERGY                  13
@@ -454,6 +454,27 @@ extern "C"
  * Sound level expressed in decibel. This event is supplied for convenience.
  */
 #define VSCP_TYPE_MEASUREMENT_SOUND_LEVEL             60
+
+/**
+ * Default unit: sievert (Sv).
+ * Optional unit rem (1)
+ * This is a measurement of a radiation dose (Equivalent dose of ionizing radiation).
+ */
+#define VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EQ       61
+
+/**
+ * Default unit: coulomb per kilogram (C/kg).
+ * Optional unit: Röntgen/R (1)
+ * This is a measurement of a radiation dose (Exposed dose of ionizing radiation).
+ */
+#define VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EXPOSURE 62
+
+/**
+ * Default unit: Percent
+ * Optional unit: Röntgen/R (1)
+ * Ratio between power in kW and apperant power in kVA.
+ */
+#define VSCP_TYPE_MEASUREMENT_POWER_FACTOR            63
 
 /*******************************************************************************
     MACROS

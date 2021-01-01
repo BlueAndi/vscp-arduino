@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -334,6 +334,16 @@ extern "C"
  * Request new security token.
  */
 #define VSCP_TYPE_CONTROL_REQUEST_SECURITY_TOKEN 51
+
+/**
+ * Increment value.
+ */
+#define VSCP_TYPE_CONTROL_INCREMENT              52
+
+/**
+ * Decrement value.
+ */
+#define VSCP_TYPE_CONTROL_DECREMENT              53
 
 /*******************************************************************************
     MACROS

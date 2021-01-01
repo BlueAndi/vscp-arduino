@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -1184,5 +1184,33 @@ extern BOOL vscp_evt_diagnostic_sendReceiptionFailure(uint8_t index, uint8_t zon
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_diagnostic_sendExternalIcFailure(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const user, uint8_t userSize);
+
+/**
+ * Overvoltage
+ * 
+ * @param[in] index Index. Often used as an index for channels/subdevices within a module.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] user Can be present or not be present. If present the bytes give additional user
+ * specific information. (optional) (array[5])
+ * @param[in] usersize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_diagnostic_sendChargingOn(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const user, uint8_t userSize);
+
+/**
+ * Overvoltage
+ * 
+ * @param[in] index Index. Often used as an index for channels/subdevices within a module.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] user Can be present or not be present. If present the bytes give additional user
+ * specific information. (optional) (array[5])
+ * @param[in] usersize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_diagnostic_sendChargingOff(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const user, uint8_t userSize);
 
 #endif  /* __VSCP_EVT_DIAGNOSTIC_H__ */

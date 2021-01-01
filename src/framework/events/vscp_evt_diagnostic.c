@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -3850,6 +3850,102 @@ extern BOOL vscp_evt_diagnostic_sendExternalIcFailure(uint8_t index, uint8_t zon
     uint8_t         byteIndex   = 0;
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DIAGNOSTIC, VSCP_TYPE_DIAGNOSTIC_EXT_IC_FAIL, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    if (NULL != user)
+    {
+        for(byteIndex = 0; byteIndex < userSize; ++byteIndex)
+        {
+            txMsg.data[3 + byteIndex] = user[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Overvoltage
+ * 
+ * @param[in] index Index. Often used as an index for channels/subdevices within a module.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] user Can be present or not be present. If present the bytes give additional user
+ * specific information. (optional) (array[5])
+ * @param[in] usersize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_diagnostic_sendChargingOn(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const user, uint8_t userSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DIAGNOSTIC, VSCP_TYPE_DIAGNOSTIC_CHARGING_ON, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    if (NULL != user)
+    {
+        for(byteIndex = 0; byteIndex < userSize; ++byteIndex)
+        {
+            txMsg.data[3 + byteIndex] = user[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Overvoltage
+ * 
+ * @param[in] index Index. Often used as an index for channels/subdevices within a module.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] user Can be present or not be present. If present the bytes give additional user
+ * specific information. (optional) (array[5])
+ * @param[in] usersize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_diagnostic_sendChargingOff(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t const * const user, uint8_t userSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DIAGNOSTIC, VSCP_TYPE_DIAGNOSTIC_CHARGING_OFF, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;

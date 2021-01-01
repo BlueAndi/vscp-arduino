@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -599,6 +599,16 @@ extern "C"
  * Exit, something has been exited.
  */
 #define VSCP_TYPE_INFORMATION_EXIT                                85
+
+/**
+ * This is meant to be used as a confirmation event for CLASS1.CONTROL, Type=52 events.
+ */
+#define VSCP_TYPE_INFORMATION_INCREMENTED                         86
+
+/**
+ * This is meant to be used as a confirmation event for CLASS1.CONTROL, Type=53 events.
+ */
+#define VSCP_TYPE_INFORMATION_DECREMENTED                         87
 
 /*******************************************************************************
     MACROS

@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -240,6 +240,26 @@ extern "C"
  * times that the password is now locked and unusable.
  */
 #define VSCP_TYPE_SECURITY_PASSWORD_ERROR        33
+
+/**
+ * ...
+ */
+#define VSCP_TYPE_SECURITY_GAS                   34
+
+/**
+ * ...
+ */
+#define VSCP_TYPE_SECURITY_IN_MOTION             35
+
+/**
+ * ...
+ */
+#define VSCP_TYPE_SECURITY_NOT_IN_MOTION         36
+
+/**
+ * ...
+ */
+#define VSCP_TYPE_SECURITY_VIBRATION             37
 
 /*******************************************************************************
     MACROS

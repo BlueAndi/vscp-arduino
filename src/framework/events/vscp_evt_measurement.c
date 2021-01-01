@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -1475,6 +1475,78 @@ extern BOOL vscp_evt_measurement_sendSoundLevel(uint8_t index, uint8_t unit, int
     vscp_TxMessage  txMsg;
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_SOUND_LEVEL, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataNum = 1;
+    txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
+
+    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[1], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendRadiationDoseEquivalent(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EQ, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataNum = 1;
+    txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
+
+    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[1], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendRadiationDoseExposure(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EXPOSURE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataNum = 1;
+    txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
+
+    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[1], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendPowerFactor(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_POWER_FACTOR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataNum = 1;
     txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);

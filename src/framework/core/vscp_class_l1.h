@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -121,6 +121,9 @@ extern "C"
 
 /** VSCP level 1 class: IR Remote i/f */
 #define VSCP_CLASS_L1_IR                    110
+
+/** VSCP level 1 class: Configuration */
+#define VSCP_CLASS_L1_CONFIGURATION         120
 
 /** VSCP level 1 class: Position (GPS) */
 #define VSCP_CLASS_L1_GNSS                  206

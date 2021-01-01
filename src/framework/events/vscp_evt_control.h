@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -654,5 +654,35 @@ extern BOOL vscp_evt_control_sendSetSecurityToken(uint8_t reserved, uint8_t zone
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_control_sendRequestNewSecurityToken(uint8_t reserved, uint8_t zone, uint8_t subZone);
+
+/**
+ * Increment
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] incrementValue Increment as unsigned integer. The range can be adjusted by the user by
+ * sending just the needed number of bytes (1-5) which form the unsigned integer (MSB first). If
+ * omitted (or 0) 1 is assumed as default increment value (optional) (array[5])
+ * @param[in] incrementValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendIncrement(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const incrementValue, uint8_t incrementValueSize);
+
+/**
+ * Decrement
+ * 
+ * @param[in] userSpecific User specific value.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] decrementValue Decrement as unsigned integer. The range can be adjusted by the user by
+ * sending just the needed number of bytes (1-5) which form the unsigned integer (MSB first). If
+ * omitted (or 0) 1 is assumed as default decrement value (optional) (array[5])
+ * @param[in] decrementValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendDecrement(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const decrementValue, uint8_t decrementValueSize);
 
 #endif  /* __VSCP_EVT_CONTROL_H__ */

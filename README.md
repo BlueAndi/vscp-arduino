@@ -156,6 +156,7 @@ You will find the type defines here:
 ```
 src/framework/events/vscp_evt_alarm.h
 src/framework/events/vscp_evt_aol.h
+src/framework/events/vscp_evt_configuration.h
 src/framework/events/vscp_evt_control.h
 src/framework/events/vscp_evt_data.h
 src/framework/events/vscp_evt_diagnostic.h

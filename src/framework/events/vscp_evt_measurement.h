@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -780,5 +780,41 @@ extern BOOL vscp_evt_measurement_sendSoundEnergyDensity(uint8_t index, uint8_t u
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_measurement_sendSoundLevel(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendRadiationDoseEquivalent(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendRadiationDoseExposure(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+
+/**
+ * Count
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendPowerFactor(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 #endif  /* __VSCP_EVT_MEASUREMENT_H__ */

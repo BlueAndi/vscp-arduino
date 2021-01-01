@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -85,10 +85,11 @@ extern BOOL vscp_evt_security_sendGeneralEvent(void);
  * @param[in] userData User defined data.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] status Optional status (optional)
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_security_sendMotionDetect(uint8_t userData, uint8_t zone, uint8_t subZone);
+extern BOOL vscp_evt_security_sendMotionDetect(uint8_t userData, uint8_t zone, uint8_t subZone, uint8_t const * const status);
 
 /**
  * Glass break
@@ -441,5 +442,49 @@ extern BOOL vscp_evt_security_sendPasswordWarning(uint8_t data0, uint8_t zone, u
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_security_sendPasswordError(uint8_t data0, uint8_t zone, uint8_t subZone);
+
+/**
+ * Gas
+ * 
+ * @param[in] data0 User defined data.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_security_sendGas(uint8_t data0, uint8_t zone, uint8_t subZone);
+
+/**
+ * In motion
+ * 
+ * @param[in] data0 User defined data.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_security_sendInMotion(uint8_t data0, uint8_t zone, uint8_t subZone);
+
+/**
+ * Not in motion
+ * 
+ * @param[in] data0 User defined data.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_security_sendNotInMotion(uint8_t data0, uint8_t zone, uint8_t subZone);
+
+/**
+ * Vibration
+ * 
+ * @param[in] data0 User defined data.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_security_sendVibration(uint8_t data0, uint8_t zone, uint8_t subZone);
 
 #endif  /* __VSCP_EVT_SECURITY_H__ */

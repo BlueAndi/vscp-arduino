@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -2832,6 +2832,102 @@ extern BOOL vscp_evt_information_sendExit(uint8_t index, uint8_t zone, uint8_t s
 
     txMsg.data[2] = subZone;
     size += 1;
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Incremented
+ * 
+ * @param[in] userSpecific User specific.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] incrementedValue Incremented value. The range can be adjusted by the user by sending
+ * just the needed number of bytes 1-5 (optional) (array[5])
+ * @param[in] incrementedValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_information_sendIncremented(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const incrementedValue, uint8_t incrementedValueSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_INCREMENTED, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subzone;
+    size += 1;
+
+    if (NULL != incrementedValue)
+    {
+        for(byteIndex = 0; byteIndex < incrementedValueSize; ++byteIndex)
+        {
+            txMsg.data[3 + byteIndex] = incrementedValue[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
+
+    txMsg.dataNum = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Decremented
+ * 
+ * @param[in] userSpecific User specific.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] decrementedValue Decremented value. The range can be adjusted by the user by sending
+ * just the needed number of bytes 1-5 (optional) (array[5])
+ * @param[in] decrementedValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_information_sendDecremented(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const decrementedValue, uint8_t decrementedValueSize)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+    uint8_t         byteIndex   = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_DECREMENTED, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = userSpecific;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subzone;
+    size += 1;
+
+    if (NULL != decrementedValue)
+    {
+        for(byteIndex = 0; byteIndex < decrementedValueSize; ++byteIndex)
+        {
+            txMsg.data[3 + byteIndex] = decrementedValue[byteIndex];
+            size += 1;
+
+            if (VSCP_L1_DATA_SIZE <= size)
+            {
+                break;
+            }
+        }
+    }
 
     txMsg.dataNum = size;
 

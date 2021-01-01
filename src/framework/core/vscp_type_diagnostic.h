@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -464,6 +464,16 @@ extern "C"
  * A failure in an external IC circuit has been detected.
  */
 #define VSCP_TYPE_DIAGNOSTIC_EXT_IC_FAIL        79
+
+/**
+ * Charging of battery or similar has started or is in progress.
+ */
+#define VSCP_TYPE_DIAGNOSTIC_CHARGING_ON        80
+
+/**
+ * Charging of battery or similar has ended.
+ */
+#define VSCP_TYPE_DIAGNOSTIC_CHARGING_OFF       81
 
 /*******************************************************************************
     MACROS

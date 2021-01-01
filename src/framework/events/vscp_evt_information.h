@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2021, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -1052,5 +1052,33 @@ extern BOOL vscp_evt_information_sendEnter(uint8_t index, uint8_t zone, uint8_t 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_information_sendExit(uint8_t index, uint8_t zone, uint8_t subZone);
+
+/**
+ * Incremented
+ * 
+ * @param[in] userSpecific User specific.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] incrementedValue Incremented value. The range can be adjusted by the user by sending
+ * just the needed number of bytes 1-5 (optional) (array[5])
+ * @param[in] incrementedValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_information_sendIncremented(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const incrementedValue, uint8_t incrementedValueSize);
+
+/**
+ * Decremented
+ * 
+ * @param[in] userSpecific User specific.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] decrementedValue Decremented value. The range can be adjusted by the user by sending
+ * just the needed number of bytes 1-5 (optional) (array[5])
+ * @param[in] decrementedValuesize Size in byte.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_information_sendDecremented(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const decrementedValue, uint8_t decrementedValueSize);
 
 #endif  /* __VSCP_EVT_INFORMATION_H__ */
