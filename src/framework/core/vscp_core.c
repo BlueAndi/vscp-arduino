@@ -616,7 +616,7 @@ extern uint32_t vscp_core_getTimeSinceEpoch(void)
  * Set the time since epoch 00:00:00 UTC, January 1, 1970.
  * Note, if a segment master is present, it will overwrite the time with its
  * heartbeat message.
- * 
+ *
  * @param[in] timestamp Unix timestamp
  */
 extern void vscp_core_setTimeSinceEpoch(uint32_t timestamp)
@@ -797,7 +797,7 @@ static inline void  vscp_core_stateStartup(void)
 /**
  * Change to init state.
  * - Drop nickname id.
- * 
+ *
  * @param[in] probeSegmentMaster    Probe for segment master (true) or start own nickname discovery (false).
  */
 static inline void  vscp_core_changeToStateInit(BOOL probeSegmentMaster)
@@ -1574,7 +1574,7 @@ static inline void  vscp_core_handleProtocolHeartbeat(void)
                 vscp_core_changeToStateInit(TRUE);
             }
         }
-        
+
         /* If available, store time since epoch 00:00:00 UTC, January 1, 1970 */
         if (5 <= vscp_core_rxMessage.dataNum)
         {
@@ -1700,19 +1700,19 @@ static inline void  vscp_core_handleProtocolDropNicknameId(void)
                      (3 == vscp_core_rxMessage.dataNum))
             {
                 uint8_t waitTime    = 0;
-            
+
                 /* Wait time received? */
                 if (3 == vscp_core_rxMessage.dataNum)
                 {
                     waitTime = vscp_core_rxMessage.data[2];
                 }
-                    
+
                 /* Byte 1:
                  * Bit 5 - Reset device. Keep nickname.
                  * Bit 6 - Set persistent storage to default.
                  * Bit 7 - Go idle. Do not start up again.
                  */
-            
+
                 /* Set persistent memory to default (bit 6)? */
                 if (0 != (vscp_core_rxMessage.data[1] & (1 << 6)))
                 {
@@ -1980,7 +1980,7 @@ static uint8_t  vscp_core_readRegister(uint16_t page, uint8_t addr)
                 break;
         }
     }
-    
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
     /* Is the addressed register part of the decision matrix? */
     else if (FALSE != vscp_dm_isDecisionMatrix(page, addr))
@@ -2211,7 +2211,7 @@ static uint8_t  vscp_core_writeRegister(uint16_t page, uint8_t addr, uint8_t val
     /* Write protection disabled? */
     else if (0 != vscp_core_getRegAppWriteProtect())
     {
-    
+
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM )
         /* Is the addressed register part of the decision matrix? */
         if (FALSE != vscp_dm_isDecisionMatrix(page, addr))

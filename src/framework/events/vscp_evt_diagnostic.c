@@ -136,7 +136,7 @@ extern BOOL vscp_evt_diagnostic_sendOvervoltage(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Undervoltage
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -184,7 +184,7 @@ extern BOOL vscp_evt_diagnostic_sendUndervoltage(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * USB VBUS low
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -232,7 +232,7 @@ extern BOOL vscp_evt_diagnostic_sendUsbVbusLow(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Battery voltage low
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -280,7 +280,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryVoltageLow(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Battery full voltage
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -328,7 +328,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryFullVoltage(uint8_t index, uint8_t zo
 }
 
 /**
- * Overvoltage
+ * Battery error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -376,7 +376,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryError(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * Battery OK
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -424,7 +424,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryOk(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Overvoltage
+ * Over current
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -472,7 +472,7 @@ extern BOOL vscp_evt_diagnostic_sendOverCurrent(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Circuit error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -520,7 +520,7 @@ extern BOOL vscp_evt_diagnostic_sendCircuitError(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * Short circuit
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -568,7 +568,7 @@ extern BOOL vscp_evt_diagnostic_sendShortCircuit(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * Open Circuit
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -616,7 +616,7 @@ extern BOOL vscp_evt_diagnostic_sendOpenCircuit(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Moist
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -664,7 +664,7 @@ extern BOOL vscp_evt_diagnostic_sendMoist(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Overvoltage
+ * Wire failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -712,7 +712,7 @@ extern BOOL vscp_evt_diagnostic_sendWireFailure(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Wireless faliure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -760,7 +760,7 @@ extern BOOL vscp_evt_diagnostic_sendWirelessFaliure(uint8_t index, uint8_t zone,
 }
 
 /**
- * Overvoltage
+ * IR failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -808,7 +808,7 @@ extern BOOL vscp_evt_diagnostic_sendIrFailure(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Overvoltage
+ * 1-wire failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -856,7 +856,7 @@ extern BOOL vscp_evt_diagnostic_send1WireFailure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * RS-222 failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -904,7 +904,7 @@ extern BOOL vscp_evt_diagnostic_sendRs222Failure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * RS-232 failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -952,7 +952,7 @@ extern BOOL vscp_evt_diagnostic_sendRs232Failure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * RS-423 failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1000,7 +1000,7 @@ extern BOOL vscp_evt_diagnostic_sendRs423Failure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * RS-485 failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1048,7 +1048,7 @@ extern BOOL vscp_evt_diagnostic_sendRs485Failure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * CAN failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1096,7 +1096,7 @@ extern BOOL vscp_evt_diagnostic_sendCanFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * LAN failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1144,7 +1144,7 @@ extern BOOL vscp_evt_diagnostic_sendLanFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * USB failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1192,7 +1192,7 @@ extern BOOL vscp_evt_diagnostic_sendUsbFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Wifi failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1240,7 +1240,7 @@ extern BOOL vscp_evt_diagnostic_sendWifiFailure(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * NFC/RFID failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1288,7 +1288,7 @@ extern BOOL vscp_evt_diagnostic_sendNfcRfidFailure(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Overvoltage
+ * Low signal
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1336,7 +1336,7 @@ extern BOOL vscp_evt_diagnostic_sendLowSignal(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Overvoltage
+ * High signal
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1384,7 +1384,7 @@ extern BOOL vscp_evt_diagnostic_sendHighSignal(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * ADC failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1432,7 +1432,7 @@ extern BOOL vscp_evt_diagnostic_sendAdcFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * ALU failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1480,7 +1480,7 @@ extern BOOL vscp_evt_diagnostic_sendAluFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Assert
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1528,7 +1528,7 @@ extern BOOL vscp_evt_diagnostic_sendAssert(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Overvoltage
+ * DAC failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1576,7 +1576,7 @@ extern BOOL vscp_evt_diagnostic_sendDacFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * DMA failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1624,7 +1624,7 @@ extern BOOL vscp_evt_diagnostic_sendDmaFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Ethernet failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1672,7 +1672,7 @@ extern BOOL vscp_evt_diagnostic_sendEthernetFailure(uint8_t index, uint8_t zone,
 }
 
 /**
- * Overvoltage
+ * Exception
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1720,7 +1720,7 @@ extern BOOL vscp_evt_diagnostic_sendException(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Overvoltage
+ * FPU failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1768,7 +1768,7 @@ extern BOOL vscp_evt_diagnostic_sendFpuFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * GPIO failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1816,7 +1816,7 @@ extern BOOL vscp_evt_diagnostic_sendGpioFailure(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * I2C failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1864,7 +1864,7 @@ extern BOOL vscp_evt_diagnostic_sendI2cFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * I2S failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1912,7 +1912,7 @@ extern BOOL vscp_evt_diagnostic_sendI2sFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Invalid configuration
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1960,7 +1960,7 @@ extern BOOL vscp_evt_diagnostic_sendInvalidConfiguration(uint8_t index, uint8_t 
 }
 
 /**
- * Overvoltage
+ * MMU failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2008,7 +2008,7 @@ extern BOOL vscp_evt_diagnostic_sendMmuFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * NMI failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2056,7 +2056,7 @@ extern BOOL vscp_evt_diagnostic_sendNmiFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Overheat
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2104,7 +2104,7 @@ extern BOOL vscp_evt_diagnostic_sendOverheat(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Overvoltage
+ * PLL fail
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2152,7 +2152,7 @@ extern BOOL vscp_evt_diagnostic_sendPllFail(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Overvoltage
+ * POR failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2200,7 +2200,7 @@ extern BOOL vscp_evt_diagnostic_sendPorFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * PWM failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2248,7 +2248,7 @@ extern BOOL vscp_evt_diagnostic_sendPwmFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * RAM failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2296,7 +2296,7 @@ extern BOOL vscp_evt_diagnostic_sendRamFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * ROM failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2344,7 +2344,7 @@ extern BOOL vscp_evt_diagnostic_sendRomFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * SPI failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2392,7 +2392,7 @@ extern BOOL vscp_evt_diagnostic_sendSpiFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Stack failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2440,7 +2440,7 @@ extern BOOL vscp_evt_diagnostic_sendStackFailure(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Overvoltage
+ * LIN bus failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2488,7 +2488,7 @@ extern BOOL vscp_evt_diagnostic_sendLinBusFailure(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Overvoltage
+ * UART failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2536,7 +2536,7 @@ extern BOOL vscp_evt_diagnostic_sendUartFailure(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Unhandled interrupt
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2584,7 +2584,7 @@ extern BOOL vscp_evt_diagnostic_sendUnhandledInterrupt(uint8_t index, uint8_t zo
 }
 
 /**
- * Overvoltage
+ * Memory failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2632,7 +2632,7 @@ extern BOOL vscp_evt_diagnostic_sendMemoryFailure(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Overvoltage
+ * Variable range failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2680,7 +2680,7 @@ extern BOOL vscp_evt_diagnostic_sendVariableRangeFailure(uint8_t index, uint8_t 
 }
 
 /**
- * Overvoltage
+ * WDT failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2728,7 +2728,7 @@ extern BOOL vscp_evt_diagnostic_sendWdtFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * EEPROM failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2776,7 +2776,7 @@ extern BOOL vscp_evt_diagnostic_sendEepromFailure(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Overvoltage
+ * Encryption failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2824,7 +2824,7 @@ extern BOOL vscp_evt_diagnostic_sendEncryptionFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Bad user input failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2872,7 +2872,7 @@ extern BOOL vscp_evt_diagnostic_sendBadUserInputFailure(uint8_t index, uint8_t z
 }
 
 /**
- * Overvoltage
+ * Decryption failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2920,7 +2920,7 @@ extern BOOL vscp_evt_diagnostic_sendDecryptionFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Noise
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2968,7 +2968,7 @@ extern BOOL vscp_evt_diagnostic_sendNoise(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Overvoltage
+ * Boot loader failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3016,7 +3016,7 @@ extern BOOL vscp_evt_diagnostic_sendBootLoaderFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Program flow failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3064,7 +3064,7 @@ extern BOOL vscp_evt_diagnostic_sendProgramFlowFailure(uint8_t index, uint8_t zo
 }
 
 /**
- * Overvoltage
+ * RTC faiure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3112,7 +3112,7 @@ extern BOOL vscp_evt_diagnostic_sendRtcFaiure(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Overvoltage
+ * System test failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3160,7 +3160,7 @@ extern BOOL vscp_evt_diagnostic_sendSystemTestFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Sensor failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3208,7 +3208,7 @@ extern BOOL vscp_evt_diagnostic_sendSensorFailure(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Overvoltage
+ * Safe state entered
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3256,7 +3256,7 @@ extern BOOL vscp_evt_diagnostic_sendSafeStateEntered(uint8_t index, uint8_t zone
 }
 
 /**
- * Overvoltage
+ * Signal implausible
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3304,7 +3304,7 @@ extern BOOL vscp_evt_diagnostic_sendSignalImplausible(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Storage fail
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3352,7 +3352,7 @@ extern BOOL vscp_evt_diagnostic_sendStorageFail(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Overvoltage
+ * Self test OK
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3400,7 +3400,7 @@ extern BOOL vscp_evt_diagnostic_sendSelfTestOk(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * ESD/EMC/EMI failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3448,7 +3448,7 @@ extern BOOL vscp_evt_diagnostic_sendEsdEmcEmiFailure(uint8_t index, uint8_t zone
 }
 
 /**
- * Overvoltage
+ * Timeout
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3496,7 +3496,7 @@ extern BOOL vscp_evt_diagnostic_sendTimeout(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Overvoltage
+ * LCD failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3544,7 +3544,7 @@ extern BOOL vscp_evt_diagnostic_sendLcdFailure(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Touch panel failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3592,7 +3592,7 @@ extern BOOL vscp_evt_diagnostic_sendTouchPanelFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * No load
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3640,7 +3640,7 @@ extern BOOL vscp_evt_diagnostic_sendNoLoad(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Overvoltage
+ * Cooling failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3688,7 +3688,7 @@ extern BOOL vscp_evt_diagnostic_sendCoolingFailure(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Overvoltage
+ * Heating failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3736,7 +3736,7 @@ extern BOOL vscp_evt_diagnostic_sendHeatingFailure(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Overvoltage
+ * Transmission failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3784,7 +3784,7 @@ extern BOOL vscp_evt_diagnostic_sendTransmissionFailure(uint8_t index, uint8_t z
 }
 
 /**
- * Overvoltage
+ * Receiption failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3832,7 +3832,7 @@ extern BOOL vscp_evt_diagnostic_sendReceiptionFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * External IC failure
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3880,7 +3880,7 @@ extern BOOL vscp_evt_diagnostic_sendExternalIcFailure(uint8_t index, uint8_t zon
 }
 
 /**
- * Overvoltage
+ * Charging on
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -3928,7 +3928,7 @@ extern BOOL vscp_evt_diagnostic_sendChargingOn(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Overvoltage
+ * Charging off
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.

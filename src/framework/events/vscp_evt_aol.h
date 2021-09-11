@@ -92,7 +92,7 @@ extern BOOL vscp_evt_aol_sendGeneralEvent(void);
 extern BOOL vscp_evt_aol_sendSystemUnpluggedFromPowerSource(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * System unplugged from network
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -103,7 +103,7 @@ extern BOOL vscp_evt_aol_sendSystemUnpluggedFromPowerSource(uint8_t index, uint8
 extern BOOL vscp_evt_aol_sendSystemUnpluggedFromNetwork(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Chassis intrusion
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -114,7 +114,7 @@ extern BOOL vscp_evt_aol_sendSystemUnpluggedFromNetwork(uint8_t index, uint8_t z
 extern BOOL vscp_evt_aol_sendChassisIntrusion(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Processor removal
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -125,7 +125,7 @@ extern BOOL vscp_evt_aol_sendChassisIntrusion(uint8_t index, uint8_t zone, uint8
 extern BOOL vscp_evt_aol_sendProcessorRemoval(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * System environmental errors
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -136,7 +136,7 @@ extern BOOL vscp_evt_aol_sendProcessorRemoval(uint8_t index, uint8_t zone, uint8
 extern BOOL vscp_evt_aol_sendSystemEnvironmentalErrors(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * High temperature
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -147,7 +147,7 @@ extern BOOL vscp_evt_aol_sendSystemEnvironmentalErrors(uint8_t index, uint8_t zo
 extern BOOL vscp_evt_aol_sendHighTemperature(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Fan speed problem
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -158,7 +158,7 @@ extern BOOL vscp_evt_aol_sendHighTemperature(uint8_t index, uint8_t zone, uint8_
 extern BOOL vscp_evt_aol_sendFanSpeedProblem(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Voltage fluctuations
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -169,7 +169,7 @@ extern BOOL vscp_evt_aol_sendFanSpeedProblem(uint8_t index, uint8_t zone, uint8_
 extern BOOL vscp_evt_aol_sendVoltageFluctuations(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Operating system errors
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -180,7 +180,7 @@ extern BOOL vscp_evt_aol_sendVoltageFluctuations(uint8_t index, uint8_t zone, ui
 extern BOOL vscp_evt_aol_sendOperatingSystemErrors(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * System power-on error
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -191,7 +191,7 @@ extern BOOL vscp_evt_aol_sendOperatingSystemErrors(uint8_t index, uint8_t zone, 
 extern BOOL vscp_evt_aol_sendSystemPowerOnError(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * System is hung
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -202,7 +202,7 @@ extern BOOL vscp_evt_aol_sendSystemPowerOnError(uint8_t index, uint8_t zone, uin
 extern BOOL vscp_evt_aol_sendSystemIsHung(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Component failure
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -213,7 +213,7 @@ extern BOOL vscp_evt_aol_sendSystemIsHung(uint8_t index, uint8_t zone, uint8_t s
 extern BOOL vscp_evt_aol_sendComponentFailure(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Remote system reboot upon report of a critical failure
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -224,7 +224,7 @@ extern BOOL vscp_evt_aol_sendComponentFailure(uint8_t index, uint8_t zone, uint8
 extern BOOL vscp_evt_aol_sendRemoteSystemRebootUponReportOfACriticalFailure(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Repair Operating System
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -235,7 +235,7 @@ extern BOOL vscp_evt_aol_sendRemoteSystemRebootUponReportOfACriticalFailure(uint
 extern BOOL vscp_evt_aol_sendRepairOperatingSystem(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Update BIOS image
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -246,7 +246,7 @@ extern BOOL vscp_evt_aol_sendRepairOperatingSystem(uint8_t index, uint8_t zone, 
 extern BOOL vscp_evt_aol_sendUpdateBiosImage(uint8_t index, uint8_t zone, uint8_t subZone);
 
 /**
- * System unplugged from power source
+ * Update Perform other diagnostic procedures
  * 
  * @param[in] index Index for record.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.

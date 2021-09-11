@@ -89,7 +89,7 @@ extern BOOL vscp_evt_data_sendGeneralEvent(void)
 }
 
 /**
- * Count
+ * I/O value
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -113,7 +113,7 @@ extern BOOL vscp_evt_data_sendIOValue(uint8_t index, uint8_t unit, int32_t data,
 }
 
 /**
- * Count
+ * A/D value
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -137,7 +137,7 @@ extern BOOL vscp_evt_data_sendADValue(uint8_t index, uint8_t unit, int32_t data,
 }
 
 /**
- * Count
+ * D/A value
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -161,7 +161,7 @@ extern BOOL vscp_evt_data_sendDAValue(uint8_t index, uint8_t unit, int32_t data,
 }
 
 /**
- * Count
+ * Relative strength
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -185,7 +185,7 @@ extern BOOL vscp_evt_data_sendRelativeStrength(uint8_t index, uint8_t unit, int3
 }
 
 /**
- * Count
+ * Signal Level
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -209,7 +209,7 @@ extern BOOL vscp_evt_data_sendSignalLevel(uint8_t index, uint8_t unit, int32_t d
 }
 
 /**
- * Count
+ * Signal Quality
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.

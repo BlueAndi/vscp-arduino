@@ -263,7 +263,7 @@ extern "C"
  * Opt Unit: degree (1).
  * Opt Unit: arcminute (2).
  * Opt Unit: arcseconds (3).
- * This is a measurement of an angle.
+ * This is a measurement of an angle or a direction or similar.
  */
 #define VSCP_TYPE_MEASUREMENT_ANGLE                   30
 
@@ -470,11 +470,27 @@ extern "C"
 #define VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EXPOSURE 62
 
 /**
- * Default unit: Percent
- * Optional unit: Röntgen/R (1)
- * Ratio between power in kW and apperant power in kVA.
+ * Default unit: cos of phase angle.
+ * This is a measurment of a power factor. Power factor is an expression of energy efficiency. It is
+ * usually expressed as a percentage - and the lower the percentage, the less efficient power usage
+ * is.
  */
 #define VSCP_TYPE_MEASUREMENT_POWER_FACTOR            63
+
+/**
+ * Default unit: kVAr
+ * In electric power transmission and distribution, volt-ampere reactive (VAr) is a unit of
+ * measurement of reactive power. Reactive power exists in AC circuit when the current and voltage are
+ * not in phase.
+ */
+#define VSCP_TYPE_MEASUREMENT_REACTIVE_POWER          64
+
+/**
+ * Default unit: kVArh
+ * Reactive energy is the electrical energy produced, flowing or supplied by an electric circuit
+ * during a time interval, measured in units of kVArh or standard multiples thereof.
+ */
+#define VSCP_TYPE_MEASUREMENT_REACTIVE_ENERGY         65
 
 /*******************************************************************************
     MACROS

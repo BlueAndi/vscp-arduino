@@ -134,6 +134,11 @@ extern "C"
  */
 #define VSCP_TYPE_ALARM_WATCHDOG         12
 
+/**
+ * Indicates a alarm reset condition.
+ */
+#define VSCP_TYPE_ALARM_RESET            13
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

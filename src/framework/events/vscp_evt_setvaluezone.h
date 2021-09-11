@@ -95,7 +95,7 @@ extern BOOL vscp_evt_setvaluezone_sendGeneralEvent(void);
 extern BOOL vscp_evt_setvaluezone_sendCount(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Length/Distance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -109,7 +109,7 @@ extern BOOL vscp_evt_setvaluezone_sendCount(uint8_t index, uint8_t zone, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendLengthDistance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Mass
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -123,7 +123,7 @@ extern BOOL vscp_evt_setvaluezone_sendLengthDistance(uint8_t index, uint8_t zone
 extern BOOL vscp_evt_setvaluezone_sendMass(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Time
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -137,7 +137,7 @@ extern BOOL vscp_evt_setvaluezone_sendMass(uint8_t index, uint8_t zone, uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendTime(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electric Current
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -151,7 +151,7 @@ extern BOOL vscp_evt_setvaluezone_sendTime(uint8_t index, uint8_t zone, uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendElectricCurrent(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Temperature
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -165,7 +165,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricCurrent(uint8_t index, uint8_t zon
 extern BOOL vscp_evt_setvaluezone_sendTemperature(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Amount of substance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -179,7 +179,7 @@ extern BOOL vscp_evt_setvaluezone_sendTemperature(uint8_t index, uint8_t zone, u
 extern BOOL vscp_evt_setvaluezone_sendAmountOfSubstance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Luminous Intensity (Intensity of light)
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -193,7 +193,7 @@ extern BOOL vscp_evt_setvaluezone_sendAmountOfSubstance(uint8_t index, uint8_t z
 extern BOOL vscp_evt_setvaluezone_sendLuminousIntensityIntensityOfLight(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Frequency
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -207,7 +207,7 @@ extern BOOL vscp_evt_setvaluezone_sendLuminousIntensityIntensityOfLight(uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendFrequency(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Radioactivity and other random events
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -221,7 +221,7 @@ extern BOOL vscp_evt_setvaluezone_sendFrequency(uint8_t index, uint8_t zone, uin
 extern BOOL vscp_evt_setvaluezone_sendRadioactivityAndOtherRandomEvents(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Force
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -235,7 +235,7 @@ extern BOOL vscp_evt_setvaluezone_sendRadioactivityAndOtherRandomEvents(uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendForce(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Pressure
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -249,7 +249,7 @@ extern BOOL vscp_evt_setvaluezone_sendForce(uint8_t index, uint8_t zone, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendPressure(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Energy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -263,7 +263,7 @@ extern BOOL vscp_evt_setvaluezone_sendPressure(uint8_t index, uint8_t zone, uint
 extern BOOL vscp_evt_setvaluezone_sendEnergy(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Power
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -277,7 +277,7 @@ extern BOOL vscp_evt_setvaluezone_sendEnergy(uint8_t index, uint8_t zone, uint8_
 extern BOOL vscp_evt_setvaluezone_sendPower(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electrical Charge
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -291,7 +291,7 @@ extern BOOL vscp_evt_setvaluezone_sendPower(uint8_t index, uint8_t zone, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendElectricalCharge(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electrical Potential (Voltage)
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -305,7 +305,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricalCharge(uint8_t index, uint8_t zo
 extern BOOL vscp_evt_setvaluezone_sendElectricalPotentialVoltage(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electrical Capacitance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -319,7 +319,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricalPotentialVoltage(uint8_t index, 
 extern BOOL vscp_evt_setvaluezone_sendElectricalCapacitance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electrical Resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -333,7 +333,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricalCapacitance(uint8_t index, uint8
 extern BOOL vscp_evt_setvaluezone_sendElectricalResistance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electrical Conductance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -347,7 +347,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricalResistance(uint8_t index, uint8_
 extern BOOL vscp_evt_setvaluezone_sendElectricalConductance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Magnetic Field Strength
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -361,7 +361,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricalConductance(uint8_t index, uint8
 extern BOOL vscp_evt_setvaluezone_sendMagneticFieldStrength(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Magnetic Flux
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -375,7 +375,7 @@ extern BOOL vscp_evt_setvaluezone_sendMagneticFieldStrength(uint8_t index, uint8
 extern BOOL vscp_evt_setvaluezone_sendMagneticFlux(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Magnetic Flux Density
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -389,7 +389,7 @@ extern BOOL vscp_evt_setvaluezone_sendMagneticFlux(uint8_t index, uint8_t zone, 
 extern BOOL vscp_evt_setvaluezone_sendMagneticFluxDensity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Inductance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -403,7 +403,7 @@ extern BOOL vscp_evt_setvaluezone_sendMagneticFluxDensity(uint8_t index, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendInductance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Luminous Flux
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -417,7 +417,7 @@ extern BOOL vscp_evt_setvaluezone_sendInductance(uint8_t index, uint8_t zone, ui
 extern BOOL vscp_evt_setvaluezone_sendLuminousFlux(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Illuminance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -431,7 +431,7 @@ extern BOOL vscp_evt_setvaluezone_sendLuminousFlux(uint8_t index, uint8_t zone, 
 extern BOOL vscp_evt_setvaluezone_sendIlluminance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Radiation dose
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -445,7 +445,7 @@ extern BOOL vscp_evt_setvaluezone_sendIlluminance(uint8_t index, uint8_t zone, u
 extern BOOL vscp_evt_setvaluezone_sendRadiationDose(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Catalytic activity
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -459,7 +459,7 @@ extern BOOL vscp_evt_setvaluezone_sendRadiationDose(uint8_t index, uint8_t zone,
 extern BOOL vscp_evt_setvaluezone_sendCatalyticActivity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Volume
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -473,7 +473,7 @@ extern BOOL vscp_evt_setvaluezone_sendCatalyticActivity(uint8_t index, uint8_t z
 extern BOOL vscp_evt_setvaluezone_sendVolume(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound intensity
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -487,7 +487,7 @@ extern BOOL vscp_evt_setvaluezone_sendVolume(uint8_t index, uint8_t zone, uint8_
 extern BOOL vscp_evt_setvaluezone_sendSoundIntensity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Angle
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -501,7 +501,7 @@ extern BOOL vscp_evt_setvaluezone_sendSoundIntensity(uint8_t index, uint8_t zone
 extern BOOL vscp_evt_setvaluezone_sendAngle(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Position WGS 84
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -515,7 +515,7 @@ extern BOOL vscp_evt_setvaluezone_sendAngle(uint8_t index, uint8_t zone, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendPositionWgs84(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Speed
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -529,7 +529,7 @@ extern BOOL vscp_evt_setvaluezone_sendPositionWgs84(uint8_t index, uint8_t zone,
 extern BOOL vscp_evt_setvaluezone_sendSpeed(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Acceleration
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -543,7 +543,7 @@ extern BOOL vscp_evt_setvaluezone_sendSpeed(uint8_t index, uint8_t zone, uint8_t
 extern BOOL vscp_evt_setvaluezone_sendAcceleration(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Tension
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -557,7 +557,7 @@ extern BOOL vscp_evt_setvaluezone_sendAcceleration(uint8_t index, uint8_t zone, 
 extern BOOL vscp_evt_setvaluezone_sendTension(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Damp/moist (Hygrometer reading)
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -571,7 +571,7 @@ extern BOOL vscp_evt_setvaluezone_sendTension(uint8_t index, uint8_t zone, uint8
 extern BOOL vscp_evt_setvaluezone_sendDampMoistHygrometerReading(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Flow
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -585,7 +585,7 @@ extern BOOL vscp_evt_setvaluezone_sendDampMoistHygrometerReading(uint8_t index, 
 extern BOOL vscp_evt_setvaluezone_sendFlow(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Thermal resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -599,7 +599,7 @@ extern BOOL vscp_evt_setvaluezone_sendFlow(uint8_t index, uint8_t zone, uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendThermalResistance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Refractive (optical) power
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -613,7 +613,7 @@ extern BOOL vscp_evt_setvaluezone_sendThermalResistance(uint8_t index, uint8_t z
 extern BOOL vscp_evt_setvaluezone_sendRefractiveOpticalPower(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Dynamic viscosity
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -627,7 +627,7 @@ extern BOOL vscp_evt_setvaluezone_sendRefractiveOpticalPower(uint8_t index, uint
 extern BOOL vscp_evt_setvaluezone_sendDynamicViscosity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound impedance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -641,7 +641,7 @@ extern BOOL vscp_evt_setvaluezone_sendDynamicViscosity(uint8_t index, uint8_t zo
 extern BOOL vscp_evt_setvaluezone_sendSoundImpedance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -655,7 +655,7 @@ extern BOOL vscp_evt_setvaluezone_sendSoundImpedance(uint8_t index, uint8_t zone
 extern BOOL vscp_evt_setvaluezone_sendSoundResistance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Electric elastance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -669,7 +669,7 @@ extern BOOL vscp_evt_setvaluezone_sendSoundResistance(uint8_t index, uint8_t zon
 extern BOOL vscp_evt_setvaluezone_sendElectricElastance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Luminous energy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -683,7 +683,7 @@ extern BOOL vscp_evt_setvaluezone_sendElectricElastance(uint8_t index, uint8_t z
 extern BOOL vscp_evt_setvaluezone_sendLuminousEnergy(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Luminance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -697,7 +697,7 @@ extern BOOL vscp_evt_setvaluezone_sendLuminousEnergy(uint8_t index, uint8_t zone
 extern BOOL vscp_evt_setvaluezone_sendLuminance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Chemical concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -713,7 +713,7 @@ extern BOOL vscp_evt_setvaluezone_sendChemicalConcentration(uint8_t index, uint8
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dose equivalent
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -729,7 +729,7 @@ extern BOOL vscp_evt_setvaluezone_sendDoseEquivalent(uint8_t index, uint8_t zone
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dew Point
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -743,7 +743,7 @@ extern BOOL vscp_evt_setvaluezone_sendDoseEquivalent(uint8_t index, uint8_t zone
 extern BOOL vscp_evt_setvaluezone_sendDewPoint(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Relative Level
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -757,7 +757,7 @@ extern BOOL vscp_evt_setvaluezone_sendDewPoint(uint8_t index, uint8_t zone, uint
 extern BOOL vscp_evt_setvaluezone_sendRelativeLevel(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Altitude
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -771,7 +771,7 @@ extern BOOL vscp_evt_setvaluezone_sendRelativeLevel(uint8_t index, uint8_t zone,
 extern BOOL vscp_evt_setvaluezone_sendAltitude(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Area
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -785,7 +785,7 @@ extern BOOL vscp_evt_setvaluezone_sendAltitude(uint8_t index, uint8_t zone, uint
 extern BOOL vscp_evt_setvaluezone_sendArea(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Radiant intensity
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -799,7 +799,7 @@ extern BOOL vscp_evt_setvaluezone_sendArea(uint8_t index, uint8_t zone, uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendRadiantIntensity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Radiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -813,7 +813,7 @@ extern BOOL vscp_evt_setvaluezone_sendRadiantIntensity(uint8_t index, uint8_t zo
 extern BOOL vscp_evt_setvaluezone_sendRadiance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Irradiance, Exitance, Radiosity
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -827,7 +827,7 @@ extern BOOL vscp_evt_setvaluezone_sendRadiance(uint8_t index, uint8_t zone, uint
 extern BOOL vscp_evt_setvaluezone_sendIrradianceExitanceRadiosity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Spectral radiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -841,7 +841,7 @@ extern BOOL vscp_evt_setvaluezone_sendIrradianceExitanceRadiosity(uint8_t index,
 extern BOOL vscp_evt_setvaluezone_sendSpectralRadiance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Spectral irradiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -855,7 +855,7 @@ extern BOOL vscp_evt_setvaluezone_sendSpectralRadiance(uint8_t index, uint8_t zo
 extern BOOL vscp_evt_setvaluezone_sendSpectralIrradiance(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound pressure (acoustic pressure)
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -869,7 +869,7 @@ extern BOOL vscp_evt_setvaluezone_sendSpectralIrradiance(uint8_t index, uint8_t 
 extern BOOL vscp_evt_setvaluezone_sendSoundPressureAcousticPressure(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound energy density
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -883,7 +883,7 @@ extern BOOL vscp_evt_setvaluezone_sendSoundPressureAcousticPressure(uint8_t inde
 extern BOOL vscp_evt_setvaluezone_sendSoundEnergyDensity(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize);
 
 /**
- * Count
+ * Sound level
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.

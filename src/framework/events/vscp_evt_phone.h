@@ -94,7 +94,7 @@ extern BOOL vscp_evt_phone_sendGeneralEvent(void);
 extern BOOL vscp_evt_phone_sendIncomingCall(uint8_t id, uint8_t index, uint8_t total, uint8_t const * const info, uint8_t infoSize);
 
 /**
- * Incoming call
+ * Outgoing call
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * @param[in] index Index of phone event (base = 0). Each call can be broken up into fragments. This
@@ -117,7 +117,7 @@ extern BOOL vscp_evt_phone_sendOutgoingCall(uint8_t id, uint8_t index, uint8_t t
 extern BOOL vscp_evt_phone_sendRing(uint8_t id);
 
 /**
- * Incoming call
+ * Answer
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * @param[in] index Index of phone event (base = 0). Each call can be broken up into fragments. This
@@ -131,7 +131,7 @@ extern BOOL vscp_evt_phone_sendRing(uint8_t id);
 extern BOOL vscp_evt_phone_sendAnswer(uint8_t id, uint8_t index, uint8_t total, uint8_t const * const info, uint8_t infoSize);
 
 /**
- * Ring
+ * Hangup
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * 
@@ -140,7 +140,7 @@ extern BOOL vscp_evt_phone_sendAnswer(uint8_t id, uint8_t index, uint8_t total, 
 extern BOOL vscp_evt_phone_sendHangup(uint8_t id);
 
 /**
- * Ring
+ * Giveup
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * 
@@ -149,7 +149,7 @@ extern BOOL vscp_evt_phone_sendHangup(uint8_t id);
 extern BOOL vscp_evt_phone_sendGiveup(uint8_t id);
 
 /**
- * Ring
+ * Transfer
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * 
@@ -158,7 +158,7 @@ extern BOOL vscp_evt_phone_sendGiveup(uint8_t id);
 extern BOOL vscp_evt_phone_sendTransfer(uint8_t id);
 
 /**
- * Incoming call
+ * Database Info
  * 
  * @param[in] id Id for the call. This is an incremental identity number for each call.
  * @param[in] index Index of phone event (base = 0). Each call can be broken up into fragments. This

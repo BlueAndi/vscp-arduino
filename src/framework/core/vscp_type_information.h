@@ -610,6 +610,11 @@ extern "C"
  */
 #define VSCP_TYPE_INFORMATION_DECREMENTED                         87
 
+/**
+ * Proximity detected.
+ */
+#define VSCP_TYPE_INFORMATION_PROXIMITY_DETECTED                  88
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

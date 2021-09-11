@@ -204,7 +204,7 @@ extern void vscp_dm_init(void)
  */
 extern void vscp_dm_restoreFactoryDefaultSettings(void)
 {
-    uint16_t    index   = 0;
+    uint16_t            index   = 0;
     vscp_dm_MatrixRow   row     = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_DM_EXTENSION )

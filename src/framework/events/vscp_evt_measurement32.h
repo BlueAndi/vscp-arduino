@@ -91,7 +91,7 @@ extern BOOL vscp_evt_measurement32_sendGeneralEvent(void);
 extern BOOL vscp_evt_measurement32_sendCount(float_t value);
 
 /**
- * Count
+ * Length/Distance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -100,7 +100,7 @@ extern BOOL vscp_evt_measurement32_sendCount(float_t value);
 extern BOOL vscp_evt_measurement32_sendLengthDistance(float_t value);
 
 /**
- * Count
+ * Mass
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -109,7 +109,7 @@ extern BOOL vscp_evt_measurement32_sendLengthDistance(float_t value);
 extern BOOL vscp_evt_measurement32_sendMass(float_t value);
 
 /**
- * Count
+ * Time
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -118,7 +118,7 @@ extern BOOL vscp_evt_measurement32_sendMass(float_t value);
 extern BOOL vscp_evt_measurement32_sendTime(float_t value);
 
 /**
- * Count
+ * Electric Current
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -127,7 +127,7 @@ extern BOOL vscp_evt_measurement32_sendTime(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricCurrent(float_t value);
 
 /**
- * Count
+ * Temperature
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -136,7 +136,7 @@ extern BOOL vscp_evt_measurement32_sendElectricCurrent(float_t value);
 extern BOOL vscp_evt_measurement32_sendTemperature(float_t value);
 
 /**
- * Count
+ * Amount of substance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -145,7 +145,7 @@ extern BOOL vscp_evt_measurement32_sendTemperature(float_t value);
 extern BOOL vscp_evt_measurement32_sendAmountOfSubstance(float_t value);
 
 /**
- * Count
+ * Luminous Intensity (Intensity of light)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -154,7 +154,7 @@ extern BOOL vscp_evt_measurement32_sendAmountOfSubstance(float_t value);
 extern BOOL vscp_evt_measurement32_sendLuminousIntensityIntensityOfLight(float_t value);
 
 /**
- * Count
+ * Frequency
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -163,7 +163,7 @@ extern BOOL vscp_evt_measurement32_sendLuminousIntensityIntensityOfLight(float_t
 extern BOOL vscp_evt_measurement32_sendFrequency(float_t value);
 
 /**
- * Count
+ * Radioactivity and other random events
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -172,7 +172,7 @@ extern BOOL vscp_evt_measurement32_sendFrequency(float_t value);
 extern BOOL vscp_evt_measurement32_sendRadioactivityAndOtherRandomEvents(float_t value);
 
 /**
- * Count
+ * Force
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -181,7 +181,7 @@ extern BOOL vscp_evt_measurement32_sendRadioactivityAndOtherRandomEvents(float_t
 extern BOOL vscp_evt_measurement32_sendForce(float_t value);
 
 /**
- * Count
+ * Pressure
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -190,7 +190,7 @@ extern BOOL vscp_evt_measurement32_sendForce(float_t value);
 extern BOOL vscp_evt_measurement32_sendPressure(float_t value);
 
 /**
- * Count
+ * Energy
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -199,7 +199,7 @@ extern BOOL vscp_evt_measurement32_sendPressure(float_t value);
 extern BOOL vscp_evt_measurement32_sendEnergy(float_t value);
 
 /**
- * Count
+ * Power
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -208,7 +208,7 @@ extern BOOL vscp_evt_measurement32_sendEnergy(float_t value);
 extern BOOL vscp_evt_measurement32_sendPower(float_t value);
 
 /**
- * Count
+ * Electrical Charge
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -217,7 +217,7 @@ extern BOOL vscp_evt_measurement32_sendPower(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricalCharge(float_t value);
 
 /**
- * Count
+ * Electrical Potential (Voltage)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -226,7 +226,7 @@ extern BOOL vscp_evt_measurement32_sendElectricalCharge(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricalPotentialVoltage(float_t value);
 
 /**
- * Count
+ * Electrical Capacitance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -235,7 +235,7 @@ extern BOOL vscp_evt_measurement32_sendElectricalPotentialVoltage(float_t value)
 extern BOOL vscp_evt_measurement32_sendElectricalCapacitance(float_t value);
 
 /**
- * Count
+ * Electrical Resistance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -244,7 +244,7 @@ extern BOOL vscp_evt_measurement32_sendElectricalCapacitance(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricalResistance(float_t value);
 
 /**
- * Count
+ * Electrical Conductance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -253,7 +253,7 @@ extern BOOL vscp_evt_measurement32_sendElectricalResistance(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricalConductance(float_t value);
 
 /**
- * Count
+ * Magnetic Field Strength
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -262,7 +262,7 @@ extern BOOL vscp_evt_measurement32_sendElectricalConductance(float_t value);
 extern BOOL vscp_evt_measurement32_sendMagneticFieldStrength(float_t value);
 
 /**
- * Count
+ * Magnetic Flux
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -271,7 +271,7 @@ extern BOOL vscp_evt_measurement32_sendMagneticFieldStrength(float_t value);
 extern BOOL vscp_evt_measurement32_sendMagneticFlux(float_t value);
 
 /**
- * Count
+ * Magnetic Flux Density
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -280,7 +280,7 @@ extern BOOL vscp_evt_measurement32_sendMagneticFlux(float_t value);
 extern BOOL vscp_evt_measurement32_sendMagneticFluxDensity(float_t value);
 
 /**
- * Count
+ * Inductance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -289,7 +289,7 @@ extern BOOL vscp_evt_measurement32_sendMagneticFluxDensity(float_t value);
 extern BOOL vscp_evt_measurement32_sendInductance(float_t value);
 
 /**
- * Count
+ * Luminous Flux
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -298,7 +298,7 @@ extern BOOL vscp_evt_measurement32_sendInductance(float_t value);
 extern BOOL vscp_evt_measurement32_sendLuminousFlux(float_t value);
 
 /**
- * Count
+ * Illuminance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -307,7 +307,7 @@ extern BOOL vscp_evt_measurement32_sendLuminousFlux(float_t value);
 extern BOOL vscp_evt_measurement32_sendIlluminance(float_t value);
 
 /**
- * Count
+ * Radiation dose
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -316,7 +316,7 @@ extern BOOL vscp_evt_measurement32_sendIlluminance(float_t value);
 extern BOOL vscp_evt_measurement32_sendRadiationDose(float_t value);
 
 /**
- * Count
+ * Catalytic activity
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -325,7 +325,7 @@ extern BOOL vscp_evt_measurement32_sendRadiationDose(float_t value);
 extern BOOL vscp_evt_measurement32_sendCatalyticActivity(float_t value);
 
 /**
- * Count
+ * Volume
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -334,7 +334,7 @@ extern BOOL vscp_evt_measurement32_sendCatalyticActivity(float_t value);
 extern BOOL vscp_evt_measurement32_sendVolume(float_t value);
 
 /**
- * Count
+ * Sound intensity
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -343,7 +343,7 @@ extern BOOL vscp_evt_measurement32_sendVolume(float_t value);
 extern BOOL vscp_evt_measurement32_sendSoundIntensity(float_t value);
 
 /**
- * Count
+ * Angle
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -352,7 +352,7 @@ extern BOOL vscp_evt_measurement32_sendSoundIntensity(float_t value);
 extern BOOL vscp_evt_measurement32_sendAngle(float_t value);
 
 /**
- * Count
+ * Position WGS 84
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -361,7 +361,7 @@ extern BOOL vscp_evt_measurement32_sendAngle(float_t value);
 extern BOOL vscp_evt_measurement32_sendPositionWgs84(float_t value);
 
 /**
- * Count
+ * Speed
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_measurement32_sendPositionWgs84(float_t value);
 extern BOOL vscp_evt_measurement32_sendSpeed(float_t value);
 
 /**
- * Count
+ * Acceleration
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -379,7 +379,7 @@ extern BOOL vscp_evt_measurement32_sendSpeed(float_t value);
 extern BOOL vscp_evt_measurement32_sendAcceleration(float_t value);
 
 /**
- * Count
+ * Tension
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -388,7 +388,7 @@ extern BOOL vscp_evt_measurement32_sendAcceleration(float_t value);
 extern BOOL vscp_evt_measurement32_sendTension(float_t value);
 
 /**
- * Count
+ * Damp/moist (Hygrometer reading)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -397,7 +397,7 @@ extern BOOL vscp_evt_measurement32_sendTension(float_t value);
 extern BOOL vscp_evt_measurement32_sendDampMoistHygrometerReading(float_t value);
 
 /**
- * Count
+ * Flow
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -406,7 +406,7 @@ extern BOOL vscp_evt_measurement32_sendDampMoistHygrometerReading(float_t value)
 extern BOOL vscp_evt_measurement32_sendFlow(float_t value);
 
 /**
- * Count
+ * Thermal resistance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -415,7 +415,7 @@ extern BOOL vscp_evt_measurement32_sendFlow(float_t value);
 extern BOOL vscp_evt_measurement32_sendThermalResistance(float_t value);
 
 /**
- * Count
+ * Refractive (optical) power
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -424,7 +424,7 @@ extern BOOL vscp_evt_measurement32_sendThermalResistance(float_t value);
 extern BOOL vscp_evt_measurement32_sendRefractiveOpticalPower(float_t value);
 
 /**
- * Count
+ * Dynamic viscosity
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -433,7 +433,7 @@ extern BOOL vscp_evt_measurement32_sendRefractiveOpticalPower(float_t value);
 extern BOOL vscp_evt_measurement32_sendDynamicViscosity(float_t value);
 
 /**
- * Count
+ * Sound impedance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -442,7 +442,7 @@ extern BOOL vscp_evt_measurement32_sendDynamicViscosity(float_t value);
 extern BOOL vscp_evt_measurement32_sendSoundImpedance(float_t value);
 
 /**
- * Count
+ * Sound resistance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -451,7 +451,7 @@ extern BOOL vscp_evt_measurement32_sendSoundImpedance(float_t value);
 extern BOOL vscp_evt_measurement32_sendSoundResistance(float_t value);
 
 /**
- * Count
+ * Electric elastance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -460,7 +460,7 @@ extern BOOL vscp_evt_measurement32_sendSoundResistance(float_t value);
 extern BOOL vscp_evt_measurement32_sendElectricElastance(float_t value);
 
 /**
- * Count
+ * Luminous energy
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -469,7 +469,7 @@ extern BOOL vscp_evt_measurement32_sendElectricElastance(float_t value);
 extern BOOL vscp_evt_measurement32_sendLuminousEnergy(float_t value);
 
 /**
- * Count
+ * Luminance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -478,7 +478,7 @@ extern BOOL vscp_evt_measurement32_sendLuminousEnergy(float_t value);
 extern BOOL vscp_evt_measurement32_sendLuminance(float_t value);
 
 /**
- * Count
+ * Chemical concentration
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -489,7 +489,7 @@ extern BOOL vscp_evt_measurement32_sendChemicalConcentration(float_t value);
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dose equivalent
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -500,7 +500,7 @@ extern BOOL vscp_evt_measurement32_sendDoseEquivalent(float_t value);
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dew Point
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -509,7 +509,7 @@ extern BOOL vscp_evt_measurement32_sendDoseEquivalent(float_t value);
 extern BOOL vscp_evt_measurement32_sendDewPoint(float_t value);
 
 /**
- * Count
+ * Relative Level
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -518,7 +518,7 @@ extern BOOL vscp_evt_measurement32_sendDewPoint(float_t value);
 extern BOOL vscp_evt_measurement32_sendRelativeLevel(float_t value);
 
 /**
- * Count
+ * Altitude
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -527,7 +527,7 @@ extern BOOL vscp_evt_measurement32_sendRelativeLevel(float_t value);
 extern BOOL vscp_evt_measurement32_sendAltitude(float_t value);
 
 /**
- * Count
+ * Area
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -536,7 +536,7 @@ extern BOOL vscp_evt_measurement32_sendAltitude(float_t value);
 extern BOOL vscp_evt_measurement32_sendArea(float_t value);
 
 /**
- * Count
+ * Radiant intensity
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -545,7 +545,7 @@ extern BOOL vscp_evt_measurement32_sendArea(float_t value);
 extern BOOL vscp_evt_measurement32_sendRadiantIntensity(float_t value);
 
 /**
- * Count
+ * Radiance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -554,7 +554,7 @@ extern BOOL vscp_evt_measurement32_sendRadiantIntensity(float_t value);
 extern BOOL vscp_evt_measurement32_sendRadiance(float_t value);
 
 /**
- * Count
+ * Irradiance, Exitance, Radiosity
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -563,7 +563,7 @@ extern BOOL vscp_evt_measurement32_sendRadiance(float_t value);
 extern BOOL vscp_evt_measurement32_sendIrradianceExitanceRadiosity(float_t value);
 
 /**
- * Count
+ * Spectral radiance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -572,7 +572,7 @@ extern BOOL vscp_evt_measurement32_sendIrradianceExitanceRadiosity(float_t value
 extern BOOL vscp_evt_measurement32_sendSpectralRadiance(float_t value);
 
 /**
- * Count
+ * Spectral irradiance
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -581,7 +581,7 @@ extern BOOL vscp_evt_measurement32_sendSpectralRadiance(float_t value);
 extern BOOL vscp_evt_measurement32_sendSpectralIrradiance(float_t value);
 
 /**
- * Count
+ * Sound pressure (acoustic pressure)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -590,7 +590,7 @@ extern BOOL vscp_evt_measurement32_sendSpectralIrradiance(float_t value);
 extern BOOL vscp_evt_measurement32_sendSoundPressureAcousticPressure(float_t value);
 
 /**
- * Count
+ * Sound energy density
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
@@ -599,7 +599,7 @@ extern BOOL vscp_evt_measurement32_sendSoundPressureAcousticPressure(float_t val
 extern BOOL vscp_evt_measurement32_sendSoundEnergyDensity(float_t value);
 
 /**
- * Count
+ * Sound level
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 

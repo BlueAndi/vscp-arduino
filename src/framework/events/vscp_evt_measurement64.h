@@ -91,7 +91,7 @@ extern BOOL vscp_evt_measurement64_sendGeneralEvent(void);
 extern BOOL vscp_evt_measurement64_sendCount(double_t value);
 
 /**
- * Count
+ * Length/Distance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -100,7 +100,7 @@ extern BOOL vscp_evt_measurement64_sendCount(double_t value);
 extern BOOL vscp_evt_measurement64_sendLengthDistance(double_t value);
 
 /**
- * Count
+ * Mass
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -109,7 +109,7 @@ extern BOOL vscp_evt_measurement64_sendLengthDistance(double_t value);
 extern BOOL vscp_evt_measurement64_sendMass(double_t value);
 
 /**
- * Count
+ * Time
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -118,7 +118,7 @@ extern BOOL vscp_evt_measurement64_sendMass(double_t value);
 extern BOOL vscp_evt_measurement64_sendTime(double_t value);
 
 /**
- * Count
+ * Electric Current
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -127,7 +127,7 @@ extern BOOL vscp_evt_measurement64_sendTime(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricCurrent(double_t value);
 
 /**
- * Count
+ * Temperature
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -136,7 +136,7 @@ extern BOOL vscp_evt_measurement64_sendElectricCurrent(double_t value);
 extern BOOL vscp_evt_measurement64_sendTemperature(double_t value);
 
 /**
- * Count
+ * Amount of substance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -145,7 +145,7 @@ extern BOOL vscp_evt_measurement64_sendTemperature(double_t value);
 extern BOOL vscp_evt_measurement64_sendAmountOfSubstance(double_t value);
 
 /**
- * Count
+ * Luminous Intensity (Intensity of light)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -154,7 +154,7 @@ extern BOOL vscp_evt_measurement64_sendAmountOfSubstance(double_t value);
 extern BOOL vscp_evt_measurement64_sendLuminousIntensityIntensityOfLight(double_t value);
 
 /**
- * Count
+ * Frequency
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -163,7 +163,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousIntensityIntensityOfLight(double_
 extern BOOL vscp_evt_measurement64_sendFrequency(double_t value);
 
 /**
- * Count
+ * Radioactivity and other random events
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -172,7 +172,7 @@ extern BOOL vscp_evt_measurement64_sendFrequency(double_t value);
 extern BOOL vscp_evt_measurement64_sendRadioactivityAndOtherRandomEvents(double_t value);
 
 /**
- * Count
+ * Force
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -181,7 +181,7 @@ extern BOOL vscp_evt_measurement64_sendRadioactivityAndOtherRandomEvents(double_
 extern BOOL vscp_evt_measurement64_sendForce(double_t value);
 
 /**
- * Count
+ * Pressure
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -190,7 +190,7 @@ extern BOOL vscp_evt_measurement64_sendForce(double_t value);
 extern BOOL vscp_evt_measurement64_sendPressure(double_t value);
 
 /**
- * Count
+ * Energy
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -199,7 +199,7 @@ extern BOOL vscp_evt_measurement64_sendPressure(double_t value);
 extern BOOL vscp_evt_measurement64_sendEnergy(double_t value);
 
 /**
- * Count
+ * Power
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -208,7 +208,7 @@ extern BOOL vscp_evt_measurement64_sendEnergy(double_t value);
 extern BOOL vscp_evt_measurement64_sendPower(double_t value);
 
 /**
- * Count
+ * Electrical Charge
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -217,7 +217,7 @@ extern BOOL vscp_evt_measurement64_sendPower(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricalCharge(double_t value);
 
 /**
- * Count
+ * Electrical Potential (Voltage)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -226,7 +226,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalCharge(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricalPotentialVoltage(double_t value);
 
 /**
- * Count
+ * Electrical Capacitance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -235,7 +235,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalPotentialVoltage(double_t value
 extern BOOL vscp_evt_measurement64_sendElectricalCapacitance(double_t value);
 
 /**
- * Count
+ * Electrical Resistance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -244,7 +244,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalCapacitance(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricalResistance(double_t value);
 
 /**
- * Count
+ * Electrical Conductance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -253,7 +253,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalResistance(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricalConductance(double_t value);
 
 /**
- * Count
+ * Magnetic Field Strength
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -262,7 +262,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalConductance(double_t value);
 extern BOOL vscp_evt_measurement64_sendMagneticFieldStrength(double_t value);
 
 /**
- * Count
+ * Magnetic Flux
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -271,7 +271,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFieldStrength(double_t value);
 extern BOOL vscp_evt_measurement64_sendMagneticFlux(double_t value);
 
 /**
- * Count
+ * Magnetic Flux Density
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -280,7 +280,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFlux(double_t value);
 extern BOOL vscp_evt_measurement64_sendMagneticFluxDensity(double_t value);
 
 /**
- * Count
+ * Inductance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -289,7 +289,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFluxDensity(double_t value);
 extern BOOL vscp_evt_measurement64_sendInductance(double_t value);
 
 /**
- * Count
+ * Luminous Flux
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -298,7 +298,7 @@ extern BOOL vscp_evt_measurement64_sendInductance(double_t value);
 extern BOOL vscp_evt_measurement64_sendLuminousFlux(double_t value);
 
 /**
- * Count
+ * Illuminance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -307,7 +307,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousFlux(double_t value);
 extern BOOL vscp_evt_measurement64_sendIlluminance(double_t value);
 
 /**
- * Count
+ * Radiation dose
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -316,7 +316,7 @@ extern BOOL vscp_evt_measurement64_sendIlluminance(double_t value);
 extern BOOL vscp_evt_measurement64_sendRadiationDose(double_t value);
 
 /**
- * Count
+ * Catalytic activity
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -325,7 +325,7 @@ extern BOOL vscp_evt_measurement64_sendRadiationDose(double_t value);
 extern BOOL vscp_evt_measurement64_sendCatalyticActivity(double_t value);
 
 /**
- * Count
+ * Volume
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -334,7 +334,7 @@ extern BOOL vscp_evt_measurement64_sendCatalyticActivity(double_t value);
 extern BOOL vscp_evt_measurement64_sendVolume(double_t value);
 
 /**
- * Count
+ * Sound intensity
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -343,7 +343,7 @@ extern BOOL vscp_evt_measurement64_sendVolume(double_t value);
 extern BOOL vscp_evt_measurement64_sendSoundIntensity(double_t value);
 
 /**
- * Count
+ * Angle
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -352,7 +352,7 @@ extern BOOL vscp_evt_measurement64_sendSoundIntensity(double_t value);
 extern BOOL vscp_evt_measurement64_sendAngle(double_t value);
 
 /**
- * Count
+ * Position WGS 84
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -361,7 +361,7 @@ extern BOOL vscp_evt_measurement64_sendAngle(double_t value);
 extern BOOL vscp_evt_measurement64_sendPositionWgs84(double_t value);
 
 /**
- * Count
+ * Speed
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_measurement64_sendPositionWgs84(double_t value);
 extern BOOL vscp_evt_measurement64_sendSpeed(double_t value);
 
 /**
- * Count
+ * Acceleration
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -379,7 +379,7 @@ extern BOOL vscp_evt_measurement64_sendSpeed(double_t value);
 extern BOOL vscp_evt_measurement64_sendAcceleration(double_t value);
 
 /**
- * Count
+ * Tension
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -388,7 +388,7 @@ extern BOOL vscp_evt_measurement64_sendAcceleration(double_t value);
 extern BOOL vscp_evt_measurement64_sendTension(double_t value);
 
 /**
- * Count
+ * Damp/moist (Hygrometer reading)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -397,7 +397,7 @@ extern BOOL vscp_evt_measurement64_sendTension(double_t value);
 extern BOOL vscp_evt_measurement64_sendDampMoistHygrometerReading(double_t value);
 
 /**
- * Count
+ * Flow
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -406,7 +406,7 @@ extern BOOL vscp_evt_measurement64_sendDampMoistHygrometerReading(double_t value
 extern BOOL vscp_evt_measurement64_sendFlow(double_t value);
 
 /**
- * Count
+ * Thermal resistance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -415,7 +415,7 @@ extern BOOL vscp_evt_measurement64_sendFlow(double_t value);
 extern BOOL vscp_evt_measurement64_sendThermalResistance(double_t value);
 
 /**
- * Count
+ * Refractive (optical) power
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -424,7 +424,7 @@ extern BOOL vscp_evt_measurement64_sendThermalResistance(double_t value);
 extern BOOL vscp_evt_measurement64_sendRefractiveOpticalPower(double_t value);
 
 /**
- * Count
+ * Dynamic viscosity
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -433,7 +433,7 @@ extern BOOL vscp_evt_measurement64_sendRefractiveOpticalPower(double_t value);
 extern BOOL vscp_evt_measurement64_sendDynamicViscosity(double_t value);
 
 /**
- * Count
+ * Sound impedance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -442,7 +442,7 @@ extern BOOL vscp_evt_measurement64_sendDynamicViscosity(double_t value);
 extern BOOL vscp_evt_measurement64_sendSoundImpedance(double_t value);
 
 /**
- * Count
+ * Sound resistance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -451,7 +451,7 @@ extern BOOL vscp_evt_measurement64_sendSoundImpedance(double_t value);
 extern BOOL vscp_evt_measurement64_sendSoundResistance(double_t value);
 
 /**
- * Count
+ * Electric elastance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -460,7 +460,7 @@ extern BOOL vscp_evt_measurement64_sendSoundResistance(double_t value);
 extern BOOL vscp_evt_measurement64_sendElectricElastance(double_t value);
 
 /**
- * Count
+ * Luminous energy
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -469,7 +469,7 @@ extern BOOL vscp_evt_measurement64_sendElectricElastance(double_t value);
 extern BOOL vscp_evt_measurement64_sendLuminousEnergy(double_t value);
 
 /**
- * Count
+ * Luminance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -478,7 +478,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousEnergy(double_t value);
 extern BOOL vscp_evt_measurement64_sendLuminance(double_t value);
 
 /**
- * Count
+ * Chemical concentration
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -489,7 +489,7 @@ extern BOOL vscp_evt_measurement64_sendChemicalConcentration(double_t value);
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dose equivalent
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -500,7 +500,7 @@ extern BOOL vscp_evt_measurement64_sendDoseEquivalent(double_t value);
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dew Point
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -509,7 +509,7 @@ extern BOOL vscp_evt_measurement64_sendDoseEquivalent(double_t value);
 extern BOOL vscp_evt_measurement64_sendDewPoint(double_t value);
 
 /**
- * Count
+ * Relative Level
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -518,7 +518,7 @@ extern BOOL vscp_evt_measurement64_sendDewPoint(double_t value);
 extern BOOL vscp_evt_measurement64_sendRelativeLevel(double_t value);
 
 /**
- * Count
+ * Altitude
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -527,7 +527,7 @@ extern BOOL vscp_evt_measurement64_sendRelativeLevel(double_t value);
 extern BOOL vscp_evt_measurement64_sendAltitude(double_t value);
 
 /**
- * Count
+ * Area
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -536,7 +536,7 @@ extern BOOL vscp_evt_measurement64_sendAltitude(double_t value);
 extern BOOL vscp_evt_measurement64_sendArea(double_t value);
 
 /**
- * Count
+ * Radiant intensity
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -545,7 +545,7 @@ extern BOOL vscp_evt_measurement64_sendArea(double_t value);
 extern BOOL vscp_evt_measurement64_sendRadiantIntensity(double_t value);
 
 /**
- * Count
+ * Radiance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -554,7 +554,7 @@ extern BOOL vscp_evt_measurement64_sendRadiantIntensity(double_t value);
 extern BOOL vscp_evt_measurement64_sendRadiance(double_t value);
 
 /**
- * Count
+ * Irradiance, Exitance, Radiosity
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -563,7 +563,7 @@ extern BOOL vscp_evt_measurement64_sendRadiance(double_t value);
 extern BOOL vscp_evt_measurement64_sendIrradianceExitanceRadiosity(double_t value);
 
 /**
- * Count
+ * Spectral radiance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -572,7 +572,7 @@ extern BOOL vscp_evt_measurement64_sendIrradianceExitanceRadiosity(double_t valu
 extern BOOL vscp_evt_measurement64_sendSpectralRadiance(double_t value);
 
 /**
- * Count
+ * Spectral irradiance
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -581,7 +581,7 @@ extern BOOL vscp_evt_measurement64_sendSpectralRadiance(double_t value);
 extern BOOL vscp_evt_measurement64_sendSpectralIrradiance(double_t value);
 
 /**
- * Count
+ * Sound pressure (acoustic pressure)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -590,7 +590,7 @@ extern BOOL vscp_evt_measurement64_sendSpectralIrradiance(double_t value);
 extern BOOL vscp_evt_measurement64_sendSoundPressureAcousticPressure(double_t value);
 
 /**
- * Count
+ * Sound energy density
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
@@ -599,7 +599,7 @@ extern BOOL vscp_evt_measurement64_sendSoundPressureAcousticPressure(double_t va
 extern BOOL vscp_evt_measurement64_sendSoundEnergyDensity(double_t value);
 
 /**
- * Count
+ * Sound level
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 

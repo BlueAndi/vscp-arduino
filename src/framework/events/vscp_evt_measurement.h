@@ -94,7 +94,7 @@ extern BOOL vscp_evt_measurement_sendGeneralEvent(void);
 extern BOOL vscp_evt_measurement_sendCount(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Length/Distance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -106,7 +106,7 @@ extern BOOL vscp_evt_measurement_sendCount(uint8_t index, uint8_t unit, int32_t 
 extern BOOL vscp_evt_measurement_sendLengthDistance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Mass
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -118,7 +118,7 @@ extern BOOL vscp_evt_measurement_sendLengthDistance(uint8_t index, uint8_t unit,
 extern BOOL vscp_evt_measurement_sendMass(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Time
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -130,7 +130,7 @@ extern BOOL vscp_evt_measurement_sendMass(uint8_t index, uint8_t unit, int32_t d
 extern BOOL vscp_evt_measurement_sendTime(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electric Current
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -142,7 +142,7 @@ extern BOOL vscp_evt_measurement_sendTime(uint8_t index, uint8_t unit, int32_t d
 extern BOOL vscp_evt_measurement_sendElectricCurrent(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Temperature
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -154,7 +154,7 @@ extern BOOL vscp_evt_measurement_sendElectricCurrent(uint8_t index, uint8_t unit
 extern BOOL vscp_evt_measurement_sendTemperature(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Amount of substance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -166,7 +166,7 @@ extern BOOL vscp_evt_measurement_sendTemperature(uint8_t index, uint8_t unit, in
 extern BOOL vscp_evt_measurement_sendAmountOfSubstance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Luminous Intensity (Intensity of light)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -178,7 +178,7 @@ extern BOOL vscp_evt_measurement_sendAmountOfSubstance(uint8_t index, uint8_t un
 extern BOOL vscp_evt_measurement_sendLuminousIntensityIntensityOfLight(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Frequency
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -190,7 +190,7 @@ extern BOOL vscp_evt_measurement_sendLuminousIntensityIntensityOfLight(uint8_t i
 extern BOOL vscp_evt_measurement_sendFrequency(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radioactivity and other random events
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -202,7 +202,7 @@ extern BOOL vscp_evt_measurement_sendFrequency(uint8_t index, uint8_t unit, int3
 extern BOOL vscp_evt_measurement_sendRadioactivityAndOtherRandomEvents(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Force
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -214,7 +214,7 @@ extern BOOL vscp_evt_measurement_sendRadioactivityAndOtherRandomEvents(uint8_t i
 extern BOOL vscp_evt_measurement_sendForce(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Pressure
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -226,7 +226,7 @@ extern BOOL vscp_evt_measurement_sendForce(uint8_t index, uint8_t unit, int32_t 
 extern BOOL vscp_evt_measurement_sendPressure(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Energy
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -238,7 +238,7 @@ extern BOOL vscp_evt_measurement_sendPressure(uint8_t index, uint8_t unit, int32
 extern BOOL vscp_evt_measurement_sendEnergy(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Power
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -250,7 +250,7 @@ extern BOOL vscp_evt_measurement_sendEnergy(uint8_t index, uint8_t unit, int32_t
 extern BOOL vscp_evt_measurement_sendPower(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electrical Charge
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -262,7 +262,7 @@ extern BOOL vscp_evt_measurement_sendPower(uint8_t index, uint8_t unit, int32_t 
 extern BOOL vscp_evt_measurement_sendElectricalCharge(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electrical Potential (Voltage)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -274,7 +274,7 @@ extern BOOL vscp_evt_measurement_sendElectricalCharge(uint8_t index, uint8_t uni
 extern BOOL vscp_evt_measurement_sendElectricalPotentialVoltage(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electrical Capacitance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -286,7 +286,7 @@ extern BOOL vscp_evt_measurement_sendElectricalPotentialVoltage(uint8_t index, u
 extern BOOL vscp_evt_measurement_sendElectricalCapacitance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electrical Resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -298,7 +298,7 @@ extern BOOL vscp_evt_measurement_sendElectricalCapacitance(uint8_t index, uint8_
 extern BOOL vscp_evt_measurement_sendElectricalResistance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electrical Conductance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -310,7 +310,7 @@ extern BOOL vscp_evt_measurement_sendElectricalResistance(uint8_t index, uint8_t
 extern BOOL vscp_evt_measurement_sendElectricalConductance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Magnetic Field Strength
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -322,7 +322,7 @@ extern BOOL vscp_evt_measurement_sendElectricalConductance(uint8_t index, uint8_
 extern BOOL vscp_evt_measurement_sendMagneticFieldStrength(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Magnetic Flux
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -334,7 +334,7 @@ extern BOOL vscp_evt_measurement_sendMagneticFieldStrength(uint8_t index, uint8_
 extern BOOL vscp_evt_measurement_sendMagneticFlux(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Magnetic Flux Density
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -346,7 +346,7 @@ extern BOOL vscp_evt_measurement_sendMagneticFlux(uint8_t index, uint8_t unit, i
 extern BOOL vscp_evt_measurement_sendMagneticFluxDensity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Inductance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -358,7 +358,7 @@ extern BOOL vscp_evt_measurement_sendMagneticFluxDensity(uint8_t index, uint8_t 
 extern BOOL vscp_evt_measurement_sendInductance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Luminous Flux
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_measurement_sendInductance(uint8_t index, uint8_t unit, int
 extern BOOL vscp_evt_measurement_sendLuminousFlux(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Illuminance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -382,7 +382,7 @@ extern BOOL vscp_evt_measurement_sendLuminousFlux(uint8_t index, uint8_t unit, i
 extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radiation dose
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -394,7 +394,7 @@ extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, in
 extern BOOL vscp_evt_measurement_sendRadiationDose(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Catalytic activity
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -406,7 +406,7 @@ extern BOOL vscp_evt_measurement_sendRadiationDose(uint8_t index, uint8_t unit, 
 extern BOOL vscp_evt_measurement_sendCatalyticActivity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Volume
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -418,7 +418,7 @@ extern BOOL vscp_evt_measurement_sendCatalyticActivity(uint8_t index, uint8_t un
 extern BOOL vscp_evt_measurement_sendVolume(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound intensity
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -430,7 +430,7 @@ extern BOOL vscp_evt_measurement_sendVolume(uint8_t index, uint8_t unit, int32_t
 extern BOOL vscp_evt_measurement_sendSoundIntensity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Angle, direction or similar
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -439,10 +439,10 @@ extern BOOL vscp_evt_measurement_sendSoundIntensity(uint8_t index, uint8_t unit,
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendAngle(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+extern BOOL vscp_evt_measurement_sendAngleDirectionOrSimilar(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Position WGS 84
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -454,7 +454,7 @@ extern BOOL vscp_evt_measurement_sendAngle(uint8_t index, uint8_t unit, int32_t 
 extern BOOL vscp_evt_measurement_sendPositionWgs84(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Speed
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -466,7 +466,7 @@ extern BOOL vscp_evt_measurement_sendPositionWgs84(uint8_t index, uint8_t unit, 
 extern BOOL vscp_evt_measurement_sendSpeed(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Acceleration
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -478,7 +478,7 @@ extern BOOL vscp_evt_measurement_sendSpeed(uint8_t index, uint8_t unit, int32_t 
 extern BOOL vscp_evt_measurement_sendAcceleration(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Tension
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -490,7 +490,7 @@ extern BOOL vscp_evt_measurement_sendAcceleration(uint8_t index, uint8_t unit, i
 extern BOOL vscp_evt_measurement_sendTension(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Damp/moist (Hygrometer reading)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -502,7 +502,7 @@ extern BOOL vscp_evt_measurement_sendTension(uint8_t index, uint8_t unit, int32_
 extern BOOL vscp_evt_measurement_sendDampMoistHygrometerReading(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Flow
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -514,7 +514,7 @@ extern BOOL vscp_evt_measurement_sendDampMoistHygrometerReading(uint8_t index, u
 extern BOOL vscp_evt_measurement_sendFlow(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Thermal resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -526,7 +526,7 @@ extern BOOL vscp_evt_measurement_sendFlow(uint8_t index, uint8_t unit, int32_t d
 extern BOOL vscp_evt_measurement_sendThermalResistance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Refractive (optical) power
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -538,7 +538,7 @@ extern BOOL vscp_evt_measurement_sendThermalResistance(uint8_t index, uint8_t un
 extern BOOL vscp_evt_measurement_sendRefractiveOpticalPower(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Dynamic viscosity
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -550,7 +550,7 @@ extern BOOL vscp_evt_measurement_sendRefractiveOpticalPower(uint8_t index, uint8
 extern BOOL vscp_evt_measurement_sendDynamicViscosity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound impedance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -562,7 +562,7 @@ extern BOOL vscp_evt_measurement_sendDynamicViscosity(uint8_t index, uint8_t uni
 extern BOOL vscp_evt_measurement_sendSoundImpedance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound resistance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -574,7 +574,7 @@ extern BOOL vscp_evt_measurement_sendSoundImpedance(uint8_t index, uint8_t unit,
 extern BOOL vscp_evt_measurement_sendSoundResistance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Electric elastance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -586,7 +586,7 @@ extern BOOL vscp_evt_measurement_sendSoundResistance(uint8_t index, uint8_t unit
 extern BOOL vscp_evt_measurement_sendElectricElastance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Luminous energy
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -598,7 +598,7 @@ extern BOOL vscp_evt_measurement_sendElectricElastance(uint8_t index, uint8_t un
 extern BOOL vscp_evt_measurement_sendLuminousEnergy(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Luminance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -610,7 +610,7 @@ extern BOOL vscp_evt_measurement_sendLuminousEnergy(uint8_t index, uint8_t unit,
 extern BOOL vscp_evt_measurement_sendLuminance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Chemical concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -624,7 +624,7 @@ extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dose equivalent
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -638,7 +638,7 @@ extern BOOL vscp_evt_measurement_sendDoseEquivalent(uint8_t index, uint8_t unit,
 /* "Reserved" not supported. No frame defined. */
 
 /**
- * Count
+ * Dew Point
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -650,7 +650,7 @@ extern BOOL vscp_evt_measurement_sendDoseEquivalent(uint8_t index, uint8_t unit,
 extern BOOL vscp_evt_measurement_sendDewPoint(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Relative Level
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -662,7 +662,7 @@ extern BOOL vscp_evt_measurement_sendDewPoint(uint8_t index, uint8_t unit, int32
 extern BOOL vscp_evt_measurement_sendRelativeLevel(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Altitude
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -674,7 +674,7 @@ extern BOOL vscp_evt_measurement_sendRelativeLevel(uint8_t index, uint8_t unit, 
 extern BOOL vscp_evt_measurement_sendAltitude(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Area
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -686,7 +686,7 @@ extern BOOL vscp_evt_measurement_sendAltitude(uint8_t index, uint8_t unit, int32
 extern BOOL vscp_evt_measurement_sendArea(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radiant intensity
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -698,7 +698,7 @@ extern BOOL vscp_evt_measurement_sendArea(uint8_t index, uint8_t unit, int32_t d
 extern BOOL vscp_evt_measurement_sendRadiantIntensity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -710,7 +710,7 @@ extern BOOL vscp_evt_measurement_sendRadiantIntensity(uint8_t index, uint8_t uni
 extern BOOL vscp_evt_measurement_sendRadiance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Irradiance, Exitance, Radiosity
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -722,7 +722,7 @@ extern BOOL vscp_evt_measurement_sendRadiance(uint8_t index, uint8_t unit, int32
 extern BOOL vscp_evt_measurement_sendIrradianceExitanceRadiosity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Spectral radiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -734,7 +734,7 @@ extern BOOL vscp_evt_measurement_sendIrradianceExitanceRadiosity(uint8_t index, 
 extern BOOL vscp_evt_measurement_sendSpectralRadiance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Spectral irradiance
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -746,7 +746,7 @@ extern BOOL vscp_evt_measurement_sendSpectralRadiance(uint8_t index, uint8_t uni
 extern BOOL vscp_evt_measurement_sendSpectralIrradiance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound pressure (acoustic pressure)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -758,7 +758,7 @@ extern BOOL vscp_evt_measurement_sendSpectralIrradiance(uint8_t index, uint8_t u
 extern BOOL vscp_evt_measurement_sendSoundPressureAcousticPressure(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound energy density
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -770,7 +770,7 @@ extern BOOL vscp_evt_measurement_sendSoundPressureAcousticPressure(uint8_t index
 extern BOOL vscp_evt_measurement_sendSoundEnergyDensity(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Sound level
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -782,7 +782,7 @@ extern BOOL vscp_evt_measurement_sendSoundEnergyDensity(uint8_t index, uint8_t u
 extern BOOL vscp_evt_measurement_sendSoundLevel(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radiation dose (equivalent)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -794,7 +794,7 @@ extern BOOL vscp_evt_measurement_sendSoundLevel(uint8_t index, uint8_t unit, int
 extern BOOL vscp_evt_measurement_sendRadiationDoseEquivalent(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Radiation dose (exposure)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -806,7 +806,7 @@ extern BOOL vscp_evt_measurement_sendRadiationDoseEquivalent(uint8_t index, uint
 extern BOOL vscp_evt_measurement_sendRadiationDoseExposure(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Count
+ * Power factor
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -816,5 +816,29 @@ extern BOOL vscp_evt_measurement_sendRadiationDoseExposure(uint8_t index, uint8_
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
 extern BOOL vscp_evt_measurement_sendPowerFactor(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendReactivePower(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] unit The unit of the data.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement_sendReactiveEnergy(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 #endif  /* __VSCP_EVT_MEASUREMENT_H__ */

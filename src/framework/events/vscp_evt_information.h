@@ -1081,4 +1081,16 @@ extern BOOL vscp_evt_information_sendIncremented(uint8_t userSpecific, uint8_t z
  */
 extern BOOL vscp_evt_information_sendDecremented(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint8_t const * const decrementedValue, uint8_t decrementedValueSize);
 
+/**
+ * Proximity detected
+ * 
+ * @param[in] userSpecific User specific.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
+ * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
+ * @param[in] proximityLevel Optional uint16 that sets proximity level if present. (optional)
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_information_sendProximityDetected(uint8_t userSpecific, uint8_t zone, uint8_t subzone, uint16_t const * const proximityLevel);
+
 #endif  /* __VSCP_EVT_INFORMATION_H__ */

@@ -126,7 +126,7 @@ void setup() {
   vscp.setup(
     8,              // Status lamp pin
     7,              // Init button pin
-    nodeGuid,       // Node GUID,
+    nodeGuid,       // Node GUID
     255,            // Node zone (255 = all zones)
     255,            // Node sub-zone (255 = all sub-zones)
     transportRead,  // VSCP framework calls it to read a message

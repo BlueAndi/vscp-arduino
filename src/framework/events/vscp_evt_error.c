@@ -120,7 +120,7 @@ extern BOOL vscp_evt_error_sendSuccess(uint8_t index, uint8_t zone, uint8_t subZ
 }
 
 /**
- * Success
+ * Error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -168,7 +168,7 @@ extern BOOL vscp_evt_error_sendError(uint8_t index, uint8_t zone, uint8_t subZon
 }
 
 /**
- * Success
+ * Channel error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -216,7 +216,7 @@ extern BOOL vscp_evt_error_sendChannelError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Fifo empty error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -264,7 +264,7 @@ extern BOOL vscp_evt_error_sendFifoEmptyError(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Success
+ * Fifo full error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -312,7 +312,7 @@ extern BOOL vscp_evt_error_sendFifoFullError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Fifo size error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -360,7 +360,7 @@ extern BOOL vscp_evt_error_sendFifoSizeError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Fifo wait error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -408,7 +408,7 @@ extern BOOL vscp_evt_error_sendFifoWaitError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Generic error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -456,7 +456,7 @@ extern BOOL vscp_evt_error_sendGenericError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Hardware error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -504,7 +504,7 @@ extern BOOL vscp_evt_error_sendHardwareError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * initialization error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -552,7 +552,7 @@ extern BOOL vscp_evt_error_sendInitializationError(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Success
+ * Missing initialization error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -600,7 +600,7 @@ extern BOOL vscp_evt_error_sendMissingInitializationError(uint8_t index, uint8_t
 }
 
 /**
- * Success
+ * Initialization ready
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -648,7 +648,7 @@ extern BOOL vscp_evt_error_sendInitializationReady(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Success
+ * Not supported
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -696,7 +696,7 @@ extern BOOL vscp_evt_error_sendNotSupported(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Overrun error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -744,7 +744,7 @@ extern BOOL vscp_evt_error_sendOverrunError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Receiver empty error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -792,7 +792,7 @@ extern BOOL vscp_evt_error_sendReceiverEmptyError(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Success
+ * Register error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -840,7 +840,7 @@ extern BOOL vscp_evt_error_sendRegisterError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Transmitter full error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -888,7 +888,7 @@ extern BOOL vscp_evt_error_sendTransmitterFullError(uint8_t index, uint8_t zone,
 }
 
 /**
- * Success
+ * Library error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -936,7 +936,7 @@ extern BOOL vscp_evt_error_sendLibraryError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Procedural address error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -984,7 +984,7 @@ extern BOOL vscp_evt_error_sendProceduralAddressError(uint8_t index, uint8_t zon
 }
 
 /**
- * Success
+ * Only one instance error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1032,7 +1032,7 @@ extern BOOL vscp_evt_error_sendOnlyOneInstanceError(uint8_t index, uint8_t zone,
 }
 
 /**
- * Success
+ * Sub driver error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1080,7 +1080,7 @@ extern BOOL vscp_evt_error_sendSubDriverError(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Success
+ * Timeout error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1128,7 +1128,7 @@ extern BOOL vscp_evt_error_sendTimeoutError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Not open error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1176,7 +1176,7 @@ extern BOOL vscp_evt_error_sendNotOpenError(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Success
+ * Parameter error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1224,7 +1224,7 @@ extern BOOL vscp_evt_error_sendParameterError(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Success
+ * Memory error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1272,7 +1272,7 @@ extern BOOL vscp_evt_error_sendMemoryError(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Success
+ * Internal error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1320,7 +1320,7 @@ extern BOOL vscp_evt_error_sendInternalError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Communication error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1368,7 +1368,7 @@ extern BOOL vscp_evt_error_sendCommunicationError(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Success
+ * User error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1416,7 +1416,7 @@ extern BOOL vscp_evt_error_sendUserError(uint8_t index, uint8_t zone, uint8_t su
 }
 
 /**
- * Success
+ * Password error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1464,7 +1464,7 @@ extern BOOL vscp_evt_error_sendPasswordError(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Success
+ * Connection error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1512,7 +1512,7 @@ extern BOOL vscp_evt_error_sendConnectionError(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Success
+ * Invalid handle error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1560,7 +1560,7 @@ extern BOOL vscp_evt_error_sendInvalidHandleError(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Success
+ * Operation failed error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1608,7 +1608,7 @@ extern BOOL vscp_evt_error_sendOperationFailedError(uint8_t index, uint8_t zone,
 }
 
 /**
- * Success
+ * Supplied buffer is to small to fit content
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1656,7 +1656,7 @@ extern BOOL vscp_evt_error_sendSuppliedBufferIsToSmallToFitContent(uint8_t index
 }
 
 /**
- * Success
+ * Requested item is unknown
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1704,7 +1704,7 @@ extern BOOL vscp_evt_error_sendRequestedItemIsUnknown(uint8_t index, uint8_t zon
 }
 
 /**
- * Success
+ * Name is already in use
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1752,7 +1752,7 @@ extern BOOL vscp_evt_error_sendNameIsAlreadyInUse(uint8_t index, uint8_t zone, u
 }
 
 /**
- * Success
+ * Error when writing data
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1800,7 +1800,7 @@ extern BOOL vscp_evt_error_sendErrorWhenWritingData(uint8_t index, uint8_t zone,
 }
 
 /**
- * Success
+ * Operation stopped or aborted
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1848,7 +1848,7 @@ extern BOOL vscp_evt_error_sendOperationStoppedOrAborted(uint8_t index, uint8_t 
 }
 
 /**
- * Success
+ * Pointer with invalid value
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.

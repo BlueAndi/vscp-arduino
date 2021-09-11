@@ -118,7 +118,7 @@ extern BOOL vscp_evt_weather_sendSeasonWinter(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * Season spring
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -148,7 +148,7 @@ extern BOOL vscp_evt_weather_sendSeasonSpring(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * Season summer
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -178,7 +178,7 @@ extern BOOL vscp_evt_weather_sendSeasonSummer(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * Autumn summer
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -208,7 +208,7 @@ extern BOOL vscp_evt_weather_sendAutumnSummer(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * No wind
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -238,7 +238,7 @@ extern BOOL vscp_evt_weather_sendNoWind(uint8_t index, uint8_t zone, uint8_t sub
 }
 
 /**
- * Season winter
+ * Low wind
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -268,7 +268,7 @@ extern BOOL vscp_evt_weather_sendLowWind(uint8_t index, uint8_t zone, uint8_t su
 }
 
 /**
- * Season winter
+ * Medium wind
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -298,7 +298,7 @@ extern BOOL vscp_evt_weather_sendMediumWind(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Season winter
+ * High wind
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -328,7 +328,7 @@ extern BOOL vscp_evt_weather_sendHighWind(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Very high wind
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -358,7 +358,7 @@ extern BOOL vscp_evt_weather_sendVeryHighWind(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * Air foggy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -388,7 +388,7 @@ extern BOOL vscp_evt_weather_sendAirFoggy(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Air freezing
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -418,7 +418,7 @@ extern BOOL vscp_evt_weather_sendAirFreezing(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Season winter
+ * Air Very cold
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -448,7 +448,7 @@ extern BOOL vscp_evt_weather_sendAirVeryCold(uint8_t index, uint8_t zone, uint8_
 }
 
 /**
- * Season winter
+ * Air cold
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -478,7 +478,7 @@ extern BOOL vscp_evt_weather_sendAirCold(uint8_t index, uint8_t zone, uint8_t su
 }
 
 /**
- * Season winter
+ * Air normal
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -508,7 +508,7 @@ extern BOOL vscp_evt_weather_sendAirNormal(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Air hot
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -538,7 +538,7 @@ extern BOOL vscp_evt_weather_sendAirHot(uint8_t index, uint8_t zone, uint8_t sub
 }
 
 /**
- * Season winter
+ * Air very hot
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -568,7 +568,7 @@ extern BOOL vscp_evt_weather_sendAirVeryHot(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Season winter
+ * Pollution low
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -598,7 +598,7 @@ extern BOOL vscp_evt_weather_sendPollutionLow(uint8_t index, uint8_t zone, uint8
 }
 
 /**
- * Season winter
+ * Pollution medium
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -628,7 +628,7 @@ extern BOOL vscp_evt_weather_sendPollutionMedium(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Season winter
+ * Pollution high
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -658,7 +658,7 @@ extern BOOL vscp_evt_weather_sendPollutionHigh(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Air humid
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -688,7 +688,7 @@ extern BOOL vscp_evt_weather_sendAirHumid(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Air dry
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -718,7 +718,7 @@ extern BOOL vscp_evt_weather_sendAirDry(uint8_t index, uint8_t zone, uint8_t sub
 }
 
 /**
- * Season winter
+ * Soil humid
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -748,7 +748,7 @@ extern BOOL vscp_evt_weather_sendSoilHumid(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Soil dry
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -778,7 +778,7 @@ extern BOOL vscp_evt_weather_sendSoilDry(uint8_t index, uint8_t zone, uint8_t su
 }
 
 /**
- * Season winter
+ * Rain none
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -808,7 +808,7 @@ extern BOOL vscp_evt_weather_sendRainNone(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Rain light
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -838,7 +838,7 @@ extern BOOL vscp_evt_weather_sendRainLight(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Rain heavy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -868,7 +868,7 @@ extern BOOL vscp_evt_weather_sendRainHeavy(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Rain very heavy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -898,7 +898,7 @@ extern BOOL vscp_evt_weather_sendRainVeryHeavy(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Sun none
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -928,7 +928,7 @@ extern BOOL vscp_evt_weather_sendSunNone(uint8_t index, uint8_t zone, uint8_t su
 }
 
 /**
- * Season winter
+ * Sun light
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -958,7 +958,7 @@ extern BOOL vscp_evt_weather_sendSunLight(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Sun heavy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -988,7 +988,7 @@ extern BOOL vscp_evt_weather_sendSunHeavy(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Snow none
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1018,7 +1018,7 @@ extern BOOL vscp_evt_weather_sendSnowNone(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Snow light
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1048,7 +1048,7 @@ extern BOOL vscp_evt_weather_sendSnowLight(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Snow heavy
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1078,7 +1078,7 @@ extern BOOL vscp_evt_weather_sendSnowHeavy(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * Dew point
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1108,7 +1108,7 @@ extern BOOL vscp_evt_weather_sendDewPoint(uint8_t index, uint8_t zone, uint8_t s
 }
 
 /**
- * Season winter
+ * Storm
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1138,7 +1138,7 @@ extern BOOL vscp_evt_weather_sendStorm(uint8_t index, uint8_t zone, uint8_t subZ
 }
 
 /**
- * Season winter
+ * Flood
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1168,7 +1168,7 @@ extern BOOL vscp_evt_weather_sendFlood(uint8_t index, uint8_t zone, uint8_t subZ
 }
 
 /**
- * Season winter
+ * Earthquake
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1198,7 +1198,7 @@ extern BOOL vscp_evt_weather_sendEarthquake(uint8_t index, uint8_t zone, uint8_t
 }
 
 /**
- * Season winter
+ * Nuclear disaster
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1228,7 +1228,7 @@ extern BOOL vscp_evt_weather_sendNuclearDisaster(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Season winter
+ * Fire
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1258,7 +1258,7 @@ extern BOOL vscp_evt_weather_sendFire(uint8_t index, uint8_t zone, uint8_t subZo
 }
 
 /**
- * Season winter
+ * Lightning
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1288,7 +1288,7 @@ extern BOOL vscp_evt_weather_sendLightning(uint8_t index, uint8_t zone, uint8_t 
 }
 
 /**
- * Season winter
+ * UV Radiation low
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1318,7 +1318,7 @@ extern BOOL vscp_evt_weather_sendUvRadiationLow(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Season winter
+ * UV Radiation medium
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1348,7 +1348,7 @@ extern BOOL vscp_evt_weather_sendUvRadiationMedium(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Season winter
+ * UV Radiation normal
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1378,7 +1378,7 @@ extern BOOL vscp_evt_weather_sendUvRadiationNormal(uint8_t index, uint8_t zone, 
 }
 
 /**
- * Season winter
+ * UV Radiation high
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1408,7 +1408,7 @@ extern BOOL vscp_evt_weather_sendUvRadiationHigh(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Season winter
+ * UV Radiation very high
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1438,7 +1438,7 @@ extern BOOL vscp_evt_weather_sendUvRadiationVeryHigh(uint8_t index, uint8_t zone
 }
 
 /**
- * Season winter
+ * Warning level 1
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1468,7 +1468,7 @@ extern BOOL vscp_evt_weather_sendWarningLevel1(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Warning level 2
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1498,7 +1498,7 @@ extern BOOL vscp_evt_weather_sendWarningLevel2(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Warning level 3
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1528,7 +1528,7 @@ extern BOOL vscp_evt_weather_sendWarningLevel3(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Warning level 4
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1558,7 +1558,7 @@ extern BOOL vscp_evt_weather_sendWarningLevel4(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Warning level 5
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1588,7 +1588,7 @@ extern BOOL vscp_evt_weather_sendWarningLevel5(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Season winter
+ * Armageddon
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
