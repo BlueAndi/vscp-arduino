@@ -82,7 +82,7 @@ extern BOOL vscp_evt_display_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DISPLAY, VSCP_TYPE_DISPLAY_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_display_sendClearDisplay(uint8_t code, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -150,7 +150,7 @@ extern BOOL vscp_evt_display_sendPositionCursor(uint8_t index, uint8_t zone, uin
     txMsg.data[4] = column;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -199,7 +199,7 @@ extern BOOL vscp_evt_display_sendWriteDisplay(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -248,7 +248,7 @@ extern BOOL vscp_evt_display_sendWriteDisplayBuffer(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -278,7 +278,7 @@ extern BOOL vscp_evt_display_sendShowDisplayBuffer(uint8_t index, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -323,7 +323,7 @@ extern BOOL vscp_evt_display_sendSetDisplayBufferParameter(uint8_t index, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -372,7 +372,7 @@ extern BOOL vscp_evt_display_sendShowText(uint8_t index, uint8_t zone, uint8_t s
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -416,7 +416,7 @@ extern BOOL vscp_evt_display_sendSetLed(uint8_t index, uint8_t zone, uint8_t sub
     txMsg.data[7] = (uint8_t)((blinkOffPeriod >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -458,7 +458,7 @@ extern BOOL vscp_evt_display_sendSetRgbColor(uint8_t index, uint8_t zone, uint8_
     txMsg.data[5] = blue;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

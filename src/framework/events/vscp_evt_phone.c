@@ -82,7 +82,7 @@ extern BOOL vscp_evt_phone_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PHONE, VSCP_TYPE_PHONE_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -132,7 +132,7 @@ extern BOOL vscp_evt_phone_sendIncomingCall(uint8_t id, uint8_t index, uint8_t t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -182,7 +182,7 @@ extern BOOL vscp_evt_phone_sendOutgoingCall(uint8_t id, uint8_t index, uint8_t t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -204,7 +204,7 @@ extern BOOL vscp_evt_phone_sendRing(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -254,7 +254,7 @@ extern BOOL vscp_evt_phone_sendAnswer(uint8_t id, uint8_t index, uint8_t total, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -276,7 +276,7 @@ extern BOOL vscp_evt_phone_sendHangup(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -298,7 +298,7 @@ extern BOOL vscp_evt_phone_sendGiveup(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -320,7 +320,7 @@ extern BOOL vscp_evt_phone_sendTransfer(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_phone_sendDatabaseInfo(uint8_t id, uint8_t index, uint8_t t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

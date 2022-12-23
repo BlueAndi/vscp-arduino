@@ -82,7 +82,7 @@ extern BOOL vscp_evt_ir_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_IR, VSCP_TYPE_REMOTE_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_ir_sendRc5SendReceive(uint8_t code, uint8_t adress, uint8_t
     txMsg.data[2] = repeat;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -142,7 +142,7 @@ extern BOOL vscp_evt_ir_sendSony12BitSendReceive(uint8_t code, uint8_t adress, u
     txMsg.data[2] = repeat;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -192,7 +192,7 @@ extern BOOL vscp_evt_ir_sendLircLinuxInfraredRemoteControl(uint8_t code6, uint8_
     txMsg.data[7] = repeat;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -227,7 +227,7 @@ extern BOOL vscp_evt_ir_sendVscpAbstractRemoteFormat(uint16_t code, uint8_t zone
     txMsg.data[4] = repeat;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -268,7 +268,7 @@ extern BOOL vscp_evt_ir_sendMapitoRemoteFormat(uint8_t repeat, uint8_t zone, uin
     txMsg.data[7] = keyCode;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

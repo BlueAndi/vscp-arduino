@@ -505,7 +505,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             /* Compare to event parameter byte 0? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_0))
             {
-                if (0 == msg->dataNum)
+                if (0 == msg->dataSize)
                 {
                     /* Next row */
                     continue;
@@ -520,7 +520,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             /* Compare to event parameter byte 3? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_3))
             {
-                if (3 >= msg->dataNum)
+                if (3 >= msg->dataSize)
                 {
                     /* Next row */
                     continue;
@@ -535,7 +535,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             /* Compare to event parameter byte 4? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_4))
             {
-                if (4 >= msg->dataNum)
+                if (4 >= msg->dataSize)
                 {
                     /* Next row */
                     continue;
@@ -550,7 +550,7 @@ extern void vscp_dm_executeActions(vscp_RxMessage const * const msg)
             /* Compare to event parameter byte 5? */
             if (0 != (extFlags & VSCP_DM_EXTFLAG_MATCH_PAR_5))
             {
-                if (5 >= msg->dataNum)
+                if (5 >= msg->dataSize)
                 {
                     /* Next row */
                     continue;

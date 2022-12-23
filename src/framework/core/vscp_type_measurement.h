@@ -478,7 +478,7 @@ extern "C"
 #define VSCP_TYPE_MEASUREMENT_POWER_FACTOR            63
 
 /**
- * Default unit: kVAr
+ * Default unit: VAr
  * In electric power transmission and distribution, volt-ampere reactive (VAr) is a unit of
  * measurement of reactive power. Reactive power exists in AC circuit when the current and voltage are
  * not in phase.

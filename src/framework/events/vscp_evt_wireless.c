@@ -82,7 +82,7 @@ extern BOOL vscp_evt_wireless_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_WIRELESS, VSCP_TYPE_WIRELESS_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -107,7 +107,7 @@ extern BOOL vscp_evt_wireless_sendGsmCell(uint32_t count)
     txMsg.data[3] = (uint8_t)((count >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

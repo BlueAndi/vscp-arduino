@@ -644,7 +644,7 @@ static uint16_t vscp_dm_ng_getEventParValue(vscp_RxMessage const * const rxMsg, 
         break;
 
     case VSCP_DM_NG_EVENT_PAR_ID_DATA_NUM:
-        value = rxMsg->dataNum;
+        value = rxMsg->dataSize;
         break;
 
     case VSCP_DM_NG_EVENT_PAR_ID_DATA0:
@@ -663,7 +663,7 @@ static uint16_t vscp_dm_ng_getEventParValue(vscp_RxMessage const * const rxMsg, 
         dataIndex = eventParId - VSCP_DM_NG_EVENT_PAR_ID_DATA0;
         /*@fallthrough@*/
     case VSCP_DM_NG_EVENT_PAR_ID_DATA:
-        if (rxMsg->dataNum > dataIndex)
+        if (rxMsg->dataSize > dataIndex)
         {
             value = rxMsg->data[dataIndex];
         }

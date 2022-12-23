@@ -82,7 +82,7 @@ extern BOOL vscp_evt_gnss_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_GNSS, VSCP_TYPE_GNSS_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -114,7 +114,7 @@ extern BOOL vscp_evt_gnss_sendPosition(float_t latitude, float_t longitude)
     txMsg.data[7] = ((uint8_t*)&longitude)[0];
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -136,7 +136,7 @@ extern BOOL vscp_evt_gnss_sendSatellites(uint8_t count)
     txMsg.data[0] = count;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

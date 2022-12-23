@@ -607,4 +607,49 @@ extern BOOL vscp_evt_measurement32_sendSoundEnergyDensity(float_t value);
  */
 extern BOOL vscp_evt_measurement32_sendSoundLevel(float_t value);
 
+/**
+ * Radiation dose (equivalent)
+ * 
+ * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement32_sendRadiationDoseEquivalent(float_t value);
+
+/**
+ * Radiation dose (exposure)
+ * 
+ * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement32_sendRadiationDoseExposure(float_t value);
+
+/**
+ * Power factor
+ * 
+ * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement32_sendPowerFactor(float_t value);
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement32_sendReactivePower(float_t value);
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement32_sendReactiveEnergy(float_t value);
+
 #endif  /* __VSCP_EVT_MEASUREMENT32_H__ */

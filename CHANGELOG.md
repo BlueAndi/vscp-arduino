@@ -1,7 +1,10 @@
+## 2.0.0
+
+- Update to VSCP framework v2.0.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.0.0) there.
+
 ## 1.3.0
 
 - Update to VSCP framework v1.3.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v1.3.0) there.
-
 
 ## 1.2.0
 

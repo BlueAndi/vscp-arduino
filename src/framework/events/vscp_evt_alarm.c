@@ -82,7 +82,7 @@ extern BOOL vscp_evt_alarm_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_ALARM, VSCP_TYPE_ALARM_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_alarm_sendWarning(uint8_t onOff, uint8_t zone, uint8_t subZ
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -120,20 +120,21 @@ extern BOOL vscp_evt_alarm_sendWarning(uint8_t onOff, uint8_t zone, uint8_t subZ
 /**
  * Alarm occurred
  * 
- * @param[in] onOff Alarm is on/off.
+ * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
+ * the alarm.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t onOff, uint8_t zone, uint8_t subZone)
+extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t alarmRegister, uint8_t zone, uint8_t subZone)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_ALARM, VSCP_TYPE_ALARM_ALARM, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.data[0] = onOff;
+    txMsg.data[0] = alarmRegister;
     size += 1;
 
     txMsg.data[1] = zone;
@@ -142,7 +143,7 @@ extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t onOff, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -172,7 +173,7 @@ extern BOOL vscp_evt_alarm_sendAlarmSoundOnOff(uint8_t onOff, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -202,7 +203,7 @@ extern BOOL vscp_evt_alarm_sendAlarmLightOnOff(uint8_t onOff, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -232,7 +233,7 @@ extern BOOL vscp_evt_alarm_sendPowerOnOff(uint8_t onOff, uint8_t zone, uint8_t s
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -262,7 +263,7 @@ extern BOOL vscp_evt_alarm_sendEmergencyStop(uint8_t onOff, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -292,7 +293,7 @@ extern BOOL vscp_evt_alarm_sendEmergencyPause(uint8_t onOff, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -322,7 +323,7 @@ extern BOOL vscp_evt_alarm_sendEmergencyReset(uint8_t onOff, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -352,7 +353,7 @@ extern BOOL vscp_evt_alarm_sendEmergencyResume(uint8_t onOff, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -382,7 +383,7 @@ extern BOOL vscp_evt_alarm_sendArm(uint8_t onOff, uint8_t zone, uint8_t subZone)
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -412,7 +413,7 @@ extern BOOL vscp_evt_alarm_sendDisarm(uint8_t onOff, uint8_t zone, uint8_t subZo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -442,7 +443,7 @@ extern BOOL vscp_evt_alarm_sendWatchdog(uint8_t index, uint8_t zone, uint8_t sub
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -450,7 +451,8 @@ extern BOOL vscp_evt_alarm_sendWatchdog(uint8_t index, uint8_t zone, uint8_t sub
 /**
  * Alarm reset
  * 
- * @param[in] alarmRegister Alarm byte from standard register 128/0x80.
+ * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
+ * the alarm.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * 
@@ -472,7 +474,7 @@ extern BOOL vscp_evt_alarm_sendAlarmReset(uint8_t alarmRegister, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

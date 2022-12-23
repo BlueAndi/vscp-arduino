@@ -82,7 +82,7 @@ extern BOOL vscp_evt_security_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_SECURITY, VSCP_TYPE_SECURITY_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -119,7 +119,7 @@ extern BOOL vscp_evt_security_sendMotionDetect(uint8_t userData, uint8_t zone, u
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -149,7 +149,7 @@ extern BOOL vscp_evt_security_sendGlassBreak(uint8_t userData, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -179,7 +179,7 @@ extern BOOL vscp_evt_security_sendBeamBreak(uint8_t userData, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -209,7 +209,7 @@ extern BOOL vscp_evt_security_sendSensorTamper(uint8_t userData, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -239,7 +239,7 @@ extern BOOL vscp_evt_security_sendShockSensor(uint8_t userData, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -269,7 +269,7 @@ extern BOOL vscp_evt_security_sendSmokeSensor(uint8_t userData, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -299,7 +299,7 @@ extern BOOL vscp_evt_security_sendHeatSensor(uint8_t userData, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -329,7 +329,7 @@ extern BOOL vscp_evt_security_sendPanicSwitch(uint8_t userData, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -359,7 +359,7 @@ extern BOOL vscp_evt_security_sendDoorContact(uint8_t userData, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -389,7 +389,7 @@ extern BOOL vscp_evt_security_sendWindowContact(uint8_t userData, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -419,7 +419,7 @@ extern BOOL vscp_evt_security_sendCoSensor(uint8_t userData, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -449,7 +449,7 @@ extern BOOL vscp_evt_security_sendFrostDetected(uint8_t userData, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -479,7 +479,7 @@ extern BOOL vscp_evt_security_sendFlameDetected(uint8_t userData, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -509,7 +509,7 @@ extern BOOL vscp_evt_security_sendOxygenLow(uint8_t userData, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -539,7 +539,7 @@ extern BOOL vscp_evt_security_sendWeightDetected(uint8_t userData, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -569,7 +569,7 @@ extern BOOL vscp_evt_security_sendWaterDetected(uint8_t userData, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -599,7 +599,7 @@ extern BOOL vscp_evt_security_sendCondensationDetected(uint8_t userData, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -629,7 +629,7 @@ extern BOOL vscp_evt_security_sendNoiseSoundDetected(uint8_t userData, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -659,7 +659,7 @@ extern BOOL vscp_evt_security_sendHarmfulSoundLevelsDetected(uint8_t userData, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -689,7 +689,7 @@ extern BOOL vscp_evt_security_sendTamperDetected(uint8_t userData, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -719,7 +719,7 @@ extern BOOL vscp_evt_security_sendAuthenticated(uint8_t data0, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -749,7 +749,7 @@ extern BOOL vscp_evt_security_sendUnauthenticated(uint8_t data0, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -779,7 +779,7 @@ extern BOOL vscp_evt_security_sendAuthorized(uint8_t data0, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -809,7 +809,7 @@ extern BOOL vscp_evt_security_sendUnauthorized(uint8_t data0, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -839,7 +839,7 @@ extern BOOL vscp_evt_security_sendIdCheck(uint8_t data0, uint8_t zone, uint8_t s
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -869,7 +869,7 @@ extern BOOL vscp_evt_security_sendValidPin(uint8_t data0, uint8_t zone, uint8_t 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -899,7 +899,7 @@ extern BOOL vscp_evt_security_sendInvalidPin(uint8_t data0, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -929,7 +929,7 @@ extern BOOL vscp_evt_security_sendPinWarning(uint8_t data0, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -959,7 +959,7 @@ extern BOOL vscp_evt_security_sendPinError(uint8_t data0, uint8_t zone, uint8_t 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -989,7 +989,7 @@ extern BOOL vscp_evt_security_sendValidPassword(uint8_t data0, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1019,7 +1019,7 @@ extern BOOL vscp_evt_security_sendInvalidPassword(uint8_t data0, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1049,7 +1049,7 @@ extern BOOL vscp_evt_security_sendPasswordWarning(uint8_t data0, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1079,7 +1079,7 @@ extern BOOL vscp_evt_security_sendPasswordError(uint8_t data0, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1109,7 +1109,7 @@ extern BOOL vscp_evt_security_sendGas(uint8_t data0, uint8_t zone, uint8_t subZo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1139,7 +1139,7 @@ extern BOOL vscp_evt_security_sendInMotion(uint8_t data0, uint8_t zone, uint8_t 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1169,7 +1169,7 @@ extern BOOL vscp_evt_security_sendNotInMotion(uint8_t data0, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1199,7 +1199,7 @@ extern BOOL vscp_evt_security_sendVibration(uint8_t data0, uint8_t zone, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

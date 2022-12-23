@@ -218,6 +218,12 @@ extern "C"
 /** VSCP register: restore default configuration */
 #define VSCP_REG_RESTORE_STD_CFG            (VSCP_REGISTER_VSCP_START_ADDR + 34)
 
+/** VSCP register: Firmware device code MSB */
+#define VSCP_REG_FIRMWARE_DEVICE_CODE_MSB   (VSCP_REGISTER_VSCP_START_ADDR + 35)
+
+/** VSCP register: Firmware device code LSB */
+#define VSCP_REG_FIRMWARE_DEVICE_CODE_LSB   (VSCP_REGISTER_VSCP_START_ADDR + 36)
+
 /** VSCP register: GUID byte 15 (MSB) */
 #define VSCP_REG_GUID_15                    (VSCP_REGISTER_VSCP_START_ADDR + 80)
 
@@ -302,7 +308,7 @@ typedef struct
     uint8_t         vscpType;                   /**< VSCP type */
     uint8_t         oAddr;                      /**< Message originating address */
     BOOL            hardCoded;                  /**< Is hard coded node (TRUE) or dynamic node (FALSE) */
-    uint8_t         dataNum;                    /**< Number of data bytes */
+    uint8_t         dataSize;                   /**< Number used of data bytes */
     /*@reldef@*/
     uint8_t         data[VSCP_L1_DATA_SIZE];    /**< Data */
 

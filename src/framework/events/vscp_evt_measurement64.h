@@ -607,4 +607,49 @@ extern BOOL vscp_evt_measurement64_sendSoundEnergyDensity(double_t value);
  */
 extern BOOL vscp_evt_measurement64_sendSoundLevel(double_t value);
 
+/**
+ * Radiation dose (equivalent)
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendRadiationDoseEquivalent(double_t value);
+
+/**
+ * Radiation dose (exposure)
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendRadiationDoseExposure(double_t value);
+
+/**
+ * Power factor
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendPowerFactor(double_t value);
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendReactivePower(double_t value);
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendReactiveEnergy(double_t value);
+
 #endif  /* __VSCP_EVT_MEASUREMENT64_H__ */

@@ -258,6 +258,13 @@ extern "C"
 
 #endif  /* VSCP_CONFIG_BASE_IS_ENABLED( VSCP_DEV_DATA_CONFIG_ENABLE_FAMILY_CODE ) */
 
+#ifndef VSCP_DEV_DATA_CONFIG_FIRMWARE_DEVICE_CODE
+
+/** Firmware device code. */
+#define VSCP_DEV_DATA_CONFIG_FIRMWARE_DEVICE_CODE           ((uint16_t)0x0000)
+
+#endif  /* VSCP_DEV_DATA_CONFIG_FIRMWARE_DEVICE_CODE */
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

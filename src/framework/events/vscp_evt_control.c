@@ -82,7 +82,7 @@ extern BOOL vscp_evt_control_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_control_sendMuteOnOff(uint8_t command, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -142,7 +142,7 @@ extern BOOL vscp_evt_control_sendAllLampSOnOff(uint8_t state, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -172,7 +172,7 @@ extern BOOL vscp_evt_control_sendOpen(uint8_t userSpecific, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -202,7 +202,7 @@ extern BOOL vscp_evt_control_sendClose(uint8_t userSpecific, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -232,7 +232,7 @@ extern BOOL vscp_evt_control_sendTurnon(uint8_t userSpecific, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -262,7 +262,7 @@ extern BOOL vscp_evt_control_sendTurnoff(uint8_t userSpecific, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -292,7 +292,7 @@ extern BOOL vscp_evt_control_sendStart(uint8_t userSpecific, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -322,7 +322,7 @@ extern BOOL vscp_evt_control_sendStop(uint8_t userSpecific, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -352,7 +352,7 @@ extern BOOL vscp_evt_control_sendReset(uint8_t userSpecific, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -382,7 +382,7 @@ extern BOOL vscp_evt_control_sendInterrupt(uint8_t interruptLevel, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -412,7 +412,7 @@ extern BOOL vscp_evt_control_sendSleep(uint8_t userSpecific, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -442,7 +442,7 @@ extern BOOL vscp_evt_control_sendWakeup(uint8_t userSpecific, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -472,7 +472,7 @@ extern BOOL vscp_evt_control_sendResume(uint8_t userSpecific, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -502,7 +502,7 @@ extern BOOL vscp_evt_control_sendPause(uint8_t userSpecific, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -532,7 +532,7 @@ extern BOOL vscp_evt_control_sendActivate(uint8_t userSpecific, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -562,7 +562,7 @@ extern BOOL vscp_evt_control_sendDeactivate(uint8_t userSpecific, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -599,7 +599,7 @@ extern BOOL vscp_evt_control_sendDimLampS(uint8_t value, uint8_t zone, uint8_t s
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -632,7 +632,7 @@ extern BOOL vscp_evt_control_sendChangeChannel(uint8_t channel, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -662,7 +662,7 @@ extern BOOL vscp_evt_control_sendChangeLevel(uint8_t level, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -692,7 +692,7 @@ extern BOOL vscp_evt_control_sendRelativeChangeLevel(uint8_t level, uint8_t zone
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -723,7 +723,7 @@ extern BOOL vscp_evt_control_sendMeasurementRequest(uint8_t index, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -762,7 +762,7 @@ extern BOOL vscp_evt_control_sendStreamData(uint8_t index, uint8_t const * const
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -792,7 +792,7 @@ extern BOOL vscp_evt_control_sendSync(uint8_t index, uint8_t zone, uint8_t subZo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -839,7 +839,7 @@ extern BOOL vscp_evt_control_sendZonedStreamData(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -869,7 +869,7 @@ extern BOOL vscp_evt_control_sendSetPreSet(uint8_t presetCode, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -899,7 +899,7 @@ extern BOOL vscp_evt_control_sendToggleState(uint8_t userSpecific, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -940,7 +940,7 @@ extern BOOL vscp_evt_control_sendTimedPulseOn(uint8_t userSpecific, uint8_t zone
     txMsg.data[7] = (uint8_t)((time >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -981,7 +981,7 @@ extern BOOL vscp_evt_control_sendTimedPulseOff(uint8_t userSpecific, uint8_t zon
     txMsg.data[7] = (uint8_t)((time >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1030,7 +1030,7 @@ extern BOOL vscp_evt_control_sendSetCountryLanguage(uint8_t code, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1064,7 +1064,7 @@ extern BOOL vscp_evt_control_sendBigChangeLevel(uint8_t index, uint8_t zone, uin
 
     /* level not supported! */
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1094,7 +1094,7 @@ extern BOOL vscp_evt_control_sendMoveShutterUp(uint8_t index, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1124,7 +1124,7 @@ extern BOOL vscp_evt_control_sendMoveShutterDown(uint8_t index, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1154,7 +1154,7 @@ extern BOOL vscp_evt_control_sendMoveShutterLeft(uint8_t index, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1184,7 +1184,7 @@ extern BOOL vscp_evt_control_sendMoveShutterRight(uint8_t index, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1214,7 +1214,7 @@ extern BOOL vscp_evt_control_sendMoveShutterToMiddlePosition(uint8_t index, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1244,7 +1244,7 @@ extern BOOL vscp_evt_control_sendMoveShutterToPresetPosition(uint8_t index, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1274,7 +1274,7 @@ extern BOOL vscp_evt_control_sendAllLampSOn(uint8_t userSpecific, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1304,7 +1304,7 @@ extern BOOL vscp_evt_control_sendAllLampSOff(uint8_t userSpecific, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1334,7 +1334,7 @@ extern BOOL vscp_evt_control_sendLock(uint8_t userSpecific, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1364,7 +1364,7 @@ extern BOOL vscp_evt_control_sendUnlock(uint8_t userSpecific, uint8_t zone, uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1408,7 +1408,7 @@ extern BOOL vscp_evt_control_sendPwmSet(uint8_t repeats, uint8_t zone, uint8_t s
     txMsg.data[7] = (uint8_t)((timeOff >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1459,7 +1459,7 @@ extern BOOL vscp_evt_control_sendLockWithToken(uint8_t reserved, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1510,7 +1510,7 @@ extern BOOL vscp_evt_control_sendUnlockWithToken(uint8_t reserved, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1540,7 +1540,7 @@ extern BOOL vscp_evt_control_sendSetSecurityLevel(uint8_t securityLevel, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1591,7 +1591,7 @@ extern BOOL vscp_evt_control_sendSetSecurityPin(uint8_t reserved, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1642,7 +1642,7 @@ extern BOOL vscp_evt_control_sendSetSecurityPassword(uint8_t reserved, uint8_t z
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1693,7 +1693,7 @@ extern BOOL vscp_evt_control_sendSetSecurityToken(uint8_t reserved, uint8_t zone
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1723,7 +1723,7 @@ extern BOOL vscp_evt_control_sendRequestNewSecurityToken(uint8_t reserved, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1772,7 +1772,7 @@ extern BOOL vscp_evt_control_sendIncrement(uint8_t userSpecific, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1821,7 +1821,7 @@ extern BOOL vscp_evt_control_sendDecrement(uint8_t userSpecific, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

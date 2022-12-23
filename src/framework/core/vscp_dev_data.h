@@ -216,6 +216,19 @@ extern uint8_t  vscp_dev_data_getStdDevFamilyCode(uint8_t index);
  */
 extern uint8_t  vscp_dev_data_getStdDevType(uint8_t index);
 
+/**
+ * Get the firmware device code.
+ * The firmware code is used to distinguish a device type of a module from one
+ * another so that the correct firmware can be loaded to a module. Typically a
+ * board have different firmware codes here for different microprocessors used
+ * as reversions of the board is shipped over time.
+ * 
+ * Return 0 if not used.
+ * 
+ * @return Firmware device code
+ */
+extern uint32_t vscp_dev_data_getFirmwareDeviceCode(void);
+
 #ifdef __cplusplus
 }
 #endif

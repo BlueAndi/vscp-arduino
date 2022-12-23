@@ -82,7 +82,7 @@ extern BOOL vscp_evt_log_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_LOG, VSCP_TYPE_LOG_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -131,7 +131,7 @@ extern BOOL vscp_evt_log_sendLogEvent(uint8_t id, uint8_t logLevel, uint8_t inde
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -153,7 +153,7 @@ extern BOOL vscp_evt_log_sendLogStart(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -175,7 +175,7 @@ extern BOOL vscp_evt_log_sendLogStop(uint8_t id)
     txMsg.data[0] = id;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -197,7 +197,7 @@ extern BOOL vscp_evt_log_sendLogLevel(uint8_t level)
     txMsg.data[0] = level;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

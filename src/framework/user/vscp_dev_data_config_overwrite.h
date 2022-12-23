@@ -123,6 +123,8 @@ extern "C"
 
 #define VSCP_DEV_DATA_CONFIG_STANDARD_DEVICE_TYPE           ((uint32_t)0x00000000)
 
+#define VSCP_DEV_DATA_CONFIG_FIRMWARE_DEVICE_CODE           ((uint16_t)0x0000)
+
 */
 
 /*******************************************************************************

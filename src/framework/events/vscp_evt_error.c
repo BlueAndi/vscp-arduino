@@ -114,7 +114,7 @@ extern BOOL vscp_evt_error_sendSuccess(uint8_t index, uint8_t zone, uint8_t subZ
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -162,7 +162,7 @@ extern BOOL vscp_evt_error_sendError(uint8_t index, uint8_t zone, uint8_t subZon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -210,7 +210,7 @@ extern BOOL vscp_evt_error_sendChannelError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -258,7 +258,7 @@ extern BOOL vscp_evt_error_sendFifoEmptyError(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -306,7 +306,7 @@ extern BOOL vscp_evt_error_sendFifoFullError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -354,7 +354,7 @@ extern BOOL vscp_evt_error_sendFifoSizeError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -402,7 +402,7 @@ extern BOOL vscp_evt_error_sendFifoWaitError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -450,7 +450,7 @@ extern BOOL vscp_evt_error_sendGenericError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -498,7 +498,7 @@ extern BOOL vscp_evt_error_sendHardwareError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -546,7 +546,7 @@ extern BOOL vscp_evt_error_sendInitializationError(uint8_t index, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -594,7 +594,7 @@ extern BOOL vscp_evt_error_sendMissingInitializationError(uint8_t index, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -642,7 +642,7 @@ extern BOOL vscp_evt_error_sendInitializationReady(uint8_t index, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -690,7 +690,7 @@ extern BOOL vscp_evt_error_sendNotSupported(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -738,7 +738,7 @@ extern BOOL vscp_evt_error_sendOverrunError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -786,7 +786,7 @@ extern BOOL vscp_evt_error_sendReceiverEmptyError(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -834,7 +834,7 @@ extern BOOL vscp_evt_error_sendRegisterError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -882,7 +882,7 @@ extern BOOL vscp_evt_error_sendTransmitterFullError(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -930,7 +930,7 @@ extern BOOL vscp_evt_error_sendLibraryError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -978,7 +978,7 @@ extern BOOL vscp_evt_error_sendProceduralAddressError(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1026,7 +1026,7 @@ extern BOOL vscp_evt_error_sendOnlyOneInstanceError(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1074,7 +1074,7 @@ extern BOOL vscp_evt_error_sendSubDriverError(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1122,7 +1122,7 @@ extern BOOL vscp_evt_error_sendTimeoutError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1170,7 +1170,7 @@ extern BOOL vscp_evt_error_sendNotOpenError(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1218,7 +1218,7 @@ extern BOOL vscp_evt_error_sendParameterError(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1266,7 +1266,7 @@ extern BOOL vscp_evt_error_sendMemoryError(uint8_t index, uint8_t zone, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1314,7 +1314,7 @@ extern BOOL vscp_evt_error_sendInternalError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1362,7 +1362,7 @@ extern BOOL vscp_evt_error_sendCommunicationError(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1410,7 +1410,7 @@ extern BOOL vscp_evt_error_sendUserError(uint8_t index, uint8_t zone, uint8_t su
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1458,7 +1458,7 @@ extern BOOL vscp_evt_error_sendPasswordError(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1506,7 +1506,7 @@ extern BOOL vscp_evt_error_sendConnectionError(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1554,7 +1554,7 @@ extern BOOL vscp_evt_error_sendInvalidHandleError(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1602,7 +1602,7 @@ extern BOOL vscp_evt_error_sendOperationFailedError(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1650,7 +1650,7 @@ extern BOOL vscp_evt_error_sendSuppliedBufferIsToSmallToFitContent(uint8_t index
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1698,7 +1698,7 @@ extern BOOL vscp_evt_error_sendRequestedItemIsUnknown(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1746,7 +1746,7 @@ extern BOOL vscp_evt_error_sendNameIsAlreadyInUse(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1794,7 +1794,7 @@ extern BOOL vscp_evt_error_sendErrorWhenWritingData(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1842,7 +1842,7 @@ extern BOOL vscp_evt_error_sendOperationStoppedOrAborted(uint8_t index, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1890,7 +1890,7 @@ extern BOOL vscp_evt_error_sendPointerWithInvalidValue(uint8_t index, uint8_t zo
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

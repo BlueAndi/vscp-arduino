@@ -82,7 +82,7 @@ extern BOOL vscp_evt_aol_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_AOL, VSCP_TYPE_AOL_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_aol_sendSystemUnpluggedFromPowerSource(uint8_t index, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -142,7 +142,7 @@ extern BOOL vscp_evt_aol_sendSystemUnpluggedFromNetwork(uint8_t index, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -172,7 +172,7 @@ extern BOOL vscp_evt_aol_sendChassisIntrusion(uint8_t index, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -202,7 +202,7 @@ extern BOOL vscp_evt_aol_sendProcessorRemoval(uint8_t index, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -232,7 +232,7 @@ extern BOOL vscp_evt_aol_sendSystemEnvironmentalErrors(uint8_t index, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -262,7 +262,7 @@ extern BOOL vscp_evt_aol_sendHighTemperature(uint8_t index, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -292,7 +292,7 @@ extern BOOL vscp_evt_aol_sendFanSpeedProblem(uint8_t index, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -322,7 +322,7 @@ extern BOOL vscp_evt_aol_sendVoltageFluctuations(uint8_t index, uint8_t zone, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -352,7 +352,7 @@ extern BOOL vscp_evt_aol_sendOperatingSystemErrors(uint8_t index, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -382,7 +382,7 @@ extern BOOL vscp_evt_aol_sendSystemPowerOnError(uint8_t index, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -412,7 +412,7 @@ extern BOOL vscp_evt_aol_sendSystemIsHung(uint8_t index, uint8_t zone, uint8_t s
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -442,7 +442,7 @@ extern BOOL vscp_evt_aol_sendComponentFailure(uint8_t index, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -472,7 +472,7 @@ extern BOOL vscp_evt_aol_sendRemoteSystemRebootUponReportOfACriticalFailure(uint
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -502,7 +502,7 @@ extern BOOL vscp_evt_aol_sendRepairOperatingSystem(uint8_t index, uint8_t zone, 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -532,7 +532,7 @@ extern BOOL vscp_evt_aol_sendUpdateBiosImage(uint8_t index, uint8_t zone, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -562,7 +562,7 @@ extern BOOL vscp_evt_aol_sendUpdatePerformOtherDiagnosticProcedures(uint8_t inde
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

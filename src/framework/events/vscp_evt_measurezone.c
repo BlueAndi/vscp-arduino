@@ -83,7 +83,7 @@ extern BOOL vscp_evt_measurezone_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -105,12 +105,12 @@ extern BOOL vscp_evt_measurezone_sendCount(uint8_t index, uint8_t zone, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_COUNT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -132,12 +132,12 @@ extern BOOL vscp_evt_measurezone_sendLengthDistance(uint8_t index, uint8_t zone,
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_LENGTH, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -159,12 +159,12 @@ extern BOOL vscp_evt_measurezone_sendMass(uint8_t index, uint8_t zone, uint8_t s
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_MASS, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -186,12 +186,12 @@ extern BOOL vscp_evt_measurezone_sendTime(uint8_t index, uint8_t zone, uint8_t s
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_TIME, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -213,12 +213,12 @@ extern BOOL vscp_evt_measurezone_sendElectricCurrent(uint8_t index, uint8_t zone
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRIC_CURRENT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -240,12 +240,12 @@ extern BOOL vscp_evt_measurezone_sendTemperature(uint8_t index, uint8_t zone, ui
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_TEMPERATURE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -267,12 +267,12 @@ extern BOOL vscp_evt_measurezone_sendAmountOfSubstance(uint8_t index, uint8_t zo
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_AMOUNT_OF_SUBSTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -294,12 +294,12 @@ extern BOOL vscp_evt_measurezone_sendLuminousIntensityIntensityOfLight(uint8_t i
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_INTENSITY_OF_LIGHT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -321,12 +321,12 @@ extern BOOL vscp_evt_measurezone_sendFrequency(uint8_t index, uint8_t zone, uint
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_FREQUENCY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -348,12 +348,12 @@ extern BOOL vscp_evt_measurezone_sendRadioactivityAndOtherRandomEvents(uint8_t i
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIOACTIVITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -375,12 +375,12 @@ extern BOOL vscp_evt_measurezone_sendForce(uint8_t index, uint8_t zone, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_FORCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -402,12 +402,12 @@ extern BOOL vscp_evt_measurezone_sendPressure(uint8_t index, uint8_t zone, uint8
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_PRESSURE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -429,12 +429,12 @@ extern BOOL vscp_evt_measurezone_sendEnergy(uint8_t index, uint8_t zone, uint8_t
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ENERGY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -456,12 +456,12 @@ extern BOOL vscp_evt_measurezone_sendPower(uint8_t index, uint8_t zone, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_POWER, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -483,12 +483,12 @@ extern BOOL vscp_evt_measurezone_sendElectricalCharge(uint8_t index, uint8_t zon
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRICAL_CHARGE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -510,12 +510,12 @@ extern BOOL vscp_evt_measurezone_sendElectricalPotentialVoltage(uint8_t index, u
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRICAL_POTENTIAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -537,12 +537,12 @@ extern BOOL vscp_evt_measurezone_sendElectricalCapacitance(uint8_t index, uint8_
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRICAL_CAPACITANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -564,12 +564,12 @@ extern BOOL vscp_evt_measurezone_sendElectricalResistance(uint8_t index, uint8_t
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRICAL_RESISTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -591,12 +591,12 @@ extern BOOL vscp_evt_measurezone_sendElectricalConductance(uint8_t index, uint8_
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRICAL_CONDUCTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -618,12 +618,12 @@ extern BOOL vscp_evt_measurezone_sendMagneticFieldStrength(uint8_t index, uint8_
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_MAGNETIC_FIELD_STRENGTH, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -645,12 +645,12 @@ extern BOOL vscp_evt_measurezone_sendMagneticFlux(uint8_t index, uint8_t zone, u
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_MAGNETIC_FLUX, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -672,12 +672,12 @@ extern BOOL vscp_evt_measurezone_sendMagneticFluxDensity(uint8_t index, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_MAGNETIC_FLUX_DENSITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -699,12 +699,12 @@ extern BOOL vscp_evt_measurezone_sendInductance(uint8_t index, uint8_t zone, uin
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_INDUCTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -726,12 +726,12 @@ extern BOOL vscp_evt_measurezone_sendLuminousFlux(uint8_t index, uint8_t zone, u
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_FLUX_OF_LIGHT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -753,12 +753,12 @@ extern BOOL vscp_evt_measurezone_sendIlluminance(uint8_t index, uint8_t zone, ui
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ILLUMINANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -780,12 +780,12 @@ extern BOOL vscp_evt_measurezone_sendRadiationDose(uint8_t index, uint8_t zone, 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIATION_DOSE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -807,12 +807,12 @@ extern BOOL vscp_evt_measurezone_sendCatalyticActivity(uint8_t index, uint8_t zo
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_CATALYTIC_ACITIVITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -834,12 +834,12 @@ extern BOOL vscp_evt_measurezone_sendVolume(uint8_t index, uint8_t zone, uint8_t
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_VOLUME, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -861,12 +861,12 @@ extern BOOL vscp_evt_measurezone_sendSoundIntensity(uint8_t index, uint8_t zone,
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_INTENSITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -888,12 +888,12 @@ extern BOOL vscp_evt_measurezone_sendAngle(uint8_t index, uint8_t zone, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ANGLE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -915,12 +915,12 @@ extern BOOL vscp_evt_measurezone_sendPositionWgs84(uint8_t index, uint8_t zone, 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_POSITION, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -942,12 +942,12 @@ extern BOOL vscp_evt_measurezone_sendSpeed(uint8_t index, uint8_t zone, uint8_t 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SPEED, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -969,12 +969,12 @@ extern BOOL vscp_evt_measurezone_sendAcceleration(uint8_t index, uint8_t zone, u
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ACCELERATION, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -996,12 +996,12 @@ extern BOOL vscp_evt_measurezone_sendTension(uint8_t index, uint8_t zone, uint8_
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_TENSION, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1023,12 +1023,12 @@ extern BOOL vscp_evt_measurezone_sendDampMoistHygrometerReading(uint8_t index, u
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_HUMIDITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1050,12 +1050,12 @@ extern BOOL vscp_evt_measurezone_sendFlow(uint8_t index, uint8_t zone, uint8_t s
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_FLOW, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1077,12 +1077,12 @@ extern BOOL vscp_evt_measurezone_sendThermalResistance(uint8_t index, uint8_t zo
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_THERMAL_RESISTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1104,12 +1104,12 @@ extern BOOL vscp_evt_measurezone_sendRefractiveOpticalPower(uint8_t index, uint8
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_REFRACTIVE_POWER, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1131,12 +1131,12 @@ extern BOOL vscp_evt_measurezone_sendDynamicViscosity(uint8_t index, uint8_t zon
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_DYNAMIC_VISCOSITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1158,12 +1158,12 @@ extern BOOL vscp_evt_measurezone_sendSoundImpedance(uint8_t index, uint8_t zone,
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_IMPEDANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1185,12 +1185,12 @@ extern BOOL vscp_evt_measurezone_sendSoundResistance(uint8_t index, uint8_t zone
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_RESISTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1212,12 +1212,12 @@ extern BOOL vscp_evt_measurezone_sendElectricElastance(uint8_t index, uint8_t zo
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ELECTRIC_ELASTANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1239,12 +1239,12 @@ extern BOOL vscp_evt_measurezone_sendLuminousEnergy(uint8_t index, uint8_t zone,
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_LUMINOUS_ENERGY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1266,12 +1266,12 @@ extern BOOL vscp_evt_measurezone_sendLuminance(uint8_t index, uint8_t zone, uint
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_LUMINANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1293,12 +1293,12 @@ extern BOOL vscp_evt_measurezone_sendChemicalConcentration(uint8_t index, uint8_
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1322,12 +1322,12 @@ extern BOOL vscp_evt_measurezone_sendDoseEquivalent(uint8_t index, uint8_t zone,
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1351,12 +1351,12 @@ extern BOOL vscp_evt_measurezone_sendDewPoint(uint8_t index, uint8_t zone, uint8
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_DEWPOINT, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1378,12 +1378,12 @@ extern BOOL vscp_evt_measurezone_sendRelativeLevel(uint8_t index, uint8_t zone, 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RELATIVE_LEVEL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1405,12 +1405,12 @@ extern BOOL vscp_evt_measurezone_sendAltitude(uint8_t index, uint8_t zone, uint8
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_ALTITUDE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1432,12 +1432,12 @@ extern BOOL vscp_evt_measurezone_sendArea(uint8_t index, uint8_t zone, uint8_t s
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_AREA, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1459,12 +1459,12 @@ extern BOOL vscp_evt_measurezone_sendRadiantIntensity(uint8_t index, uint8_t zon
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIANT_INTENSITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1486,12 +1486,12 @@ extern BOOL vscp_evt_measurezone_sendRadiance(uint8_t index, uint8_t zone, uint8
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1513,12 +1513,12 @@ extern BOOL vscp_evt_measurezone_sendIrradianceExitanceRadiosity(uint8_t index, 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_IRRADIANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1540,12 +1540,12 @@ extern BOOL vscp_evt_measurezone_sendSpectralRadiance(uint8_t index, uint8_t zon
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SPECTRAL_RADIANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1567,12 +1567,12 @@ extern BOOL vscp_evt_measurezone_sendSpectralIrradiance(uint8_t index, uint8_t z
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SPECTRAL_IRRADIANCE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1594,12 +1594,12 @@ extern BOOL vscp_evt_measurezone_sendSoundPressureAcousticPressure(uint8_t index
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_PRESSURE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1621,12 +1621,12 @@ extern BOOL vscp_evt_measurezone_sendSoundEnergyDensity(uint8_t index, uint8_t z
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_DENSITY, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1648,12 +1648,147 @@ extern BOOL vscp_evt_measurezone_sendSoundLevel(uint8_t index, uint8_t zone, uin
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_SOUND_LEVEL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 3;
+    txMsg.dataSize = 3;
     txMsg.data[0] = index;
     txMsg.data[1] = zone;
     txMsg.data[2] = subZone;
 
-    txMsg.dataNum += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataNum);
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Radiation dose (equivalent)
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendRadiationDoseEquivalent(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIATION_DOSE_EQ, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Radiation dose (exposure)
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendRadiationDoseExposure(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIATION_DOSE_EXPOSURE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Power factor
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendPowerFactor(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_POWER_FACTOR, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendReactivePower(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_REACTIVE_POWER, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendReactiveEnergy(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_REACTIVE_ENERGY, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 3;
+    txMsg.data[0] = index;
+    txMsg.data[1] = zone;
+    txMsg.data[2] = subZone;
+
+    txMsg.dataSize += vscp_data_coding_int32ToNormalizedInteger(data, exp, &txMsg.data[3], VSCP_L1_DATA_SIZE - txMsg.dataSize);
 
     return vscp_core_sendEvent(&txMsg);
 }

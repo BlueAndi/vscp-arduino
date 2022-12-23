@@ -82,7 +82,7 @@ extern BOOL vscp_evt_diagnostic_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DIAGNOSTIC, VSCP_TYPE_DIAGNOSTIC_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -130,7 +130,7 @@ extern BOOL vscp_evt_diagnostic_sendOvervoltage(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -178,7 +178,7 @@ extern BOOL vscp_evt_diagnostic_sendUndervoltage(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -226,7 +226,7 @@ extern BOOL vscp_evt_diagnostic_sendUsbVbusLow(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -274,7 +274,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryVoltageLow(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -322,7 +322,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryFullVoltage(uint8_t index, uint8_t zo
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryError(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -418,7 +418,7 @@ extern BOOL vscp_evt_diagnostic_sendBatteryOk(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -466,7 +466,7 @@ extern BOOL vscp_evt_diagnostic_sendOverCurrent(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -514,7 +514,7 @@ extern BOOL vscp_evt_diagnostic_sendCircuitError(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -562,7 +562,7 @@ extern BOOL vscp_evt_diagnostic_sendShortCircuit(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -610,7 +610,7 @@ extern BOOL vscp_evt_diagnostic_sendOpenCircuit(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -658,7 +658,7 @@ extern BOOL vscp_evt_diagnostic_sendMoist(uint8_t index, uint8_t zone, uint8_t s
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -706,7 +706,7 @@ extern BOOL vscp_evt_diagnostic_sendWireFailure(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -754,7 +754,7 @@ extern BOOL vscp_evt_diagnostic_sendWirelessFaliure(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -802,7 +802,7 @@ extern BOOL vscp_evt_diagnostic_sendIrFailure(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -850,7 +850,7 @@ extern BOOL vscp_evt_diagnostic_send1WireFailure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -898,7 +898,7 @@ extern BOOL vscp_evt_diagnostic_sendRs222Failure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -946,7 +946,7 @@ extern BOOL vscp_evt_diagnostic_sendRs232Failure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -994,7 +994,7 @@ extern BOOL vscp_evt_diagnostic_sendRs423Failure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1042,7 +1042,7 @@ extern BOOL vscp_evt_diagnostic_sendRs485Failure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1090,7 +1090,7 @@ extern BOOL vscp_evt_diagnostic_sendCanFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1138,7 +1138,7 @@ extern BOOL vscp_evt_diagnostic_sendLanFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1186,7 +1186,7 @@ extern BOOL vscp_evt_diagnostic_sendUsbFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1234,7 +1234,7 @@ extern BOOL vscp_evt_diagnostic_sendWifiFailure(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1282,7 +1282,7 @@ extern BOOL vscp_evt_diagnostic_sendNfcRfidFailure(uint8_t index, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1330,7 +1330,7 @@ extern BOOL vscp_evt_diagnostic_sendLowSignal(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1378,7 +1378,7 @@ extern BOOL vscp_evt_diagnostic_sendHighSignal(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1426,7 +1426,7 @@ extern BOOL vscp_evt_diagnostic_sendAdcFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1474,7 +1474,7 @@ extern BOOL vscp_evt_diagnostic_sendAluFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1522,7 +1522,7 @@ extern BOOL vscp_evt_diagnostic_sendAssert(uint8_t index, uint8_t zone, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1570,7 +1570,7 @@ extern BOOL vscp_evt_diagnostic_sendDacFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1618,7 +1618,7 @@ extern BOOL vscp_evt_diagnostic_sendDmaFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1666,7 +1666,7 @@ extern BOOL vscp_evt_diagnostic_sendEthernetFailure(uint8_t index, uint8_t zone,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1714,7 +1714,7 @@ extern BOOL vscp_evt_diagnostic_sendException(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1762,7 +1762,7 @@ extern BOOL vscp_evt_diagnostic_sendFpuFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1810,7 +1810,7 @@ extern BOOL vscp_evt_diagnostic_sendGpioFailure(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1858,7 +1858,7 @@ extern BOOL vscp_evt_diagnostic_sendI2cFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1906,7 +1906,7 @@ extern BOOL vscp_evt_diagnostic_sendI2sFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1954,7 +1954,7 @@ extern BOOL vscp_evt_diagnostic_sendInvalidConfiguration(uint8_t index, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2002,7 +2002,7 @@ extern BOOL vscp_evt_diagnostic_sendMmuFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2050,7 +2050,7 @@ extern BOOL vscp_evt_diagnostic_sendNmiFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2098,7 +2098,7 @@ extern BOOL vscp_evt_diagnostic_sendOverheat(uint8_t index, uint8_t zone, uint8_
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2146,7 +2146,7 @@ extern BOOL vscp_evt_diagnostic_sendPllFail(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2194,7 +2194,7 @@ extern BOOL vscp_evt_diagnostic_sendPorFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2242,7 +2242,7 @@ extern BOOL vscp_evt_diagnostic_sendPwmFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2290,7 +2290,7 @@ extern BOOL vscp_evt_diagnostic_sendRamFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2338,7 +2338,7 @@ extern BOOL vscp_evt_diagnostic_sendRomFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2386,7 +2386,7 @@ extern BOOL vscp_evt_diagnostic_sendSpiFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2434,7 +2434,7 @@ extern BOOL vscp_evt_diagnostic_sendStackFailure(uint8_t index, uint8_t zone, ui
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2482,7 +2482,7 @@ extern BOOL vscp_evt_diagnostic_sendLinBusFailure(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2530,7 +2530,7 @@ extern BOOL vscp_evt_diagnostic_sendUartFailure(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2578,7 +2578,7 @@ extern BOOL vscp_evt_diagnostic_sendUnhandledInterrupt(uint8_t index, uint8_t zo
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2626,7 +2626,7 @@ extern BOOL vscp_evt_diagnostic_sendMemoryFailure(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2674,7 +2674,7 @@ extern BOOL vscp_evt_diagnostic_sendVariableRangeFailure(uint8_t index, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2722,7 +2722,7 @@ extern BOOL vscp_evt_diagnostic_sendWdtFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2770,7 +2770,7 @@ extern BOOL vscp_evt_diagnostic_sendEepromFailure(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2818,7 +2818,7 @@ extern BOOL vscp_evt_diagnostic_sendEncryptionFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2866,7 +2866,7 @@ extern BOOL vscp_evt_diagnostic_sendBadUserInputFailure(uint8_t index, uint8_t z
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2914,7 +2914,7 @@ extern BOOL vscp_evt_diagnostic_sendDecryptionFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -2962,7 +2962,7 @@ extern BOOL vscp_evt_diagnostic_sendNoise(uint8_t index, uint8_t zone, uint8_t s
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3010,7 +3010,7 @@ extern BOOL vscp_evt_diagnostic_sendBootLoaderFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3058,7 +3058,7 @@ extern BOOL vscp_evt_diagnostic_sendProgramFlowFailure(uint8_t index, uint8_t zo
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3106,7 +3106,7 @@ extern BOOL vscp_evt_diagnostic_sendRtcFaiure(uint8_t index, uint8_t zone, uint8
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3154,7 +3154,7 @@ extern BOOL vscp_evt_diagnostic_sendSystemTestFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3202,7 +3202,7 @@ extern BOOL vscp_evt_diagnostic_sendSensorFailure(uint8_t index, uint8_t zone, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3250,7 +3250,7 @@ extern BOOL vscp_evt_diagnostic_sendSafeStateEntered(uint8_t index, uint8_t zone
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3298,7 +3298,7 @@ extern BOOL vscp_evt_diagnostic_sendSignalImplausible(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3346,7 +3346,7 @@ extern BOOL vscp_evt_diagnostic_sendStorageFail(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3394,7 +3394,7 @@ extern BOOL vscp_evt_diagnostic_sendSelfTestOk(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3442,7 +3442,7 @@ extern BOOL vscp_evt_diagnostic_sendEsdEmcEmiFailure(uint8_t index, uint8_t zone
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3490,7 +3490,7 @@ extern BOOL vscp_evt_diagnostic_sendTimeout(uint8_t index, uint8_t zone, uint8_t
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3538,7 +3538,7 @@ extern BOOL vscp_evt_diagnostic_sendLcdFailure(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3586,7 +3586,7 @@ extern BOOL vscp_evt_diagnostic_sendTouchPanelFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3634,7 +3634,7 @@ extern BOOL vscp_evt_diagnostic_sendNoLoad(uint8_t index, uint8_t zone, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3682,7 +3682,7 @@ extern BOOL vscp_evt_diagnostic_sendCoolingFailure(uint8_t index, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3730,7 +3730,7 @@ extern BOOL vscp_evt_diagnostic_sendHeatingFailure(uint8_t index, uint8_t zone, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3778,7 +3778,7 @@ extern BOOL vscp_evt_diagnostic_sendTransmissionFailure(uint8_t index, uint8_t z
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3826,7 +3826,7 @@ extern BOOL vscp_evt_diagnostic_sendReceiptionFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3874,7 +3874,7 @@ extern BOOL vscp_evt_diagnostic_sendExternalIcFailure(uint8_t index, uint8_t zon
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3922,7 +3922,7 @@ extern BOOL vscp_evt_diagnostic_sendChargingOn(uint8_t index, uint8_t zone, uint
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -3970,7 +3970,7 @@ extern BOOL vscp_evt_diagnostic_sendChargingOff(uint8_t index, uint8_t zone, uin
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

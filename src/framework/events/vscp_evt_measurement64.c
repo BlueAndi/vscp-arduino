@@ -82,7 +82,7 @@ extern BOOL vscp_evt_measurement64_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -111,7 +111,7 @@ extern BOOL vscp_evt_measurement64_sendCount(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -140,7 +140,7 @@ extern BOOL vscp_evt_measurement64_sendLengthDistance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -169,7 +169,7 @@ extern BOOL vscp_evt_measurement64_sendMass(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -198,7 +198,7 @@ extern BOOL vscp_evt_measurement64_sendTime(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -227,7 +227,7 @@ extern BOOL vscp_evt_measurement64_sendElectricCurrent(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -256,7 +256,7 @@ extern BOOL vscp_evt_measurement64_sendTemperature(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -285,7 +285,7 @@ extern BOOL vscp_evt_measurement64_sendAmountOfSubstance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -314,7 +314,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousIntensityIntensityOfLight(double_
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -343,7 +343,7 @@ extern BOOL vscp_evt_measurement64_sendFrequency(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -372,7 +372,7 @@ extern BOOL vscp_evt_measurement64_sendRadioactivityAndOtherRandomEvents(double_
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -401,7 +401,7 @@ extern BOOL vscp_evt_measurement64_sendForce(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -430,7 +430,7 @@ extern BOOL vscp_evt_measurement64_sendPressure(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -459,7 +459,7 @@ extern BOOL vscp_evt_measurement64_sendEnergy(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -488,7 +488,7 @@ extern BOOL vscp_evt_measurement64_sendPower(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -517,7 +517,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalCharge(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -546,7 +546,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalPotentialVoltage(double_t value
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -575,7 +575,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalCapacitance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -604,7 +604,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalResistance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -633,7 +633,7 @@ extern BOOL vscp_evt_measurement64_sendElectricalConductance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -662,7 +662,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFieldStrength(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -691,7 +691,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFlux(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -720,7 +720,7 @@ extern BOOL vscp_evt_measurement64_sendMagneticFluxDensity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -749,7 +749,7 @@ extern BOOL vscp_evt_measurement64_sendInductance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -778,7 +778,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousFlux(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -807,7 +807,7 @@ extern BOOL vscp_evt_measurement64_sendIlluminance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -836,7 +836,7 @@ extern BOOL vscp_evt_measurement64_sendRadiationDose(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -865,7 +865,7 @@ extern BOOL vscp_evt_measurement64_sendCatalyticActivity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -894,7 +894,7 @@ extern BOOL vscp_evt_measurement64_sendVolume(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -923,7 +923,7 @@ extern BOOL vscp_evt_measurement64_sendSoundIntensity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -952,7 +952,7 @@ extern BOOL vscp_evt_measurement64_sendAngle(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -981,7 +981,7 @@ extern BOOL vscp_evt_measurement64_sendPositionWgs84(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1010,7 +1010,7 @@ extern BOOL vscp_evt_measurement64_sendSpeed(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1039,7 +1039,7 @@ extern BOOL vscp_evt_measurement64_sendAcceleration(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1068,7 +1068,7 @@ extern BOOL vscp_evt_measurement64_sendTension(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1097,7 +1097,7 @@ extern BOOL vscp_evt_measurement64_sendDampMoistHygrometerReading(double_t value
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1126,7 +1126,7 @@ extern BOOL vscp_evt_measurement64_sendFlow(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1155,7 +1155,7 @@ extern BOOL vscp_evt_measurement64_sendThermalResistance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1184,7 +1184,7 @@ extern BOOL vscp_evt_measurement64_sendRefractiveOpticalPower(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1213,7 +1213,7 @@ extern BOOL vscp_evt_measurement64_sendDynamicViscosity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1242,7 +1242,7 @@ extern BOOL vscp_evt_measurement64_sendSoundImpedance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1271,7 +1271,7 @@ extern BOOL vscp_evt_measurement64_sendSoundResistance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1300,7 +1300,7 @@ extern BOOL vscp_evt_measurement64_sendElectricElastance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1329,7 +1329,7 @@ extern BOOL vscp_evt_measurement64_sendLuminousEnergy(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1358,7 +1358,7 @@ extern BOOL vscp_evt_measurement64_sendLuminance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1387,7 +1387,7 @@ extern BOOL vscp_evt_measurement64_sendChemicalConcentration(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1418,7 +1418,7 @@ extern BOOL vscp_evt_measurement64_sendDoseEquivalent(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1449,7 +1449,7 @@ extern BOOL vscp_evt_measurement64_sendDewPoint(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1478,7 +1478,7 @@ extern BOOL vscp_evt_measurement64_sendRelativeLevel(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1507,7 +1507,7 @@ extern BOOL vscp_evt_measurement64_sendAltitude(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1536,7 +1536,7 @@ extern BOOL vscp_evt_measurement64_sendArea(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1565,7 +1565,7 @@ extern BOOL vscp_evt_measurement64_sendRadiantIntensity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1594,7 +1594,7 @@ extern BOOL vscp_evt_measurement64_sendRadiance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1623,7 +1623,7 @@ extern BOOL vscp_evt_measurement64_sendIrradianceExitanceRadiosity(double_t valu
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1652,7 +1652,7 @@ extern BOOL vscp_evt_measurement64_sendSpectralRadiance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1681,7 +1681,7 @@ extern BOOL vscp_evt_measurement64_sendSpectralIrradiance(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1710,7 +1710,7 @@ extern BOOL vscp_evt_measurement64_sendSoundPressureAcousticPressure(double_t va
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1739,7 +1739,7 @@ extern BOOL vscp_evt_measurement64_sendSoundEnergyDensity(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1768,7 +1768,152 @@ extern BOOL vscp_evt_measurement64_sendSoundLevel(double_t value)
     txMsg.data[7] = ((uint8_t*)&value)[0];
     size += 8;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Radiation dose (equivalent)
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendRadiationDoseEquivalent(double_t value)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_RADIATION_DOSE_EQ, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = ((uint8_t*)&value)[7];
+    txMsg.data[1] = ((uint8_t*)&value)[6];
+    txMsg.data[2] = ((uint8_t*)&value)[5];
+    txMsg.data[3] = ((uint8_t*)&value)[4];
+    txMsg.data[4] = ((uint8_t*)&value)[3];
+    txMsg.data[5] = ((uint8_t*)&value)[2];
+    txMsg.data[6] = ((uint8_t*)&value)[1];
+    txMsg.data[7] = ((uint8_t*)&value)[0];
+    size += 8;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Radiation dose (exposure)
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendRadiationDoseExposure(double_t value)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_RADIATION_DOSE_EXPOSURE, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = ((uint8_t*)&value)[7];
+    txMsg.data[1] = ((uint8_t*)&value)[6];
+    txMsg.data[2] = ((uint8_t*)&value)[5];
+    txMsg.data[3] = ((uint8_t*)&value)[4];
+    txMsg.data[4] = ((uint8_t*)&value)[3];
+    txMsg.data[5] = ((uint8_t*)&value)[2];
+    txMsg.data[6] = ((uint8_t*)&value)[1];
+    txMsg.data[7] = ((uint8_t*)&value)[0];
+    size += 8;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Power factor
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendPowerFactor(double_t value)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_POWER_FACTOR, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = ((uint8_t*)&value)[7];
+    txMsg.data[1] = ((uint8_t*)&value)[6];
+    txMsg.data[2] = ((uint8_t*)&value)[5];
+    txMsg.data[3] = ((uint8_t*)&value)[4];
+    txMsg.data[4] = ((uint8_t*)&value)[3];
+    txMsg.data[5] = ((uint8_t*)&value)[2];
+    txMsg.data[6] = ((uint8_t*)&value)[1];
+    txMsg.data[7] = ((uint8_t*)&value)[0];
+    size += 8;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendReactivePower(double_t value)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_REACTIVE_POWER, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = ((uint8_t*)&value)[7];
+    txMsg.data[1] = ((uint8_t*)&value)[6];
+    txMsg.data[2] = ((uint8_t*)&value)[5];
+    txMsg.data[3] = ((uint8_t*)&value)[4];
+    txMsg.data[4] = ((uint8_t*)&value)[3];
+    txMsg.data[5] = ((uint8_t*)&value)[2];
+    txMsg.data[6] = ((uint8_t*)&value)[1];
+    txMsg.data[7] = ((uint8_t*)&value)[0];
+    size += 8;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurement64_sendReactiveEnergy(double_t value)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_REACTIVE_ENERGY, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = ((uint8_t*)&value)[7];
+    txMsg.data[1] = ((uint8_t*)&value)[6];
+    txMsg.data[2] = ((uint8_t*)&value)[5];
+    txMsg.data[3] = ((uint8_t*)&value)[4];
+    txMsg.data[4] = ((uint8_t*)&value)[3];
+    txMsg.data[5] = ((uint8_t*)&value)[2];
+    txMsg.data[6] = ((uint8_t*)&value)[1];
+    txMsg.data[7] = ((uint8_t*)&value)[0];
+    size += 8;
+
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

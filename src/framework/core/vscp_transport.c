@@ -189,7 +189,7 @@ extern BOOL vscp_transport_writeMessage(vscp_TxMessage const * const msg)
 #if VSCP_CONFIG_BASE_IS_ENABLED( VSCP_CONFIG_ENABLE_LOOPBACK )
 
     if ((NULL != msg) &&                        /* Message shall exists */
-        (VSCP_L1_DATA_SIZE >= msg->dataNum))    /* Number of data bytes is limited */
+        (VSCP_L1_DATA_SIZE >= msg->dataSize))    /* Number of data bytes is limited */
     {
         /* Write all messages to loopback, except:
          * - CLASS1.PROTOCOL: The core would interpret them.

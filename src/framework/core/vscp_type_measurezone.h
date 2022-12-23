@@ -456,6 +456,43 @@ extern "C"
  */
 #define VSCP_TYPE_MEASUREZONE_SOUND_LEVEL             60
 
+/**
+ * Default unit: sievert (Sv).
+ * Optional unit rem (1)
+ * This is a measurement of a radiation dose (Equivalent dose of ionizing radiation).
+ */
+#define VSCP_TYPE_MEASUREZONE_RADIATION_DOSE_EQ       61
+
+/**
+ * Default unit: coulomb per kilogram (C/kg).
+ * Optional unit: Röntgen/R (1)
+ * This is a measurement of a radiation dose (Exposed dose of ionizing radiation).
+ */
+#define VSCP_TYPE_MEASUREZONE_RADIATION_DOSE_EXPOSURE 62
+
+/**
+ * Default unit: cos of phase angle.
+ * This is a measurment of a power factor. Power factor is an expression of energy efficiency. It is
+ * usually expressed as a percentage - and the lower the percentage, the less efficient power usage
+ * is.
+ */
+#define VSCP_TYPE_MEASUREZONE_POWER_FACTOR            63
+
+/**
+ * Default unit: VAr
+ * In electric power transmission and distribution, volt-ampere reactive (VAr) is a unit of
+ * measurement of reactive power. Reactive power exists in AC circuit when the current and voltage are
+ * not in phase.
+ */
+#define VSCP_TYPE_MEASUREZONE_REACTIVE_POWER          64
+
+/**
+ * Default unit: kVArh
+ * Reactive energy is the electrical energy produced, flowing or supplied by an electric circuit
+ * during a time interval, measured in units of kVArh or standard multiples thereof.
+ */
+#define VSCP_TYPE_MEASUREZONE_REACTIVE_ENERGY         65
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

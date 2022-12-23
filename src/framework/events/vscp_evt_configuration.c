@@ -82,7 +82,7 @@ extern BOOL vscp_evt_configuration_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONFIGURATION, VSCP_TYPE_CONFIGURATION_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -124,7 +124,7 @@ extern BOOL vscp_evt_configuration_sendLoadConfiguration(uint8_t index, uint8_t 
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -147,7 +147,7 @@ extern BOOL vscp_evt_configuration_sendLoadConfigurationAcknowledge(uint16_t con
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -170,7 +170,7 @@ extern BOOL vscp_evt_configuration_sendLoadConfigurationNegativeAcknowledge(uint
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -212,7 +212,7 @@ extern BOOL vscp_evt_configuration_sendSaveConfiguration(uint8_t index, uint8_t 
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -235,7 +235,7 @@ extern BOOL vscp_evt_configuration_sendSaveConfigurationAcknowledge(uint16_t con
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -258,7 +258,7 @@ extern BOOL vscp_evt_configuration_sendSaveConfigurationNegativeAcknowledge(uint
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -300,7 +300,7 @@ extern BOOL vscp_evt_configuration_sendCommitConfiguration(uint8_t index, uint8_
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -323,7 +323,7 @@ extern BOOL vscp_evt_configuration_sendCommitConfigurationAcknowledge(uint16_t c
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -346,7 +346,7 @@ extern BOOL vscp_evt_configuration_sendCommitConfigurationNegativeAcknowledge(ui
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -388,7 +388,7 @@ extern BOOL vscp_evt_configuration_sendReloadConfiguration(uint8_t index, uint8_
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -411,7 +411,7 @@ extern BOOL vscp_evt_configuration_sendReloadConfigurationAcknowledge(uint16_t c
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -434,7 +434,7 @@ extern BOOL vscp_evt_configuration_sendReloadConfigurationNegativeAcknowledge(ui
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -476,7 +476,7 @@ extern BOOL vscp_evt_configuration_sendRestoreConfiguration(uint8_t index, uint8
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -499,7 +499,7 @@ extern BOOL vscp_evt_configuration_sendRestoreConfigurationAcknowledge(uint16_t 
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -522,7 +522,7 @@ extern BOOL vscp_evt_configuration_sendRestoreConfigurationNegativeAcknowledge(u
     txMsg.data[1] = (uint8_t)((configurationid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -562,7 +562,7 @@ extern BOOL vscp_evt_configuration_sendSetParameter(uint8_t index, uint8_t zone,
     txMsg.data[6] = (uint8_t)((parametervalue >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -597,7 +597,7 @@ extern BOOL vscp_evt_configuration_sendSetParameterToDefault(uint8_t index, uint
     txMsg.data[4] = (uint8_t)((parameterid >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -625,7 +625,7 @@ extern BOOL vscp_evt_configuration_sendSetParameterAcknowledge(uint16_t paramete
     txMsg.data[3] = (uint8_t)((parametervalue >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -653,7 +653,7 @@ extern BOOL vscp_evt_configuration_sendSetParamterNegativeAcknowledge(uint16_t p
     txMsg.data[3] = (uint8_t)((parametervalue >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

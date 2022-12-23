@@ -184,7 +184,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
         /* Start logging? */
         if (VSCP_TYPE_LOG_START == msg->vscpType)
         {
-            if (1 == msg->dataNum)
+            if (1 == msg->dataSize)
             {
                 if (vscp_ps_readLogId() == msg->data[0])
                 {
@@ -195,7 +195,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
         /* Stop logging? */
         else if (VSCP_TYPE_LOG_STOP == msg->vscpType)
         {
-            if (1 == msg->dataNum)
+            if (1 == msg->dataSize)
             {
                 if (vscp_ps_readLogId() == msg->data[0])
                 {
@@ -206,7 +206,7 @@ extern void vscp_logger_handleEvent(vscp_RxMessage const * const msg)
         /* Set log level? */
         else if (VSCP_TYPE_LOG_LEVEL == msg->vscpType)
         {
-            if (1 == msg->dataNum)
+            if (1 == msg->dataSize)
             {
                 vscp_logger_logLevel = msg->data[0];
             }
@@ -246,9 +246,9 @@ extern BOOL vscp_logger_sendLogEvent(uint8_t id, uint8_t level, uint8_t const * 
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_LOG, VSCP_TYPE_LOG_MESSAGE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 8;
-    txMsg.data[0] = id;
-    txMsg.data[1] = level;
+    txMsg.dataSize = 8;
+    txMsg.data[0]  = id;
+    txMsg.data[1]  = level;
 
     /* If necessary, send several log events for a single log message. */
     do

@@ -82,7 +82,7 @@ extern BOOL vscp_evt_protocol_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -114,7 +114,7 @@ extern BOOL vscp_evt_protocol_sendSegmentControllerHeartbeat(uint8_t crc, uint32
         size += 4;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -139,7 +139,7 @@ extern BOOL vscp_evt_protocol_sendNewNodeOnLineProbe(uint8_t targetAddress)
     txMsg.data[0] = targetAddress;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -155,7 +155,7 @@ extern BOOL vscp_evt_protocol_sendProbeAck(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_PROBE_ACK, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -185,7 +185,7 @@ extern BOOL vscp_evt_protocol_sendSetNicknameIdForNode(uint8_t oldNickname, uint
     txMsg.data[1] = newNickname;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -201,7 +201,7 @@ extern BOOL vscp_evt_protocol_sendNicknameIdAccepted(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_NICKNAME_ACCEPTED, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -238,7 +238,7 @@ extern BOOL vscp_evt_protocol_sendDropNicknameIdResetDevice(uint8_t nickname, ui
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -264,7 +264,7 @@ extern BOOL vscp_evt_protocol_sendReadRegister(uint8_t nodeAddress, uint8_t regi
     txMsg.data[1] = registerAddress;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -290,7 +290,7 @@ extern BOOL vscp_evt_protocol_sendReadWriteResponse(uint8_t registerAddress, uin
     txMsg.data[1] = registerValue;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -320,7 +320,7 @@ extern BOOL vscp_evt_protocol_sendWriteRegister(uint8_t nodeAddress, uint8_t reg
     txMsg.data[2] = registerValue;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -367,7 +367,7 @@ extern BOOL vscp_evt_protocol_sendEnterBootLoaderMode(uint8_t nodeAddress, uint8
     txMsg.data[7] = (uint8_t)((pageSelect >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -399,7 +399,7 @@ extern BOOL vscp_evt_protocol_sendAckBootLoaderMode(uint32_t flashBlockSize, uin
     txMsg.data[7] = (uint8_t)((numberOfBlocks >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -427,7 +427,7 @@ extern BOOL vscp_evt_protocol_sendNackBootLoaderMode(uint32_t const * const erro
         size += 4;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -459,7 +459,7 @@ extern BOOL vscp_evt_protocol_sendStartBlockDataTransfer(uint32_t blockNumber, u
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -496,7 +496,7 @@ extern BOOL vscp_evt_protocol_sendBlockData(uint8_t const * const data, uint8_t 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -526,7 +526,7 @@ extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t write
     txMsg.data[5] = (uint8_t)((writePointer >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -555,7 +555,7 @@ extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t writ
     txMsg.data[4] = (uint8_t)((writePointer >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -580,7 +580,7 @@ extern BOOL vscp_evt_protocol_sendProgramDataBlock(uint32_t blockNumber)
     txMsg.data[3] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -605,7 +605,7 @@ extern BOOL vscp_evt_protocol_sendAckProgramDataBlock(uint32_t blockNumber)
     txMsg.data[3] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -634,7 +634,7 @@ extern BOOL vscp_evt_protocol_sendNackProgramDataBlock(uint8_t errorCode, uint32
     txMsg.data[4] = (uint8_t)((blockNumber >> 0) & 0xff);
     size += 4;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -657,7 +657,7 @@ extern BOOL vscp_evt_protocol_sendActivateNewImage(uint16_t crc)
     txMsg.data[1] = (uint8_t)((crc >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -689,7 +689,7 @@ extern BOOL vscp_evt_protocol_sendPageRead(uint8_t nodeId, uint8_t index, uint8_
     txMsg.data[2] = numberOfBytes;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -734,7 +734,7 @@ extern BOOL vscp_evt_protocol_sendPageWrite(uint8_t nodeId, uint8_t registerStar
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -775,7 +775,7 @@ extern BOOL vscp_evt_protocol_sendReadWritePageResponse(uint8_t sequenceNumber, 
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -791,7 +791,7 @@ extern BOOL vscp_evt_protocol_sendHighEndServerServiceProbe(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_HIGH_END_SERVER_PROBE, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -838,7 +838,7 @@ extern BOOL vscp_evt_protocol_sendHighEndServerServiceResponse(uint16_t capabili
     txMsg.data[7] = (uint8_t)((serverPort >> 0) & 0xff);
     size += 2;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -879,7 +879,7 @@ extern BOOL vscp_evt_protocol_sendIncrementRegister(uint8_t nodeId, uint8_t cons
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -920,7 +920,7 @@ extern BOOL vscp_evt_protocol_sendDecrementRegister(uint8_t nodeId, uint8_t cons
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -942,7 +942,7 @@ extern BOOL vscp_evt_protocol_sendWhoIsThere(uint8_t nodeId)
     txMsg.data[0] = nodeId;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -966,7 +966,7 @@ extern BOOL vscp_evt_protocol_sendGetDecisionMatrixInfo(uint8_t nodeAddress)
     txMsg.data[0] = nodeAddress;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1000,7 +1000,7 @@ extern BOOL vscp_evt_protocol_sendDecisionMatrixInfoResponse(uint8_t matrixSize,
         size += 2;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1022,7 +1022,7 @@ extern BOOL vscp_evt_protocol_sendGetEmbeddedMdf(uint8_t nodeAddress)
     txMsg.data[0] = nodeAddress;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1049,7 +1049,7 @@ extern BOOL vscp_evt_protocol_sendEmbeddedMdfResponse(uint16_t mdfDescriptionInd
     txMsg.data[2] = mdfData;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1087,7 +1087,7 @@ extern BOOL vscp_evt_protocol_sendExtendedPageReadRegister(uint8_t nodeAddress, 
         size += 1;
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1137,7 +1137,7 @@ extern BOOL vscp_evt_protocol_sendExtendedPageWriteRegister(uint8_t nodeAddress,
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1187,7 +1187,7 @@ extern BOOL vscp_evt_protocol_sendExtendedPageReadWriteResponse(uint8_t index, u
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1203,7 +1203,7 @@ extern BOOL vscp_evt_protocol_sendGetEventInterest(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1297,7 +1297,7 @@ extern BOOL vscp_evt_protocol_sendGetEventInterestResponse(uint8_t index, uint16
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1313,7 +1313,7 @@ extern BOOL vscp_evt_protocol_sendActivateNewImageAck(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_ACK, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1329,7 +1329,7 @@ extern BOOL vscp_evt_protocol_sendActivateNewImageNack(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE_NACK, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1345,7 +1345,7 @@ extern BOOL vscp_evt_protocol_sendBlockDataTransferAck(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_START_BLOCK_ACK, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1361,7 +1361,7 @@ extern BOOL vscp_evt_protocol_sendBlockDataTransferNack(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_START_BLOCK_NACK, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }

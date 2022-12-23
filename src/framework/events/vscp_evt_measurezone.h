@@ -840,4 +840,69 @@ extern BOOL vscp_evt_measurezone_sendSoundEnergyDensity(uint8_t index, uint8_t z
  */
 extern BOOL vscp_evt_measurezone_sendSoundLevel(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
 
+/**
+ * Radiation dose (equivalent)
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendRadiationDoseEquivalent(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
+
+/**
+ * Radiation dose (exposure)
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendRadiationDoseExposure(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
+
+/**
+ * Power factor
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendPowerFactor(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
+
+/**
+ * Reactive Power
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendReactivePower(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
+
+/**
+ * Reactive Energy
+ * 
+ * @param[in] index Index for sensor.
+ * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] data The data as signed integer.
+ * @param[in] exp The exponent of the data (10^exponent).
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_measurezone_sendReactiveEnergy(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp);
+
 #endif  /* __VSCP_EVT_MEASUREZONE_H__ */

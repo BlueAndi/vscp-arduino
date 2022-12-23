@@ -82,7 +82,7 @@ extern BOOL vscp_evt_multimedia_sendGeneralEvent(void)
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MULTIMEDIA, VSCP_TYPE_MULTIMEDIA_GENERAL, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataNum = 0;
+    txMsg.dataSize = 0;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -112,7 +112,7 @@ extern BOOL vscp_evt_multimedia_sendPlayback(uint8_t function, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -142,7 +142,7 @@ extern BOOL vscp_evt_multimedia_sendNavigatorkeyEnglish(uint8_t function, uint8_
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -175,7 +175,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustContrast(uint8_t contrast, uint8_t zon
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -208,7 +208,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustFocus(uint8_t focus, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -241,7 +241,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustTint(uint8_t tint, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -271,7 +271,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustColorBalance(uint8_t reserved, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -304,7 +304,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustBrightness(uint8_t brightness, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -337,7 +337,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustHue(uint8_t hue, uint8_t zone, uint8_t
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -370,7 +370,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustBass(uint8_t bass, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -403,7 +403,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustTreble(uint8_t treble, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -436,7 +436,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustMasterVolume(uint8_t volume, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -469,7 +469,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustFrontVolume(uint8_t volume, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -502,7 +502,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustCenterVolume(uint8_t volume, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -535,7 +535,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustRearVolume(uint8_t volume, uint8_t zon
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -568,7 +568,7 @@ extern BOOL vscp_evt_multimedia_sendAdjustSideVolume(uint8_t volume, uint8_t zon
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -609,7 +609,7 @@ extern BOOL vscp_evt_multimedia_sendSelectDisk(uint8_t discNo, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -642,7 +642,7 @@ extern BOOL vscp_evt_multimedia_sendSelectTrack(uint8_t track, uint8_t zone, uin
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -676,7 +676,7 @@ extern BOOL vscp_evt_multimedia_sendSelectAlbumPlayList(uint8_t album, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -709,7 +709,7 @@ extern BOOL vscp_evt_multimedia_sendSelectChannel(uint8_t channel, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -742,7 +742,7 @@ extern BOOL vscp_evt_multimedia_sendSelectPage(uint8_t page, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -775,7 +775,7 @@ extern BOOL vscp_evt_multimedia_sendSelectChapter(uint8_t chapter, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -805,7 +805,7 @@ extern BOOL vscp_evt_multimedia_sendSelectScreenFormat(uint8_t format, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -835,7 +835,7 @@ extern BOOL vscp_evt_multimedia_sendSelectInputSource(uint8_t source, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -865,7 +865,7 @@ extern BOOL vscp_evt_multimedia_sendSelectOutput(uint8_t output, uint8_t zone, u
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -895,7 +895,7 @@ extern BOOL vscp_evt_multimedia_sendRecord(uint8_t function, uint8_t zone, uint8
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -928,7 +928,7 @@ extern BOOL vscp_evt_multimedia_sendSetRecordingVolume(uint8_t volume, uint8_t z
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -958,7 +958,7 @@ extern BOOL vscp_evt_multimedia_sendTivoFunction(uint8_t tivoCode, uint8_t zone,
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -988,7 +988,7 @@ extern BOOL vscp_evt_multimedia_sendGetCurrentTitle(uint8_t reserved, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1039,7 +1039,7 @@ extern BOOL vscp_evt_multimedia_sendSetMediaPositionInMilliseconds(uint8_t reser
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1070,7 +1070,7 @@ extern BOOL vscp_evt_multimedia_sendGetMediaInformation(uint8_t type, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1101,7 +1101,7 @@ extern BOOL vscp_evt_multimedia_sendRemoveItemFromAlbum(uint8_t item, uint8_t zo
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1131,7 +1131,7 @@ extern BOOL vscp_evt_multimedia_sendRemoveAllItemsFromAlbum(uint8_t reserved, ui
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1161,7 +1161,7 @@ extern BOOL vscp_evt_multimedia_sendSaveAlbumPlayList(uint8_t function, uint8_t 
     txMsg.data[2] = subZone;
     size += 1;
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1214,7 +1214,7 @@ extern BOOL vscp_evt_multimedia_sendMultimediaControl(uint8_t control, uint8_t z
         }
     }
 
-    txMsg.dataNum = size;
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }

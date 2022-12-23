@@ -94,13 +94,14 @@ extern BOOL vscp_evt_alarm_sendWarning(uint8_t onOff, uint8_t zone, uint8_t subZ
 /**
  * Alarm occurred
  * 
- * @param[in] onOff Alarm is on/off.
+ * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
+ * the alarm.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t onOff, uint8_t zone, uint8_t subZone);
+extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t alarmRegister, uint8_t zone, uint8_t subZone);
 
 /**
  * Alarm sound on/off
@@ -215,7 +216,8 @@ extern BOOL vscp_evt_alarm_sendWatchdog(uint8_t index, uint8_t zone, uint8_t sub
 /**
  * Alarm reset
  * 
- * @param[in] alarmRegister Alarm byte from standard register 128/0x80.
+ * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
+ * the alarm.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * 
