@@ -4,7 +4,7 @@
 
 The MIT License (MIT)
 
-Copyright (c) 2014 - 2022 Andreas Merkle
+Copyright (c) 2014 - 2024 Andreas Merkle
 http://www.blue-andi.de
 vscp@blue-andi.de
 
