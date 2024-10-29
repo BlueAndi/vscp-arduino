@@ -527,12 +527,12 @@ extern BOOL vscp_evt_information_sendStreamDataWithZone(uint8_t zone, uint8_t su
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
  * @param[in] sequenceNumber Sequence number.
- * @param[in] class Class.
- * @param[in] type Type.
+ * @param[in] vscpClass VSCP class.
+ * @param[in] vscpType VSCP type.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_information_sendConfirm(uint8_t zone, uint8_t subZone, uint8_t sequenceNumber, uint16_t class, uint16_t type);
+extern BOOL vscp_evt_information_sendConfirm(uint8_t zone, uint8_t subZone, uint8_t sequenceNumber, uint16_t vscpClass, uint16_t vscpType);
 
 /**
  * Level Changed
