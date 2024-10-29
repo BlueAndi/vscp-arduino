@@ -102,7 +102,7 @@ extern "C"
 #define VSCP_CORE_VERSION_STR       "v1.13.1"
 
 /** VSCP framework version string */
-#define VSCP_CORE_FRAMEWORK_VERSION "v2.0.2"
+#define VSCP_CORE_FRAMEWORK_VERSION "v2.0.3"
 
 /*******************************************************************************
     MACROS
