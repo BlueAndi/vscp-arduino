@@ -1,3 +1,8 @@
+## 2.0.3
+
+- Update to VSCP framework v2.0.3, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.0.3) there.
+- Deprecated "dataNum" replaced with "dataSize". Thanks to michpro!
+
 ## 2.0.2
 
 - Update to VSCP framework v2.0.2, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.0.2) there.

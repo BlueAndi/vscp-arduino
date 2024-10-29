@@ -50,7 +50,7 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
   {
     unsigned long   canMsgId  = 0;
     
-    if (CAN_OK == canCom.readMsgBufID(&canMsgId, &rxMsg->dataNum, rxMsg->data)) {
+    if (CAN_OK == canCom.readMsgBufID(&canMsgId, &rxMsg->dataSize, rxMsg->data)) {
     
         rxMsg->vscpClass  = (uint16_t)((canMsgId >> 16) & 0x01ff);
         rxMsg->vscpType   = (uint8_t)((canMsgId >> 8) & 0x00ff);
@@ -88,7 +88,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
     }
     
     // Send CAN message
-    if (CAN_OK != canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataNum, (unsigned char*)txMsg->data)) {
+    if (CAN_OK != canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataSize, (unsigned char*)txMsg->data)) {
       
       // CAN message couldn't be sent, try again.
       ++retryCnt;
