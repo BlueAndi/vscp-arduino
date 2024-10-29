@@ -54,16 +54,16 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
       rxMsg->oAddr      = (uint8_t)((canMsg.adrsValue >> 0) & 0x00ff);
       rxMsg->hardCoded  = (uint8_t)((canMsg.adrsValue >> 25) & 0x0001);
       rxMsg->priority   = (VSCP_PRIORITY)((canMsg.adrsValue >> 26) & 0x0007);
-      rxMsg->dataNum    = canMsg.dataLength;
+      rxMsg->dataSize   = canMsg.dataLength;
       
       // Protect against a buffer out of bounce access
-      if (VSCP_L1_DATA_SIZE < rxMsg->dataNum) {
+      if (VSCP_L1_DATA_SIZE < rxMsg->dataSize) {
       
-        rxMsg->dataNum = VSCP_L1_DATA_SIZE;
+        rxMsg->dataSize = VSCP_L1_DATA_SIZE;
       }
       
       // Copy payload
-      for(index = 0; index < rxMsg->dataNum; ++index) {
+      for(index = 0; index < rxMsg->dataSize; ++index) {
       
         rxMsg->data[index] = canMsg.data[index];
       }
@@ -94,7 +94,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
                      
   canMsg.rtr = 0;
   
-  canMsg.dataLength = txMsg->dataNum;
+  canMsg.dataLength = txMsg->dataSize;
   
   for(index = 0; index < canMsg.dataLength; ++index) {
   

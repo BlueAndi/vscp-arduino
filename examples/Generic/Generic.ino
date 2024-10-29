@@ -46,16 +46,16 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
     rxMsg->vscpType     = ...
     rxMsg->oAddr        = ...
     rxMsg->hardCoded    = ...
-    rxMsg->dataNum      = ...
+    rxMsg->dataSize     = ...
     
     // Protect against data buffer out of bounce access
-    if (VSCP_L1_DATA_SIZE < rxMsg->dataNum)
+    if (VSCP_L1_DATA_SIZE < rxMsg->dataSize)
     {
-        rxMsg->dataNum = VSCP_L1_DATA_SIZE;
+        rxMsg->dataSize = VSCP_L1_DATA_SIZE;
     }
     
     // Copy the payload
-    for(index = 0; index < rxMsg->dataNum; ++index)
+    for(index = 0; index < rxMsg->dataSize; ++index)
     {
         rxMsg->data[index] = ...
     }
@@ -79,10 +79,10 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
     ... = rxMsg->vscpType;
     ... = rxMsg->oAddr;
     ... = rxMsg->hardCoded;
-    ... = rxMsg->dataNum;
+    ... = rxMsg->dataSize;
         
     // Copy the payload
-    for(index = 0; index < rxMsg->dataNum; ++index)
+    for(index = 0; index < rxMsg->dataSize; ++index)
     {
         ... = rxMsg->data[index];
     }
@@ -163,10 +163,10 @@ void loop() {
     
     // Send a VSCP message here ... e.g. a CLASS1.INFORMATION ON event
     vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON, VSCP_PRIORITY_3_NORMAL);
-    txMsg.data[0] = 1;  // Index
-    txMsg.data[1] = 0;  // Zone
-    txMsg.data[2] = 0;  // Sub zone
-    txMsg.dataNum = 3;
+    txMsg.data[0]   = 1;  // Index
+    txMsg.data[1]   = 0;  // Zone
+    txMsg.data[2]   = 0;  // Sub zone
+    txMsg.dataSize  = 3;
     vscp.write(txMsg);
   
   } else {

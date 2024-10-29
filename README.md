@@ -50,10 +50,10 @@ vscp.prepareTxMessage(txMsg, VSCP_CLASS_L1_INFORMATION, VSCP_TYPE_INFORMATION_ON
 ### Add the class and type specific data.
 
 ```
-txMsg.data[0] = 1;  // Index
-txMsg.data[1] = 0;  // Zone
-txMsg.data[2] = 0;  // Sub zone
-txMsg.dataNum = 3;
+txMsg.data[0]   = 1;  // Index
+txMsg.data[1]   = 0;  // Zone
+txMsg.data[2]   = 0;  // Sub zone
+txMsg.dataSize  = 3;
 ```
 
 ### Send the event.

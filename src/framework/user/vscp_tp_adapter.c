@@ -140,7 +140,7 @@ extern BOOL vscp_tp_adapter_writeMessage(vscp_TxMessage const * const msg)
     BOOL    status  = FALSE;
 
     if ((NULL != msg) &&                        /* Message shall exists */
-        (VSCP_L1_DATA_SIZE >= msg->dataNum))    /* Number of data bytes is limited */
+        (VSCP_L1_DATA_SIZE >= msg->dataSize))   /* Number of data bytes is limited */
     {
         if (NULL != vscp_tp_adapter_writeFunc)
         {
