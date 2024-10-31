@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  * 
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2024, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  * 
@@ -44,13 +44,13 @@ static bool isActive = false;
 // If no message is received return false, otherwise true.
 bool transportRead(vscp_RxMessage * const rxMsg) {
   
-  bool status   = false;
+  bool status = false;
   
   if (CAN_MSGAVAIL == canCom.checkReceive())
   {
-    unsigned long   canMsgId  = 0;
+    unsigned long canMsgId = 0;
     
-    if (CAN_OK == canCom.readMsgBufID(&canMsgId, &rxMsg->dataSize, rxMsg->data)) {
+    if (CAN_OK == canCom.readMsgBuf(&canMsgId, &rxMsg->dataSize, rxMsg->data)) {
     
         rxMsg->vscpClass  = (uint16_t)((canMsgId >> 16) & 0x01ff);
         rxMsg->vscpType   = (uint8_t)((canMsgId >> 8) & 0x00ff);
@@ -88,7 +88,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
     }
     
     // Send CAN message
-    if (CAN_OK != canCom.sendMsgBuf(canMsgId, 1, 0, txMsg->dataSize, (unsigned char*)txMsg->data)) {
+    if (CAN_OK != canCom.sendMsgBuf(canMsgId, 1, txMsg->dataSize, (unsigned char*)txMsg->data)) {
       
       // CAN message couldn't be sent, try again.
       ++retryCnt;
@@ -133,7 +133,7 @@ void setup() {
   do {
     
     // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
-    if (CAN_OK != canCom.begin(CAN_125KBPS)) {
+    if (CAN_OK != canCom.begin(MCP_STDEXT, CAN_125KBPS, MCP_16MHZ)) {
     
         // Try again
         delay(100);
@@ -158,6 +158,9 @@ void setup() {
   } else {
   
     Serial.println("CAN controller initialized successful.");
+
+    // Change to normal mode to allow messages to be transmitted
+    canCom.setMode(MCP_NORMAL);
   
     // Only CAN frames with 29-bit identifier shall be received
     canCom.init_Mask(0, 1, 0x1fffffff);

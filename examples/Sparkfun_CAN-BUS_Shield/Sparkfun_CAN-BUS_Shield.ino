@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  * 
- * Copyright (c) 2014 - 2020, Andreas Merkle
+ * Copyright (c) 2014 - 2024, Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  * 
@@ -26,10 +26,15 @@
 
 #include <VSCP.h>       // VSCP framework
 #include <SPI.h>        // SPI used for CAN controller communication
-#include <MCP2515.h>    // CAN controller driver
+#include <mcp2515.h>    // CAN controller driver
 
 // Create an instance of the VSCP framework
 VSCP  vscp;
+
+// Create an instance of the CAN controller driver
+MCP2515 mcp2515(
+  9 // Set CS (chip select) pin, note if you use a CAN BUS shield prior to V1.1 use pin 10!
+);
 
 // Node is in active state or not
 static bool isActive = false;
@@ -38,23 +43,23 @@ static bool isActive = false;
 // If no message is received return false, otherwise true.
 bool transportRead(vscp_RxMessage * const rxMsg) {
   
-  bool    status   = false;
-  CANMSG  canMsg;
+  bool              status   = false;
+  struct can_frame  canMsg;
   
   // Any CAN frame received?
-  if (true == MCP2515::receiveCANMessage(&canMsg, 10)) {
+  if (MCP2515::ERROR_OK == mcp2515.readMessage(&canMsg)) {
     
     // Is it a extended CAN frame?
-    if (true == canMsg.isExtendedAdrs) {
+    if (0 != ((canMsg.can_id >> 31) & 0x01)) {
     
       unsigned char index = 0;
     
-      rxMsg->vscpClass  = (uint16_t)((canMsg.adrsValue >> 16) & 0x01ff);
-      rxMsg->vscpType   = (uint8_t)((canMsg.adrsValue >> 8) & 0x00ff);
-      rxMsg->oAddr      = (uint8_t)((canMsg.adrsValue >> 0) & 0x00ff);
-      rxMsg->hardCoded  = (uint8_t)((canMsg.adrsValue >> 25) & 0x0001);
-      rxMsg->priority   = (VSCP_PRIORITY)((canMsg.adrsValue >> 26) & 0x0007);
-      rxMsg->dataSize   = canMsg.dataLength;
+      rxMsg->vscpClass  = (uint16_t)((canMsg.can_id >> 16) & 0x01ff);
+      rxMsg->vscpType   = (uint8_t)((canMsg.can_id >> 8) & 0x00ff);
+      rxMsg->oAddr      = (uint8_t)((canMsg.can_id >> 0) & 0x00ff);
+      rxMsg->hardCoded  = (uint8_t)((canMsg.can_id >> 25) & 0x0001);
+      rxMsg->priority   = (VSCP_PRIORITY)((canMsg.can_id >> 26) & 0x0007);
+      rxMsg->dataSize   = canMsg.can_dlc;
       
       // Protect against a buffer out of bounce access
       if (VSCP_L1_DATA_SIZE < rxMsg->dataSize) {
@@ -79,24 +84,23 @@ bool transportRead(vscp_RxMessage * const rxMsg) {
 // If it fails to send the message return false, otherwise true.
 bool transportWrite(vscp_TxMessage const * const txMsg) {
   
-  bool          status    = false;
-  CANMSG        canMsg;
-  unsigned char index     = 0;
-  unsigned char retryCnt  = 0;
+  bool              status    = false;
+  struct can_frame  canMsg;
+  unsigned char     index     = 0;
+  unsigned char     retryCnt  = 0;
+    
+  canMsg.can_id = (1 << 31) | // Extended 29 bit
+                  (0 << 30) | // No RTR
+                  (0 << 29) | // No error message frame
+                  (((uint32_t)txMsg->priority)  << 26) |
+                  (((uint32_t)txMsg->hardCoded) << 25) |
+                  (((uint32_t)txMsg->vscpClass) << 16) |
+                  (((uint32_t)txMsg->vscpType)  <<  8) |
+                  txMsg->oAddr;
+
+  canMsg.can_dlc = txMsg->dataSize;
   
-  canMsg.isExtendedAdrs = true;
-  
-  canMsg.adrsValue = (((uint32_t)txMsg->priority)  << 26) |
-                     (((uint32_t)txMsg->hardCoded) << 25) |
-                     (((uint32_t)txMsg->vscpClass) << 16) |
-                     (((uint32_t)txMsg->vscpType)  <<  8) |
-                     txMsg->oAddr;
-                     
-  canMsg.rtr = 0;
-  
-  canMsg.dataLength = txMsg->dataSize;
-  
-  for(index = 0; index < canMsg.dataLength; ++index) {
+  for(index = 0; index < canMsg.can_dlc; ++index) {
   
     canMsg.data[index] = txMsg->data[index];
   }
@@ -110,7 +114,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
     }
     
     // Send CAN message
-    if (false == MCP2515::transmitCANMessage(canMsg, 10)) {
+    if (MCP2515::ERROR_OK == mcp2515.sendMessage(&canMsg)) {
       
       // CAN message couldn't be sent, try again.
       ++retryCnt;
@@ -121,7 +125,7 @@ bool transportWrite(vscp_TxMessage const * const txMsg) {
     }
   
   } while((false == status) && (0 < retryCnt));
-    
+
   return status;
 }
 
@@ -152,37 +156,16 @@ void setup() {
   Serial.begin(115200);
   Serial.println("VSCP node starts up ...");
   
-  do {
-    // Initialize CAN controller with 125 kbit/s (VSCP default bitrate)
-    if (false == MCP2515::initCAN(CAN_BAUD_125K)) {
-
-        // Try again
-        delay(100);
-        --retry;
-        
-        if (0 == retry) {
-          isError = true;
-        }
-
-    } else {
-    
-        // Successful initialized
-        retry = 0;
-    }
-    
-  } while(0 < retry);
-  
-  if (true == isError) {
-  
-    Serial.println("Failed to initialize CAN controller!");
-  
+  if (MCP2515::ERROR_OK != mcp2515.reset()) {
+    isError = true;
   }
-  // Set to normal mode non single shot
-  else if (false == MCP2515::setCANNormalMode(LOW)) {
-  
-    Serial.println("Failed to set CAN controller to normal mode!");
-  
-  } else {
+  else if (MCP2515::ERROR_OK != mcp2515.setBitrate(CAN_125KBPS)) {
+    isError = true;
+  }
+  else if (MCP2515::ERROR_OK != mcp2515.setNormalMode()) {
+    isError = true;
+  }
+  else {
   
     Serial.println("CAN controller initialized successful.");
   
