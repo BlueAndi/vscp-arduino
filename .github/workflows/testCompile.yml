@@ -1,0 +1,43 @@
+name: Test Compile Script
+
+# Controls when the action will run.
+on:
+  push:
+    branches: [ '**' ]
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # The introduction just shows some useful informations.
+  intro:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job.
+    steps:
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }}."
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout repository as custom library
+        uses: actions/checkout@v4
+        with:
+          path: CustomLibrary # must contain string "Custom"
+          # No need to put "Custom" library in the required-libraries list
+
+      - name: Checkout autowp-mcp2515 as custom library
+        uses: actions/checkout@v4
+        with:
+          repository: autowp/arduino-mcp2515
+          ref: master
+          path: CustomLibrary_autowp-mcp2515 # must contain string "Custom"
+          # No need to put "Custom" library in the required-libraries list
+
+      - name: Compile all examples
+        uses: ArminJo/arduino-test-compile@v3
+        with:
+          sketch-names: "*.ino"
+          sketch-names-find-start: examples/
+          required-libraries: mcp_can@1.5.1
