@@ -1,3 +1,9 @@
+## 2.0.4
+
+- Fixed problem with backslashes in include paths.
+- Fixed problem with wrong include path in vscp_evt_information.c module. Thanks to michpro!
+- Examples updated to be working with latest CAN libraries.
+
 ## 2.0.3
 
 - Update to VSCP framework v2.0.3, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.0.3) there.
