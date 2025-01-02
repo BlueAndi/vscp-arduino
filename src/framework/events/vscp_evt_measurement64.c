@@ -813,18 +813,18 @@ extern BOOL vscp_evt_measurement64_sendIlluminance(double_t value)
 }
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendRadiationDose(double_t value)
+extern BOOL vscp_evt_measurement64_sendRadiationDoseAbsorbed(double_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_RADIATION_DOSE, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_RADIATION_DOSE_ABSORBED, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[7];
     txMsg.data[1] = ((uint8_t*)&value)[6];
@@ -1364,18 +1364,18 @@ extern BOOL vscp_evt_measurement64_sendLuminance(double_t value)
 }
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendChemicalConcentration(double_t value)
+extern BOOL vscp_evt_measurement64_sendChemicalMolarConcentration(double_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_CHEMICAL_CONCENTRATION_MOLAR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[7];
     txMsg.data[1] = ((uint8_t*)&value)[6];
@@ -1392,21 +1392,21 @@ extern BOOL vscp_evt_measurement64_sendChemicalConcentration(double_t value)
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendDoseEquivalent(double_t value)
+extern BOOL vscp_evt_measurement64_sendReserved(double_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT64, VSCP_TYPE_MEASUREMENT64_RESERVED47, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[7];
     txMsg.data[1] = ((uint8_t*)&value)[6];

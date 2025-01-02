@@ -116,12 +116,12 @@ extern "C"
 /**
  * This event contains information that should be displayed on LED(s) pointed out by zone/sub-zone.
  */
-#define VSCP_TYPE_DISPLAY_SHOW_LED                 48
+#define VSCP_TYPE_DISPLAY_SET_LED                  48
 
 /**
- * This event set the color for LED(s) pointed out by zone/sub-zone.
+ * This event set the color for LED(s) (or similar device) pointed out by zone/sub-zone.
  */
-#define VSCP_TYPE_DISPLAY_SHOW_LED_COLOR           49
+#define VSCP_TYPE_DISPLAY_SET_COLOR                49
 
 /*******************************************************************************
     MACROS

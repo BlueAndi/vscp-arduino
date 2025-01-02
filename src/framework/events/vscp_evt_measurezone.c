@@ -764,7 +764,7 @@ extern BOOL vscp_evt_measurezone_sendIlluminance(uint8_t index, uint8_t zone, ui
 }
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -774,11 +774,11 @@ extern BOOL vscp_evt_measurezone_sendIlluminance(uint8_t index, uint8_t zone, ui
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurezone_sendRadiationDose(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurezone_sendRadiationDoseAbsorbed(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIATION_DOSE, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RADIATION_DOSE_ABSORBED, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 3;
     txMsg.data[0] = index;
@@ -1277,7 +1277,7 @@ extern BOOL vscp_evt_measurezone_sendLuminance(uint8_t index, uint8_t zone, uint
 }
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1287,11 +1287,11 @@ extern BOOL vscp_evt_measurezone_sendLuminance(uint8_t index, uint8_t zone, uint
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurezone_sendChemicalConcentration(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurezone_sendChemicalMolarConcentration(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_CHEMICAL_CONCENTRATION_MOLAR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 3;
     txMsg.data[0] = index;
@@ -1303,10 +1303,10 @@ extern BOOL vscp_evt_measurezone_sendChemicalConcentration(uint8_t index, uint8_
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -1316,11 +1316,11 @@ extern BOOL vscp_evt_measurezone_sendChemicalConcentration(uint8_t index, uint8_
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurezone_sendDoseEquivalent(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurezone_sendReserved(uint8_t index, uint8_t zone, uint8_t subZone, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREZONE, VSCP_TYPE_MEASUREZONE_RESERVED47, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 3;
     txMsg.data[0] = index;

@@ -231,6 +231,8 @@ extern "C"
  * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
  * NACK the reception of data block. This event has no meaning for any node that is not in boot mode
  * and should be disregarded.
+ * The state machine of the node that is loaded with firmware should accept new start block data
+ * events after this event. Other memory types can be programmed.
  */
 #define VSCP_TYPE_PROTOCOL_BLOCK_DATA_NACK             18
 
@@ -238,6 +240,8 @@ extern "C"
  * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
  * Request from a node to program a data block that has been uploaded and confirmed. This event has no
  * meaning for any node that is not in boot mode and should be disregarded.
+ * Sent only if the block was successfully received and confirmed by checking the crc for the full
+ * block. The block number is the number of the block that was sent in the last block data event.
  */
 #define VSCP_TYPE_PROTOCOL_PROGRAM_BLOCK_DATA          19
 
@@ -258,9 +262,14 @@ extern "C"
 /**
  * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
  * This command is sent as the last command during the boot-loader sequence. It resets the device and
- * starts it up using the newly loaded code. The 16-bit CRC for the entire program block is sent as an
- * argument. This must be correct for the reset/activation to be performed. NACK boot loader mode will
- * be sent if the CRC is not correct and the node will not leave boot loader mode.
+ * starts it up using the newly loaded code. The 16-bit sum of all CRC blocks that was transferred to
+ * the node (all memory types) is sent as an argument. This sum should be checked and be correct for
+ * the reset/activation to be performed. Activate new image NACK will be sent if the CRC is not
+ * correct and the node will not leave boot loader mode.
+ * If just one memory type is programmed, the CRC sum is the same as the CRC for the programmed block.
+ * This can be used as an alternative way to program different memory types, that is enter boot loader
+ * mode, program an area, and then activate the new image, and then enter boot loader mode again and
+ * program another area, and so on.
  */
 #define VSCP_TYPE_PROTOCOL_ACTIVATE_NEW_IMAGE          22
 
@@ -444,18 +453,42 @@ extern "C"
 /**
  * Not mandatory Only needed if a VSCP boot loader algorithm is used.
  * Part of the VSCP boot-loader functionality. This is the positive response after a node received a
- * CLASS1.PROTOCOL, Type=16 (Block data) event. It is sent by the node as a validation that it can
- * handle the block data transfer.
+ * CLASS1.PROTOCOL, Type=15 (Block data) event (a part of a block). It is sent by the node as a
+ * validation that it can handle the block data transfer.
  */
 #define VSCP_TYPE_PROTOCOL_START_BLOCK_ACK             50
 
 /**
  * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
  * Part of the VSCP boot-loader functionality. This is the negative response after a node received a
- * CLASS1.PROTOCOL, Type=16 (Block data) event. It is sent by the node as an indication that it can
- * NOT handle the block data transfer.
+ * CLASS1.PROTOCOL, Type=15 (Block data) event (a part of a block). It is sent by the node as an
+ * indication that it can NOT handle the block data transfer.
  */
 #define VSCP_TYPE_PROTOCOL_START_BLOCK_NACK            51
+
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This is the positive response after a node received
+ * CLASS1.PROTOCOL, Type=16 (Block data) event (a part of a block). It is sent by the node as a
+ * validation that it can handle the block data transfer.
+ */
+#define VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_ACK             52
+
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This is the negative response after a node received
+ * CLASS1.PROTOCOL, Type=16 (Block data) event (a part of a block). It is sent by the node as an
+ * indication that it can NOT handle the block data transfer.
+ */
+#define VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_NACK            53
+
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This event is a way to check if a device is already in
+ * bootloader mode. A device that is in bootloader mode should respond with a CLASS1.PROTOCOL, Type=13
+ * (ACK boot loader mode) event regardless of the internal state it is in.
+ */
+#define VSCP_TYPE_PROTOCOL_BOOT_LOADER_CHECK           54
 
 /*******************************************************************************
     MACROS

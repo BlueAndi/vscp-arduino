@@ -689,7 +689,7 @@ extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, in
 }
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -698,11 +698,11 @@ extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, in
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendRadiationDose(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurement_sendRadiationDoseAbsorbed(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RADIATION_DOSE, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_ABSORBED, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 1;
     txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
@@ -1145,7 +1145,7 @@ extern BOOL vscp_evt_measurement_sendLuminance(uint8_t index, uint8_t unit, int3
 }
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -1154,11 +1154,11 @@ extern BOOL vscp_evt_measurement_sendLuminance(uint8_t index, uint8_t unit, int3
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurement_sendChemicalMolarConcentration(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_CHEMICAL_CONCENTRATION_MOLAR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 1;
     txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
@@ -1168,10 +1168,10 @@ extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -1180,11 +1180,11 @@ extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendDoseEquivalent(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
+extern BOOL vscp_evt_measurement_sendReserved(uint8_t index, uint8_t unit, int32_t data, int8_t exp)
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RESERVED47, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 1;
     txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);

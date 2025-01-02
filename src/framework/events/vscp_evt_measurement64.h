@@ -312,13 +312,13 @@ extern BOOL vscp_evt_measurement64_sendLuminousFlux(double_t value);
 extern BOOL vscp_evt_measurement64_sendIlluminance(double_t value);
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendRadiationDose(double_t value);
+extern BOOL vscp_evt_measurement64_sendRadiationDoseAbsorbed(double_t value);
 
 /**
  * Catalytic activity
@@ -483,24 +483,24 @@ extern BOOL vscp_evt_measurement64_sendLuminousEnergy(double_t value);
 extern BOOL vscp_evt_measurement64_sendLuminance(double_t value);
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendChemicalConcentration(double_t value);
+extern BOOL vscp_evt_measurement64_sendChemicalMolarConcentration(double_t value);
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] value The value is a "double" - IEEE-754, 64 Bits, double precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement64_sendDoseEquivalent(double_t value);
+extern BOOL vscp_evt_measurement64_sendReserved(double_t value);
 
 /* "Reserved" not supported. No frame defined. */
 

@@ -312,13 +312,13 @@ extern BOOL vscp_evt_measurement32_sendLuminousFlux(float_t value);
 extern BOOL vscp_evt_measurement32_sendIlluminance(float_t value);
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendRadiationDose(float_t value);
+extern BOOL vscp_evt_measurement32_sendRadiationDoseAbsorbed(float_t value);
 
 /**
  * Catalytic activity
@@ -483,24 +483,24 @@ extern BOOL vscp_evt_measurement32_sendLuminousEnergy(float_t value);
 extern BOOL vscp_evt_measurement32_sendLuminance(float_t value);
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendChemicalConcentration(float_t value);
+extern BOOL vscp_evt_measurement32_sendChemicalMolarConcentration(float_t value);
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendDoseEquivalent(float_t value);
+extern BOOL vscp_evt_measurement32_sendReserved(float_t value);
 
 /* "Reserved" not supported. No frame defined. */
 

@@ -387,7 +387,7 @@ extern BOOL vscp_evt_measurement_sendLuminousFlux(uint8_t index, uint8_t unit, i
 extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -396,7 +396,7 @@ extern BOOL vscp_evt_measurement_sendIlluminance(uint8_t index, uint8_t unit, in
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendRadiationDose(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+extern BOOL vscp_evt_measurement_sendRadiationDoseAbsorbed(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
  * Catalytic activity
@@ -615,7 +615,7 @@ extern BOOL vscp_evt_measurement_sendLuminousEnergy(uint8_t index, uint8_t unit,
 extern BOOL vscp_evt_measurement_sendLuminance(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -624,12 +624,12 @@ extern BOOL vscp_evt_measurement_sendLuminance(uint8_t index, uint8_t unit, int3
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+extern BOOL vscp_evt_measurement_sendChemicalMolarConcentration(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] index Index for sensor.
  * @param[in] unit The unit of the data.
@@ -638,7 +638,7 @@ extern BOOL vscp_evt_measurement_sendChemicalConcentration(uint8_t index, uint8_
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement_sendDoseEquivalent(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
+extern BOOL vscp_evt_measurement_sendReserved(uint8_t index, uint8_t unit, int32_t data, int8_t exp);
 
 /* "Reserved" not supported. No frame defined. */
 

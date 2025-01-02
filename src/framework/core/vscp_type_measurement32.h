@@ -69,179 +69,179 @@ extern "C"
 /**
  * General Event.
  */
-#define VSCP_TYPE_MEASUREMENT32_GENERAL                 0
+#define VSCP_TYPE_MEASUREMENT32_GENERAL                      0
 
 /**
  * This is a discrete value typical for a count. There is no unit for this measurement just a discrete
  * value.
  */
-#define VSCP_TYPE_MEASUREMENT32_COUNT                   1
+#define VSCP_TYPE_MEASUREMENT32_COUNT                        1
 
 /**
  * Default unit: Meter.
  * This is a measurement of a length or a distance.
  */
-#define VSCP_TYPE_MEASUREMENT32_LENGTH                  2
+#define VSCP_TYPE_MEASUREMENT32_LENGTH                       2
 
 /**
  * Default unit: Kilogram.
  * This is a measurement of a mass.
  */
-#define VSCP_TYPE_MEASUREMENT32_MASS                    3
+#define VSCP_TYPE_MEASUREMENT32_MASS                         3
 
 /**
  * A time measurement.
  * Default unit: Seconds.
  * Opt. unit: (1) Milliseconds. Absolute: (2) y-y-m-d-h-m-s (binary). String: (3) "HHMMSS".
  */
-#define VSCP_TYPE_MEASUREMENT32_TIME                    4
+#define VSCP_TYPE_MEASUREMENT32_TIME                         4
 
 /**
  * Default unit: Ampere.
  * This is a measurement of an electric current.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRIC_CURRENT        5
+#define VSCP_TYPE_MEASUREMENT32_ELECTRIC_CURRENT             5
 
 /**
  * Default unit: Kelvin.
  * Opt. unit: Degree Celsius (1), Fahrenheit (2)
  * This is a measurement of a temperature.
  */
-#define VSCP_TYPE_MEASUREMENT32_TEMPERATURE             6
+#define VSCP_TYPE_MEASUREMENT32_TEMPERATURE                  6
 
 /**
  * Default unit: Mole.
  * This is a measurement of an amount of a substance.
  */
-#define VSCP_TYPE_MEASUREMENT32_AMOUNT_OF_SUBSTANCE     7
+#define VSCP_TYPE_MEASUREMENT32_AMOUNT_OF_SUBSTANCE          7
 
 /**
  * Default unit: Candela.
  * This is a measurement of luminous intensity.
  */
-#define VSCP_TYPE_MEASUREMENT32_INTENSITY_OF_LIGHT      8
+#define VSCP_TYPE_MEASUREMENT32_INTENSITY_OF_LIGHT           8
 
 /**
  * Default unit: Hertz.
  * This is a measurement of regular events during a second.
  */
-#define VSCP_TYPE_MEASUREMENT32_FREQUENCY               9
+#define VSCP_TYPE_MEASUREMENT32_FREQUENCY                    9
 
 /**
  * Default unit: becquerel.
  * Optional unit: curie (1)
  * This is a measurement of rates of things, which happen randomly, or are unpredictable.
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIOACTIVITY           10
+#define VSCP_TYPE_MEASUREMENT32_RADIOACTIVITY                10
 
 /**
  * Default unit: newton.
  * This is a measurement of force.
  */
-#define VSCP_TYPE_MEASUREMENT32_FORCE                   11
+#define VSCP_TYPE_MEASUREMENT32_FORCE                        11
 
 /**
  * Default unit: pascal.
  * Opt. unit: bar (1), psi (2)
  * This is a measurement of pressure.
  */
-#define VSCP_TYPE_MEASUREMENT32_PRESSURE                12
+#define VSCP_TYPE_MEASUREMENT32_PRESSURE                     12
 
 /**
  * Default unit: Joule.
  * Optional unit: KWh (1)
  * This is a measurement of energy.
  */
-#define VSCP_TYPE_MEASUREMENT32_ENERGY                  13
+#define VSCP_TYPE_MEASUREMENT32_ENERGY                       13
 
 /**
  * Default unit: watt.
  * Optional unit: Horse power (1).
  * This is a measurement of power.
  */
-#define VSCP_TYPE_MEASUREMENT32_POWER                   14
+#define VSCP_TYPE_MEASUREMENT32_POWER                        14
 
 /**
  * Default unit: coulomb.
  * This is a measurement electrical charge.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CHARGE       15
+#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CHARGE            15
 
 /**
  * Default unit: volt.
  * This is a measurement of electrical potential.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_POTENTIAL    16
+#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_POTENTIAL         16
 
 /**
  * Default unit: farad (F).
  * This is a measurement of electric capacitance.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CAPACITANCE  17
+#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CAPACITANCE       17
 
 /**
  * Default unit: ohm (Ω).
  * This is a measurement of resistance.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_RESISTANCE   18
+#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_RESISTANCE        18
 
 /**
  * Default unit: siemens.
  * This is a measurement of electrical conductance.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CONDUCTANCE  19
+#define VSCP_TYPE_MEASUREMENT32_ELECTRICAL_CONDUCTANCE       19
 
 /**
  * Default unit: amperes per meter (H).
  * Optional units: teslas (B) (1)
  * This is a measurement of magnetic field strength.
  */
-#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FIELD_STRENGTH 20
+#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FIELD_STRENGTH      20
 
 /**
  * Default unit: weber (Wb).
  * This is a measurement of magnetic flux.
  */
-#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FLUX           21
+#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FLUX                21
 
 /**
  * Default unit: tesla (B).
+ * Optional units: Gauss (1)
  * This is a measurement of flux density or field strength for magnetic fields (also called the
  * magnetic induction).
  */
-#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FLUX_DENSITY   22
+#define VSCP_TYPE_MEASUREMENT32_MAGNETIC_FLUX_DENSITY        22
 
 /**
  * Default unit: henry (H).
  * This is a measurement of inductance.
  */
-#define VSCP_TYPE_MEASUREMENT32_INDUCTANCE              23
+#define VSCP_TYPE_MEASUREMENT32_INDUCTANCE                   23
 
 /**
  * Default unit: Lumen (lm= cd * sr)
  * This is a measurement of luminous Flux.
  */
-#define VSCP_TYPE_MEASUREMENT32_FLUX_OF_LIGHT           24
+#define VSCP_TYPE_MEASUREMENT32_FLUX_OF_LIGHT                24
 
 /**
  * Default unit: lux (lx) ( lx = lm / m² )
  * This is used to express both Illuminance (incidence of light) and Luminous Emittance (emission of
  * light).
  */
-#define VSCP_TYPE_MEASUREMENT32_ILLUMINANCE             25
+#define VSCP_TYPE_MEASUREMENT32_ILLUMINANCE                  25
 
 /**
  * Default unit: gray (Gy).
- * Opt unit: sievert (Sv) (1).
  * This is a measurement of a radiation dose (Absorbed dose of ionizing radiation).
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE          26
+#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_ABSORBED      26
 
 /**
- * Default unit: katal (z).
+ * Default unit: katal (kat).
  * This is a measurement of catalytic activity used in biochemistry.
  */
-#define VSCP_TYPE_MEASUREMENT32_CATALYTIC_ACITIVITY     27
+#define VSCP_TYPE_MEASUREMENT32_CATALYTIC_ACITIVITY          27
 
 /**
  * Default unit: cubic meter (m³)
@@ -249,13 +249,13 @@ extern "C"
  * where unit 4 is only available for Level II measurement events where units can hold this value.
  * This is a measurement of volume.
  */
-#define VSCP_TYPE_MEASUREMENT32_VOLUME                  28
+#define VSCP_TYPE_MEASUREMENT32_VOLUME                       28
 
 /**
  * Default unit: W/m2, watt per square meter.
  * This is a measurement of sound intensity (acoustic intensity).
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_INTENSITY         29
+#define VSCP_TYPE_MEASUREMENT32_SOUND_INTENSITY              29
 
 /**
  * Default unit: radian (rad) (Plane angles).
@@ -264,162 +264,163 @@ extern "C"
  * Opt Unit: arcseconds (3).
  * This is a measurement of an angle.
  */
-#define VSCP_TYPE_MEASUREMENT32_ANGLE                   30
+#define VSCP_TYPE_MEASUREMENT32_ANGLE                        30
 
 /**
  * Default unit: Longitude.
  * Opt. unit: Latitude.
- * This is a measurement of a position as of WGS 84. Normally given as a floating point value. See
- * ./class1.gps.md for a better candidate to use for position data.
+ * This is a (decimal) measurement of a position as of WGS 84. Normally given as a floating point
+ * value. See ./class1.gps.md for a better candidate to use for position data.
  */
-#define VSCP_TYPE_MEASUREMENT32_POSITION                31
+#define VSCP_TYPE_MEASUREMENT32_POSITION                     31
 
 /**
  * Default unit: Meters per second.
  * Optional unit: Kilometers per hour (1) Miles per hour (2)
  * This is a measurement of a speed.
  */
-#define VSCP_TYPE_MEASUREMENT32_SPEED                   32
+#define VSCP_TYPE_MEASUREMENT32_SPEED                        32
 
 /**
  * Default unit: Meters per second/second (m/s2).
  * This is a measurement of acceleration.
  */
-#define VSCP_TYPE_MEASUREMENT32_ACCELERATION            33
+#define VSCP_TYPE_MEASUREMENT32_ACCELERATION                 33
 
 /**
  * Default unit: N/m.
  * This is a measurement of tension.
  */
-#define VSCP_TYPE_MEASUREMENT32_TENSION                 34
+#define VSCP_TYPE_MEASUREMENT32_TENSION                      34
 
 /**
  * Default unit: Relative percentage 0-100%.
  * This is a measurement of relative moistness (Humidity).
  */
-#define VSCP_TYPE_MEASUREMENT32_HUMIDITY                35
+#define VSCP_TYPE_MEASUREMENT32_HUMIDITY                     35
 
 /**
  * Default unit: Cubic meters/second.
  * Opt Unit: Liters/Second.
  * This is a measurement of flow.
  */
-#define VSCP_TYPE_MEASUREMENT32_FLOW                    36
+#define VSCP_TYPE_MEASUREMENT32_FLOW                         36
 
 /**
  * Default unit: Thermal ohm K/W.
  * This is a measurement of thermal resistance.
  */
-#define VSCP_TYPE_MEASUREMENT32_THERMAL_RESISTANCE      37
+#define VSCP_TYPE_MEASUREMENT32_THERMAL_RESISTANCE           37
 
 /**
  * Default unit: dioptre (dpt) m-1.
  * This is a measurement of refractive (optical) power.
  */
-#define VSCP_TYPE_MEASUREMENT32_REFRACTIVE_POWER        38
+#define VSCP_TYPE_MEASUREMENT32_REFRACTIVE_POWER             38
 
 /**
- * Default unit: poiseuille (Pl)
+ * Default unit: pascal second
+ * Optional units: poiseuille (Pl) = 1, poise (P) = 2
  * This is a measurement of dynamic viscosity.
  */
-#define VSCP_TYPE_MEASUREMENT32_DYNAMIC_VISCOSITY       39
+#define VSCP_TYPE_MEASUREMENT32_DYNAMIC_VISCOSITY            39
 
 /**
  * Default unit: rayl (Pa·s/m)
  * This is a measurement of sound impedance.
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_IMPEDANCE         40
+#define VSCP_TYPE_MEASUREMENT32_SOUND_IMPEDANCE              40
 
 /**
  * Default unit: Acoustic ohm Pa · s/ m³.
  * This is a measurement of sound resistance.
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_RESISTANCE        41
+#define VSCP_TYPE_MEASUREMENT32_SOUND_RESISTANCE             41
 
 /**
  * Default unit: daraf (f-1).
  * This is a measurement of electric elasticity.
  */
-#define VSCP_TYPE_MEASUREMENT32_ELECTRIC_ELASTANCE      42
+#define VSCP_TYPE_MEASUREMENT32_ELECTRIC_ELASTANCE           42
 
 /**
  * Default unit: talbot ( tb = lm * s)
  * This is a measurement of luminous energy.
  */
-#define VSCP_TYPE_MEASUREMENT32_LUMINOUS_ENERGY         43
+#define VSCP_TYPE_MEASUREMENT32_LUMINOUS_ENERGY              43
 
 /**
  * Default unit: cd / m²) (non SI unit = nit)
  * This is a measurement of luminance.
  */
-#define VSCP_TYPE_MEASUREMENT32_LUMINANCE               44
+#define VSCP_TYPE_MEASUREMENT32_LUMINANCE                    44
 
 /**
- * Default unit: molal (mol/kg).
- * This is a measurement of chemical concentration.
+ * Default unit: mol/m³.
+ * This is a measurement of chemical mol/ppm/percent concentration.
  */
-#define VSCP_TYPE_MEASUREMENT32_CHEMICAL_CONCENTRATION  45
+#define VSCP_TYPE_MEASUREMENT32_CHEMICAL_CONCENTRATION_MOLAR 45
 
 /**
- * Reserved (previously was doublet of Type= 26, don't use any longer!)
+ * Default unit: mol/m³.
+ * This is a measurement of chemical mass concentration.
  */
-#define VSCP_TYPE_MEASUREMENT32_RESERVED46              46
+#define VSCP_TYPE_MEASUREMENT32_CHEMICAL_CONCENTRATION_MASS  46
 
 /**
- * Default unit: sievert (J/Kg).
- * This is a measurement of dose equivalent.
+ * Reserved.
  */
-#define VSCP_TYPE_MEASUREMENT32_DOSE_EQVIVALENT         47
+#define VSCP_TYPE_MEASUREMENT32_RESERVED47                   47
 
 /**
  * Reserved (was doublet of Type= 24, do not use any longer!)
  */
-#define VSCP_TYPE_MEASUREMENT32_RESERVED48              48
+#define VSCP_TYPE_MEASUREMENT32_RESERVED48                   48
 
 /**
  * Default unit: Kelvin.
  * Opt. unit: Degree Celsius (1), Fahrenheit (2)
  * This is a measurement of the Dew Point.
  */
-#define VSCP_TYPE_MEASUREMENT32_DEWPOINT                49
+#define VSCP_TYPE_MEASUREMENT32_DEWPOINT                     49
 
 /**
  * Default unit: Relative value.
  * This is a relative value for a level measurement without a unit. It is just relative to the min/max
  * value for the selected data representation, typically percentage or per mille or similar.
  */
-#define VSCP_TYPE_MEASUREMENT32_RELATIVE_LEVEL          50
+#define VSCP_TYPE_MEASUREMENT32_RELATIVE_LEVEL               50
 
 /**
  * Default unit: Meter.
  * Opt. unit: Feet(1), inches (2)
  * Altitude in meters.
  */
-#define VSCP_TYPE_MEASUREMENT32_ALTITUDE                51
+#define VSCP_TYPE_MEASUREMENT32_ALTITUDE                     51
 
 /**
  * Default unit: square meter (m²)
  * Area in square meter.
  */
-#define VSCP_TYPE_MEASUREMENT32_AREA                    52
+#define VSCP_TYPE_MEASUREMENT32_AREA                         52
 
 /**
  * Default unit: watt per steradian ( W / sr )
  * Radiated power per room angle.
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIANT_INTENSITY       53
+#define VSCP_TYPE_MEASUREMENT32_RADIANT_INTENSITY            53
 
 /**
  * Default unit: watt per steradian per square metre ( W / (sr * m²) )
  * This is the radiant flux emitted, reflected, transmitted or received by a surface.
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIANCE                54
+#define VSCP_TYPE_MEASUREMENT32_RADIANCE                     54
 
 /**
  * Default unit: watt per square metre ( W / m² )
  * Power emitted from or striking onto a surface or area.
  */
-#define VSCP_TYPE_MEASUREMENT32_IRRADIANCE              55
+#define VSCP_TYPE_MEASUREMENT32_IRRADIANCE                   55
 
 /**
  * Default unit: watt per steradian per square metre per nm (W·sr-1·m-2·nm-1)
@@ -427,46 +428,46 @@ extern "C"
  * hertz (W·sr-1·m-3) (2)
  * Radiance of a surface per unit frequency or wavelength.
  */
-#define VSCP_TYPE_MEASUREMENT32_SPECTRAL_RADIANCE       56
+#define VSCP_TYPE_MEASUREMENT32_SPECTRAL_RADIANCE            56
 
 /**
  * Default unit: watt per square metre per nm (W·m-2·nm-1)
  * Opt. unit: watt per metre3 (W·m-3) (1), watt per square metre per hertz (W·m-2·Hz-1) (2)
  * Irradiance of a surface per unit frequency or wavelength.
  */
-#define VSCP_TYPE_MEASUREMENT32_SPECTRAL_IRRADIANCE     57
+#define VSCP_TYPE_MEASUREMENT32_SPECTRAL_IRRADIANCE          57
 
 /**
  * Default unit: pascal (Pa)
  * This is a measurement of sound pressure (acoustic pressure).
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_PRESSURE          58
+#define VSCP_TYPE_MEASUREMENT32_SOUND_PRESSURE               58
 
 /**
  * Default unit: pascal (Pa)
  * Sound energy density or sound density is the sound energy per unit volume.
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_DENSITY           59
+#define VSCP_TYPE_MEASUREMENT32_SOUND_DENSITY                59
 
 /**
  * Default unit: decibel (dB)
  * Sound level expressed in decibel. This event is supplied for convenience.
  */
-#define VSCP_TYPE_MEASUREMENT32_SOUND_LEVEL             60
+#define VSCP_TYPE_MEASUREMENT32_SOUND_LEVEL                  60
 
 /**
  * Default unit: sievert (Sv).
  * Optional unit rem (1)
  * This is a measurement of a radiation dose (Equivalent dose of ionizing radiation).
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_EQ       61
+#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_EQ            61
 
 /**
  * Default unit: coulomb per kilogram (C/kg).
  * Optional unit: Röntgen/R (1)
  * This is a measurement of a radiation dose (Exposed dose of ionizing radiation).
  */
-#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_EXPOSURE 62
+#define VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_EXPOSURE      62
 
 /**
  * Default unit: cos of phase angle.
@@ -474,7 +475,7 @@ extern "C"
  * usually expressed as a percentage - and the lower the percentage, the less efficient power usage
  * is.
  */
-#define VSCP_TYPE_MEASUREMENT32_POWER_FACTOR            63
+#define VSCP_TYPE_MEASUREMENT32_POWER_FACTOR                 63
 
 /**
  * Default unit: VAr
@@ -482,14 +483,14 @@ extern "C"
  * measurement of reactive power. Reactive power exists in AC circuit when the current and voltage are
  * not in phase.
  */
-#define VSCP_TYPE_MEASUREMENT32_REACTIVE_POWER          64
+#define VSCP_TYPE_MEASUREMENT32_REACTIVE_POWER               64
 
 /**
  * Default unit: kVArh
  * Reactive energy is the electrical energy produced, flowing or supplied by an electric circuit
  * during a time interval, measured in units of kVArh or standard multiples thereof.
  */
-#define VSCP_TYPE_MEASUREMENT32_REACTIVE_ENERGY         65
+#define VSCP_TYPE_MEASUREMENT32_REACTIVE_ENERGY              65
 
 /*******************************************************************************
     MACROS
