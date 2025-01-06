@@ -461,7 +461,7 @@ extern "C"
  * Optional unit rem (1)
  * This is a measurement of a radiation dose (Equivalent dose of ionizing radiation).
  */
-#define VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EQ            61
+#define VSCP_TYPE_MEASUREMENT_DOSE_EQUIVALENT              61
 
 /**
  * Default unit: coulomb per kilogram (C/kg).

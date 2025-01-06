@@ -1498,7 +1498,7 @@ extern BOOL vscp_evt_measurement_sendRadiationDoseEquivalent(uint8_t index, uint
 {
     vscp_TxMessage  txMsg;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_RADIATION_DOSE_EQ, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT, VSCP_TYPE_MEASUREMENT_DOSE_EQUIVALENT, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 1;
     txMsg.data[0] = vscp_data_coding_getFormatByte(VSCP_DATA_CODING_REPRESENTATION_NORMALIZED_INTEGER, unit, index);
