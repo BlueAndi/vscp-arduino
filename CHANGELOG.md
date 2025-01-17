@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Update to VSCP framework v2.1.0, please see the ![changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.1.0) there.
+
 ## 2.0.4
 
 - Fixed problem with backslashes in include paths.
