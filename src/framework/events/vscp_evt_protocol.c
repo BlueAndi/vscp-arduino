@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -504,12 +504,12 @@ extern BOOL vscp_evt_protocol_sendBlockData(uint8_t const * const data, uint8_t 
 /**
  * ACK data block.
  * 
- * @param[in] blockCrc CRC for block.
- * @param[in] writePointer Write pointer.
+ * @param[in] blockCrc The CRC is calculated over the block data only.
+ * @param[in] blockToWrite The block to write is the block that was sent in the last block data event.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t writePointer)
+extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t blockToWrite)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
@@ -520,10 +520,10 @@ extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t write
     txMsg.data[1] = (uint8_t)((blockCrc >> 0) & 0xff);
     size += 2;
 
-    txMsg.data[2] = (uint8_t)((writePointer >> 24) & 0xff);
-    txMsg.data[3] = (uint8_t)((writePointer >> 16) & 0xff);
-    txMsg.data[4] = (uint8_t)((writePointer >> 8) & 0xff);
-    txMsg.data[5] = (uint8_t)((writePointer >> 0) & 0xff);
+    txMsg.data[2] = (uint8_t)((blockToWrite >> 24) & 0xff);
+    txMsg.data[3] = (uint8_t)((blockToWrite >> 16) & 0xff);
+    txMsg.data[4] = (uint8_t)((blockToWrite >> 8) & 0xff);
+    txMsg.data[5] = (uint8_t)((blockToWrite >> 0) & 0xff);
     size += 4;
 
     txMsg.dataSize = size;
@@ -535,11 +535,11 @@ extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t write
  * NACK data block.
  * 
  * @param[in] errorCode User defined error code.
- * @param[in] writePointer Write pointer.
+ * @param[in] blockToWrite The block to write is the block that was sent in the last block data event.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t writePointer)
+extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t blockToWrite)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
@@ -549,10 +549,10 @@ extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t writ
     txMsg.data[0] = errorCode;
     size += 1;
 
-    txMsg.data[1] = (uint8_t)((writePointer >> 24) & 0xff);
-    txMsg.data[2] = (uint8_t)((writePointer >> 16) & 0xff);
-    txMsg.data[3] = (uint8_t)((writePointer >> 8) & 0xff);
-    txMsg.data[4] = (uint8_t)((writePointer >> 0) & 0xff);
+    txMsg.data[1] = (uint8_t)((blockToWrite >> 24) & 0xff);
+    txMsg.data[2] = (uint8_t)((blockToWrite >> 16) & 0xff);
+    txMsg.data[3] = (uint8_t)((blockToWrite >> 8) & 0xff);
+    txMsg.data[4] = (uint8_t)((blockToWrite >> 0) & 0xff);
     size += 4;
 
     txMsg.dataSize = size;
@@ -642,7 +642,8 @@ extern BOOL vscp_evt_protocol_sendNackProgramDataBlock(uint8_t errorCode, uint32
 /**
  * Activate new image.
  * 
- * @param[in] crc CRC of full flash data block.
+ * @param[in] crc Sum of all CRC of blocks that was transferred to the node up to this point (all
+ * memory types).
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1195,15 +1196,21 @@ extern BOOL vscp_evt_protocol_sendExtendedPageReadWriteResponse(uint8_t index, u
 /**
  * Get event interest.
  * 
+ * @param[in] nodeAddress Node address.
+ * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendGetEventInterest(void)
+extern BOOL vscp_evt_protocol_sendGetEventInterest(uint8_t nodeAddress)
 {
     vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST, VSCP_PRIORITY_3_NORMAL);
 
-    txMsg.dataSize = 0;
+    txMsg.data[0] = nodeAddress;
+    size += 1;
+
+    txMsg.dataSize = size;
 
     return vscp_core_sendEvent(&txMsg);
 }
@@ -1212,90 +1219,28 @@ extern BOOL vscp_evt_protocol_sendGetEventInterest(void)
  * Get event interest response.
  * 
  * @param[in] index Index.
- * @param[in] classBit9 Class bit 9.
- * @param[in] class1 Class 1.
- * @param[in] type1 Type 1. (array[4])
- * @param[in] type1size Size in byte.
- * @param[in] class2 Class 2.
- * @param[in] type2 Type 2. (array[4])
- * @param[in] type2size Size in byte.
- * @param[in] class3 Class 3.
- * @param[in] type3 Type 3. (array[4])
- * @param[in] type3size Size in byte.
+ * @param[in] class Class.
+ * @param[in] type Type.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendGetEventInterestResponse(uint8_t index, uint16_t classBit9, uint8_t class1, uint8_t const * const type1, uint8_t type1Size, uint8_t class2, uint8_t const * const type2, uint8_t type2Size, uint8_t class3, uint8_t const * const type3, uint8_t type3Size)
+extern BOOL vscp_evt_protocol_sendGetEventInterestResponse(uint8_t index, uint16_t class, uint16_t type)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
-    uint8_t         byteIndex   = 0;
-
-    if ((NULL == type1) || (0 == type1Size))
-    {
-        return FALSE;
-    }
-
-    if ((NULL == type2) || (0 == type2Size))
-    {
-        return FALSE;
-    }
-
-    if ((NULL == type3) || (0 == type3Size))
-    {
-        return FALSE;
-    }
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_GET_EVENT_INTEREST_RESPONSE, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;
 
-    txMsg.data[1] = (uint8_t)((classBit9 >> 8) & 0xff);
-    txMsg.data[2] = (uint8_t)((classBit9 >> 0) & 0xff);
+    txMsg.data[1] = (uint8_t)((class >> 8) & 0xff);
+    txMsg.data[2] = (uint8_t)((class >> 0) & 0xff);
     size += 2;
 
-    txMsg.data[2] = class1;
-    size += 1;
-
-    for(byteIndex = 0; byteIndex < type1Size; ++byteIndex)
-    {
-        txMsg.data[3 + byteIndex] = type1[byteIndex];
-        size += 1;
-
-        if (VSCP_L1_DATA_SIZE <= size)
-        {
-            break;
-        }
-    }
-
-    txMsg.data[4] = class2;
-    size += 1;
-
-    for(byteIndex = 0; byteIndex < type2Size; ++byteIndex)
-    {
-        txMsg.data[5 + byteIndex] = type2[byteIndex];
-        size += 1;
-
-        if (VSCP_L1_DATA_SIZE <= size)
-        {
-            break;
-        }
-    }
-
-    txMsg.data[6] = class3;
-    size += 1;
-
-    for(byteIndex = 0; byteIndex < type3Size; ++byteIndex)
-    {
-        txMsg.data[7 + byteIndex] = type3[byteIndex];
-        size += 1;
-
-        if (VSCP_L1_DATA_SIZE <= size)
-        {
-            break;
-        }
-    }
+    txMsg.data[3] = (uint8_t)((type >> 8) & 0xff);
+    txMsg.data[4] = (uint8_t)((type >> 0) & 0xff);
+    size += 2;
 
     txMsg.dataSize = size;
 
@@ -1335,11 +1280,11 @@ extern BOOL vscp_evt_protocol_sendActivateNewImageNack(void)
 }
 
 /**
- * Block data transfer ACK.
+ * Start block ACK.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendBlockDataTransferAck(void)
+extern BOOL vscp_evt_protocol_sendStartBlockAck(void)
 {
     vscp_TxMessage  txMsg;
 
@@ -1351,15 +1296,63 @@ extern BOOL vscp_evt_protocol_sendBlockDataTransferAck(void)
 }
 
 /**
- * Block data transfer NACK.
+ * Start block NACK.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendBlockDataTransferNack(void)
+extern BOOL vscp_evt_protocol_sendStartBlockNack(void)
 {
     vscp_TxMessage  txMsg;
 
     vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_START_BLOCK_NACK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Block Data Chunk ACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBlockDataChunkAck(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_ACK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Block Data Chunk NACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBlockDataChunkNack(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_NACK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Bootloader CHECK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderCheck(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BOOT_LOADER_CHECK, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.dataSize = 0;
 

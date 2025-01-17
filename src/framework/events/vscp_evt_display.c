@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -394,7 +394,7 @@ extern BOOL vscp_evt_display_sendSetLed(uint8_t index, uint8_t zone, uint8_t sub
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DISPLAY, VSCP_TYPE_DISPLAY_SHOW_LED, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DISPLAY, VSCP_TYPE_DISPLAY_SET_LED, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;
@@ -438,7 +438,7 @@ extern BOOL vscp_evt_display_sendSetRgbColor(uint8_t index, uint8_t zone, uint8_
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DISPLAY, VSCP_TYPE_DISPLAY_SHOW_LED_COLOR, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_DISPLAY, VSCP_TYPE_DISPLAY_SET_COLOR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;

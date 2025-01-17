@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -713,18 +713,18 @@ extern BOOL vscp_evt_measurement32_sendIlluminance(float_t value)
 }
 
 /**
- * Radiation dose
+ * Radiation dose (absorbed)
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendRadiationDose(float_t value)
+extern BOOL vscp_evt_measurement32_sendRadiationDoseAbsorbed(float_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_ABSORBED, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[3];
     txMsg.data[1] = ((uint8_t*)&value)[2];
@@ -1188,18 +1188,18 @@ extern BOOL vscp_evt_measurement32_sendLuminance(float_t value)
 }
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendChemicalConcentration(float_t value)
+extern BOOL vscp_evt_measurement32_sendChemicalMolarConcentration(float_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_CHEMICAL_CONCENTRATION_MOLAR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[3];
     txMsg.data[1] = ((uint8_t*)&value)[2];
@@ -1212,21 +1212,21 @@ extern BOOL vscp_evt_measurement32_sendChemicalConcentration(float_t value)
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] value The value is a "float" - IEEE-754, 32 Bits, single precision.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_measurement32_sendDoseEquivalent(float_t value)
+extern BOOL vscp_evt_measurement32_sendReserved(float_t value)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_RESERVED47, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[3];
     txMsg.data[1] = ((uint8_t*)&value)[2];
@@ -1553,7 +1553,7 @@ extern BOOL vscp_evt_measurement32_sendRadiationDoseEquivalent(float_t value)
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_RADIATION_DOSE_EQ, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_MEASUREMENT32, VSCP_TYPE_MEASUREMENT32_DOSE_EQUIVALENT, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = ((uint8_t*)&value)[3];
     txMsg.data[1] = ((uint8_t*)&value)[2];

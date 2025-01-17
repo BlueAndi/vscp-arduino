@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -2420,7 +2420,7 @@ extern BOOL vscp_evt_setvaluezone_sendLuminance(uint8_t index, uint8_t zone, uin
 }
 
 /**
- * Chemical concentration
+ * Chemical (molar) concentration
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2431,7 +2431,7 @@ extern BOOL vscp_evt_setvaluezone_sendLuminance(uint8_t index, uint8_t zone, uin
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_setvaluezone_sendChemicalConcentration(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize)
+extern BOOL vscp_evt_setvaluezone_sendChemicalMolarConcentration(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
@@ -2442,7 +2442,7 @@ extern BOOL vscp_evt_setvaluezone_sendChemicalConcentration(uint8_t index, uint8
         return FALSE;
     }
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_SETVALUEZONE, VSCP_TYPE_SETVALUEZONE_CHEMICAL_CONCENTRATION, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_SETVALUEZONE, VSCP_TYPE_SETVALUEZONE_CHEMICAL_CONCENTRATION_MOLAR, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;
@@ -2472,10 +2472,10 @@ extern BOOL vscp_evt_setvaluezone_sendChemicalConcentration(uint8_t index, uint8
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved" not supported. No frame defined. */
+/* "Chemical (mass) concentration" not supported. No frame defined. */
 
 /**
- * Dose equivalent
+ * Reserved
  * 
  * @param[in] index Index for sensor.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
@@ -2486,7 +2486,7 @@ extern BOOL vscp_evt_setvaluezone_sendChemicalConcentration(uint8_t index, uint8
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_setvaluezone_sendDoseEquivalent(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize)
+extern BOOL vscp_evt_setvaluezone_sendReserved(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t dataCoding, uint8_t const * const data, uint8_t dataSize)
 {
     vscp_TxMessage  txMsg;
     uint8_t         size    = 0;
@@ -2497,7 +2497,7 @@ extern BOOL vscp_evt_setvaluezone_sendDoseEquivalent(uint8_t index, uint8_t zone
         return FALSE;
     }
 
-    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_SETVALUEZONE, VSCP_TYPE_SETVALUEZONE_DOSE_EQVIVALENT, VSCP_PRIORITY_3_NORMAL);
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_SETVALUEZONE, VSCP_TYPE_SETVALUEZONE_RESERVED47, VSCP_PRIORITY_3_NORMAL);
 
     txMsg.data[0] = index;
     size += 1;

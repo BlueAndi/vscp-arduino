@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -240,22 +240,22 @@ extern BOOL vscp_evt_protocol_sendBlockData(uint8_t const * const data, uint8_t 
 /**
  * ACK data block.
  * 
- * @param[in] blockCrc CRC for block.
- * @param[in] writePointer Write pointer.
+ * @param[in] blockCrc The CRC is calculated over the block data only.
+ * @param[in] blockToWrite The block to write is the block that was sent in the last block data event.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t writePointer);
+extern BOOL vscp_evt_protocol_sendAckDataBlock(uint16_t blockCrc, uint32_t blockToWrite);
 
 /**
  * NACK data block.
  * 
  * @param[in] errorCode User defined error code.
- * @param[in] writePointer Write pointer.
+ * @param[in] blockToWrite The block to write is the block that was sent in the last block data event.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t writePointer);
+extern BOOL vscp_evt_protocol_sendNackDataBlock(uint8_t errorCode, uint32_t blockToWrite);
 
 /**
  * Program data block.
@@ -288,7 +288,8 @@ extern BOOL vscp_evt_protocol_sendNackProgramDataBlock(uint8_t errorCode, uint32
 /**
  * Activate new image.
  * 
- * @param[in] crc CRC of full flash data block.
+ * @param[in] crc Sum of all CRC of blocks that was transferred to the node up to this point (all
+ * memory types).
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -462,28 +463,22 @@ extern BOOL vscp_evt_protocol_sendExtendedPageReadWriteResponse(uint8_t index, u
 /**
  * Get event interest.
  * 
+ * @param[in] nodeAddress Node address.
+ * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendGetEventInterest(void);
+extern BOOL vscp_evt_protocol_sendGetEventInterest(uint8_t nodeAddress);
 
 /**
  * Get event interest response.
  * 
  * @param[in] index Index.
- * @param[in] classBit9 Class bit 9.
- * @param[in] class1 Class 1.
- * @param[in] type1 Type 1. (array[4])
- * @param[in] type1size Size in byte.
- * @param[in] class2 Class 2.
- * @param[in] type2 Type 2. (array[4])
- * @param[in] type2size Size in byte.
- * @param[in] class3 Class 3.
- * @param[in] type3 Type 3. (array[4])
- * @param[in] type3size Size in byte.
+ * @param[in] class Class.
+ * @param[in] type Type.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendGetEventInterestResponse(uint8_t index, uint16_t classBit9, uint8_t class1, uint8_t const * const type1, uint8_t type1Size, uint8_t class2, uint8_t const * const type2, uint8_t type2Size, uint8_t class3, uint8_t const * const type3, uint8_t type3Size);
+extern BOOL vscp_evt_protocol_sendGetEventInterestResponse(uint8_t index, uint16_t class, uint16_t type);
 
 /**
  * Activate new image ACK.
@@ -500,18 +495,39 @@ extern BOOL vscp_evt_protocol_sendActivateNewImageAck(void);
 extern BOOL vscp_evt_protocol_sendActivateNewImageNack(void);
 
 /**
- * Block data transfer ACK.
+ * Start block ACK.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendBlockDataTransferAck(void);
+extern BOOL vscp_evt_protocol_sendStartBlockAck(void);
 
 /**
- * Block data transfer NACK.
+ * Start block NACK.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
-extern BOOL vscp_evt_protocol_sendBlockDataTransferNack(void);
+extern BOOL vscp_evt_protocol_sendStartBlockNack(void);
+
+/**
+ * Block Data Chunk ACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBlockDataChunkAck(void);
+
+/**
+ * Block Data Chunk NACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBlockDataChunkNack(void);
+
+/**
+ * Bootloader CHECK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderCheck(void);
 
 #ifdef __cplusplus
 }

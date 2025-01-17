@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -1548,6 +1548,18 @@ static inline void  vscp_core_handleProtocolClassType(void)
 
     /* VSCP specification, chapter Start block data transfer NACK. */
     case VSCP_TYPE_PROTOCOL_START_BLOCK_NACK:
+        /* Boot loader specific event. Not supported. */
+        break;
+
+    case VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_ACK:
+        /* Boot loader specific event. Not supported. */
+        break;
+
+    case VSCP_TYPE_PROTOCOL_BLOCK_CHUNK_NACK:
+        /* Boot loader specific event. Not supported. */
+        break;
+
+    case VSCP_TYPE_PROTOCOL_BOOT_LOADER_CHECK:
         /* Boot loader specific event. Not supported. */
         break;
 

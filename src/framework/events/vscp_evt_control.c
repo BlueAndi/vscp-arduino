@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
  *
- * Copyright (c) 2014 - 2024 Andreas Merkle
+ * Copyright (c) 2014 - 2025 Andreas Merkle
  * http://www.blue-andi.de
  * vscp@blue-andi.de
  *
@@ -1603,8 +1603,8 @@ extern BOOL vscp_evt_control_sendSetSecurityPin(uint8_t reserved, uint8_t zone, 
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
  * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
  * @param[in] securityPassword Security password. This password can be 1-5 bytes and length of event
- * is set accordingly. It should be interpreted as an UTF-8 string with a length set bt event data
- * length - 3 (array[5])
+ * is set accordingly. It should be interpreted as a UTF-8 string of length equal to the event data
+ * length minus 3 bytes (array[5])
  * @param[in] securityPasswordsize Size in byte.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
