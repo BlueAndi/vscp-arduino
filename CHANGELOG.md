@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Update to VSCP framework v2.2.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.2.0) there.
+
 ## 2.1.0
 
 - Update to VSCP framework v2.1.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.1.0) there.
@@ -5,13 +9,13 @@
 ## 2.0.4
 
 - Fixed problem with backslashes in include paths.
-- Fixed problem with wrong include path in vscp_evt_information.c module. Thanks to michpro!
+- Fixed problem with wrong include path in `vscp_evt_information.c` module. Thanks to michpro!
 - Examples updated to be working with latest CAN libraries.
 
 ## 2.0.3
 
 - Update to VSCP framework v2.0.3, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v2.0.3) there.
-- Deprecated "dataNum" replaced with "dataSize". Thanks to michpro!
+- Deprecated `dataNum` replaced with `dataSize`. Thanks to michpro!
 
 ## 2.0.2
 
@@ -42,7 +46,7 @@
 - Update to VSCP framework v0.9.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.9.0) there.
 - The update includes the following bugfixes:
   - Bugfix: Fix of misspellings/typos, thanks to TomasRoj.
-  - Bugfix: VSCP measurement events fixed, because internal the parameters unit and index in the vscp_data_coding_getFormatByte() call were reversed. Thanks to troky!
+  - Bugfix: VSCP measurement events fixed, because internally the parameters `unit` and `index` in the `vscp_data_coding_getFormatByte()` call were reversed. Thanks to troky!
 
 ## 0.7.1
 
@@ -53,11 +57,11 @@
 
 - Update to VSCP framework v0.8.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.8.0) there.
 - Folder structure changed inside framework folder, in preparation for the abstract event modules.
-- Abstract event modules introduced, see framework/events.
+- Abstract event modules introduced, see `framework/events`.
 
 ## 0.6.1
 
-- Folder structure changed, please see https://www.arduino.cc/en/Guide/Libraries#toc4 for easier installation.
+- Folder structure changed, please see [Arduino Library Guide](https://www.arduino.cc/en/Guide/Libraries#toc4) for easier installation.
 
 ## 0.6.0
 
@@ -76,14 +80,14 @@
 
 ## 0.3.0
 
-- DigInDebounce class for digital input debouncing implemented.
+- `DigInDebounce` class for digital input debouncing implemented.
 - Update to VSCP framework v0.4.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.4.0) there.
 - Status lamp and init button connection fixed.
 
 ## 0.2.0
 
-Updated to VSCP framework v0.3.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.3.0) there.
+- Updated to VSCP framework v0.3.0, please see the [changelog](https://github.com/BlueAndi/vscp-framework/releases/tag/v0.3.0) there.
 
 ## 0.1.0
 
-Base is the VSCP framework v0.2.2
+- Base is the VSCP framework v0.2.2

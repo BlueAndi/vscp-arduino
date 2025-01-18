@@ -126,7 +126,7 @@ extern BOOL vscp_evt_ir_sendLircLinuxInfraredRemoteControl(uint8_t code6, uint8_
  * VSCP Abstract Remote Format
  * 
  * @param[in] code Code.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
  * @param[in] subZone Sub-zone for which the event applies to (0-255). 255 is all sub-zones.
  * @param[in] repeat Repeat count if any.
  * 
@@ -138,7 +138,7 @@ extern BOOL vscp_evt_ir_sendVscpAbstractRemoteFormat(uint16_t code, uint8_t zone
  * MAPito Remote Format
  * 
  * @param[in] repeat Repeat count if any.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
  * @param[in] subZone Sub-zone for which the event applies to (0-255). 255 is all sub-zones.
  * @param[in] address Control address.
  * @param[in] keyCode Key-code.

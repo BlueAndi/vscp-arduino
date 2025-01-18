@@ -89,8 +89,8 @@ extern BOOL vscp_evt_alarm_sendGeneralEvent(void);
  * Warning
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -101,8 +101,8 @@ extern BOOL vscp_evt_alarm_sendWarning(uint8_t onOff, uint8_t zone, uint8_t subZ
  * 
  * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
  * the alarm.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -112,8 +112,8 @@ extern BOOL vscp_evt_alarm_sendAlarmOccurred(uint8_t alarmRegister, uint8_t zone
  * Alarm sound on/off
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -123,8 +123,8 @@ extern BOOL vscp_evt_alarm_sendAlarmSoundOnOff(uint8_t onOff, uint8_t zone, uint
  * Alarm light on/off
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -134,8 +134,8 @@ extern BOOL vscp_evt_alarm_sendAlarmLightOnOff(uint8_t onOff, uint8_t zone, uint
  * Power on/off
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -145,8 +145,8 @@ extern BOOL vscp_evt_alarm_sendPowerOnOff(uint8_t onOff, uint8_t zone, uint8_t s
  * Emergency Stop
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -156,8 +156,8 @@ extern BOOL vscp_evt_alarm_sendEmergencyStop(uint8_t onOff, uint8_t zone, uint8_
  * Emergency Pause
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -167,8 +167,8 @@ extern BOOL vscp_evt_alarm_sendEmergencyPause(uint8_t onOff, uint8_t zone, uint8
  * Emergency Reset
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -178,8 +178,8 @@ extern BOOL vscp_evt_alarm_sendEmergencyReset(uint8_t onOff, uint8_t zone, uint8
  * Emergency Resume
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -189,8 +189,8 @@ extern BOOL vscp_evt_alarm_sendEmergencyResume(uint8_t onOff, uint8_t zone, uint
  * Arm
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -200,8 +200,8 @@ extern BOOL vscp_evt_alarm_sendArm(uint8_t onOff, uint8_t zone, uint8_t subZone)
  * Disarm
  * 
  * @param[in] onOff Alarm is on/off.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -211,8 +211,8 @@ extern BOOL vscp_evt_alarm_sendDisarm(uint8_t onOff, uint8_t zone, uint8_t subZo
  * Watchdog
  * 
  * @param[in] index index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -223,8 +223,8 @@ extern BOOL vscp_evt_alarm_sendWatchdog(uint8_t index, uint8_t zone, uint8_t sub
  * 
  * @param[in] alarmRegister Alarm byte from standard register 128/0x80 or a code of choice describing
  * the alarm.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */

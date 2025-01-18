@@ -155,22 +155,23 @@ extern "C"
 #define VSCP_TYPE_CONTROL_DEACTIVATE             16
 
 /**
- * Reserved.
+ * Turn off all devices identified by zone/subzone/index.
  */
-#define VSCP_TYPE_CONTROL_RESERVED17             17
+#define VSCP_TYPE_CONTROL_TURN_ALL_OFF           17
 
 /**
- * Reserved.
+ * Turn on all devices identified by zone/subzone/index.
  */
-#define VSCP_TYPE_CONTROL_RESERVED18             18
+#define VSCP_TYPE_CONTROL_TURN_ALL_ON            18
 
 /**
- * Reserved.
+ * Turn on/off all devices identified by zone/subzone/index.
  */
-#define VSCP_TYPE_CONTROL_RESERVED19             19
+#define VSCP_TYPE_CONTROL_TURN_ALL_X             19
 
 /**
  * Dim all dimmer devices on a segment to a specified dim value.
+ * This is mainly constructed for dimming of lamps but is general for all dimmable devices.
  */
 #define VSCP_TYPE_CONTROL_DIM_LAMPS              20
 

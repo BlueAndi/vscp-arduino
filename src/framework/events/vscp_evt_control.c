@@ -91,8 +91,8 @@ extern BOOL vscp_evt_control_sendGeneralEvent(void)
  * Mute on/off
  * 
  * @param[in] command If equal to zero no mute else mute.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -121,8 +121,8 @@ extern BOOL vscp_evt_control_sendMuteOnOff(uint8_t command, uint8_t zone, uint8_
  * (All) Lamp(s) on/off
  * 
  * @param[in] state If equal to zero off else on.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -150,9 +150,10 @@ extern BOOL vscp_evt_control_sendAllLampSOnOff(uint8_t state, uint8_t zone, uint
 /**
  * Open
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -180,9 +181,10 @@ extern BOOL vscp_evt_control_sendOpen(uint8_t userSpecific, uint8_t zone, uint8_
 /**
  * Close
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -210,9 +212,10 @@ extern BOOL vscp_evt_control_sendClose(uint8_t userSpecific, uint8_t zone, uint8
 /**
  * TurnOn
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -240,9 +243,10 @@ extern BOOL vscp_evt_control_sendTurnon(uint8_t userSpecific, uint8_t zone, uint
 /**
  * TurnOff
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -270,9 +274,10 @@ extern BOOL vscp_evt_control_sendTurnoff(uint8_t userSpecific, uint8_t zone, uin
 /**
  * Start
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -300,9 +305,10 @@ extern BOOL vscp_evt_control_sendStart(uint8_t userSpecific, uint8_t zone, uint8
 /**
  * Stop
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -330,9 +336,10 @@ extern BOOL vscp_evt_control_sendStop(uint8_t userSpecific, uint8_t zone, uint8_
 /**
  * Reset
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -361,8 +368,8 @@ extern BOOL vscp_evt_control_sendReset(uint8_t userSpecific, uint8_t zone, uint8
  * Interrupt
  * 
  * @param[in] interruptLevel Interrupt level. (0 – 255 , zero is lowest interrupt level. ).
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -390,9 +397,10 @@ extern BOOL vscp_evt_control_sendInterrupt(uint8_t interruptLevel, uint8_t zone,
 /**
  * Sleep
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -420,9 +428,10 @@ extern BOOL vscp_evt_control_sendSleep(uint8_t userSpecific, uint8_t zone, uint8
 /**
  * Wakeup
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -450,9 +459,10 @@ extern BOOL vscp_evt_control_sendWakeup(uint8_t userSpecific, uint8_t zone, uint
 /**
  * Resume
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -480,9 +490,10 @@ extern BOOL vscp_evt_control_sendResume(uint8_t userSpecific, uint8_t zone, uint
 /**
  * Pause
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -510,9 +521,10 @@ extern BOOL vscp_evt_control_sendPause(uint8_t userSpecific, uint8_t zone, uint8
 /**
  * Activate
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -540,9 +552,10 @@ extern BOOL vscp_evt_control_sendActivate(uint8_t userSpecific, uint8_t zone, ui
 /**
  * Deactivate
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -567,19 +580,107 @@ extern BOOL vscp_evt_control_sendDeactivate(uint8_t userSpecific, uint8_t zone, 
     return vscp_core_sendEvent(&txMsg);
 }
 
-/* "Reserved for future use" not supported. No frame defined. */
+/**
+ * Set all devices off
+ * 
+ * @param[in] index Index. 255 is all indeces.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSetAllDevicesOff(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
 
-/* "Reserved for future use" not supported. No frame defined. */
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TURN_ALL_OFF, VSCP_PRIORITY_3_NORMAL);
 
-/* "Reserved for future use" not supported. No frame defined. */
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Set all devices on
+ * 
+ * @param[in] index Index. 255 is all indeces.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSetAllDevicesOn(uint8_t index, uint8_t zone, uint8_t subZone)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TURN_ALL_ON, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Set all device on/off as of argument
+ * 
+ * @param[in] index Index. 255 is all indeces.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
+ * @param[in] state 0 = off, 1= on.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_control_sendSetAllDeviceOnOffAsOfArgument(uint8_t index, uint8_t zone, uint8_t subZone, uint8_t state)
+{
+    vscp_TxMessage  txMsg;
+    uint8_t         size    = 0;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_CONTROL, VSCP_TYPE_CONTROL_TURN_ALL_X, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.data[0] = index;
+    size += 1;
+
+    txMsg.data[1] = zone;
+    size += 1;
+
+    txMsg.data[2] = subZone;
+    size += 1;
+
+    txMsg.data[3] = state;
+    size += 1;
+
+    txMsg.dataSize = size;
+
+    return vscp_core_sendEvent(&txMsg);
+}
 
 /**
  * Dim lamp(s)
  * 
  * @param[in] value Value (0 – 100) . 0 = off, 100 = full on. 254 dim down one step. 255 dim up one
  * step.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -611,8 +712,8 @@ extern BOOL vscp_evt_control_sendDimLampS(uint8_t value, uint8_t zone, uint8_t s
  * 157 is change down by the specified number of channels. A value between 160 to 191 is change up by
  * the specified number of channels. A value of 255 means that this is an extended change channel
  * event and that the channel number is sent in byte 3 and after if needed.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -641,8 +742,8 @@ extern BOOL vscp_evt_control_sendChangeChannel(uint8_t channel, uint8_t zone, ui
  * Change Level
  * 
  * @param[in] level Absolute level.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -671,8 +772,8 @@ extern BOOL vscp_evt_control_sendChangeLevel(uint8_t level, uint8_t zone, uint8_
  * Relative Change Level
  * 
  * @param[in] level Relative level.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -702,8 +803,8 @@ extern BOOL vscp_evt_control_sendRelativeChangeLevel(uint8_t level, uint8_t zone
  * 
  * @param[in] index Zero indicates all measurements supported by node should be sent (as separate
  * events). Non-zero indicates a node specific index specifying which measurement to send.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -771,8 +872,8 @@ extern BOOL vscp_evt_control_sendStreamData(uint8_t index, uint8_t const * const
  * Sync
  * 
  * @param[in] index Sensor index for a sensor within a module (see data coding). 255 is all sensors.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -801,8 +902,8 @@ extern BOOL vscp_evt_control_sendSync(uint8_t index, uint8_t zone, uint8_t subZo
  * Zoned Stream Data
  * 
  * @param[in] index Sequence number which is increase by one for each stream data event sent.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] data  Stream data. (optional) (array[5])
  * @param[in] datasize Size in byte.
  * 
@@ -848,8 +949,8 @@ extern BOOL vscp_evt_control_sendZonedStreamData(uint8_t index, uint8_t zone, ui
  * Set Pre-set
  * 
  * @param[in] presetCode Code for pre-set to set.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -877,9 +978,10 @@ extern BOOL vscp_evt_control_sendSetPreSet(uint8_t presetCode, uint8_t zone, uin
 /**
  * Toggle state
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -907,9 +1009,10 @@ extern BOOL vscp_evt_control_sendToggleState(uint8_t userSpecific, uint8_t zone,
 /**
  * Timed pulse on
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] control Control byte.
  * @param[in] time Set time as a long with MSB in the first byte.
  * 
@@ -948,9 +1051,10 @@ extern BOOL vscp_evt_control_sendTimedPulseOn(uint8_t userSpecific, uint8_t zone
 /**
  * Timed pulse off
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] control Control byte.
  * @param[in] time Set time as a long with MSB in the first byte.
  * 
@@ -990,8 +1094,8 @@ extern BOOL vscp_evt_control_sendTimedPulseOff(uint8_t userSpecific, uint8_t zon
  * Set country/language
  * 
  * @param[in] code Country/Language code.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] codeSpecific Country/Language code specific (array[4])
  * @param[in] codeSpecificsize Size in byte.
  * 
@@ -1039,8 +1143,8 @@ extern BOOL vscp_evt_control_sendSetCountryLanguage(uint8_t code, uint8_t zone, 
  * Big Change level
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] level Level as signed Integer. The range can be adjusted by the user by sending the
  * needed number of bytes 1-5.
  * 
@@ -1073,8 +1177,8 @@ extern BOOL vscp_evt_control_sendBigChangeLevel(uint8_t index, uint8_t zone, uin
  * Move shutter up
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1103,8 +1207,8 @@ extern BOOL vscp_evt_control_sendMoveShutterUp(uint8_t index, uint8_t zone, uint
  * Move shutter down
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1133,8 +1237,8 @@ extern BOOL vscp_evt_control_sendMoveShutterDown(uint8_t index, uint8_t zone, ui
  * Move shutter left
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1163,8 +1267,8 @@ extern BOOL vscp_evt_control_sendMoveShutterLeft(uint8_t index, uint8_t zone, ui
  * Move shutter right
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1193,8 +1297,8 @@ extern BOOL vscp_evt_control_sendMoveShutterRight(uint8_t index, uint8_t zone, u
  * Move shutter to middle position
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1223,8 +1327,8 @@ extern BOOL vscp_evt_control_sendMoveShutterToMiddlePosition(uint8_t index, uint
  * Move shutter to preset position
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1252,9 +1356,10 @@ extern BOOL vscp_evt_control_sendMoveShutterToPresetPosition(uint8_t index, uint
 /**
  * (All) Lamp(s) on
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1282,9 +1387,10 @@ extern BOOL vscp_evt_control_sendAllLampSOn(uint8_t userSpecific, uint8_t zone, 
 /**
  * (All) Lamp(s) off
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1312,9 +1418,10 @@ extern BOOL vscp_evt_control_sendAllLampSOff(uint8_t userSpecific, uint8_t zone,
 /**
  * Lock
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1342,9 +1449,10 @@ extern BOOL vscp_evt_control_sendLock(uint8_t userSpecific, uint8_t zone, uint8_
 /**
  * Unlock
  * 
- * @param[in] userSpecific User specific value.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-Zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1373,8 +1481,8 @@ extern BOOL vscp_evt_control_sendUnlock(uint8_t userSpecific, uint8_t zone, uint
  * PWM set
  * 
  * @param[in] repeats Repeat/counter: 0=repeat forever, >0 number of repeats
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] control Control byte.
  * @param[in] timeOn Time-On
  * @param[in] timeOff Time-Off
@@ -1417,8 +1525,8 @@ extern BOOL vscp_evt_control_sendPwmSet(uint8_t repeats, uint8_t zone, uint8_t s
  * Lock with token
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] token Token. This token can be 1-5 bytes and length of event is set accordingly. It
  * should be interpreted as an unsigned integer in the range 0-1099511627775. MSB byte is stored in
  * first byte. (array[5])
@@ -1468,8 +1576,8 @@ extern BOOL vscp_evt_control_sendLockWithToken(uint8_t reserved, uint8_t zone, u
  * Unlock with token
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] token Token. This token can be 1-5 bytes and length of event is set accordingly. It
  * should be interpreted as an unsigned integer in the range 0-1099511627775. MSB byte is stored in
  * first byte. (array[5])
@@ -1519,8 +1627,8 @@ extern BOOL vscp_evt_control_sendUnlockWithToken(uint8_t reserved, uint8_t zone,
  * Set security level
  * 
  * @param[in] securityLevel Security level to set. 0-255 (Higher value is higher security level).
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1549,8 +1657,8 @@ extern BOOL vscp_evt_control_sendSetSecurityLevel(uint8_t securityLevel, uint8_t
  * Set security pin
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] securityPin Security pin. This pin can be 1-5 bytes and length of event is set
  * accordingly. It should be interpreted as an unsigned integer in the range 0-1099511627775. MSB byte
  * is stored in first byte. (array[5])
@@ -1600,8 +1708,8 @@ extern BOOL vscp_evt_control_sendSetSecurityPin(uint8_t reserved, uint8_t zone, 
  * Set security password
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] securityPassword Security password. This password can be 1-5 bytes and length of event
  * is set accordingly. It should be interpreted as a UTF-8 string of length equal to the event data
  * length minus 3 bytes (array[5])
@@ -1651,8 +1759,8 @@ extern BOOL vscp_evt_control_sendSetSecurityPassword(uint8_t reserved, uint8_t z
  * Set security token
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] token Token. This token can be 1-5 bytes and length of event is set accordingly. It
  * should be interpreted as an unsigned integer in the range 0-1099511627775. MSB byte is stored in
  * first byte. (array[5])
@@ -1702,8 +1810,8 @@ extern BOOL vscp_evt_control_sendSetSecurityToken(uint8_t reserved, uint8_t zone
  * Request new security token
  * 
  * @param[in] reserved Not used.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1731,7 +1839,8 @@ extern BOOL vscp_evt_control_sendRequestNewSecurityToken(uint8_t reserved, uint8
 /**
  * Increment
  * 
- * @param[in] userSpecific User specific value.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
  * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
  * @param[in] incrementValue Increment as unsigned integer. The range can be adjusted by the user by
@@ -1780,7 +1889,8 @@ extern BOOL vscp_evt_control_sendIncrement(uint8_t userSpecific, uint8_t zone, u
 /**
  * Decrement
  * 
- * @param[in] userSpecific User specific value.
+ * @param[in] userSpecific Optional byte that have a meaning given by the issuer of the event.
+ * Prefered use is _index_ for compability.
  * @param[in] zone Zone for which event applies to (0-255). 255 is all zones
  * @param[in] subzone Sub-zone for which event applies to (0-255). 255 is all sub-zones
  * @param[in] decrementValue Decrement as unsigned integer. The range can be adjusted by the user by

@@ -91,8 +91,8 @@ extern BOOL vscp_evt_display_sendGeneralEvent(void)
  * Clear Display
  * 
  * @param[in] code Code - not yet defined.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -121,8 +121,8 @@ extern BOOL vscp_evt_display_sendClearDisplay(uint8_t code, uint8_t zone, uint8_
  * Position cursor
  * 
  * @param[in] index Index.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] row Row to move to (first row is 0).
  * @param[in] column Column to move to (first column is 0).
  * 
@@ -159,8 +159,8 @@ extern BOOL vscp_evt_display_sendPositionCursor(uint8_t index, uint8_t zone, uin
  * Write Display
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] data Display data. (array[5])
  * @param[in] datasize Size in byte.
  * 
@@ -208,8 +208,8 @@ extern BOOL vscp_evt_display_sendWriteDisplay(uint8_t index, uint8_t zone, uint8
  * Write Display buffer
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] data Display data. (array[5])
  * @param[in] datasize Size in byte.
  * 
@@ -257,8 +257,8 @@ extern BOOL vscp_evt_display_sendWriteDisplayBuffer(uint8_t index, uint8_t zone,
  * Show Display Buffer
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -332,8 +332,8 @@ extern BOOL vscp_evt_display_sendSetDisplayBufferParameter(uint8_t index, uint8_
  * Show Text
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] event Event. (array[5])
  * @param[in] eventsize Size in byte.
  * 
@@ -381,8 +381,8 @@ extern BOOL vscp_evt_display_sendShowText(uint8_t index, uint8_t zone, uint8_t s
  * Set LED
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] state 0 =off, 1=on, 2=blink
  * @param[in] blinkOnPeriod Blink On period in milliseconds.
  * @param[in] blinkOffPeriod Blink Off period in milliseconds.
@@ -425,8 +425,8 @@ extern BOOL vscp_evt_display_sendSetLed(uint8_t index, uint8_t zone, uint8_t sub
  * Set RGB Color
  * 
  * @param[in] index Increase by one for each event sent for specific text to display.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] red Color R to display 0-255.
  * @param[in] green Color G to display 0-255.
  * @param[in] blue Color B to display 0-255.

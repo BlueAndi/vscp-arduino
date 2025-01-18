@@ -91,8 +91,8 @@ extern BOOL vscp_evt_security_sendGeneralEvent(void)
  * Motion Detect
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] status Optional status (optional)
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
@@ -128,8 +128,8 @@ extern BOOL vscp_evt_security_sendMotionDetect(uint8_t userData, uint8_t zone, u
  * Glass break
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -158,8 +158,8 @@ extern BOOL vscp_evt_security_sendGlassBreak(uint8_t userData, uint8_t zone, uin
  * Beam break
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -188,8 +188,8 @@ extern BOOL vscp_evt_security_sendBeamBreak(uint8_t userData, uint8_t zone, uint
  * Sensor tamper
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -218,8 +218,8 @@ extern BOOL vscp_evt_security_sendSensorTamper(uint8_t userData, uint8_t zone, u
  * Shock sensor
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -248,8 +248,8 @@ extern BOOL vscp_evt_security_sendShockSensor(uint8_t userData, uint8_t zone, ui
  * Smoke sensor
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -278,8 +278,8 @@ extern BOOL vscp_evt_security_sendSmokeSensor(uint8_t userData, uint8_t zone, ui
  * Heat sensor
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -308,8 +308,8 @@ extern BOOL vscp_evt_security_sendHeatSensor(uint8_t userData, uint8_t zone, uin
  * Panic switch
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -338,8 +338,8 @@ extern BOOL vscp_evt_security_sendPanicSwitch(uint8_t userData, uint8_t zone, ui
  * Door Contact
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -368,8 +368,8 @@ extern BOOL vscp_evt_security_sendDoorContact(uint8_t userData, uint8_t zone, ui
  * Window Contact
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -398,8 +398,8 @@ extern BOOL vscp_evt_security_sendWindowContact(uint8_t userData, uint8_t zone, 
  * CO Sensor
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -428,8 +428,8 @@ extern BOOL vscp_evt_security_sendCoSensor(uint8_t userData, uint8_t zone, uint8
  * Frost detected
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -458,8 +458,8 @@ extern BOOL vscp_evt_security_sendFrostDetected(uint8_t userData, uint8_t zone, 
  * Flame detected
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -488,8 +488,8 @@ extern BOOL vscp_evt_security_sendFlameDetected(uint8_t userData, uint8_t zone, 
  * Oxygen Low
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -518,8 +518,8 @@ extern BOOL vscp_evt_security_sendOxygenLow(uint8_t userData, uint8_t zone, uint
  * Weight detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -548,8 +548,8 @@ extern BOOL vscp_evt_security_sendWeightDetected(uint8_t userData, uint8_t zone,
  * Water detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -578,8 +578,8 @@ extern BOOL vscp_evt_security_sendWaterDetected(uint8_t userData, uint8_t zone, 
  * Condensation detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -608,8 +608,8 @@ extern BOOL vscp_evt_security_sendCondensationDetected(uint8_t userData, uint8_t
  * Noise (sound) detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -638,8 +638,8 @@ extern BOOL vscp_evt_security_sendNoiseSoundDetected(uint8_t userData, uint8_t z
  * Harmful sound levels detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -668,8 +668,8 @@ extern BOOL vscp_evt_security_sendHarmfulSoundLevelsDetected(uint8_t userData, u
  * Tamper detected.
  * 
  * @param[in] userData User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -698,8 +698,8 @@ extern BOOL vscp_evt_security_sendTamperDetected(uint8_t userData, uint8_t zone,
  * Authenticated
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -728,8 +728,8 @@ extern BOOL vscp_evt_security_sendAuthenticated(uint8_t data0, uint8_t zone, uin
  * Unauthenticated
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -758,8 +758,8 @@ extern BOOL vscp_evt_security_sendUnauthenticated(uint8_t data0, uint8_t zone, u
  * Authorized
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -788,8 +788,8 @@ extern BOOL vscp_evt_security_sendAuthorized(uint8_t data0, uint8_t zone, uint8_
  * Unauthorized
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -818,8 +818,8 @@ extern BOOL vscp_evt_security_sendUnauthorized(uint8_t data0, uint8_t zone, uint
  * ID check
  * 
  * @param[in] data0 ID check bits.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -848,8 +848,8 @@ extern BOOL vscp_evt_security_sendIdCheck(uint8_t data0, uint8_t zone, uint8_t s
  * Valid pin
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -878,8 +878,8 @@ extern BOOL vscp_evt_security_sendValidPin(uint8_t data0, uint8_t zone, uint8_t 
  * Invalid pin
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -908,8 +908,8 @@ extern BOOL vscp_evt_security_sendInvalidPin(uint8_t data0, uint8_t zone, uint8_
  * Pin warning
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -938,8 +938,8 @@ extern BOOL vscp_evt_security_sendPinWarning(uint8_t data0, uint8_t zone, uint8_
  * Pin error
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -968,8 +968,8 @@ extern BOOL vscp_evt_security_sendPinError(uint8_t data0, uint8_t zone, uint8_t 
  * Valid password
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -998,8 +998,8 @@ extern BOOL vscp_evt_security_sendValidPassword(uint8_t data0, uint8_t zone, uin
  * Invalid password
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1028,8 +1028,8 @@ extern BOOL vscp_evt_security_sendInvalidPassword(uint8_t data0, uint8_t zone, u
  * Password warning
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1058,8 +1058,8 @@ extern BOOL vscp_evt_security_sendPasswordWarning(uint8_t data0, uint8_t zone, u
  * Password error
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1088,8 +1088,8 @@ extern BOOL vscp_evt_security_sendPasswordError(uint8_t data0, uint8_t zone, uin
  * Gas
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1118,8 +1118,8 @@ extern BOOL vscp_evt_security_sendGas(uint8_t data0, uint8_t zone, uint8_t subZo
  * In motion
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1148,8 +1148,8 @@ extern BOOL vscp_evt_security_sendInMotion(uint8_t data0, uint8_t zone, uint8_t 
  * Not in motion
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1178,8 +1178,8 @@ extern BOOL vscp_evt_security_sendNotInMotion(uint8_t data0, uint8_t zone, uint8
  * Vibration
  * 
  * @param[in] data0 User defined data.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */

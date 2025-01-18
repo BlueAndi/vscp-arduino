@@ -88,8 +88,8 @@ extern BOOL vscp_evt_weather_sendGeneralEvent(void);
  * Season winter
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -99,8 +99,8 @@ extern BOOL vscp_evt_weather_sendSeasonWinter(uint8_t index, uint8_t zone, uint8
  * Season spring
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -110,8 +110,8 @@ extern BOOL vscp_evt_weather_sendSeasonSpring(uint8_t index, uint8_t zone, uint8
  * Season summer
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -121,8 +121,8 @@ extern BOOL vscp_evt_weather_sendSeasonSummer(uint8_t index, uint8_t zone, uint8
  * Autumn summer
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -132,8 +132,8 @@ extern BOOL vscp_evt_weather_sendAutumnSummer(uint8_t index, uint8_t zone, uint8
  * No wind
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -143,8 +143,8 @@ extern BOOL vscp_evt_weather_sendNoWind(uint8_t index, uint8_t zone, uint8_t sub
  * Low wind
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -154,8 +154,8 @@ extern BOOL vscp_evt_weather_sendLowWind(uint8_t index, uint8_t zone, uint8_t su
  * Medium wind
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -165,8 +165,8 @@ extern BOOL vscp_evt_weather_sendMediumWind(uint8_t index, uint8_t zone, uint8_t
  * High wind
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -176,8 +176,8 @@ extern BOOL vscp_evt_weather_sendHighWind(uint8_t index, uint8_t zone, uint8_t s
  * Very high wind
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -187,8 +187,8 @@ extern BOOL vscp_evt_weather_sendVeryHighWind(uint8_t index, uint8_t zone, uint8
  * Air foggy
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -198,8 +198,8 @@ extern BOOL vscp_evt_weather_sendAirFoggy(uint8_t index, uint8_t zone, uint8_t s
  * Air freezing
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -209,8 +209,8 @@ extern BOOL vscp_evt_weather_sendAirFreezing(uint8_t index, uint8_t zone, uint8_
  * Air Very cold
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -220,8 +220,8 @@ extern BOOL vscp_evt_weather_sendAirVeryCold(uint8_t index, uint8_t zone, uint8_
  * Air cold
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -231,8 +231,8 @@ extern BOOL vscp_evt_weather_sendAirCold(uint8_t index, uint8_t zone, uint8_t su
  * Air normal
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -242,8 +242,8 @@ extern BOOL vscp_evt_weather_sendAirNormal(uint8_t index, uint8_t zone, uint8_t 
  * Air hot
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -253,8 +253,8 @@ extern BOOL vscp_evt_weather_sendAirHot(uint8_t index, uint8_t zone, uint8_t sub
  * Air very hot
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -264,8 +264,8 @@ extern BOOL vscp_evt_weather_sendAirVeryHot(uint8_t index, uint8_t zone, uint8_t
  * Pollution low
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -275,8 +275,8 @@ extern BOOL vscp_evt_weather_sendPollutionLow(uint8_t index, uint8_t zone, uint8
  * Pollution medium
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -286,8 +286,8 @@ extern BOOL vscp_evt_weather_sendPollutionMedium(uint8_t index, uint8_t zone, ui
  * Pollution high
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -297,8 +297,8 @@ extern BOOL vscp_evt_weather_sendPollutionHigh(uint8_t index, uint8_t zone, uint
  * Air humid
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -308,8 +308,8 @@ extern BOOL vscp_evt_weather_sendAirHumid(uint8_t index, uint8_t zone, uint8_t s
  * Air dry
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -319,8 +319,8 @@ extern BOOL vscp_evt_weather_sendAirDry(uint8_t index, uint8_t zone, uint8_t sub
  * Soil humid
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -330,8 +330,8 @@ extern BOOL vscp_evt_weather_sendSoilHumid(uint8_t index, uint8_t zone, uint8_t 
  * Soil dry
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -341,8 +341,8 @@ extern BOOL vscp_evt_weather_sendSoilDry(uint8_t index, uint8_t zone, uint8_t su
  * Rain none
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -352,8 +352,8 @@ extern BOOL vscp_evt_weather_sendRainNone(uint8_t index, uint8_t zone, uint8_t s
  * Rain light
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -363,8 +363,8 @@ extern BOOL vscp_evt_weather_sendRainLight(uint8_t index, uint8_t zone, uint8_t 
  * Rain heavy
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -374,8 +374,8 @@ extern BOOL vscp_evt_weather_sendRainHeavy(uint8_t index, uint8_t zone, uint8_t 
  * Rain very heavy
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -385,8 +385,8 @@ extern BOOL vscp_evt_weather_sendRainVeryHeavy(uint8_t index, uint8_t zone, uint
  * Sun none
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -396,8 +396,8 @@ extern BOOL vscp_evt_weather_sendSunNone(uint8_t index, uint8_t zone, uint8_t su
  * Sun light
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -407,8 +407,8 @@ extern BOOL vscp_evt_weather_sendSunLight(uint8_t index, uint8_t zone, uint8_t s
  * Sun heavy
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -418,8 +418,8 @@ extern BOOL vscp_evt_weather_sendSunHeavy(uint8_t index, uint8_t zone, uint8_t s
  * Snow none
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -429,8 +429,8 @@ extern BOOL vscp_evt_weather_sendSnowNone(uint8_t index, uint8_t zone, uint8_t s
  * Snow light
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -440,8 +440,8 @@ extern BOOL vscp_evt_weather_sendSnowLight(uint8_t index, uint8_t zone, uint8_t 
  * Snow heavy
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -451,8 +451,8 @@ extern BOOL vscp_evt_weather_sendSnowHeavy(uint8_t index, uint8_t zone, uint8_t 
  * Dew point
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -462,8 +462,8 @@ extern BOOL vscp_evt_weather_sendDewPoint(uint8_t index, uint8_t zone, uint8_t s
  * Storm
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -473,8 +473,8 @@ extern BOOL vscp_evt_weather_sendStorm(uint8_t index, uint8_t zone, uint8_t subZ
  * Flood
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -484,8 +484,8 @@ extern BOOL vscp_evt_weather_sendFlood(uint8_t index, uint8_t zone, uint8_t subZ
  * Earthquake
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -495,8 +495,8 @@ extern BOOL vscp_evt_weather_sendEarthquake(uint8_t index, uint8_t zone, uint8_t
  * Nuclear disaster
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -506,8 +506,8 @@ extern BOOL vscp_evt_weather_sendNuclearDisaster(uint8_t index, uint8_t zone, ui
  * Fire
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -517,8 +517,8 @@ extern BOOL vscp_evt_weather_sendFire(uint8_t index, uint8_t zone, uint8_t subZo
  * Lightning
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -528,8 +528,8 @@ extern BOOL vscp_evt_weather_sendLightning(uint8_t index, uint8_t zone, uint8_t 
  * UV Radiation low
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -539,8 +539,8 @@ extern BOOL vscp_evt_weather_sendUvRadiationLow(uint8_t index, uint8_t zone, uin
  * UV Radiation medium
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -550,8 +550,8 @@ extern BOOL vscp_evt_weather_sendUvRadiationMedium(uint8_t index, uint8_t zone, 
  * UV Radiation normal
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -561,8 +561,8 @@ extern BOOL vscp_evt_weather_sendUvRadiationNormal(uint8_t index, uint8_t zone, 
  * UV Radiation high
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -572,8 +572,8 @@ extern BOOL vscp_evt_weather_sendUvRadiationHigh(uint8_t index, uint8_t zone, ui
  * UV Radiation very high
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -583,8 +583,8 @@ extern BOOL vscp_evt_weather_sendUvRadiationVeryHigh(uint8_t index, uint8_t zone
  * Warning level 1
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -594,8 +594,8 @@ extern BOOL vscp_evt_weather_sendWarningLevel1(uint8_t index, uint8_t zone, uint
  * Warning level 2
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -605,8 +605,8 @@ extern BOOL vscp_evt_weather_sendWarningLevel2(uint8_t index, uint8_t zone, uint
  * Warning level 3
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -616,8 +616,8 @@ extern BOOL vscp_evt_weather_sendWarningLevel3(uint8_t index, uint8_t zone, uint
  * Warning level 4
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -627,8 +627,8 @@ extern BOOL vscp_evt_weather_sendWarningLevel4(uint8_t index, uint8_t zone, uint
  * Warning level 5
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -638,8 +638,8 @@ extern BOOL vscp_evt_weather_sendWarningLevel5(uint8_t index, uint8_t zone, uint
  * Armageddon
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -649,8 +649,8 @@ extern BOOL vscp_evt_weather_sendArmageddon(uint8_t index, uint8_t zone, uint8_t
  * UV Index
  * 
  * @param[in] index Index for sensor.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] uvIndex UV index (0-15)
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.

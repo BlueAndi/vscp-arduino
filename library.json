@@ -1,6 +1,6 @@
 {
     "name": "vscp-arduino",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "keywords": "vscp, arduino-library, vscp-arduino, automation, home automation",
     "description": "Very Simple Control Procotol (VSCP) Level 1 Library for the arduino IDE.",
     "repository": {

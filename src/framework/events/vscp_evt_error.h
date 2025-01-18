@@ -81,8 +81,8 @@ extern "C"
  * Success
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -95,8 +95,8 @@ extern BOOL vscp_evt_error_sendSuccess(uint8_t index, uint8_t zone, uint8_t subZ
  * Error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -109,8 +109,8 @@ extern BOOL vscp_evt_error_sendError(uint8_t index, uint8_t zone, uint8_t subZon
  * Channel error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -123,8 +123,8 @@ extern BOOL vscp_evt_error_sendChannelError(uint8_t index, uint8_t zone, uint8_t
  * Fifo empty error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -137,8 +137,8 @@ extern BOOL vscp_evt_error_sendFifoEmptyError(uint8_t index, uint8_t zone, uint8
  * Fifo full error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -151,8 +151,8 @@ extern BOOL vscp_evt_error_sendFifoFullError(uint8_t index, uint8_t zone, uint8_
  * Fifo size error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -165,8 +165,8 @@ extern BOOL vscp_evt_error_sendFifoSizeError(uint8_t index, uint8_t zone, uint8_
  * Fifo wait error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -179,8 +179,8 @@ extern BOOL vscp_evt_error_sendFifoWaitError(uint8_t index, uint8_t zone, uint8_
  * Generic error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -193,8 +193,8 @@ extern BOOL vscp_evt_error_sendGenericError(uint8_t index, uint8_t zone, uint8_t
  * Hardware error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -207,8 +207,8 @@ extern BOOL vscp_evt_error_sendHardwareError(uint8_t index, uint8_t zone, uint8_
  * initialization error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -221,8 +221,8 @@ extern BOOL vscp_evt_error_sendInitializationError(uint8_t index, uint8_t zone, 
  * Missing initialization error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -235,8 +235,8 @@ extern BOOL vscp_evt_error_sendMissingInitializationError(uint8_t index, uint8_t
  * Initialization ready
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -249,8 +249,8 @@ extern BOOL vscp_evt_error_sendInitializationReady(uint8_t index, uint8_t zone, 
  * Not supported
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -263,8 +263,8 @@ extern BOOL vscp_evt_error_sendNotSupported(uint8_t index, uint8_t zone, uint8_t
  * Overrun error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -277,8 +277,8 @@ extern BOOL vscp_evt_error_sendOverrunError(uint8_t index, uint8_t zone, uint8_t
  * Receiver empty error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -291,8 +291,8 @@ extern BOOL vscp_evt_error_sendReceiverEmptyError(uint8_t index, uint8_t zone, u
  * Register error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -305,8 +305,8 @@ extern BOOL vscp_evt_error_sendRegisterError(uint8_t index, uint8_t zone, uint8_
  * Transmitter full error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -319,8 +319,8 @@ extern BOOL vscp_evt_error_sendTransmitterFullError(uint8_t index, uint8_t zone,
  * Library error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -333,8 +333,8 @@ extern BOOL vscp_evt_error_sendLibraryError(uint8_t index, uint8_t zone, uint8_t
  * Procedural address error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -347,8 +347,8 @@ extern BOOL vscp_evt_error_sendProceduralAddressError(uint8_t index, uint8_t zon
  * Only one instance error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -361,8 +361,8 @@ extern BOOL vscp_evt_error_sendOnlyOneInstanceError(uint8_t index, uint8_t zone,
  * Sub driver error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -375,8 +375,8 @@ extern BOOL vscp_evt_error_sendSubDriverError(uint8_t index, uint8_t zone, uint8
  * Timeout error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -389,8 +389,8 @@ extern BOOL vscp_evt_error_sendTimeoutError(uint8_t index, uint8_t zone, uint8_t
  * Not open error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -403,8 +403,8 @@ extern BOOL vscp_evt_error_sendNotOpenError(uint8_t index, uint8_t zone, uint8_t
  * Parameter error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -417,8 +417,8 @@ extern BOOL vscp_evt_error_sendParameterError(uint8_t index, uint8_t zone, uint8
  * Memory error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -431,8 +431,8 @@ extern BOOL vscp_evt_error_sendMemoryError(uint8_t index, uint8_t zone, uint8_t 
  * Internal error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -445,8 +445,8 @@ extern BOOL vscp_evt_error_sendInternalError(uint8_t index, uint8_t zone, uint8_
  * Communication error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -459,8 +459,8 @@ extern BOOL vscp_evt_error_sendCommunicationError(uint8_t index, uint8_t zone, u
  * User error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -473,8 +473,8 @@ extern BOOL vscp_evt_error_sendUserError(uint8_t index, uint8_t zone, uint8_t su
  * Password error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -487,8 +487,8 @@ extern BOOL vscp_evt_error_sendPasswordError(uint8_t index, uint8_t zone, uint8_
  * Connection error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -501,8 +501,8 @@ extern BOOL vscp_evt_error_sendConnectionError(uint8_t index, uint8_t zone, uint
  * Invalid handle error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -515,8 +515,8 @@ extern BOOL vscp_evt_error_sendInvalidHandleError(uint8_t index, uint8_t zone, u
  * Operation failed error
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -529,8 +529,8 @@ extern BOOL vscp_evt_error_sendOperationFailedError(uint8_t index, uint8_t zone,
  * Supplied buffer is to small to fit content
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -543,8 +543,8 @@ extern BOOL vscp_evt_error_sendSuppliedBufferIsToSmallToFitContent(uint8_t index
  * Requested item is unknown
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -557,8 +557,8 @@ extern BOOL vscp_evt_error_sendRequestedItemIsUnknown(uint8_t index, uint8_t zon
  * Name is already in use
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -571,8 +571,8 @@ extern BOOL vscp_evt_error_sendNameIsAlreadyInUse(uint8_t index, uint8_t zone, u
  * Error when writing data
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -585,8 +585,8 @@ extern BOOL vscp_evt_error_sendErrorWhenWritingData(uint8_t index, uint8_t zone,
  * Operation stopped or aborted
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.
@@ -599,8 +599,8 @@ extern BOOL vscp_evt_error_sendOperationStoppedOrAborted(uint8_t index, uint8_t 
  * Pointer with invalid value
  * 
  * @param[in] index Index. Often used as an index for channels/subdevices within a module.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] user Can be present or not be present. If present the bytes give additional user
  * specific information. (optional) (array[5])
  * @param[in] usersize Size in byte.

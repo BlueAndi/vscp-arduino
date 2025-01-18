@@ -91,8 +91,8 @@ extern BOOL vscp_evt_multimedia_sendGeneralEvent(void)
  * Playback
  * 
  * @param[in] function Function (See below)
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -121,8 +121,8 @@ extern BOOL vscp_evt_multimedia_sendPlayback(uint8_t function, uint8_t zone, uin
  * NavigatorKey English
  * 
  * @param[in] function Function
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -154,8 +154,8 @@ extern BOOL vscp_evt_multimedia_sendNavigatorkeyEnglish(uint8_t function, uint8_
  * between 128 and 159 is change down by the specified number of contrast levels. A value between 160
  * and 191 is change up by the specified number of contrast levels. A value of 255 means that this is
  * and extended event and that the specific contrast level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -187,8 +187,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustContrast(uint8_t contrast, uint8_t zon
  * between 128 and 159 is change down by the specified number of focus levels. A value between 160 and
  * 191 is change up by the specified number of focus levels. A value of 255 means that this is and
  * extended event and that the specific focus level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -220,8 +220,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustFocus(uint8_t focus, uint8_t zone, uin
  * 128 and 159 is change down by the specified number of tint levels. A value between 160 and 191 is
  * change up by the specified number of tint levels. A value of 255 means that this is and extended
  * event and that the specific tint level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -250,8 +250,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustTint(uint8_t tint, uint8_t zone, uint8
  * Adjust Color Balance
  * 
  * @param[in] reserved Reserved.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -283,8 +283,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustColorBalance(uint8_t reserved, uint8_t
  * value between 128 and 159 is change down by the specified number of brightness levels. A value
  * between 160 and 191 is change up by the specified number of brightness levels. A value of 255 means
  * that this is and extended event and that the specific brightness level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -316,8 +316,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustBrightness(uint8_t brightness, uint8_t
  * 128 and 159 is change down by the specified number of hue levels. A value between 160 and 191 is
  * change up by the specified number of hue levels. A value of 255 means that this is and extended
  * event and that the specific hue level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -349,8 +349,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustHue(uint8_t hue, uint8_t zone, uint8_t
  * 128 and 159 is change down by the specified number of bass levels. A value between 160 and 191 is
  * change up by the specified number of bass levels. A value of 255 means that this is and extended
  * event and that the specific bass level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -382,8 +382,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustBass(uint8_t bass, uint8_t zone, uint8
  * between 128 and 159 is change down by the specified number of treble levels. A value between 160
  * and 191 is change up by the specified number of treble levels. A value of 255 means that this is
  * and extended event and that the specific treble level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -415,8 +415,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustTreble(uint8_t treble, uint8_t zone, u
  * between 128 and 159 is change down by the specified number of volume levels. A value between 160
  * and 191 is change up by the specified number of volume levels. A value of 255 means that this is
  * and extended event and that the specific volume level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -448,8 +448,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustMasterVolume(uint8_t volume, uint8_t z
  * between 128 and 159 is change down by the specified number of volume levels. A value between 160
  * and 191 is change up by the specified number of volume levels. A value of 255 means that this is
  * and extended event and that the specific volume level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -481,8 +481,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustFrontVolume(uint8_t volume, uint8_t zo
  * between 128 and 159 is change down by the specified number of volume levels. A value between 160
  * and 191 is change up by the specified number of volume levels. A value of 255 means that this is
  * and extended event and that the specific volume level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -514,8 +514,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustCenterVolume(uint8_t volume, uint8_t z
  * between 128 and 159 is change down by the specified number of volume levels. A value between 160
  * and 191 is change up by the specified number of volume levels. A value of 255 means that this is
  * and extended event and that the specific volume level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -547,8 +547,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustRearVolume(uint8_t volume, uint8_t zon
  * between 128 and 159 is change down by the specified number of volume levels. A value between 160
  * and 191 is change up by the specified number of volume levels. A value of 255 means that this is
  * and extended event and that the specific volume level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -588,8 +588,8 @@ extern BOOL vscp_evt_multimedia_sendAdjustSideVolume(uint8_t volume, uint8_t zon
  * and 159 is change down by the specified number of disks. A value between 160 and 191 is change up
  * by the specified number of disks. A value of 200 means select a random disk. A value of 255 means
  * that this is and extended event and that the disk number is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -621,8 +621,8 @@ extern BOOL vscp_evt_multimedia_sendSelectDisk(uint8_t discNo, uint8_t zone, uin
  * is change down by the specified number of tracks. A value between 160 and 191 is change up by the
  * specified number of tracks. A value of 200 means select a random track. A value of 255 means that
  * this is and extended event and that the track number is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -655,8 +655,8 @@ extern BOOL vscp_evt_multimedia_sendSelectTrack(uint8_t track, uint8_t zone, uin
  * 191 is change up by the specified number of albums. A value of 200 means select a random album. A
  * value of 255 means that this is and extended event and that the album number is sent in byte 3 and
  * after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -688,8 +688,8 @@ extern BOOL vscp_evt_multimedia_sendSelectAlbumPlayList(uint8_t album, uint8_t z
  * 159 is change down by the specified number of channels. A value between 160 and 191 is change up by
  * the specified number of channels. A value of 200 means select a random channel. A value of 255
  * means that this is and extended event and that the channel number is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -721,8 +721,8 @@ extern BOOL vscp_evt_multimedia_sendSelectChannel(uint8_t channel, uint8_t zone,
  * change down by the specified number of pages. A value between 160 and 191 is change up by the
  * specified number of pages. A value of 200 means select a random page. A value of 255 means that
  * this is and extended event and that the page number is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -754,8 +754,8 @@ extern BOOL vscp_evt_multimedia_sendSelectPage(uint8_t page, uint8_t zone, uint8
  * 159 is change down by the specified number of chapters. A value between 160 and 191 is change up by
  * the specified number of chapters. A value of 200 means select a random chapter. A value of 255
  * means that this is and extended event and that the chapter number is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -784,8 +784,8 @@ extern BOOL vscp_evt_multimedia_sendSelectChapter(uint8_t chapter, uint8_t zone,
  * Select Screen Format
  * 
  * @param[in] format 0 = Auto, 1 = Just, 2 = Norma,l 3 = Zoom.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -814,8 +814,8 @@ extern BOOL vscp_evt_multimedia_sendSelectScreenFormat(uint8_t format, uint8_t z
  * Select Input Source
  * 
  * @param[in] source Device code
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -844,8 +844,8 @@ extern BOOL vscp_evt_multimedia_sendSelectInputSource(uint8_t source, uint8_t zo
  * Select Output
  * 
  * @param[in] output Output Code
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -874,8 +874,8 @@ extern BOOL vscp_evt_multimedia_sendSelectOutput(uint8_t output, uint8_t zone, u
  * Record
  * 
  * @param[in] function 0 - Start to record, 1 - Stop record, 2 - Disable, AGC 3 - Enable AGC.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -907,8 +907,8 @@ extern BOOL vscp_evt_multimedia_sendRecord(uint8_t function, uint8_t zone, uint8
  * between 128 and 159 is change down by the specified number of contrast levels. A value between 160
  * and 191 is change up by the specified number of contrast levels. A value of 255 means that this is
  * and extended event and that the specific contrast level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -937,8 +937,8 @@ extern BOOL vscp_evt_multimedia_sendSetRecordingVolume(uint8_t volume, uint8_t z
  * Tivo Function
  * 
  * @param[in] tivoCode TIVO Code
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -967,8 +967,8 @@ extern BOOL vscp_evt_multimedia_sendTivoFunction(uint8_t tivoCode, uint8_t zone,
  * Get Current Title
  * 
  * @param[in] reserved Reserved.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -997,8 +997,8 @@ extern BOOL vscp_evt_multimedia_sendGetCurrentTitle(uint8_t reserved, uint8_t zo
  * Set media position in milliseconds
  * 
  * @param[in] reserved Reserved
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] pos Position in milliseconds, This is an integer with a size specified by the event
  * size. This 0xFF, 0xFFFF, 0xFFFFFF, 0xFFFFFFFF and 0xFFFFFFFFFF is the maximum that can be sent for
  * different sizes. (array[5])
@@ -1049,8 +1049,8 @@ extern BOOL vscp_evt_multimedia_sendSetMediaPositionInMilliseconds(uint8_t reser
  * 
  * @param[in] type Type of media information requested. 1 - Current Title, 1 - Get Folders, 2 - Get
  * Disks, 3 - Get Tracks, 4 - Get Albums/Play list,s 5 - Get Channels, 6 - Get Pages, 7 - Get Chapters
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1080,8 +1080,8 @@ extern BOOL vscp_evt_multimedia_sendGetMediaInformation(uint8_t type, uint8_t zo
  * 
  * @param[in] item 0-128 - Pos to remove from album/play-list A value of 255 means that this is and
  * extended event and that the specific contrast level is sent in byte 3 and after.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1110,8 +1110,8 @@ extern BOOL vscp_evt_multimedia_sendRemoveItemFromAlbum(uint8_t item, uint8_t zo
  * Remove all Items from Album
  * 
  * @param[in] reserved Reserved.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1140,8 +1140,8 @@ extern BOOL vscp_evt_multimedia_sendRemoveAllItemsFromAlbum(uint8_t reserved, ui
  * Save Album/Play list
  * 
  * @param[in] function 0 - Do not overwrite if it already exists 1 - Overwrite if it exist.
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * 
  * @return If event is sent, it will return TRUE otherwise FALSE.
  */
@@ -1170,8 +1170,8 @@ extern BOOL vscp_evt_multimedia_sendSaveAlbumPlayList(uint8_t function, uint8_t 
  * Multimedia Control
  * 
  * @param[in] control Control codes
- * @param[in] zone Zone for which event applies to (0-255). 255 is all zones.
- * @param[in] subZone Sub-zone for which event applies to (0-255). 255 is all sub-zones.
+ * @param[in] zone Zone for which event applies to (0-254). 255 is all zones.
+ * @param[in] subZone Sub-zone for which event applies to (0-254). 255 is all sub-zones.
  * @param[in] index Index. Base 0. Increase by one for every fragment of the title sent.
  * @param[in] data Data. (array[5])
  * @param[in] datasize Size in byte.
