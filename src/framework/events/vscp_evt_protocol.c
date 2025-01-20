@@ -1359,3 +1359,51 @@ extern BOOL vscp_evt_protocol_sendBootloaderCheck(void)
     return vscp_core_sendEvent(&txMsg);
 }
 
+/**
+ * Bootloader Abort.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbort(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Bootloader Abort ACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbortAck(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_ACK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+
+/**
+ * Bootloader Abort NACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbortNack(void)
+{
+    vscp_TxMessage  txMsg;
+
+    vscp_core_prepareTxMessage(&txMsg, VSCP_CLASS_L1_PROTOCOL, VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_NACK, VSCP_PRIORITY_3_NORMAL);
+
+    txMsg.dataSize = 0;
+
+    return vscp_core_sendEvent(&txMsg);
+}
+

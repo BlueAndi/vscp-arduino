@@ -1563,6 +1563,18 @@ static inline void  vscp_core_handleProtocolClassType(void)
         /* Boot loader specific event. Not supported. */
         break;
 
+    case VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT:
+        /* Boot loader specific event. Not supported. */
+        break;
+
+    case VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_ACK:
+        /* Boot loader specific event. Not supported. */
+        break;
+
+    case VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_NACK:
+        /* Boot loader specific event. Not supported. */
+        break;
+
     /* Not handled type */
     default:
         break;

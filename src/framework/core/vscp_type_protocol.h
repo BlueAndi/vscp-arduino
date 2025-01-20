@@ -490,6 +490,40 @@ extern "C"
  */
 #define VSCP_TYPE_PROTOCOL_BOOT_LOADER_CHECK           54
 
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This event provide a way to leave the bootloader in a
+ * secure fashion if there is problems loading firmware to a device. It is only available if the
+ * device has a bootloader that supports this functionality. Typically this is a device that has
+ * several firmware slots and can switch between them, and by that switch back to the last known
+ * working firmware.
+ * The event can be sent in all states of the bootloading procedure.
+ * CLASS1.PROTOCOL, Type=56 (Bootloader abort ACK), should be sent as a positive response to a
+ * bootloader exit or rollback.
+ * CLASS1.PROTOCOL, Type=57 (Bootloader abort NACK), should be sent as a negative response to a
+ * bootloader exit or rollback.
+ */
+#define VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT           55
+
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This event is a positive response to a bootloader abort
+ * or rollback CLASS1.PROTOCOL, Type=55 (Bootloader abort).
+ * Event is sent before execution of the new firmware starts. It is used to tell the controlling
+ * device that the device is ready to leave the bootloader mode and start the new firmware.
+ */
+#define VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_ACK       56
+
+/**
+ * Not mandatory. Only needed if a VSCP boot-loader algorithm is used.
+ * Part of the VSCP boot-loader functionality. This event is a negative response to a bootloader abort
+ * or rollback CLASS1.PROTOCOL, Type=55 (Bootloader abort).
+ * On a single slot firmware device where a firmware update has failed and there is no working
+ * firmware to switch back to this event should be sent to tell the controlling device that we can't
+ * leave the bootloader mode until a new full firmware has been loaded.
+ */
+#define VSCP_TYPE_PROTOCOL_BOOT_LOADER_ABORT_NACK      57
+
 /*******************************************************************************
     MACROS
 *******************************************************************************/

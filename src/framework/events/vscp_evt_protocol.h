@@ -529,6 +529,27 @@ extern BOOL vscp_evt_protocol_sendBlockDataChunkNack(void);
  */
 extern BOOL vscp_evt_protocol_sendBootloaderCheck(void);
 
+/**
+ * Bootloader Abort.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbort(void);
+
+/**
+ * Bootloader Abort ACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbortAck(void);
+
+/**
+ * Bootloader Abort NACK.
+ * 
+ * @return If event is sent, it will return TRUE otherwise FALSE.
+ */
+extern BOOL vscp_evt_protocol_sendBootloaderAbortNack(void);
+
 #ifdef __cplusplus
 }
 #endif
