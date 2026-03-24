@@ -19,16 +19,16 @@ jobs:
       - run: echo "The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }}."
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout repository as custom library
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: CustomLibrary # must contain string "Custom"
           # No need to put "Custom" library in the required-libraries list
 
       - name: Checkout autowp-mcp2515 as custom library
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: autowp/arduino-mcp2515
           ref: master
